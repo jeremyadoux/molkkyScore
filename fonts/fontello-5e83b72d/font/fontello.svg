@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="wrench" unicode="&#xe800;" d="m12-7q0 29 21 51l380 380q22-55 64-97t97-64l-381-381q-21-20-50-20-29 0-51 20l-59 61q-21 20-21 50z m131 36q0-15 10-26t26-10 25 10 10 26-10 25-25 10-26-10-10-25z m286 500q0 103 73 176t177 74q32 0 67-10t60-26q9-6 9-15t-9-16l-163-94v-125l108-60q2 2 44 27t75 45 40 20q8 0 13-5t4-14q0-22-12-60-27-74-92-121t-144-47q-104 0-177 74t-73 176z" horiz-adv-x="928.6" />
+</font>
+</defs>
+</svg>

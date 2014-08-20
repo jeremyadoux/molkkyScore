@@ -1,0 +1,35 @@
+@import 'compass';
+@include global-reset;
+@import "partials/base";
+@import "partials/icons";
+
+body{
+	background:url('../images/wood_texture-7.jpg');
+	background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center;
+     background-size: cover;
+
+}
+
+table{
+	/* height determined by positioning.js */
+	width:95%;
+	margin:0 auto;
+	font-family:'Champion',sans-serif;
+	font-size:50px;
+	border-collapse: separate;
+    border-spacing: 15px;
+
+}
+
+td{
+	background-color:white;
+	width:15%;
+	text-align: center;
+	@include border-radius(15px);
+}
+
+td:hover{
+	cursor:pointer;
+}
