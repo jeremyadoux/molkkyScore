@@ -1,0 +1,44 @@
+table#mainTable{
+	/* height determined by positioning.js */
+	display:none;
+	width:95%;
+	margin:0 auto;
+	font-size:50px;
+	border-collapse: separate;
+    border-spacing: 15px;
+    td{
+		background-color:$darkColor;
+		color:$lightColor;
+		width:15%;
+		text-align: center;
+		border:1px solid $lightColor;
+		@include border-radius(6px);
+	}
+	td:hover{
+		cursor:pointer;
+		background-color:$accentColor;
+		color:$lightColor;
+		border-color:$accentColor;
+	}
+	td#td-settings:hover{
+		background-color:$lightColor;
+		border-color:$darkColor;
+		color:$darkColor;
+	}
+	.td-colspanned{
+		background-color:$lightColor;
+		color:$darkColor;
+		font-family:$regularFontFamily;
+	}
+}
+
+table#scoreTable{
+	height:100%;
+	width:100%;
+	td{
+		
+	}
+}
+
+
+

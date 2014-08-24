@@ -31,7 +31,7 @@ function setPortrait(){
 	$( "#xs-tr-2" ).insertAfter( $( "#xs-tr-1" ) );
 	$( "#xs-tr-4" ).insertAfter( $( "#xs-tr-3" ) );
 	$( ".td-colspanned" ).attr( "colspan", "2" );
-	$("td").css({
+	$("#mainTable  > tr > td").css({
 		width:"30%"
 	});
 }
@@ -42,13 +42,13 @@ function setLandscape(){
 	$( "#td-4" ).unwrap();
 	$( "#td-10" ).unwrap();
 	$( ".td-colspanned" ).attr( "colspan", "5" );
-	$("td").css({
+	$("#mainTable > tr > td").css({
 		width:"15%"
 	});
 }
 
 function setTableHeight(){
-	$("table").css({
+	$("table#mainTable").css({
 		height:$(window).height()*0.90 + "px", /* height:90% */
 	 	marginTop:$(window).height()/20 + "px", /* margin-top:5% */
 	});

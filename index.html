@@ -5,20 +5,56 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fontello/css/fontello.css">
+        <link rel="stylesheet" type="text/css" href="fonts/fontello/css/animation.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
-        <!--[if lt IE 9]>
-            <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
-        <![endif]-->
         <link rel="icon" type="image/png" href="images/favicon.png">
         <title>Mölkky score</title>
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/js/modal.js"></script>
+        <script src="bower_components/bootstrap/js/alert.js"></script>
         <script src="scripts/positioning.js"></script>
+        <script src="scripts/players.js"></script>
+        <script src="scripts/modals.js"></script>
+        <script src="scripts/utilities.js"></script>
     </head>
     <body>
-        <table>
+
+        <!-- Modal start game -->
+        <div class="modal fade" id="modalAddPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Enter player names..</h4>
+              </div>
+                <ul class="list-group">
+                    
+                </ul>
+                <div class="modal-body" >
+                    <div class="input-group input-group-lg">
+                      <input type="text" class="form-control" required placeholder="Player 1">
+                      <span class="input-group-addon icon-plus"></span>
+                    </div>
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    This is not a valid name
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default">Ready</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end Modal start game -->
+
+        <table id="mainTable">
             <tr>
-                <td class="td-colspanned" colspan="5">scores</td>
-                <td class="icon-wrench"></td>
+                <td class="td-colspanned" colspan="5">
+                    <table id="scoreTable">
+                            
+                    </table>
+                </td>
+                <td id="td-settings" class="icon-cog"></td>
             </tr>
             <tr>
                 <td class="td-colspanned" colspan="5">Player1 &raquo;</td>

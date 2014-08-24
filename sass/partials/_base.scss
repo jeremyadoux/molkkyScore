@@ -1,9 +1,29 @@
+//fonts
 @font-face {
-    font-family: Champion;
+    font-family: Champion-bold;
     src: url(../fonts/NationalChampion-Bold.woff),
     	 url(../fonts/NationalChampion-Bold.otf) format('opentype');
 }
+@font-face {
+    font-family: Champion-regular;
+    src: url(../fonts/NationalChampion-Regular.woff),
+    	 url(../fonts/NationalChampion-Regular.otf) format('opentype');
+}
+@font-face {
+    font-family: Champion-medium;
+    src: url(../fonts/NationalChampion-Medium.woff),
+    	 url(../fonts/NationalChampion-Medium.otf) format('opentype');
+}
 
+$boldFontFamily:'Champion-Bold',sans-serif;
+$mediumFontFamily:'Champion-Medium',sans-serif;
+$regularFontFamily:'Champion-Regular',sans-serif;
+
+//colors
+$darkColor:#020000;
+$lightColor:#FFFFFF;
+$alertColor:#D82A25;
+$accentColor:#2DBDE1; /*rgb(45, 189, 225)*/
 
 
 
@@ -13,4 +33,11 @@
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
   border-radius: $radius;
+}
+
+@mixin border-top-radius($radius) {
+  -webkit-border-radius: $radius $radius 0px 0px;
+  -moz-border-radius: $radius $radius 0px 0px;
+  -ms-border-radius: $radius $radius 0px 0px;
+  border-radius: $radius $radius 0px 0px;
 }
