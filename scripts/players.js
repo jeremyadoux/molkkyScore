@@ -1,14 +1,13 @@
-function Player(name){
+function Player(index, name){
+	this.index = index;
 	this.name = name;
+	this.outOfTheGame = false;
 	this.wins = 0;
 	this.score = 0;
-	this.addScore = function(score){
-		this.score += score;
-	}
+	this.myTurn = false;
+	this.addScore = addScore;
+	this.getNextPlayer = getNextPlayer;
 }
-
-var countPlayers = 0;
-var players = new Array();
 
 function addPlayer(newPlayerName){
 	addPlayerToGame(newPlayerName);
@@ -17,8 +16,7 @@ function addPlayer(newPlayerName){
 }
 
 function addPlayerToGame(newPlayerName){
-	players[countPlayers] = new Player(newPlayerName);
-	countPlayers+=1;
+	players[players.length] = new Player(players.length, newPlayerName);
 }
 
 function addPlayerToModal(newPlayerName){
@@ -31,8 +29,9 @@ function addPlayerToModal(newPlayerName){
 }
 
 function addPlayerToScoreTable(newPlayerName){
-	$('#mainTable #scoreTable').append("<td id='score-table-item-"+ (countPlayers-1) +"'>0</td>");
-	$('#mainTable #scoreTable td').css({width:100/countPlayers+"%"});
+	$('#mainTable #scoreTable').append("<td id='score-table-item-"+ (players.length-1) 
+										+"' class='score-table-item'>0</td>");
+	$('#mainTable #scoreTable td').css({width:100/players.length+"%"});
 }
 
 function validatePlayerName(newPlayerName,alertElement){

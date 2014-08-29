@@ -10,8 +10,8 @@ $(document).ready(function() {
 		if(validatePlayerName(newPlayerName,$('#modalAddPlayers .alert'))){
 			addPlayer(newPlayerName);
 			$('#modalAddPlayers input').val('');
-			$('#modalAddPlayers input').attr('placeholder','Player '+ (countPlayers+1));
-
+			$('#modalAddPlayers input').attr('placeholder','Player '+ (players.length + 1));
+			$('#modalAddPlayers input').focus();
 		}
 		/**
 		$('#modalAddPlayers .alert').text($('#modalAddPlayers input').val() +' is not a valid name');
@@ -19,7 +19,7 @@ $(document).ready(function() {
 		*/
 	});
 	$('#modalAddPlayers .btn-default').click(function(){		
-		if(countPlayers > 1){
+		if(players.length > 1){
 			$('#modalAddPlayers').modal('hide');
 			initializeMainTable();
 		}

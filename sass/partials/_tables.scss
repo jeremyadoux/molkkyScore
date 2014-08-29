@@ -14,11 +14,8 @@ table#mainTable{
 		border:1px solid $lightColor;
 		@include border-radius(6px);
 	}
-	td:hover{
+	td.td-score-number:hover{
 		cursor:pointer;
-		background-color:$accentColor;
-		color:$lightColor;
-		border-color:$accentColor;
 	}
 	td#td-settings:hover{
 		background-color:$lightColor;
@@ -26,9 +23,22 @@ table#mainTable{
 		color:$darkColor;
 	}
 	.td-colspanned{
-		background-color:$lightColor;
-		color:$darkColor;
 		font-family:$regularFontFamily;
+	}
+	.td-score-number.active{
+		background-color:$accentColor;
+		border-color:$accentColor;
+	}
+	#td-player-name.active{
+		background-color:$accentColor;
+		border-color:$accentColor;
+	}
+	.score-table-item.active{
+		background-color:$accentColor;
+		border-color:$accentColor;
+	}
+	#td-player-name.active:hover{
+		cursor:pointer;
 	}
 }
 

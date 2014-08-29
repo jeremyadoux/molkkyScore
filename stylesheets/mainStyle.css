@@ -100,26 +100,40 @@ table#mainTable td {
   border-radius: 6px;
 }
 /* line 17, ../sass/partials/_tables.scss */
-table#mainTable td:hover {
+table#mainTable td.td-score-number:hover {
   cursor: pointer;
-  background-color: #2DBDE1;
-  color: #FFFFFF;
-  border-color: #2DBDE1;
 }
-/* line 23, ../sass/partials/_tables.scss */
+/* line 20, ../sass/partials/_tables.scss */
 table#mainTable td#td-settings:hover {
   background-color: #FFFFFF;
   border-color: #020000;
   color: #020000;
 }
-/* line 28, ../sass/partials/_tables.scss */
+/* line 25, ../sass/partials/_tables.scss */
 table#mainTable .td-colspanned {
-  background-color: #FFFFFF;
-  color: #020000;
   font-family: "Champion-Regular", sans-serif;
 }
+/* line 28, ../sass/partials/_tables.scss */
+table#mainTable .td-score-number.active {
+  background-color: #2DBDE1;
+  border-color: #2DBDE1;
+}
+/* line 32, ../sass/partials/_tables.scss */
+table#mainTable #td-player-name.active {
+  background-color: #2DBDE1;
+  border-color: #2DBDE1;
+}
+/* line 36, ../sass/partials/_tables.scss */
+table#mainTable .score-table-item.active {
+  background-color: #2DBDE1;
+  border-color: #2DBDE1;
+}
+/* line 40, ../sass/partials/_tables.scss */
+table#mainTable #td-player-name.active:hover {
+  cursor: pointer;
+}
 
-/* line 35, ../sass/partials/_tables.scss */
+/* line 45, ../sass/partials/_tables.scss */
 table#scoreTable {
   height: 100%;
   width: 100%;
