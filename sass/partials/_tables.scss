@@ -3,10 +3,11 @@ table#mainTable{
 	display:none;
 	width:95%;
 	margin:0 auto;
-	font-size:50px;
+	font-size:$bigFont;
 	border-collapse: separate;
     border-spacing: 15px;
     td{
+    	position:relative;
 		background-color:$darkColor;
 		color:$lightColor;
 		width:15%;
@@ -36,6 +37,17 @@ table#mainTable{
 	.score-table-item.active{
 		background-color:$accentColor;
 		border-color:$accentColor;
+	}
+	.score-table-item.disqualified{
+		color:$alertColor;
+	}
+	.score-table-item p.misses{
+		position:absolute;
+		left:1px;
+		bottom:1px;
+		font-size:$mediumFont;
+		color:$alertColor;
+
 	}
 	#td-player-name.active:hover{
 		cursor:pointer;

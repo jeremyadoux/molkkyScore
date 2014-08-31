@@ -14,12 +14,14 @@ $(document).ready(function() {
 	$('#mainTable #td-player-name').click(function(){
 		if($(this).hasClass("active")){
 			var activePlayer = getActivePlayer();
-			activePlayer.addScore(parseInt($('#mainTable .td-score-number.active').text()));
+			var scoreNumber = parseInt($('#mainTable .td-score-number.active').text());
+			if(scoreNumber == 0){
+				activePlayer.processMiss();
+			}
+			else{
+				activePlayer.processScore(scoreNumber);
+			}
 			
-			if(activePlayer.score > 10){
-				activePlayer.outOfTheGame = true;
-				alert(activePlayer.name+" is out");
-			} 
 			$('#mainTable .td-score-number.active').removeClass("active");
 			$('#mainTable .score-table-item.active').removeClass("active");
 			activePlayer.myTurn = false;
@@ -34,3 +36,74 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function processScore(number){
+	this.misses = 0;
+	$("#score-table-item-"+this.index+" p.misses").remove();
+	this.score += number;
+	if(this.score > 50){
+		this.score = 25;
+		alert(this.name + " larger than 50");
+	}
+	else if(this.score == 50){
+		this.outOfTheGame = true;
+		alert(this.name+" is out");
+	}
+	$("#score-table-item-"+this.index).text(this.score);	
+}
+
+function processMiss(){
+	this.misses++;
+	if(this.misses == 1){
+		$("#score-table-item-"+this.index).append("<p class='misses'>x</p>");		
+	}
+	else if(this.misses == 2){
+		$("#score-table-item-"+this.index + " p.misses").text("xx");
+	}
+	else{
+		this.disqualified = true;
+		this.outOfTheGame = true;
+		$("#score-table-item-"+this.index+" p.misses").remove();
+		$("#score-table-item-"+this.index).addClass("disqualified");
+		$("#score-table-item-"+this.index).text("X");
+		alert(this.name + " disqualified");
+	}
+}
+
+function getNextPlayer(){ /*infinite loop when all players out of the game!*/
+	var nextPlayer;
+	if(this.index == (players.length-1)){
+		nextPlayer = players[0];
+	}
+	else{
+		nextPlayer = players[this.index + 1];
+	}
+	if(!nextPlayer.outOfTheGame){
+		return nextPlayer;
+	}
+	else{
+		return nextPlayer.getNextPlayer();
+	}
+}
+
+function getActivePlayer(){
+	var activePlayer;
+	$.each(players,function(){
+		if(this.myTurn){
+			activePlayer = this;
+			return false;
+		}
+	});
+	return activePlayer;
+} 
+
+function stillPlayersInTheGame(){
+	var stillPlayersInTheGame = false;
+	$.each(players,function(){
+		if(!this.outOfTheGame){
+			stillPlayersInTheGame = true;
+			return false;
+		}
+	});
+	return stillPlayersInTheGame;
+}

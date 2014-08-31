@@ -26,48 +26,5 @@ function initializeMainTable(){
 	});
 }
 
-function addScore(number){
-	this.score += number;
-	$("#score-table-item-"+this.index).text(this.score);
-	if(this.score >= 50){
-		players.splice(this.index,1);
-	}
-}
 
-function getNextPlayer(){ /*infinite loop when all players out of the game!*/
-	var nextPlayer;
-	if(this.index == (players.length-1)){
-		nextPlayer = players[0];
-	}
-	else{
-		nextPlayer = players[this.index + 1];
-	}
-	if(!nextPlayer.outOfTheGame){
-		return nextPlayer;
-	}
-	else{
-		return nextPlayer.getNextPlayer();
-	}
-}
 
-function getActivePlayer(){
-	var activePlayer;
-	$.each(players,function(){
-		if(this.myTurn){
-			activePlayer = this;
-			return false;
-		}
-	});
-	return activePlayer;
-} 
-
-function stillPlayersInTheGame(){
-	var stillPlayersInTheGame = false;
-	$.each(players,function(){
-		if(!this.outOfTheGame){
-			stillPlayersInTheGame = true;
-			return false;
-		}
-	});
-	return stillPlayersInTheGame;
-}
