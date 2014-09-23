@@ -28,9 +28,10 @@ $(document).ready(function() {
 			if(stillPlayersInTheGame()){
 				$('#mainTable #score-table-item-'+activePlayer.getNextPlayer().index).addClass("active");						
 				activePlayer.getNextPlayer().myTurn = true;
+				$('#mainTable #td-player-name').text(activePlayer.getNextPlayer().name + " »");
 			}
 			else{
-				alert("all players out");
+				initializeScoreboardModal();
 			}
 			$('#mainTable #td-player-name').removeClass("active");
 		}
@@ -47,7 +48,14 @@ function processScore(number){
 	}
 	else if(this.score == 50){
 		this.outOfTheGame = true;
-		alert(this.name+" is out");
+		if(!gameHasWinner()){
+			this.winner = true;
+			this.ranking = 1;
+			initializeScoreboardModal();
+		}
+		else{
+			this.ranking = getLowestRanking() + 1;
+		}
 	}
 	$("#score-table-item-"+this.index).text(this.score);	
 }
@@ -63,6 +71,7 @@ function processMiss(){
 	else{
 		this.disqualified = true;
 		this.outOfTheGame = true;
+		this.score = 0;
 		$("#score-table-item-"+this.index+" p.misses").remove();
 		$("#score-table-item-"+this.index).addClass("disqualified");
 		$("#score-table-item-"+this.index).text("X");
@@ -106,4 +115,15 @@ function stillPlayersInTheGame(){
 		}
 	});
 	return stillPlayersInTheGame;
+}
+
+function gameHasWinner(){
+	var gameHasWinner = false;
+	$.each(players,function(){
+		if(this.winner){
+			gameHasWinner = true;
+			return false;
+		}
+	});
+	return gameHasWinner;
 }

@@ -1,10 +1,4 @@
 $(document).ready(function() {
-	$('#modalAddPlayers').modal({
-			keyboard: false, // prevent modal from closing with ESC key 
-			backdrop: 'static'}, // prevent modal from closing with outside click 
-		'show');
-	$('#modalAddPlayers input').focus();
-
 	$('#modalAddPlayers .input-group-addon').click(function(){
 		var newPlayerName = $('#modalAddPlayers input').val();
 		if(validatePlayerName(newPlayerName,$('#modalAddPlayers .alert'))){
@@ -28,20 +22,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
-function Player(index, name){
-	this.index = index;
-	this.name = name;
-	this.outOfTheGame = false;
-	this.wins = 0;
-	this.score = 0;
-	this.misses = 0; /*3 misses in a row means disqualification*/
-	this.myTurn = false;
-	this.disqualified = false;
-	this.processScore = processScore;
-	this.processMiss = processMiss;
-	this.getNextPlayer = getNextPlayer;
-}
 
 function addPlayer(newPlayerName){
 	addPlayerToGame(newPlayerName);

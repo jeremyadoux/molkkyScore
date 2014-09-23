@@ -18,10 +18,31 @@
         <script src="scripts/positioning.js"></script>
         <script src="scripts/score.js"></script>
         <script src="scripts/modalAddPlayers.js"></script>
+        <script src="scripts/modalScoreboard.js"></script>
+        <script src="scripts/modalNewPlayers.js"></script>
+        <script src="scripts/modalStart.js"></script>
     </head>
     <body>
 
-        <!-- Modal start game -->
+        <!-- Modal start -->
+        <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">What do you want to do?</h4>
+                </div>
+                <div class="modal-body" >
+                    <button id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Quick game</button>
+                    <button id="btn-signIn-start"type="button" class="btn btn-default btn-lg btn-block">Sign in</button>       
+                </div>
+                <div class="modal-footer" >
+                    <a href="#" class="pull-left">Register</a>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal start -->
+
+        <!-- Modal add players -->
         <div class="modal fade" id="modalAddPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm modal-vertical-centered">
             <div class="modal-content">
@@ -45,7 +66,43 @@
               </div>
             </div>
           </div>
-        </div> <!-- end Modal start game -->
+        </div> <!-- end Modal add players -->
+
+        <!-- Modal scoreboard -->
+        <div class="modal fade" id="modalScoreboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Scoreboard</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-exit-scoreboard" type="button" class="btn btn-default pull-left">Exit</button>
+                    <button id="btn-newGame-scoreboard" type="button" class="btn btn-default pull-left">New game</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end Modal scoreboard -->
+
+        <!-- Modal new players -->
+        <div class="modal fade" id="modalNewPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">New players?</h4>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-no-newPlayers" type="button" class="btn btn-default">No</button>
+                    <button id="btn-yes-newPlayers" type="button" class="btn btn-default">Yes</button>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal new players -->
 
         <table id="mainTable">
             <tr>

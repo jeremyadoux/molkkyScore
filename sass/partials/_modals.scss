@@ -8,6 +8,7 @@
 		margin-bottom:15px;
 		color:$lightColor;
 		background-color:$darkColor;
+		border:1px solid $lightColor;
 		border-bottom:none;
 		@include border-top-radius(5px);
 	}
