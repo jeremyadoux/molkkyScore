@@ -1,6 +1,4 @@
 /*globals*/
-var players = new Array();
-
 var warnings = {
 	playerName:{
 		empty:"Please provide a valid player name",
@@ -14,8 +12,33 @@ var alertColor = '#D82A25';
 var darkColor = '#020000';
 var accentColor = '#2DBDE1';
 
+function validatePlayerName(newPlayerName,players,alertElement){
+	if(newPlayerName == ""){
+		warn(alertElement, warnings.playerName.empty);
+		return false;
+	}
+	var isValid = true;
+	$.each(players,function(){
+		if(this.name.toLowerCase() == newPlayerName.toLowerCase()){
+			warn(alertElement, warnings.playerName.unique);
+			isValid = false;
+			return false;
+		}
+	});
+	if(isValid){
+		alertElement.hide();
+	}
+	return isValid;
+}
+
+function warn(alertElement,warning){
+	alertElement.text(warning);
+	alertElement.show();
+}
+
+//Constructor
 function Player(index, name){
-	this.index = index;
+	this.index = index; //starts at 0
 	this.name = name;
 	this.outOfTheGame = false;
 	this.winner = false;
@@ -27,38 +50,42 @@ function Player(index, name){
 	this.disqualified = false;
 	this.processScore = processScore;
 	this.processMiss = processMiss;
-	this.getNextPlayer = getNextPlayer;
 }
 
-function resetPlayers(){
-	var newIndex = 0;
-	$.each(players,function(){
-		this.index = newIndex;
-		newIndex++;
-		this.outOfTheGame = false;
-		this.winner = false;
+//player methods
+function processScore(number){
+	this.misses = 0;
+	$("#score-table-item-"+this.index+" p.misses").remove();
+	this.score += number;
+	if(this.score > 50){
+		this.score = 25;
+		alert(this.name + " larger than 50");
+	}
+	else if(this.score == 50){
+		this.outOfTheGame = true;
+	}
+}
+
+function processMiss(){
+	this.misses++;
+	if(this.misses == 1){
+		$("#score-table-item-"+this.index).append("<p class='misses'>x</p>");		
+	}
+	else if(this.misses == 2){
+		$("#score-table-item-"+this.index + " p.misses").text("xx");
+	}
+	else{
+		this.disqualified = true;
+		this.outOfTheGame = true;
 		this.score = 0;
-		this.misses = 0; /*3 misses in a row means disqualification*/
-		this.myTurn = false;
-		this.disqualified = false;
-	});
+		$("#score-table-item-"+this.index+" p.misses").remove();
+		$("#score-table-item-"+this.index).addClass("disqualified");
+		$("#score-table-item-"+this.index).text("X");
+		alert(this.name + " disqualified");
+	}
 }
 
-function warn(alertElement,warning){
-	alertElement.text(warning);
-	alertElement.show();
-}
-
-function initializeMainTable(){
-	$('#mainTable #scoreTable .score-table-item').removeClass("active");
-	$('#mainTable #scoreTable .score-table-item').text("0");
-	players[0].myTurn = true;
-	$('#mainTable #td-player-name').text(players[0].name + " »");
-	$('#mainTable').fadeIn(1000,function(){
-		$('#score-table-item-0').addClass("active");
-	});
-}
-
+//sort utilities
 function comparePlayerScores(playerOne,playerTwo){
 	if(playerOne.score > playerTwo.score){
 		return -1;
@@ -88,33 +115,14 @@ function comparePlayerRankings(playerOne,playerTwo){
 	}
 }
 
-function getLowestRanking(){
-	var lowestRanking = -1;
-	$.each(players,function(){
-		if(this.ranking !== 999 && this.ranking > lowestRanking){
-			lowestRanking = this.ranking;
-		}
-	});
-	if(lowestRanking == -1){ // no winner yet
-		lowestRanking = 999;
-	}
-	return lowestRanking;
+
+// DOM manipulation
+function initializeMainTable(numberOfPlayers){
+	$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
+	$('#mainTable').fadeIn(1000);
 }
 
-function startSamePlayersGame(){
-	players.sort(comparePlayerScores);
-	resetPlayers();
-	$('#mainTable').fadeOut(1000,function(){
-		initializeMainTable();
-	});
-}
-
-function startNewPlayersGame(){
-	$('#mainTable').fadeOut(1000, function(){
-		$('#mainTable #scoreTable').empty();
-	});
-	players = new Array(); //global
-	$('#modalAddPlayers .list-group').empty();
+function initializeAddPlayersModal(){
 	$('#modalAddPlayers .alert').hide();
 	$('#modalAddPlayers input').attr('placeholder','Player 1');
 	$('#modalAddPlayers').modal({
@@ -124,4 +132,35 @@ function startNewPlayersGame(){
 	$('#modalAddPlayers input').focus();
 }
 
+function initializeScoreboardModalEndedGame(){
+	$('#modalScoreboard .modal-header .close').hide();
+	$('#modalScoreboard .modal-footer .btn-primary').hide();
+	$('#modalScoreboard .modal-footer .btn-default').removeClass('pull-left');
+	$('#modalScoreboard').modal({
+		keyboard: false, // prevent modal from closing with ESC key 
+		backdrop: 'static'}, // prevent modal from closing with outside click 
+	'show');
+}
 
+function initializeScoreboardModalContinuableGame(){
+	$('#modalScoreboard .modal-header .close').show();
+	$('#modalScoreboard .modal-footer .btn-primary').show();
+	$('#modalScoreboard .modal-footer .btn-default').addClass('pull-left');
+	$('#modalScoreboard').modal({
+		keyboard: false, // prevent modal from closing with ESC key 
+		backdrop: 'static'}, // prevent modal from closing with outside click 
+	'show');
+}
+
+function toggleNumberActivation(number){
+	var idSelector = '#td-'+ number;
+    if($(idSelector).hasClass("active")){
+		$(idSelector).removeClass("active");
+		$('#mainTable #td-player-name').removeClass("active");
+	}
+	else{
+		$('#mainTable .td-score-number.active').removeClass("active");
+		$(idSelector).addClass("active");
+		$('#mainTable #td-player-name').addClass("active");
+	}
+}

@@ -11,28 +11,30 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
         <link rel="icon" type="image/png" href="images/favicon.png">
         <title>Mölkky score</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/js/modal.js"></script>
         <script src="bower_components/bootstrap/js/alert.js"></script>
         <script src="scripts/utilities.js"></script>
         <script src="scripts/positioning.js"></script>
-        <script src="scripts/score.js"></script>
-        <script src="scripts/modalAddPlayers.js"></script>
-        <script src="scripts/modalScoreboard.js"></script>
-        <script src="scripts/modalNewPlayers.js"></script>
-        <script src="scripts/modalStart.js"></script>
+        <script src="scripts/angular-app.js"></script>
+        <script src="scripts/angular-controller-addPlayer.js"></script>
+        <script src="scripts/angular-controller-start.js"></script>
+        <script src="scripts/angular-controller-gameBoard.js"></script>
+        <script src="scripts/angular-controller-scoreboard.js"></script>
+        <script src="scripts/angular-controller-newPlayers.js"></script>
     </head>
-    <body>
+    <body ng-app="angular-app">
 
         <!-- Modal start -->
-        <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-start">
           <div class="modal-dialog modal-sm modal-vertical-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">What do you want to do?</h4>
                 </div>
                 <div class="modal-body" >
-                    <button id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Quick game</button>
+                    <button ng-click="quickGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Quick game</button>
                     <button id="btn-signIn-start"type="button" class="btn btn-default btn-lg btn-block">Sign in</button>       
                 </div>
                 <div class="modal-footer" >
@@ -43,33 +45,39 @@
         </div> <!-- end Modal start -->
 
         <!-- Modal add players -->
-        <div class="modal fade" id="modalAddPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalAddPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-addPlayers">
           <div class="modal-dialog modal-sm modal-vertical-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Enter player names..</h4>
               </div>
                 <ul class="list-group">
-                    
+                    <li class="list-group-item" ng-repeat="player in players">
+                        {{player.name}}
+                        <button type="button" class="close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                    </li>
                 </ul>
                 <div class="modal-body" >
                     <div class="input-group input-group-lg">
-                      <input type="text" class="form-control" required placeholder="Player 1">
-                      <span class="input-group-addon icon-plus"></span>
+                      <input ng-enter="addPlayer()" type="text" class="form-control" required placeholder="Player 1">
+                      <span ng-click="addPlayer()" class="input-group-addon icon-plus"></span>
                     </div>
                 </div>
                 <div class="alert alert-warning" role="alert">
                     This is not a valid name
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default">Ready</button>
+                    <button ng-click="btnReady()" type="button" class="btn btn-default">Ready</button>
               </div>
             </div>
           </div>
         </div> <!-- end Modal add players -->
 
         <!-- Modal scoreboard -->
-        <div class="modal fade" id="modalScoreboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalScoreboard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-scoreboard">
           <div class="modal-dialog modal-md modal-vertical-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -78,11 +86,12 @@
                 </div>
                 <div class="modal-body">
                     <ul class="list-group">
+                        <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">{{player.name}}<span class='pull-right'>{{player.score}}</span></li>
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-exit-scoreboard" type="button" class="btn btn-default pull-left">Exit</button>
-                    <button id="btn-newGame-scoreboard" type="button" class="btn btn-default pull-left">New game</button>
+                    <button id="btn-exit-scoreboard" type="button" class="btn btn-default pull-left" ng-click="btnExit()">Exit</button>
+                    <button id="btn-newGame-scoreboard" type="button" class="btn btn-default pull-left" ng-click="btnNewGame()">New game</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
               </div>
             </div>
@@ -90,48 +99,48 @@
         </div> <!-- end Modal scoreboard -->
 
         <!-- Modal new players -->
-        <div class="modal fade" id="modalNewPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalNewPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-newPlayers">
           <div class="modal-dialog modal-sm modal-vertical-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="myModalLabel">New players?</h4>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-no-newPlayers" type="button" class="btn btn-default">No</button>
-                    <button id="btn-yes-newPlayers" type="button" class="btn btn-default">Yes</button>
+                    <button id="btn-no-newPlayers" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
+                    <button id="btn-yes-newPlayers" type="button" class="btn btn-default" ng-click="btnYes()">Yes</button>
                 </div>
             </div>
           </div>
         </div> <!-- end Modal new players -->
 
-        <table id="mainTable">
+        <table id="mainTable" ng-controller="angular-gameBoard">
             <tr>
                 <td class="td-colspanned" colspan="5">
                     <table id="scoreTable">
-                            
+                        <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn}" class="score-table-item">{{player.score}}</td>
                     </table>
                 </td>
                 <td id="td-settings" class="icon-cog"></td>
             </tr>
             <tr>
-                <td id="td-player-name" class="td-colspanned" colspan="5">Player1 &raquo;</td>
-                <td class="td-score-number">0</td>
+                <td id="td-player-name" class="td-colspanned" colspan="5" ng-click="processThrow()">{{activePlayer.name}} &raquo;</td>
+                <td id="td-0" class="td-score-number" ng-click="toggleNumber(0)">0</td>
             </tr>
             <tr id="xs-tr-1">
-                <td id="td-1" class="td-score-number">1</td>
-                <td id="td-2" class="td-score-number">2</td>
-                <td id="td-3" class="td-score-number">3</td>
-                <td id="td-4" class="xs-td-row-2 td-score-number">4</td>
-                <td id="td-5" class="xs-td-row-2 td-score-number">5</td>
-                <td id="td-6" class="xs-td-row-2 td-score-number">6</td>
+                <td id="td-1" class="td-score-number" ng-click="toggleNumber(1)">1</td>
+                <td id="td-2" class="td-score-number" ng-click="toggleNumber(2)">2</td>
+                <td id="td-3" class="td-score-number" ng-click="toggleNumber(3)">3</td>
+                <td id="td-4" class="xs-td-row-2 td-score-number" ng-click="toggleNumber(4)">4</td>
+                <td id="td-5" class="xs-td-row-2 td-score-number" ng-click="toggleNumber(5)">5</td>
+                <td id="td-6" class="xs-td-row-2 td-score-number" ng-click="toggleNumber(6)">6</td>
             </tr>
             <tr id="xs-tr-3">
-                <td id="td-7" class="td-score-number">7</td>
-                <td id="td-8" class="td-score-number">8</td>
-                <td id="td-9" class="td-score-number">9</td>
-                <td id="td-10" class="xs-td-row-4 td-score-number">10</td>
-                <td id="td-11" class="xs-td-row-4 td-score-number">11</td>
-                <td id="td-12" class="xs-td-row-4 td-score-number">12</td>
+                <td id="td-7" class="td-score-number" ng-click="toggleNumber(7)">7</td>
+                <td id="td-8" class="td-score-number" ng-click="toggleNumber(8)">8</td>
+                <td id="td-9" class="td-score-number" ng-click="toggleNumber(9)">9</td>
+                <td id="td-10" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(10)">10</td>
+                <td id="td-11" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(11)">11</td>
+                <td id="td-12" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(12)">12</td>
             </tr>
         </table>
     </body>
