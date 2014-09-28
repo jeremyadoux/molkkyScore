@@ -14,9 +14,17 @@ app.factory('GameData', function(){
 				this.outOfTheGame = false;
 				this.winner = false;
 				this.score = 0;
+				this.scoreHistory = new Array();
 				this.misses = 0; /*3 misses in a row means disqualification*/
 				this.myTurn = false;
 				this.disqualified = false;
+			});
+		},
+		resetPlayerIndexes: function(){
+			var newIndex = 0;
+			$.each(players,function(){
+				this.index = newIndex;
+				newIndex++;
 			});
 		},
 		getPlayers: function(){
@@ -32,7 +40,7 @@ app.factory('GameData', function(){
 			});
 			return activePlayer;
 		},
-		getNextPlayer: function(activePlayerIndex){ // infinite loop when !this.stillPlayersInTheGame()
+		getNextInGamePlayer: function(activePlayerIndex){ // infinite loop when !this.stillPlayersInTheGame()
 			var nextPlayer;
 			if(activePlayerIndex == (players.length-1)){
 				nextPlayer = players[0];
@@ -44,8 +52,36 @@ app.factory('GameData', function(){
 				return nextPlayer;
 			}
 			else{
-				return this.getNextPlayer(nextPlayer.index);
+				return this.getNextInGamePlayer(nextPlayer.index);
 			}
+		},
+		undoLastThrow: function(){ // infinite loop when !this.stillPlayersInTheGame()
+			var throwNumber = this.getActivePlayer().scoreHistory.length;
+			var previousPlayer = this.getPreviousPlayer();
+			while(previousPlayer.scoreHistory.length < throwNumber){
+				previousPlayer = this.getPreviousPlayer();
+			}
+			previousPlayer.score = previousPlayer.scoreHistory[throwNumber - 1];
+			previousPlayer.scoreHistory.pop();
+			this.getActivePlayer().myTurn = false;
+			previousPlayer.myTurn = true;
+			previousPlayer.outOfTheGame = false;
+			previousPlayer.winner = false;
+			previousPlayer.ranking = 999; // winner has ranking 1, second to reach score 50 has ranking 2, etc...
+			if(previousPlayer.misses > 0){
+				previousPlayer.misses--;
+			}
+			previousPlayer.disqualified = false;
+		},
+		getPreviousPlayer: function(activePlayerIndex){ // infinite loop when !this.stillPlayersInTheGame()
+			var previousPlayer;
+			if(activePlayerIndex == 0){
+				previousPlayer = players[players.length-1];
+			}
+			else{
+				previousPlayer = players[activePlayerIndex - 1];
+			}
+			return previousPlayer;
 		},
 		setRanking: function(player){ // infinite loop when !this.stillPlayersInTheGame()
 			if(!this.gameHasWinner()){

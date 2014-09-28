@@ -23,6 +23,11 @@
 		font-size:inherit;
 		color:$alertColor;
 	}
+	li.winner:after{
+		content: ' - winner';
+		color:$alertColor;
+		font-size:$smallFont;
+	}
 	.alert{
 		color:$alertColor;
 		border:none;

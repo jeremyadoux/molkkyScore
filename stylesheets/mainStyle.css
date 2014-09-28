@@ -100,40 +100,34 @@ table#mainTable td {
   -ms-border-radius: 6px;
   border-radius: 6px;
 }
-/* line 18, ../sass/partials/_tables.scss */
-table#mainTable td.td-score-number:hover {
+/* line 19, ../sass/partials/_tables.scss */
+table#mainTable td.td-score-number:hover, table#mainTable td#td-options:hover {
   cursor: pointer;
 }
-/* line 21, ../sass/partials/_tables.scss */
-table#mainTable td#td-settings:hover {
-  background-color: #FFFFFF;
-  border-color: #020000;
-  color: #020000;
-}
-/* line 26, ../sass/partials/_tables.scss */
+/* line 23, ../sass/partials/_tables.scss */
 table#mainTable .td-colspanned {
   font-family: "Champion-Regular", sans-serif;
 }
-/* line 29, ../sass/partials/_tables.scss */
+/* line 26, ../sass/partials/_tables.scss */
 table#mainTable .td-score-number.active {
   background-color: #2DBDE1;
   border-color: #2DBDE1;
 }
-/* line 33, ../sass/partials/_tables.scss */
+/* line 30, ../sass/partials/_tables.scss */
 table#mainTable #td-player-name.active {
   background-color: #2DBDE1;
   border-color: #2DBDE1;
 }
-/* line 37, ../sass/partials/_tables.scss */
+/* line 34, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item.active {
   background-color: #2DBDE1;
   border-color: #2DBDE1;
 }
-/* line 41, ../sass/partials/_tables.scss */
+/* line 38, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item.disqualified {
   color: #D82A25;
 }
-/* line 44, ../sass/partials/_tables.scss */
+/* line 41, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item p.misses {
   position: absolute;
   left: 1px;
@@ -141,12 +135,12 @@ table#mainTable .score-table-item p.misses {
   font-size: 30px;
   color: #D82A25;
 }
-/* line 52, ../sass/partials/_tables.scss */
+/* line 49, ../sass/partials/_tables.scss */
 table#mainTable #td-player-name.active:hover {
   cursor: pointer;
 }
 
-/* line 57, ../sass/partials/_tables.scss */
+/* line 54, ../sass/partials/_tables.scss */
 table#scoreTable {
   height: 100%;
   width: 100%;
@@ -190,6 +184,12 @@ table#scoreTable {
   color: #D82A25;
 }
 /* line 26, ../sass/partials/_modals.scss */
+.modal li.winner:after {
+  content: ' - winner';
+  color: #D82A25;
+  font-size: 10px;
+}
+/* line 31, ../sass/partials/_modals.scss */
 .modal .alert {
   color: #D82A25;
   border: none;
@@ -198,39 +198,39 @@ table#scoreTable {
   margin: 0px;
   display: none;
 }
-/* line 34, ../sass/partials/_modals.scss */
+/* line 39, ../sass/partials/_modals.scss */
 .modal .form-control {
   color: #020000;
   border: 1px solid #020000;
   border-right: none;
   box-shadow: none;
 }
-/* line 40, ../sass/partials/_modals.scss */
+/* line 45, ../sass/partials/_modals.scss */
 .modal .btn-primary {
   background-color: #2DBDE1;
   border-color: #2DBDE1;
 }
-/* line 44, ../sass/partials/_modals.scss */
+/* line 49, ../sass/partials/_modals.scss */
 .modal .btn-default {
   font-family: "Champion-Medium", sans-serif;
   background-color: #FFFFFF;
   border-color: #020000;
 }
-/* line 49, ../sass/partials/_modals.scss */
+/* line 54, ../sass/partials/_modals.scss */
 .modal .input-group-addon {
   color: #FFFFFF;
   background-color: #2DBDE1;
   border-color: #020000;
 }
-/* line 54, ../sass/partials/_modals.scss */
+/* line 59, ../sass/partials/_modals.scss */
 .modal .list-group-item {
   border: none;
 }
-/* line 57, ../sass/partials/_modals.scss */
+/* line 62, ../sass/partials/_modals.scss */
 .modal .icon-plus {
   line-height: 1;
 }
-/* line 60, ../sass/partials/_modals.scss */
+/* line 65, ../sass/partials/_modals.scss */
 .modal .icon-plus:hover {
   cursor: pointer;
 }

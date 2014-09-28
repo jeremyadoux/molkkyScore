@@ -23,6 +23,7 @@
         <script src="scripts/angular-controller-gameBoard.js"></script>
         <script src="scripts/angular-controller-scoreboard.js"></script>
         <script src="scripts/angular-controller-newPlayers.js"></script>
+        <script src="scripts/angular-controller-options.js"></script>
     </head>
     <body ng-app="angular-app">
 
@@ -52,9 +53,9 @@
                 <h4 class="modal-title" id="myModalLabel">Enter player names..</h4>
               </div>
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="player in players">
+                    <li id="li-player-{{player.index}}" class="list-group-item" ng-repeat="player in players">
                         {{player.name}}
-                        <button type="button" class="close">
+                        <button type="button" class="close" ng-click="btnRemovePlayer(player.index)">
                             <span aria-hidden="true">&times;</span>
                             <span class="sr-only">Close</span>
                         </button>
@@ -98,6 +99,27 @@
           </div>
         </div> <!-- end Modal scoreboard -->
 
+         <!-- Modal options -->
+        <div class="modal fade" id="modalOptions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-options">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Options</h4>
+                </div>
+                <div class="modal-body" >
+                    <button ng-click="restartGame()" id="btn-restart-options" type="button" class="btn btn-default btn-lg btn-block">Restart game</button>
+                    <button ng-click="newGame()" id="btn-new-options" type="button" class="btn btn-default btn-lg btn-block">New game</button>
+                    <button ng-click="undoLast()" id="btn-undo-options" type="button" class="btn btn-default btn-lg btn-block">Undo last</button>
+                    <button ng-click="exitGame()" id="btn-exit-options" type="button" class="btn btn-default btn-lg btn-block">Exit game</button>       
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Continue</button>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal options -->
+
         <!-- Modal new players -->
         <div class="modal fade" id="modalNewPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-newPlayers">
           <div class="modal-dialog modal-sm modal-vertical-centered">
@@ -117,10 +139,14 @@
             <tr>
                 <td class="td-colspanned" colspan="5">
                     <table id="scoreTable">
-                        <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn}" class="score-table-item">{{player.score}}</td>
+                        <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn}" class="score-table-item">
+                            {{player.score}}
+                            <p class='misses' ng-show="player.misses == 1">x</p>
+                            <p class='misses' ng-show="player.misses == 2">xx</p>
+                        </td>
                     </table>
                 </td>
-                <td id="td-settings" class="icon-cog"></td>
+                <td id="td-options" class="icon-cog" ng-click="options()"></td>
             </tr>
             <tr>
                 <td id="td-player-name" class="td-colspanned" colspan="5" ng-click="processThrow()">{{activePlayer.name}} &raquo;</td>

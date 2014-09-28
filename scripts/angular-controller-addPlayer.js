@@ -3,7 +3,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
     	var newPlayerName = $('#modalAddPlayers input').val();
 		if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'))){
 			GameData.addPlayerToGame(newPlayerName);
-			$scope.players = GameData.getPlayers();
+			//$scope.players = GameData.getPlayers();
 			$('#modalAddPlayers input').val('');
 			$('#modalAddPlayers input').attr('placeholder','Player '+ ($scope.players.length + 1));
 			$('#modalAddPlayers input').focus();
@@ -18,6 +18,11 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
 			warn($('#modalAddPlayers .alert'),warnings.playerName.tooFew);
             $('#modalAddPlayers input').focus();
 		}
+    };
+    $scope.btnRemovePlayer = function(index){
+        $('li-player-'+index).remove();
+        $scope.players.splice(index,1);
+        GameData.resetPlayerIndexes();
     };
 
     //events

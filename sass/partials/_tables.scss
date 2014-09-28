@@ -15,13 +15,10 @@ table#mainTable{
 		border:1px solid $lightColor;
 		@include border-radius(6px);
 	}
-	td.td-score-number:hover{
-		cursor:pointer;
-	}
-	td#td-settings:hover{
-		background-color:$lightColor;
-		border-color:$darkColor;
-		color:$darkColor;
+	td.td-score-number, td#td-options{
+		&:hover{
+			cursor:pointer;
+		}
 	}
 	.td-colspanned{
 		font-family:$regularFontFamily;

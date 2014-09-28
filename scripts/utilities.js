@@ -45,6 +45,7 @@ function Player(index, name){
 	this.ranking = 999; // winner has ranking 1, second to reach score 50 has ranking 2, etc...
 	this.wins = 0;
 	this.score = 0;
+	this.scoreHistory = new Array();
 	this.misses = 0; // 3 misses in a row means disqualification
 	this.myTurn = false;
 	this.disqualified = false;
@@ -54,31 +55,29 @@ function Player(index, name){
 
 //player methods
 function processScore(number){
+	this.scoreHistory.push(this.score);
 	this.misses = 0;
-	$("#score-table-item-"+this.index+" p.misses").remove();
-	this.score += number;
-	if(this.score > 50){
+	if((this.score + number) < 50){
+		this.score += number;
+	}
+	else if((this.score + number) > 50){
 		this.score = 25;
 		alert(this.name + " larger than 50");
 	}
-	else if(this.score == 50){
+	else{ //player has score 50
+		this.score = 50;
 		this.outOfTheGame = true;
 	}
+	
 }
 
 function processMiss(){
+	this.scoreHistory.push(this.score);
 	this.misses++;
-	if(this.misses == 1){
-		$("#score-table-item-"+this.index).append("<p class='misses'>x</p>");		
-	}
-	else if(this.misses == 2){
-		$("#score-table-item-"+this.index + " p.misses").text("xx");
-	}
-	else{
+	if(this.misses > 2){
 		this.disqualified = true;
 		this.outOfTheGame = true;
 		this.score = 0;
-		$("#score-table-item-"+this.index+" p.misses").remove();
 		$("#score-table-item-"+this.index).addClass("disqualified");
 		$("#score-table-item-"+this.index).text("X");
 		alert(this.name + " disqualified");

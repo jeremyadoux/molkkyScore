@@ -2,6 +2,9 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	$scope.toggleNumber = function(number){
 		toggleNumberActivation(number);
     };
+    $scope.options = function(number){
+		$('#modalOptions').modal('show');
+    };
 	$scope.processThrow = function(){
     	if($('#mainTable #td-player-name').hasClass("active")){
 			//calculate new score
@@ -22,7 +25,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 			//go to next player
 			$scope.activePlayer.myTurn = false;
 			if(GameData.stillPlayersInTheGame()){
-				var nextPlayer = GameData.getNextPlayer($scope.activePlayer.index);						
+				var nextPlayer = GameData.getNextInGamePlayer($scope.activePlayer.index);						
 				nextPlayer.myTurn = true;
 				$scope.activePlayer = nextPlayer;
 			}
@@ -40,5 +43,9 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.players[0].myTurn = true;
 	    $scope.activePlayer = $scope.players[0];
 	    initializeMainTable($scope.players.length);
+	});
+	$scope.$on('updateGameBoard', function (event) {
+	    $scope.players = GameData.getPlayers();
+	    $scope.activePlayer = $scope.getActivePlayer();
 	});
 });
