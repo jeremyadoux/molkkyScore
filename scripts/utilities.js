@@ -77,9 +77,7 @@ function processMiss(){
 	if(this.misses > 2){
 		this.disqualified = true;
 		this.outOfTheGame = true;
-		this.score = 0;
-		$("#score-table-item-"+this.index).addClass("disqualified");
-		$("#score-table-item-"+this.index).text("X");
+		this.score = 'X';
 		alert(this.name + " disqualified");
 	}
 }

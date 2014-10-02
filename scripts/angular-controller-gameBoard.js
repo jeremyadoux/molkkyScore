@@ -3,7 +3,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		toggleNumberActivation(number);
     };
     $scope.options = function(number){
-		$('#modalOptions').modal('show');
+		$rootScope.$broadcast('initializeOptions'); //generate 'initializeOptions' event
     };
 	$scope.processThrow = function(){
     	if($('#mainTable #td-player-name').hasClass("active")){
@@ -46,6 +46,6 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	});
 	$scope.$on('updateGameBoard', function (event) {
 	    $scope.players = GameData.getPlayers();
-	    $scope.activePlayer = $scope.getActivePlayer();
+	    $scope.activePlayer = GameData.getActivePlayer();
 	});
 });

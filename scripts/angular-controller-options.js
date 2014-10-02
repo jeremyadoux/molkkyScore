@@ -20,4 +20,10 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     	$('#modalOptions').modal('hide');
 		$('#modalStart').modal('show');
     };
+
+    //events
+    $scope.$on('initializeOptions', function (event) {
+        $scope.gameStarted = GameData.gameHasStarted();
+        $('#modalOptions').modal('show');
+    });
 });

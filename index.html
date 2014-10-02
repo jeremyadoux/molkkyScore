@@ -39,7 +39,7 @@
                     <button id="btn-signIn-start"type="button" class="btn btn-default btn-lg btn-block">Sign in</button>       
                 </div>
                 <div class="modal-footer" >
-                    <a href="#" class="pull-left">Register</a>
+                    <a href="#" class="pull-left">Create account</a>
                 </div>
             </div>
           </div>
@@ -110,7 +110,7 @@
                 <div class="modal-body" >
                     <button ng-click="restartGame()" id="btn-restart-options" type="button" class="btn btn-default btn-lg btn-block">Restart game</button>
                     <button ng-click="newGame()" id="btn-new-options" type="button" class="btn btn-default btn-lg btn-block">New game</button>
-                    <button ng-click="undoLast()" id="btn-undo-options" type="button" class="btn btn-default btn-lg btn-block">Undo last</button>
+                    <button ng-click="undoLast()" ng-disabled="!gameStarted" id="btn-undo-options" type="button" class="btn btn-default btn-lg btn-block">Undo last</button>
                     <button ng-click="exitGame()" id="btn-exit-options" type="button" class="btn btn-default btn-lg btn-block">Exit game</button>       
                 </div>
                 <div class="modal-footer" >
@@ -139,7 +139,7 @@
             <tr>
                 <td class="td-colspanned" colspan="5">
                     <table id="scoreTable">
-                        <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn}" class="score-table-item">
+                        <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
                             {{player.score}}
                             <p class='misses' ng-show="player.misses == 1">x</p>
                             <p class='misses' ng-show="player.misses == 2">xx</p>
@@ -171,5 +171,3 @@
         </table>
     </body>
 </html>
-
-

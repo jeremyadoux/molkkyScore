@@ -55,31 +55,44 @@ app.factory('GameData', function(){
 				return this.getNextInGamePlayer(nextPlayer.index);
 			}
 		},
-		undoLastThrow: function(){ // infinite loop when !this.stillPlayersInTheGame()
-			var throwNumber = this.getActivePlayer().scoreHistory.length;
-			var previousPlayer = this.getPreviousPlayer();
-			while(previousPlayer.scoreHistory.length < throwNumber){
-				previousPlayer = this.getPreviousPlayer();
-			}
-			previousPlayer.score = previousPlayer.scoreHistory[throwNumber - 1];
-			previousPlayer.scoreHistory.pop();
-			this.getActivePlayer().myTurn = false;
-			previousPlayer.myTurn = true;
-			previousPlayer.outOfTheGame = false;
-			previousPlayer.winner = false;
-			previousPlayer.ranking = 999; // winner has ranking 1, second to reach score 50 has ranking 2, etc...
-			if(previousPlayer.misses > 0){
-				previousPlayer.misses--;
-			}
-			previousPlayer.disqualified = false;
-		},
-		getPreviousPlayer: function(activePlayerIndex){ // infinite loop when !this.stillPlayersInTheGame()
+		undoLastThrow: function(){ 
+            var throwNumber = this.getActivePlayer().scoreHistory.length;
+            var indexActivePlayer = this.getActivePlayer().index;
+            var previousPlayer = this.getPreviousPlayer(indexActivePlayer);
+            while(previousPlayer.scoreHistory.length <= throwNumber){
+            	if(indexActivePlayer <= previousPlayer.index && previousPlayer.scoreHistory.length == throwNumber){
+            		break; //previous player is in previous throw round
+            	}
+            	else{
+            		previousPlayer = this.getPreviousPlayer(previousPlayer.index);
+            	}
+            }
+            previousPlayer.score = previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 1];
+            previousPlayer.scoreHistory.pop();
+            //reset misses
+            if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 1]){
+                previousPlayer.misses = 1;
+                if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 2]){
+                    previousPlayer.misses = 2;
+                }
+            }
+            else{
+                previousPlayer.misses = 0;
+            }
+            this.getActivePlayer().myTurn = false;
+            previousPlayer.myTurn = true;
+            previousPlayer.outOfTheGame = false;
+            previousPlayer.winner = false;
+            previousPlayer.ranking = 999;
+            previousPlayer.disqualified = false;
+        }, 
+		getPreviousPlayer: function(playerIndex){ 
 			var previousPlayer;
-			if(activePlayerIndex == 0){
+			if(playerIndex == 0){
 				previousPlayer = players[players.length-1];
 			}
 			else{
-				previousPlayer = players[activePlayerIndex - 1];
+				previousPlayer = players[playerIndex - 1];
 			}
 			return previousPlayer;
 		},
@@ -123,6 +136,9 @@ app.factory('GameData', function(){
 				}
 			});
 			return gameHasWinner;
+		},
+		gameHasStarted: function(){
+			return players[0].scoreHistory.length > 0;
 		},
 		addPlayerToGame: function(newPlayerName){
 			players.push(new Player(players.length, newPlayerName));
