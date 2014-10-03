@@ -217,20 +217,26 @@ table#scoreTable {
   border-color: #020000;
 }
 /* line 54, ../sass/partials/_modals.scss */
+.modal .btn-icon-only {
+  border: none;
+  outline: thin dotted;
+  outline-offset: -2px;
+}
+/* line 59, ../sass/partials/_modals.scss */
 .modal .input-group-addon {
   color: #FFFFFF;
   background-color: #2DBDE1;
   border-color: #020000;
 }
-/* line 59, ../sass/partials/_modals.scss */
+/* line 64, ../sass/partials/_modals.scss */
 .modal .list-group-item {
   border: none;
 }
-/* line 62, ../sass/partials/_modals.scss */
+/* line 67, ../sass/partials/_modals.scss */
 .modal .icon-plus {
   line-height: 1;
 }
-/* line 65, ../sass/partials/_modals.scss */
+/* line 70, ../sass/partials/_modals.scss */
 .modal .icon-plus:hover {
   cursor: pointer;
 }

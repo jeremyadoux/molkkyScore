@@ -51,6 +51,11 @@
 		background-color: $lightColor;
 		border-color:$darkColor;
 	}
+	.btn-icon-only{
+		border:none;
+		outline:thin dotted;
+		outline-offset: -2px;
+	}
 	.input-group-addon{
 		color:$lightColor;
 		background-color:$accentColor;

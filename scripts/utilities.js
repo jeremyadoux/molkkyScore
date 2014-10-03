@@ -36,6 +36,14 @@ function warn(alertElement,warning){
 	alertElement.show();
 }
 
+//Prototype extensions
+Array.prototype.contains = function (string) {
+   for (var i = 0; i < this.length; i++) {
+       if (this[i].toLowerCase() == string.toLowerCase()) return true;
+   }
+   return false;
+}
+
 //Constructor
 function Player(index, name){
 	this.index = index; //starts at 0
@@ -121,12 +129,23 @@ function initializeMainTable(numberOfPlayers){
 
 function initializeAddPlayersModal(){
 	$('#modalAddPlayers .alert').hide();
-	$('#modalAddPlayers input').attr('placeholder','Player 1');
 	$('#modalAddPlayers').modal({
 			keyboard: false, // prevent modal from closing with ESC key 
 			backdrop: 'static'}, // prevent modal from closing with outside click 
 		'show');
+	$('#modalAddPlayers input').val('');
 	$('#modalAddPlayers input').focus();
+	if(window["localStorage"]){
+		var playerNames = localStorage.getItem("playerNames");
+		if(!playerNames){ //on first-time usage of app
+			playerNames = [];
+			localStorage.setItem("playerNames",JSON.stringify(playerNames));
+		}
+		else{
+			playerNames = JSON.parse(playerNames);
+		}
+		$('input').typeahead().data('typeahead').source = playerNames; //initialize Bootstrap3-Typeahead plugin
+	}
 }
 
 function initializeScoreboardModalEndedGame(){
@@ -159,5 +178,18 @@ function toggleNumberActivation(number){
 		$('#mainTable .td-score-number.active').removeClass("active");
 		$(idSelector).addClass("active");
 		$('#mainTable #td-player-name').addClass("active");
+	}
+}
+
+function addNewPlayerNamesToLocalStorage(currentPlayers){
+	if(window["localStorage"]){
+		var playerNames = JSON.parse(localStorage.getItem("playerNames"));
+		$.each(currentPlayers,function(){
+			var currentName = this.name;
+			if (!playerNames.contains(currentName)) { //case-insensitive
+			   playerNames.push(this.name);
+			}
+		});
+		localStorage.setItem("playerNames",JSON.stringify(playerNames));
 	}
 }
