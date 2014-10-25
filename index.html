@@ -15,6 +15,8 @@
         <script src="bower_components/jquery/dist/jquery.min.js"></script>
         <script src="bower_components/bootstrap/js/modal.js"></script>
         <script src="bower_components/bootstrap/js/alert.js"></script>
+        <script src="bower_components/bootstrap/js/tab.js"></script>
+        <script src="bower_components/bootstrap/js/transition.js"></script>
         <script src="bower_components/bootstrap3-typeahead/bootstrap3-typeahead.min.js"></script>
         <script src="scripts/utilities.js"></script>
         <script src="scripts/positioning.js"></script>
@@ -85,12 +87,34 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Scoreboard</h4>
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="active"><a href="#scoreboardConcise" role="tab" data-toggle="tab"><h4 class="modal-title" id="myModalLabel">Scoreboard</h4></a></li>
+                      <li><a href="#scoreboardDetails" role="tab" data-toggle="tab">Details</a></li>
+                    </ul>
                 </div>
                 <div class="modal-body">
-                    <ul class="list-group">
-                        <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">{{player.name}}<span class='pull-right'>{{player.score}}</span></li>
-                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane fade in active" id="scoreboardConcise">
+                         <ul class="list-group">
+                            <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">{{player.name}}<span class='pull-right'>{{player.score}}</span></li>
+                        </ul>
+                      </div>
+                      <div class="tab-pane fade" id="scoreboardDetails">
+                            <table>
+                                <tr>
+                                     <th ng-repeat="player in players">
+                                        {{player.name}}
+                                    </th>
+                                </tr>
+                                <tr ng-repeat="i in throwNumberArrayForNgRepeat track by $index">
+                                    <td ng-repeat="player in players" ng-class="{disqualified: player.disqualified}">
+                                        {{player.scoreHistory[$parent.$index]}}
+                                    </td>
+                                </tr>
+                            </table>
+                      </div>
+                    </div>
+                   
                 </div>
                 <div class="modal-footer">
                     <button id="btn-exit-scoreboard" type="button" class="btn btn-default pull-left" ng-click="btnExit()">Exit</button>
@@ -140,12 +164,14 @@
         <table id="mainTable" ng-controller="angular-gameBoard">
             <tr>
                 <td class="td-colspanned" colspan="5">
-                    <table id="scoreTable">
-                        <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
-                            {{player.score}}
-                            <p class='misses' ng-show="player.misses == 1">x</p>
-                            <p class='misses' ng-show="player.misses == 2">xx</p>
-                        </td>
+                    <table id="scoreTable" ng-click="showScoreboard()">
+                        <tr>
+                            <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
+                                {{player.score}}
+                                <p class='misses' ng-show="player.misses == 1">x</p>
+                                <p class='misses' ng-show="player.misses == 2">xx</p>
+                            </td>
+                        </tr>
                     </table>
                 </td>
                 <td id="td-options" ng-click="options()"><img src="images/options.png" alt="options"/></td>

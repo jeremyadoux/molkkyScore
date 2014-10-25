@@ -2,6 +2,7 @@ var app = angular.module("angular-app", []);
 
 app.factory('GameData', function(){
 	var players = new Array();
+	var throwNumber = 1;
 	return{
 		emptyPlayersArray: function(){
 			players = new Array();
@@ -30,6 +31,12 @@ app.factory('GameData', function(){
 		getPlayers: function(){
 			return players;
 		},
+		getThrowNumber: function(){
+			return throwNumber;
+		},
+		setThrowNumber: function(number){
+			throwNumber = number;
+		},
 		getActivePlayer: function(){
 			var activePlayer;
 			$.each(players,function(){
@@ -56,23 +63,28 @@ app.factory('GameData', function(){
 			}
 		},
 		undoLastThrow: function(){ 
-            var throwNumber = this.getActivePlayer().scoreHistory.length;
             var indexActivePlayer = this.getActivePlayer().index;
             var previousPlayer = this.getPreviousPlayer(indexActivePlayer);
-            while(previousPlayer.scoreHistory.length <= throwNumber){
-            	if(indexActivePlayer <= previousPlayer.index && previousPlayer.scoreHistory.length == throwNumber){
+            while(previousPlayer.scoreHistory.length <= (throwNumber-1)){
+            	if(indexActivePlayer <= previousPlayer.index && previousPlayer.scoreHistory.length == (throwNumber-1)){
+            		throwNumber--
             		break; //previous player is in previous throw round
             	}
             	else{
             		previousPlayer = this.getPreviousPlayer(previousPlayer.index);
             	}
             }
-            previousPlayer.score = previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 1];
             previousPlayer.scoreHistory.pop();
+            if(previousPlayer.scoreHistory.length == 0){ // back on first throw
+            	previousPlayer.score = 0;
+            }
+            else{
+            	previousPlayer.score = previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 1];
+            }
             //reset misses
-            if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 1]){
+            if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 2]){
                 previousPlayer.misses = 1;
-                if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 2]){
+                if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 3]){
                     previousPlayer.misses = 2;
                 }
             }

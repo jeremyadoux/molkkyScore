@@ -5,6 +5,9 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     $scope.options = function(number){
 		$rootScope.$broadcast('initializeOptions'); //generate 'initializeOptions' event
     };
+    $scope.showScoreboard = function(number){
+		$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+    };
 	$scope.processThrow = function(){
     	if($('#mainTable #td-player-name').hasClass("active")){
 			//calculate new score
@@ -27,10 +30,14 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 			if(GameData.stillPlayersInTheGame()){
 				var nextPlayer = GameData.getNextInGamePlayer($scope.activePlayer.index);						
 				nextPlayer.myTurn = true;
+				if(nextPlayer.index <= $scope.activePlayer.index){
+					$scope.throwNumber++;
+					GameData.setThrowNumber($scope.throwNumber);
+				}
 				$scope.activePlayer = nextPlayer;
 			}
 			else{
-				$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+				$rootScope.$broadcast('initializeScoreboard'); //game finished
 			}
 			$('#mainTable #td-player-name').removeClass("active");
 			$('#mainTable .td-score-number.active').removeClass("active");
@@ -42,10 +49,13 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.players[0].myTurn = true;
 	    $scope.activePlayer = $scope.players[0];
+	    GameData.setThrowNumber(1);
+	    $scope.throwNumber = GameData.getThrowNumber();
 	    initializeMainTable($scope.players.length);
 	});
 	$scope.$on('updateGameBoard', function (event) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.activePlayer = GameData.getActivePlayer();
+	    $scope.throwNumber = GameData.getThrowNumber();
 	});
 });

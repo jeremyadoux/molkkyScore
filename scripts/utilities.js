@@ -63,7 +63,6 @@ function Player(index, name){
 
 //player methods
 function processScore(number){
-	this.scoreHistory.push(this.score);
 	this.misses = 0;
 	if((this.score + number) < 50){
 		this.score += number;
@@ -76,11 +75,10 @@ function processScore(number){
 		this.score = 50;
 		this.outOfTheGame = true;
 	}
-	
+	this.scoreHistory.push(this.score);
 }
 
 function processMiss(){
-	this.scoreHistory.push(this.score);
 	this.misses++;
 	if(this.misses > 2){
 		this.disqualified = true;
@@ -88,6 +86,7 @@ function processMiss(){
 		this.score = 'X';
 		alert(this.name + " disqualified");
 	}
+	this.scoreHistory.push(this.score);
 }
 
 //sort utilities

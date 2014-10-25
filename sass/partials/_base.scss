@@ -28,8 +28,6 @@ $lightColor:#FFFFFF;
 $alertColor:#D82A25;
 $accentColor:#2DBDE1; /*rgb(45, 189, 225)*/
 
-
-
 /*mixins*/
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

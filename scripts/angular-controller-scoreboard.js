@@ -14,6 +14,7 @@ app.controller("angular-scoreboard", function($scope,GameData) {
     //events
 	$scope.$on('initializeScoreboard', function (event) {
 	    $scope.players = GameData.getPlayers();
+	    $scope.throwNumberArrayForNgRepeat = new Array(GameData.getThrowNumber());
 	    if(!GameData.stillPlayersInTheGame()){
 	    	initializeScoreboardModalEndedGame();
 		}
