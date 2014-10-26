@@ -2,7 +2,9 @@ var app = angular.module("angular-app", []);
 
 app.factory('GameData', function(){
 	var players = new Array();
-	var throwNumber = 1;
+	var data = {
+		throwNumber:1
+	}
 	return{
 		emptyPlayersArray: function(){
 			players = new Array();
@@ -31,11 +33,11 @@ app.factory('GameData', function(){
 		getPlayers: function(){
 			return players;
 		},
-		getThrowNumber: function(){
-			return throwNumber;
+		getData: function(){
+			return data;
 		},
-		setThrowNumber: function(number){
-			throwNumber = number;
+		resetThrowNumber: function(){
+			data.throwNumber = 1;
 		},
 		getActivePlayer: function(){
 			var activePlayer;
@@ -65,9 +67,9 @@ app.factory('GameData', function(){
 		undoLastThrow: function(){ 
             var indexActivePlayer = this.getActivePlayer().index;
             var previousPlayer = this.getPreviousPlayer(indexActivePlayer);
-            while(previousPlayer.scoreHistory.length <= (throwNumber-1)){
-            	if(indexActivePlayer <= previousPlayer.index && previousPlayer.scoreHistory.length == (throwNumber-1)){
-            		throwNumber--
+            while(previousPlayer.scoreHistory.length <= (data.throwNumber-1)){
+            	if(indexActivePlayer <= previousPlayer.index && previousPlayer.scoreHistory.length == (data.throwNumber-1)){
+            		data.throwNumber--
             		break; //previous player is in previous throw round
             	}
             	else{

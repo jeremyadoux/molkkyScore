@@ -35,8 +35,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 				var nextPlayer = GameData.getNextInGamePlayer($scope.activePlayer.index);						
 				nextPlayer.myTurn = true;
 				if(nextPlayer.index <= $scope.activePlayer.index){
-					$scope.throwNumber++;
-					GameData.setThrowNumber($scope.throwNumber);
+					$scope.data.throwNumber++;
 				}
 				$scope.activePlayer = nextPlayer;
 			}
@@ -53,13 +52,13 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.players[0].myTurn = true;
 	    $scope.activePlayer = $scope.players[0];
-	    GameData.setThrowNumber(1);
-	    $scope.throwNumber = GameData.getThrowNumber();
+	    GameData.resetThrowNumber();
+	    $scope.data = GameData.getData();
 	    initializeMainTable($scope.players.length);
 	});
 	$scope.$on('updateGameBoard', function (event) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.activePlayer = GameData.getActivePlayer();
-	    $scope.throwNumber = GameData.getThrowNumber();
+	    $scope.data = GameData.getData(); 
 	});
 });
