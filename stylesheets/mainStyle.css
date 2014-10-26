@@ -75,7 +75,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: Champion-medium;
   src: url(../fonts/NationalChampion-Medium.woff), url(../fonts/NationalChampion-Medium.otf) format("opentype");
 }
-/*rgb(45, 189, 225)*/
 /*mixins*/
 /* line 1, ../sass/partials/_tables.scss */
 table#mainTable {
@@ -90,7 +89,7 @@ table#mainTable {
 /* line 9, ../sass/partials/_tables.scss */
 table#mainTable td {
   position: relative;
-  background-color: #020000;
+  background-color: #2E2E2E;
   color: #FFFFFF;
   width: 15%;
   text-align: center;
@@ -98,34 +97,39 @@ table#mainTable td {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   border-radius: 6px;
+  -webkit-transition: all 200ms ease-out 0s;
+  -moz-transition: all 200ms ease-out 0s;
+  -o-transition: all 200ms ease-out 0s;
+  -ms-transition: all 200ms ease-out 0s;
+  transition: all 200ms ease-out 0s;
 }
-/* line 19, ../sass/partials/_tables.scss */
+/* line 20, ../sass/partials/_tables.scss */
 table#mainTable td.td-score-number:hover, table#mainTable td#td-options:hover {
   cursor: pointer;
 }
-/* line 23, ../sass/partials/_tables.scss */
+/* line 24, ../sass/partials/_tables.scss */
 table#mainTable .td-colspanned {
   font-family: "Champion-Regular", sans-serif;
 }
-/* line 26, ../sass/partials/_tables.scss */
+/* line 27, ../sass/partials/_tables.scss */
 table#mainTable .td-score-number.active {
-  background-color: #2DBDE1;
-  border-color: #2DBDE1;
+  background-color: #1275B3;
+  border-color: #1275B3;
 }
-/* line 30, ../sass/partials/_tables.scss */
+/* line 31, ../sass/partials/_tables.scss */
 table#mainTable #td-player-name.active {
-  background-color: #2DBDE1;
-  border-color: #2DBDE1;
+  background-color: #E60000;
+  border-color: #E60000;
 }
-/* line 34, ../sass/partials/_tables.scss */
+/* line 35, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item.active {
-  background-color: #2DBDE1;
-  border-color: #2DBDE1;
+  border-color: #E60000;
 }
 /* line 38, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item.disqualified {
-  color: #D82A25;
+  color: #E60000;
 }
 /* line 41, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item p.misses {
@@ -133,7 +137,7 @@ table#mainTable .score-table-item p.misses {
   left: 1px;
   bottom: 1px;
   font-size: 30px;
-  color: #D82A25;
+  color: #E60000;
 }
 /* line 49, ../sass/partials/_tables.scss */
 table#mainTable #td-player-name.active:hover {
@@ -144,6 +148,12 @@ table#mainTable #td-player-name.active:hover {
 table#scoreTable {
   height: 100%;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+/* line 59, ../sass/partials/_tables.scss */
+table#scoreTable td {
+  border: 5px solid #2E2E2E;
 }
 
 /* line 1, ../sass/partials/_modals.scss */
@@ -155,18 +165,20 @@ table#scoreTable {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
+  -o-border-radius: 6px;
   border-radius: 6px;
 }
 /* line 7, ../sass/partials/_modals.scss */
 .modal .modal-header {
   margin-bottom: 15px;
   color: #FFFFFF;
-  background-color: #020000;
+  background-color: #2E2E2E;
   border: 1px solid #FFFFFF;
   border-bottom: none;
   -webkit-border-radius: 5px 5px 0px 0px;
   -moz-border-radius: 5px 5px 0px 0px;
   -ms-border-radius: 5px 5px 0px 0px;
+  -o-border-radius: 5px 5px 0px 0px;
   border-radius: 5px 5px 0px 0px;
 }
 /* line 15, ../sass/partials/_modals.scss */
@@ -181,17 +193,17 @@ table#scoreTable {
 .modal button.close {
   opacity: 0.8;
   font-size: inherit;
-  color: #D82A25;
+  color: #E60000;
 }
 /* line 26, ../sass/partials/_modals.scss */
 .modal li.winner:after {
   content: ' - winner';
-  color: #D82A25;
+  color: #E60000;
   font-size: 10px;
 }
 /* line 31, ../sass/partials/_modals.scss */
 .modal .alert {
-  color: #D82A25;
+  color: #E60000;
   border: none;
   background-color: #FFFFFF;
   padding: 0px 15px;
@@ -200,21 +212,21 @@ table#scoreTable {
 }
 /* line 39, ../sass/partials/_modals.scss */
 .modal .form-control {
-  color: #020000;
-  border: 1px solid #020000;
+  color: #2E2E2E;
+  border: 1px solid #2E2E2E;
   border-right: none;
   box-shadow: none;
 }
 /* line 45, ../sass/partials/_modals.scss */
 .modal .btn-primary {
-  background-color: #2DBDE1;
-  border-color: #2DBDE1;
+  background-color: #1275B3;
+  border-color: #1275B3;
 }
 /* line 49, ../sass/partials/_modals.scss */
 .modal .btn-default {
   font-family: "Champion-Medium", sans-serif;
   background-color: #FFFFFF;
-  border-color: #020000;
+  border-color: #2E2E2E;
 }
 /* line 54, ../sass/partials/_modals.scss */
 .modal .btn-icon-only {
@@ -225,8 +237,8 @@ table#scoreTable {
 /* line 59, ../sass/partials/_modals.scss */
 .modal .input-group-addon {
   color: #FFFFFF;
-  background-color: #2DBDE1;
-  border-color: #020000;
+  background-color: #1275B3;
+  border-color: #2E2E2E;
 }
 /* line 64, ../sass/partials/_modals.scss */
 .modal .list-group-item {
@@ -240,12 +252,195 @@ table#scoreTable {
 .modal .icon-plus:hover {
   cursor: pointer;
 }
+/* line 73, ../sass/partials/_modals.scss */
+.modal table {
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #2E2E2E;
+  border-bottom: 0px;
+}
+/* line 79, ../sass/partials/_modals.scss */
+.modal table tr:nth-child(odd) {
+  background-color: #e6e6e6;
+}
+/* line 82, ../sass/partials/_modals.scss */
+.modal table td, .modal table th {
+  text-align: center;
+  padding: 5px;
+  border-left: 1px solid #2E2E2E;
+}
+/* line 87, ../sass/partials/_modals.scss */
+.modal table th {
+  font-family: "Champion-Medium", sans-serif;
+  border-bottom: 1px solid #2E2E2E;
+  background-color: #FFFFFF;
+  padding: 10px;
+}
 
-/* line 7, ../sass/mainStyle.scss */
+/*
+   Animation example, for spinners
+*/
+/* line 4, ../sass/partials/_animations.scss */
+.animate-spin {
+  -moz-animation: spin 1.5s cubic-bezier(0, 0, 0.19, 1.17);
+  -o-animation: spin 1.5s cubic-bezier(0, 0, 0.19, 1.17);
+  -webkit-animation: spin 1.5s cubic-bezier(0, 0, 1.17);
+  animation: spin 1.5s cubic-bezier(0, 0, 0.19, 1.17);
+  display: inline-block;
+}
+
+/* #td-player-name.active,.animate-pulse{
+  -moz-animation: pulse 2s infinite ease-in-out 400ms;
+  -o-animation: pulse 2s infinite ease-in-out 400ms;
+  -webkit-animation: pulse 2s infinite ease-in-out 400ms;
+  animation: pulse pulse 2s infinite ease-in-out 400ms;
+} */
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+  50% {
+    background-color: rgba(230, 0, 0, 0.6);
+    border-color: rgba(230, 0, 0, 0.6);
+  }
+  100% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+  50% {
+    background-color: rgba(230, 0, 0, 0.6);
+    border-color: rgba(230, 0, 0, 0.6);
+  }
+  100% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+}
+@-o-keyframes pulse {
+  0% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+  50% {
+    background-color: rgba(230, 0, 0, 0.6);
+    border-color: rgba(230, 0, 0, 0.6);
+  }
+  100% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+}
+@-ms-keyframes pulse {
+  0% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+  50% {
+    background-color: rgba(230, 0, 0, 0.6);
+    border-color: rgba(230, 0, 0, 0.6);
+  }
+  100% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+}
+@keyframes pulse {
+  0% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+  50% {
+    background-color: rgba(230, 0, 0, 0.6);
+    border-color: rgba(230, 0, 0, 0.6);
+  }
+  100% {
+    background-color: #e60000;
+    border-color: #e60000;
+  }
+}
+/* line 8, ../sass/mainStyle.scss */
 body {
   font-family: "Champion-Medium", sans-serif;
-  background-color: #020000;
-  color: #020000;
+  background-color: #2E2E2E;
+  color: #2E2E2E;
   	/*
   	background:url('../images/wood_texture-7.jpg');
   	background-repeat: no-repeat;

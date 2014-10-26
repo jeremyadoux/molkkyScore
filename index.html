@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="bower_components/fontawesome/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="fonts/fontello/css/fontello.css">
-        <link rel="stylesheet" type="text/css" href="fonts/fontello/css/animation.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
         <link rel="icon" type="image/png" href="images/favicon.png">
         <title>Mölkky score</title>
@@ -177,7 +176,9 @@
                 <td id="td-options" ng-click="options()"><img src="images/options.png" alt="options"/></td>
             </tr>
             <tr>
-                <td id="td-player-name" class="td-colspanned" colspan="5" ng-click="processThrow()">{{activePlayer.name}} &raquo;</td>
+                <td id="td-player-name" class="td-colspanned" colspan="5" ng-click="processThrow()">
+                    {{activePlayer.name}} &raquo;
+                </td>
                 <td id="td-0" class="td-score-number" ng-click="toggleNumber(0)">0</td>
             </tr>
             <tr id="xs-tr-1">

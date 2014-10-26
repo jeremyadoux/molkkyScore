@@ -3,6 +3,10 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		toggleNumberActivation(number);
     };
     $scope.options = function(number){
+    	$("#td-options img").addClass("animate-spin");
+    	setTimeout(function(){
+    		$("#td-options img").removeClass("animate-spin");
+    	},2500);
 		$rootScope.$broadcast('initializeOptions'); //generate 'initializeOptions' event
     };
     $scope.showScoreboard = function(number){

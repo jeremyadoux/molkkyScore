@@ -23,22 +23,33 @@ $mediumFont:30px;
 $smallFont:10px;
 
 //colors
-$darkColor:#020000;
+$darkColor:#2E2E2E;
 $lightColor:#FFFFFF;
-$alertColor:#D82A25;
-$accentColor:#2DBDE1; /*rgb(45, 189, 225)*/
+$alertColor:#E60000;
+$accentColor:#1275B3; 
+$accentColor-light:#1275B3;
 
 /*mixins*/
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
+  -o-border-radius: $radius;
   border-radius: $radius;
 }
 
-@mixin border-top-radius($radius) {
+@mixin border-top-radius($radius){
   -webkit-border-radius: $radius $radius 0px 0px;
   -moz-border-radius: $radius $radius 0px 0px;
   -ms-border-radius: $radius $radius 0px 0px;
+  -o-border-radius: $radius $radius 0px 0px;
   border-radius: $radius $radius 0px 0px;
+}
+
+@mixin transition($duration, $delay: 0s) {
+  -webkit-transition: all $duration ease-out $delay;
+  -moz-transition: all $duration ease-out $delay;
+  -o-transition: all $duration ease-out $delay;
+  -ms-transition: all $duration ease-out $delay;
+  transition: all $duration ease-out $delay;
 }

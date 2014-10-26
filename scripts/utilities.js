@@ -122,9 +122,9 @@ function comparePlayerRankings(playerOne,playerTwo){
 
 // DOM manipulation
 function initializeMainTable(numberOfPlayers){
-	$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
-	$('#mainTable').fadeIn(1000);
-}
+	$('#mainTable').fadeIn(1000, function(){
+		$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
+	});}
 
 function initializeAddPlayersModal(){
 	$('#modalAddPlayers .alert').hide();
@@ -172,11 +172,13 @@ function toggleNumberActivation(number){
     if($(idSelector).hasClass("active")){
 		$(idSelector).removeClass("active");
 		$('#mainTable #td-player-name').removeClass("active");
+		$('addScoreBadge').text('');
 	}
 	else{
 		$('#mainTable .td-score-number.active').removeClass("active");
 		$(idSelector).addClass("active");
 		$('#mainTable #td-player-name').addClass("active");
+		$('#addScoreBadge').text('+' + number);
 	}
 }
 

@@ -14,6 +14,7 @@ table#mainTable{
 		text-align: center;
 		border:1px solid $lightColor;
 		@include border-radius(6px);
+		@include transition(200ms);
 	}
 	td.td-score-number, td#td-options{
 		&:hover{
@@ -28,12 +29,11 @@ table#mainTable{
 		border-color:$accentColor;
 	}
 	#td-player-name.active{
-		background-color:$accentColor;
-		border-color:$accentColor;
+		background-color:$alertColor;
+		border-color:$alertColor;
 	}
 	.score-table-item.active{
-		background-color:$accentColor;
-		border-color:$accentColor;
+		border-color:$alertColor;
 	}
 	.score-table-item.disqualified{
 		color:$alertColor;
@@ -54,8 +54,10 @@ table#mainTable{
 table#scoreTable{
 	height:100%;
 	width:100%;
+	border-collapse: separate;
+	border-spacing:1px;
 	td{
-		
+		border:5px solid $darkColor;
 	}
 }
 
