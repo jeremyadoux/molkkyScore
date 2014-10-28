@@ -132,26 +132,39 @@ table#mainTable .score-table-item.disqualified {
   color: #E60000;
 }
 /* line 41, ../sass/partials/_tables.scss */
+table#mainTable .scoreTable__playerName {
+  width: 100%;
+  position: absolute;
+  left: 3px;
+  top: 0px;
+  font-size: 15px;
+  line-height: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+}
+/* line 53, ../sass/partials/_tables.scss */
 table#mainTable .score-table-item p.misses {
   position: absolute;
-  left: 1px;
+  left: 3px;
   bottom: 1px;
   font-size: 30px;
   color: #E60000;
 }
-/* line 49, ../sass/partials/_tables.scss */
+/* line 61, ../sass/partials/_tables.scss */
 table#mainTable #td-player-name.active:hover {
   cursor: pointer;
 }
 
-/* line 54, ../sass/partials/_tables.scss */
+/* line 66, ../sass/partials/_tables.scss */
 table#scoreTable {
   height: 100%;
   width: 100%;
   border-collapse: separate;
   border-spacing: 1px;
 }
-/* line 59, ../sass/partials/_tables.scss */
+/* line 71, ../sass/partials/_tables.scss */
 table#scoreTable td {
   border: 5px solid #2E2E2E;
 }

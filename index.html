@@ -166,6 +166,7 @@
                     <table id="scoreTable" ng-click="showScoreboard()">
                         <tr>
                             <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
+                                <p class='scoreTable__playerName'>{{player.name}}</p>
                                 {{player.score}}
                                 <p class='misses' ng-show="player.misses == 1">x</p>
                                 <p class='misses' ng-show="player.misses == 2">xx</p>
