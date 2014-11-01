@@ -1,8 +1,9 @@
 @import 'compass';
 @include global-reset;
 @import "partials/base";
-@import "partials/tables";
-@import "partials/modals";
+@import "partials/general/modals";
+@import "partials/gameboard/base";
+@import "partials/gameboard/scoreTable";
 @import "partials/modals/scoreboard";
 @import "partials/animations";
 

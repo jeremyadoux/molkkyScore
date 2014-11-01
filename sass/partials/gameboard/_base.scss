@@ -1,4 +1,4 @@
-table#mainTable{
+#mainTable{
 	/* height determined by positioning.js */
 	display:none;
 	width:95%;
@@ -32,46 +32,7 @@ table#mainTable{
 		background-color:$alertColor;
 		border-color:$alertColor;
 	}
-	.score-table-item.active{
-		border-color:$alertColor;
-	}
-	.score-table-item.disqualified{
-		color:$alertColor;
-	}
-	.scoreTable__playerName{
-		width:100%;
-		position:absolute;
-		left:3px;
-		top:0px;
-		font-size:$smallFont;
-		line-height: $smallFont +1px;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		overflow: hidden;
-		text-align: left;
-	}
-	.score-table-item p.misses{
-		position:absolute;
-		left:3px;
-		bottom:1px;
-		font-size:$mediumFont;
-		color:$alertColor;
-
-	}
 	#td-player-name.active:hover{
 		cursor:pointer;
 	}
 }
-
-table#scoreTable{
-	height:100%;
-	width:100%;
-	border-collapse: separate;
-	border-spacing:1px;
-	td{
-		border:5px solid $darkColor;
-	}
-}
-
-
-
