@@ -4,9 +4,44 @@
 .animate-spin {
   -moz-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   -o-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
-  -webkit-animation: spin 1.5s cubic-bezier(0,0,1.17);
+  -webkit-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   display: inline-block;
+}
+
+li.animate-enter{
+  transform: translateX(50px);
+  -moz-animation: 
+    openspace .3s ease forwards,
+    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
+  -o-animation: 
+    openspace .3s ease forwards,
+    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
+  -webkit-animation: 
+    openspace .3s ease forwards,
+    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
+  animation:
+    openspace .3s ease forwards,
+    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
+}
+ 
+ //for animate-enter: content below new item moves down smoothly
+@keyframes openspace {
+    to {
+        height: auto;
+    }
+}
+ 
+@keyframes animate-enter-animation {
+    0% {
+        opacity: 0;
+         transform: translateX(50px);
+    }
+ 
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* #td-player-name.active,.animate-pulse{

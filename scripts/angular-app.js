@@ -64,6 +64,16 @@ app.factory('GameData', function(){
 				return this.getNextInGamePlayer(nextPlayer.index);
 			}
 		},
+		getFirstInGamePlayer: function(){ // infinite loop when !this.stillPlayersInTheGame()
+			var firstInGamePlayer;
+			for(var i = 0; i < players.length; i++){
+				if(!players[i].outOfTheGame){
+					firstInGamePlayer = players[i];
+					break;
+				}
+			}
+			return firstInGamePlayer;
+		},
 		undoLastThrow: function(){ 
             var indexActivePlayer = this.getActivePlayer().index;
             var previousPlayer = this.getPreviousPlayer(indexActivePlayer);

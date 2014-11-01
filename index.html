@@ -55,7 +55,7 @@
                 <h4 class="modal-title" id="myModalLabel">Enter player names..</h4>
               </div>
                 <ul class="list-group">
-                    <li id="li-player-{{player.index}}" class="list-group-item" ng-repeat="player in players">
+                    <li id="li-player-{{player.index}}" class="list-group-item animate-enter" ng-repeat="player in players">
                         {{player.name}}
                         <button type="button" class="close" ng-click="btnRemovePlayer(player.index)">
                             <span aria-hidden="true">&times;</span>
@@ -93,20 +93,25 @@
                 </div>
                 <div class="modal-body">
                     <div class="tab-content">
+                        <!-- pane1 -->
                       <div class="tab-pane fade in active" id="scoreboardConcise">
                          <ul class="list-group">
-                            <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">{{player.name}}<span class='pull-right'>{{player.score}}</span></li>
+                            <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">   <span class='pull-right' ng-class="{disqualified: player.disqualified}">{{player.score}}</span>
+                                <p>{{player.name}}</p>
+                                
+                            </li>
                         </ul>
                       </div>
+                        <!-- pane2 -->
                       <div class="tab-pane fade" id="scoreboardDetails">
                             <table>
                                 <tr>
-                                     <th ng-repeat="player in players">
-                                        {{player.name}}
+                                     <th ng-repeat="player in players" ng-class="{winner: player.winner}">
+                                        <p>{{player.name}} </p>
                                     </th>
                                 </tr>
                                 <tr ng-repeat="i in throwNumberArrayForNgRepeat track by $index">
-                                    <td ng-repeat="player in players" ng-class="{disqualified: player.disqualified}">
+                                    <td ng-repeat="player in players" ng-class="{out: player.scoreHistory[$parent.$index] == 50, disqualified:player.scoreHistory[$parent.$index] == 'X', empty:player.scoreHistory[$parent.$index] == undefined}">
                                         {{player.scoreHistory[$parent.$index]}}
                                     </td>
                                 </tr>

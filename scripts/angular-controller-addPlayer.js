@@ -33,7 +33,6 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
 		}
     };
     $scope.btnRemovePlayer = function(index){
-        $('li-player-'+index).remove();
         $scope.players.splice(index,1);
         GameData.resetPlayerIndexes();
     };

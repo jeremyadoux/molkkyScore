@@ -55,6 +55,10 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    GameData.resetThrowNumber();
 	    $scope.data = GameData.getData();
 	    initializeMainTable($scope.players.length);
+	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
+		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
+		  	$('#modalScoreboard #scoreboardDetails td').css({width:100/$scope.players.length+"%"});
+		});
 	});
 	$scope.$on('updateGameBoard', function (event) {
 	    $scope.players = GameData.getPlayers();

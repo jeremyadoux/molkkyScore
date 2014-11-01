@@ -23,11 +23,6 @@
 		font-size:inherit;
 		color:$alertColor;
 	}
-	li.winner:after{
-		content: ' - winner';
-		color:$alertColor;
-		font-size:$extra-smallFont;
-	}
 	.alert{
 		color:$alertColor;
 		border:none;
@@ -62,33 +57,13 @@
 		border-color:$darkColor;
 	}
 	.list-group-item{
-		border:none;
+		border-color:$lightColor;
+		@include border-radius(6px);
 	}
 	.icon-plus{
 	  line-height: 1;
 	}
 	.icon-plus:hover{
 		cursor:pointer;
-	}
-	table{
-		height:100%;
-		width:100%;
-		border-collapse: collapse;
-		border:1px solid $darkColor;
-		border-bottom: 0px;
-		tr:nth-child(odd){
-			background-color: rgb(230,230,230);
-		}
-		td,th{
-			text-align:center;
-			padding:5px;
-			border-left: 1px solid $darkColor;
-		}
-		th{
-			font-family: $mediumFontFamily;
-			border-bottom: 1px solid $darkColor;
-			background-color: $lightColor;
-			padding:10px;
-		}
 	}
 }

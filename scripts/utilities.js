@@ -123,7 +123,7 @@ function comparePlayerRankings(playerOne,playerTwo){
 // DOM manipulation
 function initializeMainTable(numberOfPlayers){
 	$('#mainTable').fadeIn(1000, function(){
-		$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
+		
 	});}
 
 function initializeAddPlayersModal(){
@@ -157,7 +157,7 @@ function initializeScoreboardModalEndedGame(){
 	'show');
 }
 
-function initializeScoreboardModalContinuableGame(){
+function initializeScoreboardModalContinuableGame(numberOfPlayers){
 	$('#modalScoreboard .modal-header .close').show();
 	$('#modalScoreboard .modal-footer .btn-primary').show();
 	$('#modalScoreboard .modal-footer .btn-default').addClass('pull-left');

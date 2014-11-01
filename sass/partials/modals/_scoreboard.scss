@@ -1,0 +1,79 @@
+#modalScoreboard{
+	#scoreboardDetails{
+		table{
+			height:100%;
+			width:100%;
+			border-collapse: collapse;
+			table-layout: fixed;
+			tr{
+				&:nth-child(odd){
+					background-color: $greyColor;
+				}
+
+			}
+			td,th{
+				text-align:center;
+				padding:5px;
+			}
+			th{
+				font-family: $mediumFontFamily;
+				border-bottom: 1px solid $darkColor;
+				background-color: $lightColor;
+				padding:10px;
+				border: 2px solid $darkColor;
+				p{
+					text-overflow:ellipsis;
+					overflow:hidden;
+					white-space: nowrap;
+				}
+				&.winner p{
+					&:after{
+						font-family: "fontello";
+						content: '\00a0\e800'; // \00a0 is unicode for a space
+						color:$accentColor;
+					}
+				}
+			}
+			td{
+				border-left: 1px solid $darkColor;
+				border-right: 1px solid $darkColor;
+				&.empty{
+					border: 0px;
+					background-color: $lightColor;
+				}
+				&.out{
+					font-family: $mediumFontFamily;
+					border-bottom:1px solid $darkColor;
+				}
+				&.disqualified{
+					font-family: $mediumFontFamily;
+					color:$alertColor;
+					border-bottom:1px solid $darkColor;
+				}
+			}
+		}
+	}
+
+	#scoreboardConcise{
+		li{
+			& p{
+				text-overflow:ellipsis;
+				overflow:hidden;
+				white-space: nowrap;
+			}
+			&.winner{
+				font-family: $mediumFontFamily;
+				& p:after{
+					font-family: "fontello";
+					content: '\00a0\e800'; // \00a0 is unicode for a space
+					color:$accentColor;
+				}
+			}
+		}
+		span.disqualified{
+			font-family: $mediumFontFamily;
+			color:$alertColor;
+		}
+	}
+}
+
