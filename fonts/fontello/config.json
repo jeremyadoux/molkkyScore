@@ -9,14 +9,14 @@
     {
       "uid": "44e04715aecbca7f266a17d5a7863c68",
       "css": "plus",
-      "code": 59394,
+      "code": 59393,
       "src": "fontawesome"
     },
     {
-      "uid": "e99461abfef3923546da8d745372c995",
-      "css": "cog",
+      "uid": "1d2a6c3d9236b88b0f185c7c4530fa52",
+      "css": "flag",
       "code": 59392,
-      "src": "fontawesome"
+      "src": "entypo"
     }
   ]
 }
