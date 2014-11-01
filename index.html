@@ -87,14 +87,14 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <ul class="nav nav-tabs" role="tablist">
-                      <li class="active"><a href="#scoreboardConcise" role="tab" data-toggle="tab"><h4 class="modal-title" id="myModalLabel">Scoreboard</h4></a></li>
-                      <li><a href="#scoreboardDetails" role="tab" data-toggle="tab">Details</a></li>
+                      <li class="active"><a href="#concisePane" role="tab" data-toggle="tab"><h4 class="modal-title" id="myModalLabel">Scoreboard</h4></a></li>
+                      <li><a href="#detailedPane" role="tab" data-toggle="tab">Details</a></li>
                     </ul>
                 </div>
                 <div class="modal-body">
                     <div class="tab-content">
                         <!-- pane1 -->
-                      <div class="tab-pane fade in active" id="scoreboardConcise">
+                      <div class="tab-pane fade in active" id="concisePane">
                          <ul class="list-group">
                             <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">   <span class='pull-right' ng-class="{disqualified: player.disqualified}">{{player.score}}</span>
                                 <p>{{player.name}}</p>
@@ -103,7 +103,7 @@
                         </ul>
                       </div>
                         <!-- pane2 -->
-                      <div class="tab-pane fade" id="scoreboardDetails">
+                      <div class="tab-pane fade" id="detailedPane">
                             <table>
                                 <tr>
                                      <th ng-repeat="player in players" ng-class="{winner: player.winner}">

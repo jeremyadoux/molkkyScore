@@ -3,6 +3,9 @@
 	width:100%;
 	border-collapse: separate;
 	border-spacing:1px;
+	&:hover{
+		cursor:pointer;
+	}
 	.score-table-item{
 		border:5px solid $darkColor;
 		&.active{

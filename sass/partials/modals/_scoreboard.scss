@@ -1,5 +1,30 @@
 #modalScoreboard{
-	#scoreboardDetails{
+	.modal-header{
+		padding:7px;
+		padding-bottom:0px;
+		.nav-tabs{
+			border-bottom: 0px;
+			li a{
+				color:$lightColor;
+				&:hover{
+					background-color: $darkColor;
+				}
+				&:active,&:focus,&:visited{
+					outline:none;
+				}
+			}
+			li.active a{
+				color:$darkColor;
+				&:hover{
+					background-color: $lightColor;
+				}
+			}
+		}
+		.close{
+			padding:10px;
+		}
+	}
+	#detailedPane{
 		table{
 			height:100%;
 			width:100%;
@@ -54,7 +79,7 @@
 		}
 	}
 
-	#scoreboardConcise{
+	#concisePane{
 		li{
 			& p{
 				text-overflow:ellipsis;
