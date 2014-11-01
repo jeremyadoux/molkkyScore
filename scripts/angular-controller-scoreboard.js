@@ -1,14 +1,20 @@
-app.controller("angular-scoreboard", function($scope,GameData) {	
+app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {	
 	$scope.btnNewGame = function(){
-		$('#mainTable').fadeOut(1000);
-    	$('#modalScoreboard').modal('hide');
-		$('#modalNewPlayers').modal('show');
+		$('#modalScoreboard').modal('hide');
+        $rootScope.$broadcast('initializeNewPlayers');
     };
     $scope.btnExit = function(){
-    	GameData.emptyPlayersArray();
-    	$('#mainTable').fadeOut(1000);
-    	$('#modalScoreboard').modal('hide');
-		$('#modalStart').modal('show');
+    	if(GameData.gameHasWinner()){ 
+    		GameData.emptyPlayersArray();
+	    	$('#mainTable').fadeOut(1000);
+	    	$('#modalScoreboard').modal('hide');
+			$('#modalStart').modal('show');
+    	}
+    	else{ //ask confirmation
+    		$('#modalScoreboard').modal('hide');
+    		GameData.setConfirmType('Exit');
+    		$rootScope.$broadcast('initializeConfirm');
+    	}
     };
 
     //events

@@ -3,11 +3,21 @@ var app = angular.module("angular-app", []);
 app.factory('GameData', function(){
 	var players = new Array();
 	var data = {
-		throwNumber:1
+		throwNumber:1,
+		confirmType:'' // for making player confirm new game & restart game choice
 	}
 	return{
 		emptyPlayersArray: function(){
 			players = new Array();
+		},
+		setConfirmType: function(type){
+			confirmType = type;
+		},
+		getConfirmType: function(type){
+			return confirmType;
+		},
+		resetConfirmType: function(){
+			confirmType = '';
 		},
 		resetPlayers: function(){
 			var newIndex = 0;

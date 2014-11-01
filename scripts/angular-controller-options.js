@@ -1,13 +1,19 @@
 app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     $scope.restartGame = function(){
-    	GameData.resetPlayers();
-    	$('#modalOptions').modal('hide');
-    	$rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+        if(GameData.gameHasWinner()){ 
+            GameData.resetPlayers();
+            $('#modalOptions').modal('hide');
+            $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+        }
+        else{ //ask confirmation
+            $('#modalOptions').modal('hide');
+            GameData.setConfirmType('Restart');
+            $rootScope.$broadcast('initializeConfirm');
+        }   	
     };
     $scope.newGame = function(){
-    	$('#mainTable').fadeOut(1000);
     	$('#modalOptions').modal('hide');
-		$('#modalNewPlayers').modal('show');
+        $rootScope.$broadcast('initializeNewPlayers');
     };
     $scope.undoLast = function(){
     	GameData.undoLastThrow();
@@ -15,10 +21,17 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     	$rootScope.$broadcast('updateGameBoard'); //generate 'updateGameBoard' event
     };
     $scope.exitGame = function(){
-    	GameData.emptyPlayersArray();
-    	$('#mainTable').fadeOut(1000);
-    	$('#modalOptions').modal('hide');
-		$('#modalStart').modal('show');
+        if(GameData.gameHasWinner()){ 
+            GameData.emptyPlayersArray();
+            $('#mainTable').fadeOut(1000);
+            $('#modalOptions').modal('hide');
+            $('#modalStart').modal('show');
+        }
+        else{ //ask confirmation
+            $('#modalOptions').modal('hide');
+            GameData.setConfirmType('Exit');
+            $rootScope.$broadcast('initializeConfirm');
+        }
     };
 
     //events

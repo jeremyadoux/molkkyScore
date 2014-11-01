@@ -26,6 +26,7 @@
         <script src="scripts/angular-controller-scoreboard.js"></script>
         <script src="scripts/angular-controller-newPlayers.js"></script>
         <script src="scripts/angular-controller-options.js"></script>
+        <script src="scripts/angular-controller-confirm.js"></script>
     </head>
     <body ng-app="angular-app">
 
@@ -155,15 +156,37 @@
           <div class="modal-dialog modal-sm modal-vertical-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">New players?</h4>
+                    <h4 class="modal-title" id="myModalLabel">New game</h4>
+                </div>
+                <div class="modal-body">
+                    Same players?
                 </div>
                 <div class="modal-footer">
+                    <button ng-show="stillPlayersInTheGame" id="btn-cancel-newPlayers" type="button" class="btn btn-default pull-left" ng-click="btnCancel()">Cancel</button>
                     <button id="btn-no-newPlayers" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
                     <button id="btn-yes-newPlayers" type="button" class="btn btn-default" ng-click="btnYes()">Yes</button>
                 </div>
             </div>
           </div>
         </div> <!-- end Modal new players -->
+
+        <!-- Modal confirm -->
+        <div class="modal fade" id="modalConfirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-confirm">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body" >
+                   Are you sure?       
+                </div>
+                <div class="modal-footer" >
+                    <button id="btn-no-confirm" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
+                    <button id="btn-yes-confirm" type="button" class="btn btn-default" ng-click="btnYes()">Yes</button>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal start -->
 
         <table id="mainTable" ng-controller="angular-gameBoard">
             <tr>

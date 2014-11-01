@@ -1,0 +1,25 @@
+app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {	
+	$scope.btnYes = function(){
+        if(GameData.getConfirmType() == 'Exit'){
+            GameData.emptyPlayersArray();
+            $('#mainTable').fadeOut(1000);
+            $('#modalConfirm').modal('hide');
+            $('#modalStart').modal('show');
+        }
+        else if(GameData.getConfirmType() == 'Restart'){
+            GameData.resetPlayers();
+            $('#modalConfirm').modal('hide');
+            $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+        }
+        GameData.resetConfirmType();
+    };
+    $scope.btnNo = function(){
+        $('#modalConfirm').modal('hide');
+    };
+
+    //events
+    $scope.$on('initializeConfirm', function (event) {
+        $('#modalConfirm .modal-header h4').text(GameData.getConfirmType() + ' game');
+    	$('#modalConfirm').modal('show');
+    });
+});

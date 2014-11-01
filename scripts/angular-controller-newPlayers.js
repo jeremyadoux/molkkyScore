@@ -1,13 +1,22 @@
 app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {	
 	$scope.btnYes = function(){
-		GameData.emptyPlayersArray();
-    	$('#modalNewPlayers').modal('hide');
-    	$rootScope.$broadcast('initializeAddPlayers'); //generate 'initializeAddPlayers' event
+        GameData.getPlayers().sort(comparePlayerScores);
+        GameData.resetPlayers();
+        $('#modalNewPlayers').modal('hide');
+        $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
     };
     $scope.btnNo = function(){
-    	GameData.getPlayers().sort(comparePlayerScores);
-		GameData.resetPlayers();
-    	$('#modalNewPlayers').modal('hide');
-		$rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+    	$('#mainTable').fadeOut(1000);
+        GameData.emptyPlayersArray();
+        $('#modalNewPlayers').modal('hide');
+        $rootScope.$broadcast('initializeAddPlayers'); //generate 'initializeAddPlayers' event
     };
+    $scope.btnCancel = function(){
+       $('#modalNewPlayers').modal('hide');
+    };
+
+    $scope.$on('initializeNewPlayers', function (event) {
+        $scope.stillPlayersInTheGame = GameData.stillPlayersInTheGame();
+        $('#modalNewPlayers').modal('show');
+    });
 });

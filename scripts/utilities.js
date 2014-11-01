@@ -19,7 +19,7 @@ function validatePlayerName(newPlayerName,players,alertElement){
 	}
 	var isValid = true;
 	$.each(players,function(){
-		if(this.name.toLowerCase() == newPlayerName.toLowerCase()){
+		if(this.name.toLowerCase().trim() == newPlayerName.toLowerCase().trim()){
 			warn(alertElement, warnings.playerName.unique);
 			isValid = false;
 			return false;
