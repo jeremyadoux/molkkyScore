@@ -179,3 +179,24 @@ app.factory('GameData', function(){
 		}
 	};
 });
+
+app.filter('rangeZeroToFour', function () {
+  return function (items) {
+  	var length = items.length < 4 ? items.length : 4;
+    var filtered = [];
+    for (var i = 0; i < length; i++) {
+        filtered.push(items[i]);
+    }
+    return filtered;
+  };
+});
+
+app.filter('rangeFiveToEight', function () {
+  return function (items) {
+    var filtered = [];
+    for (var i = 4; i < items.length; i++) {
+        filtered.push(items[i]);
+    }
+    return filtered;
+  };
+});

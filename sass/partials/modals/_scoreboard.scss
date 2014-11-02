@@ -6,6 +6,7 @@
 			border-bottom: 0px;
 			li a{
 				color:$lightColor;
+				font-size:$smallestFont;
 				&:hover{
 					background-color: $darkColor;
 				}
@@ -23,6 +24,10 @@
 		.close{
 			padding:10px;
 		}
+	}
+	.btn{
+		font-size: $smallestFont;
+		padding:4px 8px;
 	}
 	#detailedPane{
 		table{
@@ -85,6 +90,8 @@
 				text-overflow:ellipsis;
 				overflow:hidden;
 				white-space: nowrap;
+				font-size: $smallerFont;
+				line-height: $smallerFont + 1px;
 			}
 			&.winner{
 				font-family: $mediumFontFamily;
@@ -98,6 +105,22 @@
 		span.disqualified{
 			font-family: $mediumFontFamily;
 			color:$alertColor;
+		}
+	}
+}
+
+@media (min-width:360px) { 
+	#modalScoreboard{
+		.modal-header{
+			.nav-tabs{
+				li a{
+					font-size:$smallerFont;
+				}
+			}
+		}
+		.btn{
+			font-size: $smallerFont;
+			padding:6px 12px;
 		}
 	}
 }

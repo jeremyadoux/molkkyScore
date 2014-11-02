@@ -1,4 +1,7 @@
 #scoreTable{
+	table-layout: fixed;
+	font-family:$regularFontFamily;
+	font-size: $smallerFont;
 	height:100%;
 	width:100%;
 	border-collapse: separate;
@@ -7,31 +10,66 @@
 		cursor:pointer;
 	}
 	.score-table-item{
-		border:5px solid $darkColor;
+		border:2px solid $darkColor;
+		& p.score{
+			border-left:1px solid $lightColor;
+			&.first{
+				border-left:0px;
+			}
+		}
+		& p.misses{
+			position:absolute;
+			width:100%;
+			bottom:3px;
+			font-size:$extra-smallFont;
+			line-height: $extra-smallFont;
+			color:$alertColor;
+		}
+		& p.playerName{
+			display: none;
+			width:100%;
+			font-size:$smallestFont;
+			line-height: $smallestFont;
+			padding:3px;
+			position:absolute;
+			top:0px;
+			text-overflow:ellipsis;
+			overflow:hidden;
+			white-space: nowrap;
+		}
 		&.active{
-			border-color:$alertColor;
+			border-color:$accentColor;
+			& + td p.score,  td p.score + &, p.score, div.borderDiv{
+				border:0px;
+			}
 		}
 		&.disqualified{
 			color:$alertColor;
 		}
-		& p.misses{
-			position:absolute;
-			left:3px;
-			bottom:1px;
-			font-size:$mediumFont;
-			color:$alertColor;
-		}
-		& p.playerName{
-			width:100%;
-			position:absolute;
-			left:3px;
-			top:0px;
-			font-size:$smallFont;
-			line-height: $smallFont +1px;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			overflow: hidden;
-			text-align: left;
+	}
+}
+
+@media (min-width:768px) { 
+	#scoreTable{
+		font-size: $bigFont;
+		.score-table-item{
+			border:5px solid $darkColor;
+			& p.misses{
+				bottom: 5px;
+				font-size:$smallFont;
+				line-height: $smallFont;
+			}
+			& p.playerName{
+				display:block;
+			}
 		}
 	}
+}
+
+@media (min-width: 992px) { 
+
+}
+
+@media (min-width: 1200px) { 
+	
 }

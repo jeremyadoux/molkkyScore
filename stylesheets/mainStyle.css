@@ -176,13 +176,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #mainTable {
   /* height determined by positioning.js */
   display: none;
-  width: 95%;
+  width: 98%;
   margin: 0 auto;
-  font-size: 50px;
+  font-size: 25px;
+  line-height: 25px;
   border-collapse: separate;
-  border-spacing: 15px;
+  border-spacing: 10px;
 }
-/* line 9, ../sass/partials/gameboard/_base.scss */
+/* line 10, ../sass/partials/gameboard/_base.scss */
 #mainTable td {
   position: relative;
   background-color: #2E2E2E;
@@ -201,74 +202,135 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -ms-transition: all 200ms ease-out 0s;
   transition: all 200ms ease-out 0s;
 }
-/* line 20, ../sass/partials/gameboard/_base.scss */
+/* line 21, ../sass/partials/gameboard/_base.scss */
 #mainTable td.td-score-number:hover, #mainTable td#td-options:hover {
   cursor: pointer;
 }
-/* line 24, ../sass/partials/gameboard/_base.scss */
-#mainTable .td-colspanned {
-  font-family: "Champion-Regular", sans-serif;
-}
-/* line 27, ../sass/partials/gameboard/_base.scss */
+/* line 25, ../sass/partials/gameboard/_base.scss */
 #mainTable .td-score-number.active {
   background-color: #1275B3;
   border-color: #1275B3;
 }
-/* line 31, ../sass/partials/gameboard/_base.scss */
+/* line 30, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-player-name p {
+  position: absolute;
+  bottom: 0px;
+  height: 70%;
+  width: 100%;
+  padding: 0px 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* line 40, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-player-name.active {
   background-color: #E60000;
   border-color: #E60000;
 }
-/* line 35, ../sass/partials/gameboard/_base.scss */
-#mainTable #td-player-name.active:hover {
+/* line 44, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-player-name:hover {
   cursor: pointer;
 }
+/* line 48, ../sass/partials/gameboard/_base.scss */
+#mainTable img {
+  width: 35px;
+}
 
+@media (min-width: 768px) {
+  /* line 54, ../sass/partials/gameboard/_base.scss */
+  #mainTable {
+    /* height determined by positioning.js */
+    width: 95%;
+    font-size: 40px;
+    line-height: 40px;
+    border-spacing: 15px;
+  }
+  /* line 60, ../sass/partials/gameboard/_base.scss */
+  #mainTable img {
+    width: 60px;
+  }
+}
 /* line 1, ../sass/partials/gameboard/_scoreTable.scss */
 #scoreTable {
+  table-layout: fixed;
+  font-family: "Champion-Regular", sans-serif;
+  font-size: 15px;
   height: 100%;
   width: 100%;
   border-collapse: separate;
   border-spacing: 1px;
 }
-/* line 6, ../sass/partials/gameboard/_scoreTable.scss */
+/* line 9, ../sass/partials/gameboard/_scoreTable.scss */
 #scoreTable:hover {
   cursor: pointer;
 }
-/* line 9, ../sass/partials/gameboard/_scoreTable.scss */
+/* line 12, ../sass/partials/gameboard/_scoreTable.scss */
 #scoreTable .score-table-item {
-  border: 5px solid #2E2E2E;
-}
-/* line 11, ../sass/partials/gameboard/_scoreTable.scss */
-#scoreTable .score-table-item.active {
-  border-color: #E60000;
+  border: 2px solid #2E2E2E;
 }
 /* line 14, ../sass/partials/gameboard/_scoreTable.scss */
+#scoreTable .score-table-item p.score {
+  border-left: 1px solid #FFFFFF;
+}
+/* line 16, ../sass/partials/gameboard/_scoreTable.scss */
+#scoreTable .score-table-item p.score.first {
+  border-left: 0px;
+}
+/* line 20, ../sass/partials/gameboard/_scoreTable.scss */
+#scoreTable .score-table-item p.misses {
+  position: absolute;
+  width: 100%;
+  bottom: 3px;
+  font-size: 10px;
+  line-height: 10px;
+  color: #E60000;
+}
+/* line 28, ../sass/partials/gameboard/_scoreTable.scss */
+#scoreTable .score-table-item p.playerName {
+  display: none;
+  width: 100%;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 3px;
+  position: absolute;
+  top: 0px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* line 40, ../sass/partials/gameboard/_scoreTable.scss */
+#scoreTable .score-table-item.active {
+  border-color: #1275B3;
+}
+/* line 42, ../sass/partials/gameboard/_scoreTable.scss */
+#scoreTable .score-table-item.active + td p.score, td p.score + #scoreTable .score-table-item.active, #scoreTable .score-table-item.active p.score, #scoreTable .score-table-item.active div.borderDiv {
+  border: 0px;
+}
+/* line 46, ../sass/partials/gameboard/_scoreTable.scss */
 #scoreTable .score-table-item.disqualified {
   color: #E60000;
 }
-/* line 17, ../sass/partials/gameboard/_scoreTable.scss */
-#scoreTable .score-table-item p.misses {
-  position: absolute;
-  left: 3px;
-  bottom: 1px;
-  font-size: 30px;
-  color: #E60000;
-}
-/* line 24, ../sass/partials/gameboard/_scoreTable.scss */
-#scoreTable .score-table-item p.playerName {
-  width: 100%;
-  position: absolute;
-  left: 3px;
-  top: 0px;
-  font-size: 15px;
-  line-height: 16px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  text-align: left;
-}
 
+@media (min-width: 768px) {
+  /* line 53, ../sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable {
+    font-size: 40px;
+  }
+  /* line 55, ../sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable .score-table-item {
+    border: 5px solid #2E2E2E;
+  }
+  /* line 57, ../sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable .score-table-item p.misses {
+    bottom: 5px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  /* line 62, ../sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable .score-table-item p.playerName {
+    display: block;
+  }
+}
 /* line 2, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header {
   padding: 7px;
@@ -281,44 +343,50 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 7, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li a {
   color: #FFFFFF;
+  font-size: 12px;
 }
-/* line 9, ../sass/partials/modals/_scoreboard.scss */
+/* line 10, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li a:hover {
   background-color: #2E2E2E;
 }
-/* line 12, ../sass/partials/modals/_scoreboard.scss */
+/* line 13, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li a:active, #modalScoreboard .modal-header .nav-tabs li a:focus, #modalScoreboard .modal-header .nav-tabs li a:visited {
   outline: none;
 }
-/* line 16, ../sass/partials/modals/_scoreboard.scss */
+/* line 17, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li.active a {
   color: #2E2E2E;
 }
-/* line 18, ../sass/partials/modals/_scoreboard.scss */
+/* line 19, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li.active a:hover {
   background-color: #FFFFFF;
 }
-/* line 23, ../sass/partials/modals/_scoreboard.scss */
+/* line 24, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .close {
   padding: 10px;
 }
 /* line 28, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard .btn {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+/* line 33, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table {
   height: 100%;
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
-/* line 34, ../sass/partials/modals/_scoreboard.scss */
+/* line 39, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table tr:nth-child(odd) {
   background-color: #E6E6E6;
 }
-/* line 39, ../sass/partials/modals/_scoreboard.scss */
+/* line 44, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td, #modalScoreboard #detailedPane table th {
   text-align: center;
   padding: 5px;
 }
-/* line 43, ../sass/partials/modals/_scoreboard.scss */
+/* line 48, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th {
   font-family: "Champion-Medium", sans-serif;
   border-bottom: 1px solid #2E2E2E;
@@ -326,61 +394,74 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 10px;
   border: 2px solid #2E2E2E;
 }
-/* line 49, ../sass/partials/modals/_scoreboard.scss */
+/* line 54, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th p {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 55, ../sass/partials/modals/_scoreboard.scss */
+/* line 60, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th.winner p:after {
   font-family: "fontello";
   content: '\00a0\e800';
   color: #1275B3;
 }
-/* line 62, ../sass/partials/modals/_scoreboard.scss */
+/* line 67, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td {
   border-left: 1px solid #2E2E2E;
   border-right: 1px solid #2E2E2E;
 }
-/* line 65, ../sass/partials/modals/_scoreboard.scss */
+/* line 70, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.empty {
   border: 0px;
   background-color: #FFFFFF;
 }
-/* line 69, ../sass/partials/modals/_scoreboard.scss */
+/* line 74, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.out {
   font-family: "Champion-Medium", sans-serif;
   border-bottom: 1px solid #2E2E2E;
 }
-/* line 73, ../sass/partials/modals/_scoreboard.scss */
+/* line 78, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.disqualified {
   font-family: "Champion-Medium", sans-serif;
   color: #E60000;
   border-bottom: 1px solid #2E2E2E;
 }
-/* line 84, ../sass/partials/modals/_scoreboard.scss */
+/* line 89, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li p {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  font-size: 15px;
+  line-height: 16px;
 }
-/* line 89, ../sass/partials/modals/_scoreboard.scss */
+/* line 96, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner {
   font-family: "Champion-Medium", sans-serif;
 }
-/* line 91, ../sass/partials/modals/_scoreboard.scss */
+/* line 98, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner p:after {
   font-family: "fontello";
   content: '\00a0\e800';
   color: #1275B3;
 }
-/* line 98, ../sass/partials/modals/_scoreboard.scss */
+/* line 105, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane span.disqualified {
   font-family: "Champion-Medium", sans-serif;
   color: #E60000;
 }
 
+@media (min-width: 360px) {
+  /* line 116, ../sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard .modal-header .nav-tabs li a {
+    font-size: 15px;
+  }
+  /* line 121, ../sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard .btn {
+    font-size: 15px;
+    padding: 6px 12px;
+  }
+}
 /* line 2, ../sass/partials/modals/_newPlayers.scss */
 #modalNewPlayers #btn-cancel-newPlayers {
   border: 0px;

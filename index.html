@@ -193,9 +193,17 @@
                 <td class="td-colspanned" colspan="5">
                     <table id="scoreTable" ng-click="showScoreboard()">
                         <tr>
-                            <td id="score-table-item-{{player.index}}" ng-repeat="player in players" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
+                            <td id="score-table-item-{{player.index}}" ng-repeat="player in players|rangeZeroToFour" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
                                 <p class='playerName'>{{player.name}}</p>
-                                {{player.score}}
+                                <p class="score" ng-class="{first: $index == 0}">{{player.score}}</p>
+                                <p class='misses' ng-show="player.misses == 1">x</p>
+                                <p class='misses' ng-show="player.misses == 2">xx</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="score-table-item-{{player.index}}" ng-repeat="player in players|rangeFiveToEight" ng-class="{active: player.myTurn,disqualified: player.disqualified}" class="score-table-item">
+                                <p class='playerName'>{{player.name}}</p>
+                                <p class="score" ng-class="{first: $index == 0}">{{player.score}}</p>
                                 <p class='misses' ng-show="player.misses == 1">x</p>
                                 <p class='misses' ng-show="player.misses == 2">xx</p>
                             </td>
@@ -206,7 +214,7 @@
             </tr>
             <tr>
                 <td id="td-player-name" class="td-colspanned" colspan="5" ng-click="processThrow()">
-                    {{activePlayer.name}} &raquo;
+                    <p>{{activePlayer.name}} &raquo;</p>
                 </td>
                 <td id="td-0" class="td-score-number" ng-click="toggleNumber(0)">0</td>
             </tr>

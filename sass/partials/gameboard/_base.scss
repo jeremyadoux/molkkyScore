@@ -1,11 +1,12 @@
 #mainTable{
 	/* height determined by positioning.js */
 	display:none;
-	width:95%;
+	width:98%;
 	margin:0 auto;
-	font-size:$bigFont;
+	font-size:$mediumSmallFont;
+	line-height: $mediumSmallFont;
 	border-collapse: separate;
-    border-spacing: 15px;
+    border-spacing: 10px;
     td{
     	position:relative;
 		background-color:$darkColor;
@@ -21,18 +22,51 @@
 			cursor:pointer;
 		}
 	}
-	.td-colspanned{
-		font-family:$regularFontFamily;
-	}
 	.td-score-number.active{
 		background-color:$accentColor;
 		border-color:$accentColor;
 	}
-	#td-player-name.active{
-		background-color:$alertColor;
-		border-color:$alertColor;
+	#td-player-name{
+		p{
+			position:absolute;
+			bottom: 0px;
+			height:70%;
+			width:100%;
+			padding:0px 5px;
+			text-overflow:ellipsis;
+			overflow:hidden;
+			white-space: nowrap;
+		}
+		&.active{
+			background-color:$alertColor;
+			border-color:$alertColor;
+		}
+		&:hover{
+			cursor:pointer;
+		}
 	}
-	#td-player-name.active:hover{
-		cursor:pointer;
+	img{
+		width:35px;
 	}
+}
+
+@media (min-width:768px) { 
+	#mainTable{
+		/* height determined by positioning.js */
+		width:95%;
+		font-size:$bigFont;
+		line-height: $bigFont;
+	    border-spacing: 15px;
+	    img{
+			width:60px;
+		}
+	}
+}
+
+@media (min-width: 992px) { 
+
+}
+
+@media (min-width: 1200px) { 
+	
 }
