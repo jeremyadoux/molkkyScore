@@ -25,7 +25,7 @@
 			padding:10px;
 		}
 	}
-	.btn{
+	.btn{ //smaller because of three buttons don't fit
 		font-size: $smallestFont;
 		padding:4px 8px;
 	}
@@ -100,6 +100,33 @@
 					content: '\00a0\e800'; // \00a0 is unicode for a space
 					color:$accentColor;
 				}
+			}
+			&.second,&.third,&.fourth,&.fifth,&.sixth,&.seventh,&.eight{
+				& p:after{
+					font-size: $extra-smallFont;
+					color:$accentColor;
+				}
+			}
+			&.second p:after{
+				content: ' - 2nd';
+			}
+			&.third p:after{
+				content: ' - 3rd';
+			}
+			&.fourth p:after{
+				content: ' - 4th';
+			}
+			&.fifth p:after{
+				content: ' - 5th';
+			}
+			&.sixth p:after{
+				content: ' - 6th';
+			}
+			&.seventh p:after{
+				content: ' - 7th';
+			}
+			&.eight p:after{
+				content: ' - 8th';
 			}
 		}
 		span.disqualified{

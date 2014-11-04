@@ -1,11 +1,11 @@
 app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {	
-	$scope.btnYes = function(){
+	$scope.btnYes = function(){ //same players
         GameData.getPlayers().sort(comparePlayerScores);
         GameData.resetPlayers();
         $('#modalNewPlayers').modal('hide');
         $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
     };
-    $scope.btnNo = function(){
+    $scope.btnNo = function(){ //other players
     	$('#mainTable').fadeOut(1000);
         GameData.emptyPlayersArray();
         $('#modalNewPlayers').modal('hide');

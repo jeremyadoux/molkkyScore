@@ -44,13 +44,6 @@ li.animate-enter{
     }
 }
 
-/* #td-player-name.active,.animate-pulse{
-  -moz-animation: pulse 2s infinite ease-in-out 400ms;
-  -o-animation: pulse 2s infinite ease-in-out 400ms;
-  -webkit-animation: pulse 2s infinite ease-in-out 400ms;
-  animation: pulse pulse 2s infinite ease-in-out 400ms;
-} */
-
 @-moz-keyframes spin {
   0% {
     -moz-transform: rotate(0deg);
@@ -127,7 +120,20 @@ li.animate-enter{
   }
 }
 
-@-moz-keyframes pulse {
+
+
+
+
+
+
+/* #td-player-name.active,.animate-pulse{
+  -moz-animation: pulse 2s infinite ease-in-out 400ms;
+  -o-animation: pulse 2s infinite ease-in-out 400ms;
+  -webkit-animation: pulse 2s infinite ease-in-out 400ms;
+  animation: pulse pulse 2s infinite ease-in-out 400ms;
+} */
+
+/* @-moz-keyframes pulse {
   0% {
    	background-color:rgba(230,0,0,1);
 	border-color:rgba(230,0,0,1);
@@ -207,3 +213,4 @@ li.animate-enter{
 	border-color:rgba(230,0,0,1);
   }
 }
+ */

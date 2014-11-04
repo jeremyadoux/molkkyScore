@@ -17,6 +17,12 @@
       "css": "flag",
       "code": 59392,
       "src": "entypo"
+    },
+    {
+      "uid": "813cb2527308990d4870591d9d76f8cd",
+      "css": "right-open-outline",
+      "code": 59394,
+      "src": "typicons"
     }
   ]
 }

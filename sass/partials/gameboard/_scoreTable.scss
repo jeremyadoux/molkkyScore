@@ -27,23 +27,23 @@
 		}
 		& p.playerName{
 			display: none;
+			position:absolute;
 			width:100%;
+			top:0px;
 			font-size:$smallestFont;
 			line-height: $smallestFont;
 			padding:3px;
-			position:absolute;
-			top:0px;
 			text-overflow:ellipsis;
 			overflow:hidden;
 			white-space: nowrap;
 		}
 		&.active{
 			border-color:$accentColor;
-			& + td p.score,  td p.score + &, p.score, div.borderDiv{
+			& + .score-table-item p.score,  .score-table-item p.score + &, p.score{
 				border:0px;
 			}
 		}
-		&.disqualified{
+		&.disqualified .score{
 			color:$alertColor;
 		}
 	}
@@ -64,12 +64,4 @@
 			}
 		}
 	}
-}
-
-@media (min-width: 992px) { 
-
-}
-
-@media (min-width: 1200px) { 
-	
 }

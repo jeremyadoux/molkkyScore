@@ -97,7 +97,7 @@
                         <!-- pane1 -->
                       <div class="tab-pane fade in active" id="concisePane">
                          <ul class="list-group">
-                            <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner}">   <span class='pull-right' ng-class="{disqualified: player.disqualified}">{{player.score}}</span>
+                            <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner,second:player.ranking == 2,third:player.ranking == 3,fourth:player.ranking == 4,fifth:player.ranking == 5,sixth:player.ranking == 6,seventh:player.ranking == 7,eight:player.ranking == 8}">   <span class='pull-right' ng-class="{disqualified: player.disqualified}">{{player.score}}</span>
                                 <p>{{player.name}}</p>
                                 
                             </li>
@@ -214,7 +214,9 @@
             </tr>
             <tr>
                 <td id="td-player-name" class="td-colspanned" colspan="5" ng-click="processThrow()">
-                    <p>{{activePlayer.name}} &raquo;</p>
+                    <span class="icon-right-open-outline pull-right"></span>
+                    <p>{{activePlayer.name}}</p>
+
                 </td>
                 <td id="td-0" class="td-score-number" ng-click="toggleNumber(0)">0</td>
             </tr>

@@ -75,6 +75,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: Champion-medium;
   src: url(../fonts/NationalChampion-Medium.woff), url(../fonts/NationalChampion-Medium.otf) format("opentype");
 }
+/* $accentColor-light:#1275B3; */
 /*mixins*/
 /* line 1, ../sass/partials/general/_modals.scss */
 .modal {
@@ -203,7 +204,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   transition: all 200ms ease-out 0s;
 }
 /* line 21, ../sass/partials/gameboard/_base.scss */
-#mainTable td.td-score-number:hover, #mainTable td#td-options:hover {
+#mainTable .td-score-number:hover, #mainTable #td-options:hover, #mainTable #td-player-name.active:hover {
   cursor: pointer;
 }
 /* line 25, ../sass/partials/gameboard/_base.scss */
@@ -211,7 +212,45 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-color: #1275B3;
   border-color: #1275B3;
 }
-/* line 30, ../sass/partials/gameboard/_base.scss */
+/* line 29, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-options img {
+  width: 35px;
+}
+/* line 33, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-player-name .icon-right-open-outline {
+  opacity: 0;
+  font-family: "fontello";
+  content: '\00a0\e802';
+  -webkit-transition: all 200ms ease-out 0s;
+  -moz-transition: all 200ms ease-out 0s;
+  -o-transition: all 200ms ease-out 0s;
+  -ms-transition: all 200ms ease-out 0s;
+  transition: all 200ms ease-out 0s;
+}
+/* line 39, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-player-name.active {
+  background-color: #E60000;
+  border-color: #E60000;
+}
+/* line 42, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-player-name.active .icon-right-open-outline {
+  opacity: 1;
+  -webkit-transition: all 200ms ease-out 200ms;
+  -moz-transition: all 200ms ease-out 200ms;
+  -o-transition: all 200ms ease-out 200ms;
+  -ms-transition: all 200ms ease-out 200ms;
+  transition: all 200ms ease-out 200ms;
+}
+/* line 46, ../sass/partials/gameboard/_base.scss */
+#mainTable #td-player-name.active p {
+  width: 90%;
+  -webkit-transition: all 200ms ease-out 0s;
+  -moz-transition: all 200ms ease-out 0s;
+  -o-transition: all 200ms ease-out 0s;
+  -ms-transition: all 200ms ease-out 0s;
+  transition: all 200ms ease-out 0s;
+}
+/* line 51, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-player-name p {
   position: absolute;
   bottom: 0px;
@@ -221,23 +260,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-/* line 40, ../sass/partials/gameboard/_base.scss */
-#mainTable #td-player-name.active {
-  background-color: #E60000;
-  border-color: #E60000;
-}
-/* line 44, ../sass/partials/gameboard/_base.scss */
-#mainTable #td-player-name:hover {
-  cursor: pointer;
-}
-/* line 48, ../sass/partials/gameboard/_base.scss */
-#mainTable img {
-  width: 35px;
+  -webkit-transition: all 200ms ease-out 200ms;
+  -moz-transition: all 200ms ease-out 200ms;
+  -o-transition: all 200ms ease-out 200ms;
+  -ms-transition: all 200ms ease-out 200ms;
+  transition: all 200ms ease-out 200ms;
 }
 
 @media (min-width: 768px) {
-  /* line 54, ../sass/partials/gameboard/_base.scss */
+  /* line 66, ../sass/partials/gameboard/_base.scss */
   #mainTable {
     /* height determined by positioning.js */
     width: 95%;
@@ -245,8 +276,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     line-height: 40px;
     border-spacing: 15px;
   }
-  /* line 60, ../sass/partials/gameboard/_base.scss */
-  #mainTable img {
+  /* line 72, ../sass/partials/gameboard/_base.scss */
+  #mainTable #td-options img {
     width: 60px;
   }
 }
@@ -288,12 +319,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 28, ../sass/partials/gameboard/_scoreTable.scss */
 #scoreTable .score-table-item p.playerName {
   display: none;
+  position: absolute;
   width: 100%;
+  top: 0px;
   font-size: 12px;
   line-height: 12px;
   padding: 3px;
-  position: absolute;
-  top: 0px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -303,11 +334,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-color: #1275B3;
 }
 /* line 42, ../sass/partials/gameboard/_scoreTable.scss */
-#scoreTable .score-table-item.active + td p.score, td p.score + #scoreTable .score-table-item.active, #scoreTable .score-table-item.active p.score, #scoreTable .score-table-item.active div.borderDiv {
+#scoreTable .score-table-item.active + .score-table-item p.score, .score-table-item p.score + #scoreTable .score-table-item.active, #scoreTable .score-table-item.active p.score {
   border: 0px;
 }
 /* line 46, ../sass/partials/gameboard/_scoreTable.scss */
-#scoreTable .score-table-item.disqualified {
+#scoreTable .score-table-item.disqualified .score {
   color: #E60000;
 }
 
@@ -446,17 +477,50 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #1275B3;
 }
 /* line 105, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.second p:after, #modalScoreboard #concisePane li.third p:after, #modalScoreboard #concisePane li.fourth p:after, #modalScoreboard #concisePane li.fifth p:after, #modalScoreboard #concisePane li.sixth p:after, #modalScoreboard #concisePane li.seventh p:after, #modalScoreboard #concisePane li.eight p:after {
+  font-size: 10px;
+  color: #1275B3;
+}
+/* line 110, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.second p:after {
+  content: ' - 2nd';
+}
+/* line 113, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.third p:after {
+  content: ' - 3rd';
+}
+/* line 116, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.fourth p:after {
+  content: ' - 4th';
+}
+/* line 119, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.fifth p:after {
+  content: ' - 5th';
+}
+/* line 122, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.sixth p:after {
+  content: ' - 6th';
+}
+/* line 125, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.seventh p:after {
+  content: ' - 7th';
+}
+/* line 128, ../sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.eight p:after {
+  content: ' - 8th';
+}
+/* line 132, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane span.disqualified {
   font-family: "Champion-Medium", sans-serif;
   color: #E60000;
 }
 
 @media (min-width: 360px) {
-  /* line 116, ../sass/partials/modals/_scoreboard.scss */
+  /* line 143, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .modal-header .nav-tabs li a {
     font-size: 15px;
   }
-  /* line 121, ../sass/partials/modals/_scoreboard.scss */
+  /* line 148, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .btn {
     font-size: 15px;
     padding: 6px 12px;
@@ -506,12 +570,6 @@ li.animate-enter {
     transform: translateX(0);
   }
 }
-/* #td-player-name.active,.animate-pulse{
-  -moz-animation: pulse 2s infinite ease-in-out 400ms;
-  -o-animation: pulse 2s infinite ease-in-out 400ms;
-  -webkit-animation: pulse 2s infinite ease-in-out 400ms;
-  animation: pulse pulse 2s infinite ease-in-out 400ms;
-} */
 @-moz-keyframes spin {
   0% {
     -moz-transform: rotate(0deg);
@@ -582,76 +640,93 @@ li.animate-enter {
     transform: rotate(359deg);
   }
 }
-@-moz-keyframes pulse {
+/* #td-player-name.active,.animate-pulse{
+  -moz-animation: pulse 2s infinite ease-in-out 400ms;
+  -o-animation: pulse 2s infinite ease-in-out 400ms;
+  -webkit-animation: pulse 2s infinite ease-in-out 400ms;
+  animation: pulse pulse 2s infinite ease-in-out 400ms;
+} */
+/* @-moz-keyframes pulse {
   0% {
-    background-color: #e60000;
-    border-color: #e60000;
+   	background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
+
   50% {
-    background-color: rgba(230, 0, 0, 0.6);
-    border-color: rgba(230, 0, 0, 0.6);
+	background-color:rgba(230,0,0,0.6);
+	border-color:rgba(230,0,0,0.6);
   }
+
   100% {
-    background-color: #e60000;
-    border-color: #e60000;
+    background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
 }
 @-webkit-keyframes pulse {
   0% {
-    background-color: #e60000;
-    border-color: #e60000;
+   	background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
+
   50% {
-    background-color: rgba(230, 0, 0, 0.6);
-    border-color: rgba(230, 0, 0, 0.6);
+	background-color:rgba(230,0,0,0.6);
+	border-color:rgba(230,0,0,0.6);
   }
+
   100% {
-    background-color: #e60000;
-    border-color: #e60000;
+    background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
 }
 @-o-keyframes pulse {
   0% {
-    background-color: #e60000;
-    border-color: #e60000;
+   	background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
+
   50% {
-    background-color: rgba(230, 0, 0, 0.6);
-    border-color: rgba(230, 0, 0, 0.6);
+	background-color:rgba(230,0,0,0.6);
+	border-color:rgba(230,0,0,0.6);
   }
+
   100% {
-    background-color: #e60000;
-    border-color: #e60000;
+    background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
 }
 @-ms-keyframes pulse {
-  0% {
-    background-color: #e60000;
-    border-color: #e60000;
+ 0% {
+   	background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
+
   50% {
-    background-color: rgba(230, 0, 0, 0.6);
-    border-color: rgba(230, 0, 0, 0.6);
+	background-color:rgba(230,0,0,0.6);
+	border-color:rgba(230,0,0,0.6);
   }
+
   100% {
-    background-color: #e60000;
-    border-color: #e60000;
+    background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
 }
 @keyframes pulse {
   0% {
-    background-color: #e60000;
-    border-color: #e60000;
+   	background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
+
   50% {
-    background-color: rgba(230, 0, 0, 0.6);
-    border-color: rgba(230, 0, 0, 0.6);
+	background-color:rgba(230,0,0,0.6);
+	border-color:rgba(230,0,0,0.6);
   }
+
   100% {
-    background-color: #e60000;
-    border-color: #e60000;
+    background-color:rgba(230,0,0,1);
+	border-color:rgba(230,0,0,1);
   }
 }
+ */
 /* line 11, ../sass/mainStyle.scss */
 body {
   font-family: "Champion-Medium", sans-serif;

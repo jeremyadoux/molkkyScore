@@ -91,11 +91,13 @@ function processMiss(){
 
 //sort utilities
 function comparePlayerScores(playerOne,playerTwo){
-	if(playerOne.score > playerTwo.score){
+	var scoreOne = playerOne.disqualified ? playerOne.scoreHistory[playerOne.scoreHistory.length-2] : playerOne.score;
+	var scoreTwo = playerTwo.disqualified ? playerTwo.scoreHistory[playerTwo.scoreHistory.length-2] : playerTwo.score;
+	if(scoreOne > scoreTwo){
 		return -1;
 	}
-	else if(playerOne.score === playerTwo.score){
-		if(playerOne.score !== 50){
+	else if(scoreOne === scoreTwo){
+		if(scoreOne !== 50){
 			return 0;
 		}
 		else{
@@ -172,13 +174,11 @@ function toggleNumberActivation(number){
     if($(idSelector).hasClass("active")){
 		$(idSelector).removeClass("active");
 		$('#mainTable #td-player-name').removeClass("active");
-		$('addScoreBadge').text('');
 	}
 	else{
 		$('#mainTable .td-score-number.active').removeClass("active");
 		$(idSelector).addClass("active");
 		$('#mainTable #td-player-name').addClass("active");
-		$('#addScoreBadge').text('+' + number);
 	}
 }
 

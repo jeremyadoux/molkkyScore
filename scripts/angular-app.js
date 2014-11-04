@@ -26,6 +26,7 @@ app.factory('GameData', function(){
 				newIndex++;
 				this.outOfTheGame = false;
 				this.winner = false;
+				this.ranking = 999;
 				this.score = 0;
 				this.scoreHistory = new Array();
 				this.misses = 0; /*3 misses in a row means disqualification*/
