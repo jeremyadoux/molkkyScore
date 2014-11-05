@@ -1,0 +1,36 @@
+#modalAddPlayers{
+	.alert{
+		color:$alertColor;
+		border:none;
+		background-color: $lightColor;
+		padding:0px 15px;
+		margin:0px;
+		display:none;
+	}
+	.form-control{
+		color:$darkColor;
+		border:1px solid $darkColor;
+		border-right:none;
+		box-shadow: none;
+	}
+	.input-group-addon{
+		color:$lightColor;
+		background-color:$accentColor;
+		border-color:$darkColor;
+	}
+	.icon-plus{
+	  line-height: 1;
+	}
+	.icon-plus:hover{
+		cursor:pointer;
+	}
+	.max-message{
+		text-align: center;
+		color:$alertColor;
+		font-family: $mediumFontFamily;
+		padding: 10px 0px;
+		border-width: 1px 0px;
+		border-style: solid;
+		border-color: $alertColor;
+	}
+}

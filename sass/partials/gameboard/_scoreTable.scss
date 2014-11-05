@@ -39,7 +39,7 @@
 		}
 		&.active{
 			border-color:$accentColor;
-			& + .score-table-item p.score,  .score-table-item p.score + &, p.score{
+			& + .score-table-item p.score, .score-table-item p.score + &, p.score{
 				border:0px;
 			}
 		}

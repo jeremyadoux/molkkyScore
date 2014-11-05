@@ -23,20 +23,6 @@
 		font-size:inherit;
 		color:$alertColor;
 	}
-	.alert{
-		color:$alertColor;
-		border:none;
-		background-color: $lightColor;
-		padding:0px 15px;
-		margin:0px;
-		display:none;
-	}
-	.form-control{
-		color:$darkColor;
-		border:1px solid $darkColor;
-		border-right:none;
-		box-shadow: none;
-	}
 	.btn-primary{
 		background-color: $accentColor;
 		border-color:$accentColor;
@@ -51,19 +37,8 @@
 		outline:thin dotted;
 		outline-offset: -2px;
 	}
-	.input-group-addon{
-		color:$lightColor;
-		background-color:$accentColor;
-		border-color:$darkColor;
-	}
 	.list-group-item{
 		border-color:$lightColor;
 		@include border-radius(6px);
-	}
-	.icon-plus{
-	  line-height: 1;
-	}
-	.icon-plus:hover{
-		cursor:pointer;
 	}
 }

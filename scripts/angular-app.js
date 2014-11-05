@@ -181,10 +181,19 @@ app.factory('GameData', function(){
 	};
 });
 
-app.filter('rangeZeroToFour', function () {
+app.filter('rangeFirstRow', function () {
   return function (items) {
-  	var length = items.length < 4 ? items.length : 4;
-    var filtered = [];
+  	var filtered = [];
+  	var length = -1;
+  	if(items.length <= 4){
+  		length = items.length;
+  	}
+  	else if(items.length > 6){
+  		length = 4;
+  	}
+  	else{
+  		length = 3;
+  	}
     for (var i = 0; i < length; i++) {
         filtered.push(items[i]);
     }
@@ -192,10 +201,17 @@ app.filter('rangeZeroToFour', function () {
   };
 });
 
-app.filter('rangeFiveToEight', function () {
+app.filter('rangeSecondRow', function () {
   return function (items) {
     var filtered = [];
-    for (var i = 4; i < items.length; i++) {
+    var startPos = -1;
+    if(items.length == 5 || items.length == 6){
+  		startPos = 3;
+  	}
+  	else{
+  		startPos = 4;
+  	}
+    for (var i = startPos; i < items.length; i++) {
         filtered.push(items[i]);
     }
     return filtered;
