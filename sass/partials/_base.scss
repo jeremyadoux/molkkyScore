@@ -51,10 +51,18 @@ $accentColor:#1275B3;
   border-radius: $radius $radius 0px 0px;
 }
 
-@mixin transition($duration, $delay: 0s) {
-  -webkit-transition: all $duration ease-out $delay;
-  -moz-transition: all $duration ease-out $delay;
-  -o-transition: all $duration ease-out $delay;
-  -ms-transition: all $duration ease-out $delay;
-  transition: all $duration ease-out $delay;
+@mixin transition($property, $duration, $delay: 0s) {
+  -webkit-transition: $property $duration ease-out $delay;
+  -moz-transition: $property $duration ease-out $delay;
+  -o-transition: $property $duration ease-out $delay;
+  -ms-transition: $property $duration ease-out $delay;
+  transition: $property $duration ease-out $delay;
+}
+
+@mixin animation-delay($delay) {
+  -webkit-animation-delay:$delay;
+   -moz-animation-delay:$delay;
+    -ms-animation-delay:$delay;
+     -o-animation-delay:$delay;
+        animation-delay:$delay;
 }

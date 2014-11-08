@@ -77,6 +77,147 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* $accentColor-light:#1275B3; */
 /*mixins*/
+/* line 1, ../sass/partials/general/_loader.scss */
+.loader-container {
+  display: none;
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  background: #2E2E2E;
+  text-align: center;
+  margin: 1em auto;
+  color: #FFFFFF;
+}
+/* line 10, ../sass/partials/general/_loader.scss */
+.loader-container .loading-title {
+  display: block;
+  margin: 0 auto;
+}
+/* line 15, ../sass/partials/general/_loader.scss */
+.loader-container .dot {
+  height: 10px;
+  width: 10px;
+  background: #1275B3;
+  display: inline-block;
+  margin: 12px 2px;
+  border-radius: 100%;
+  -webkit-animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
+  -moz-animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
+  -o-animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
+  animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
+}
+/* line 28, ../sass/partials/general/_loader.scss */
+.loader-container .dot-1 {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -ms-animation-delay: 1s;
+  -o-animation-delay: 1s;
+  animation-delay: 1s;
+}
+/* line 29, ../sass/partials/general/_loader.scss */
+.loader-container .dot-2 {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  -ms-animation-delay: 0.8s;
+  -o-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+/* line 30, ../sass/partials/general/_loader.scss */
+.loader-container .dot-3 {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -ms-animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+/* line 31, ../sass/partials/general/_loader.scss */
+.loader-container .dot-4 {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  -ms-animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+/* line 32, ../sass/partials/general/_loader.scss */
+.loader-container .dot-5 {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -ms-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+/* line 33, ../sass/partials/general/_loader.scss */
+.loader-container .dot-6 {
+  -webkit-animation-delay: 0;
+  -moz-animation-delay: 0;
+  -ms-animation-delay: 0;
+  -o-animation-delay: 0;
+  animation-delay: 0;
+}
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: translateX(-40px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes loader {
+  0% {
+    -moz-transform: translateX(-40px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    -moz-transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes loader {
+  0% {
+    -o-transform: translateX(-40px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    -o-transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes loader {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 /* line 1, ../sass/partials/general/_modals.scss */
 .modal {
   font-family: "Champion-Regular", sans-serif;
@@ -117,45 +258,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #E60000;
 }
 /* line 26, ../sass/partials/general/_modals.scss */
-.modal .alert {
-  color: #E60000;
-  border: none;
-  background-color: #FFFFFF;
-  padding: 0px 15px;
-  margin: 0px;
-  display: none;
-}
-/* line 34, ../sass/partials/general/_modals.scss */
-.modal .form-control {
-  color: #2E2E2E;
-  border: 1px solid #2E2E2E;
-  border-right: none;
-  box-shadow: none;
-}
-/* line 40, ../sass/partials/general/_modals.scss */
 .modal .btn-primary {
   background-color: #1275B3;
   border-color: #1275B3;
 }
-/* line 44, ../sass/partials/general/_modals.scss */
+/* line 30, ../sass/partials/general/_modals.scss */
 .modal .btn-default {
   font-family: "Champion-Medium", sans-serif;
   background-color: #FFFFFF;
   border-color: #2E2E2E;
 }
-/* line 49, ../sass/partials/general/_modals.scss */
+/* line 35, ../sass/partials/general/_modals.scss */
 .modal .btn-icon-only {
   border: none;
   outline: thin dotted;
   outline-offset: -2px;
 }
-/* line 54, ../sass/partials/general/_modals.scss */
-.modal .input-group-addon {
-  color: #FFFFFF;
-  background-color: #1275B3;
-  border-color: #2E2E2E;
-}
-/* line 59, ../sass/partials/general/_modals.scss */
+/* line 40, ../sass/partials/general/_modals.scss */
 .modal .list-group-item {
   border-color: #FFFFFF;
   -webkit-border-radius: 6px;
@@ -163,14 +282,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
   border-radius: 6px;
-}
-/* line 63, ../sass/partials/general/_modals.scss */
-.modal .icon-plus {
-  line-height: 1;
-}
-/* line 66, ../sass/partials/general/_modals.scss */
-.modal .icon-plus:hover {
-  cursor: pointer;
 }
 
 /* line 1, ../sass/partials/gameboard/_base.scss */
@@ -197,13 +308,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
   border-radius: 6px;
-  -webkit-transition: all 200ms ease-out 0s;
-  -moz-transition: all 200ms ease-out 0s;
-  -o-transition: all 200ms ease-out 0s;
-  -ms-transition: all 200ms ease-out 0s;
-  transition: all 200ms ease-out 0s;
 }
-/* line 21, ../sass/partials/gameboard/_base.scss */
+/* line 20, ../sass/partials/gameboard/_base.scss */
 #mainTable .td-score-number:hover, #mainTable #td-options:hover, #mainTable #td-player-name.active:hover {
   cursor: pointer;
 }
@@ -212,63 +318,49 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-color: #1275B3;
   border-color: #1275B3;
 }
-/* line 29, ../sass/partials/gameboard/_base.scss */
+/* line 31, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-options img {
   width: 35px;
 }
-/* line 33, ../sass/partials/gameboard/_base.scss */
+/* line 35, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-player-name .icon-right-open-outline {
   opacity: 0;
   font-family: "fontello";
   content: '\00a0\e802';
-  -webkit-transition: all 200ms ease-out 0s;
-  -moz-transition: all 200ms ease-out 0s;
-  -o-transition: all 200ms ease-out 0s;
-  -ms-transition: all 200ms ease-out 0s;
-  transition: all 200ms ease-out 0s;
+  -webkit-transition: opacity 200ms ease-out 0s;
+  -moz-transition: opacity 200ms ease-out 0s;
+  -o-transition: opacity 200ms ease-out 0s;
+  -ms-transition: opacity 200ms ease-out 0s;
+  transition: opacity 200ms ease-out 0s;
 }
-/* line 39, ../sass/partials/gameboard/_base.scss */
+/* line 41, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-player-name.active {
   background-color: #E60000;
   border-color: #E60000;
 }
-/* line 42, ../sass/partials/gameboard/_base.scss */
+/* line 44, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-player-name.active .icon-right-open-outline {
   opacity: 1;
-  -webkit-transition: all 200ms ease-out 200ms;
-  -moz-transition: all 200ms ease-out 200ms;
-  -o-transition: all 200ms ease-out 200ms;
-  -ms-transition: all 200ms ease-out 200ms;
-  transition: all 200ms ease-out 200ms;
+  -webkit-transition: opacity 200ms ease-out 0s;
+  -moz-transition: opacity 200ms ease-out 0s;
+  -o-transition: opacity 200ms ease-out 0s;
+  -ms-transition: opacity 200ms ease-out 0s;
+  transition: opacity 200ms ease-out 0s;
 }
-/* line 46, ../sass/partials/gameboard/_base.scss */
-#mainTable #td-player-name.active p {
-  width: 90%;
-  -webkit-transition: all 200ms ease-out 0s;
-  -moz-transition: all 200ms ease-out 0s;
-  -o-transition: all 200ms ease-out 0s;
-  -ms-transition: all 200ms ease-out 0s;
-  transition: all 200ms ease-out 0s;
-}
-/* line 51, ../sass/partials/gameboard/_base.scss */
+/* line 49, ../sass/partials/gameboard/_base.scss */
 #mainTable #td-player-name p {
   position: absolute;
-  bottom: 0px;
-  height: 70%;
-  width: 100%;
+  left: 12%;
+  line-height: 100%;
+  width: 80%;
   padding: 0px 5px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  -webkit-transition: all 200ms ease-out 200ms;
-  -moz-transition: all 200ms ease-out 200ms;
-  -o-transition: all 200ms ease-out 200ms;
-  -ms-transition: all 200ms ease-out 200ms;
-  transition: all 200ms ease-out 200ms;
 }
 
 @media (min-width: 768px) {
-  /* line 66, ../sass/partials/gameboard/_base.scss */
+  /* line 63, ../sass/partials/gameboard/_base.scss */
   #mainTable {
     /* height determined by positioning.js */
     width: 95%;
@@ -276,7 +368,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     line-height: 40px;
     border-spacing: 15px;
   }
-  /* line 72, ../sass/partials/gameboard/_base.scss */
+  /* line 69, ../sass/partials/gameboard/_base.scss */
   #mainTable #td-options img {
     width: 60px;
   }
@@ -362,6 +454,47 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block;
   }
 }
+/* line 2, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .alert {
+  color: #E60000;
+  border: none;
+  background-color: #FFFFFF;
+  padding: 0px 15px;
+  margin: 0px;
+  display: none;
+}
+/* line 10, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .form-control {
+  color: #2E2E2E;
+  border: 1px solid #2E2E2E;
+  border-right: none;
+  box-shadow: none;
+}
+/* line 16, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .input-group-addon {
+  color: #FFFFFF;
+  background-color: #1275B3;
+  border-color: #2E2E2E;
+}
+/* line 21, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .icon-plus {
+  line-height: 1rem;
+}
+/* line 24, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .icon-plus:hover {
+  cursor: pointer;
+}
+/* line 27, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .max-message {
+  text-align: center;
+  color: #E60000;
+  font-family: "Champion-Medium", sans-serif;
+  padding: 10px 0px;
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #E60000;
+}
+
 /* line 2, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header {
   padding: 7px;
@@ -727,7 +860,7 @@ li.animate-enter {
   }
 }
  */
-/* line 11, ../sass/mainStyle.scss */
+/* line 13, ../sass/mainStyle.scss */
 body {
   font-family: "Champion-Medium", sans-serif;
   background-color: #2E2E2E;

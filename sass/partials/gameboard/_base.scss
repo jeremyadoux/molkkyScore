@@ -15,17 +15,19 @@
 		text-align: center;
 		border:1px solid $lightColor;
 		@include border-radius(6px);
-		@include transition(200ms);
 	}
 	.td-score-number, #td-options,#td-player-name.active{
 		&:hover{
 			cursor:pointer;
 		}
 	}
-	.td-score-number.active{
-		background-color:$accentColor;
-		border-color:$accentColor;
+	.td-score-number{
+		&.active{
+			background-color:$accentColor;
+			border-color:$accentColor;
+		}
 	}
+		
 	#td-options img{
 		width:35px;
 	}
@@ -34,14 +36,14 @@
 			opacity:0;
 			font-family: "fontello";
 			content: '\00a0\e802';
-			@include transition(200ms);
+			@include transition(opacity, 200ms);
 		}
 		&.active{
 			background-color:$alertColor;
 			border-color:$alertColor;
 			.icon-right-open-outline{
 				opacity:1;
-				@include transition(200ms);
+				@include transition(opacity, 200ms);
 			}
 		}
 		p{
