@@ -1,106 +1,53 @@
-/*
-   Animation example, for spinners
-*/
 .animate-spin {
   -moz-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   -o-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   -webkit-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
+  -ms-animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   animation: spin 1.5s cubic-bezier(0,0,.19,1.17);
   display: inline-block;
-}
-
-li.animate-enter{
-  transform: translateX(50px);
-  -moz-animation: 
-    openspace .3s ease forwards,
-    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
-  -o-animation: 
-    openspace .3s ease forwards,
-    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
-  -webkit-animation: 
-    openspace .3s ease forwards,
-    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
-  animation:
-    openspace .3s ease forwards,
-    animate-enter-animation .3s cubic-bezier(0,0,.19,1.17) forwards;
-}
- 
- //for animate-enter: content below new item moves down smoothly
-@keyframes openspace {
-    to {
-        height: auto;
-    }
-}
- 
-@keyframes animate-enter-animation {
-    0% {
-        opacity: 0;
-         transform: translateX(50px);
-    }
- 
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
 }
 
 @-moz-keyframes spin {
   0% {
     -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
     -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
 @-webkit-keyframes spin {
   0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
 @-o-keyframes spin {
   0% {
-    -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -moz-transform: rotate(359deg);
     -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
 @-ms-keyframes spin {
   0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
   100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
     transform: rotate(359deg);
   }
 }
@@ -119,98 +66,3 @@ li.animate-enter{
     transform: rotate(359deg);
   }
 }
-
-
-
-
-
-
-
-/* #td-player-name.active,.animate-pulse{
-  -moz-animation: pulse 2s infinite ease-in-out 400ms;
-  -o-animation: pulse 2s infinite ease-in-out 400ms;
-  -webkit-animation: pulse 2s infinite ease-in-out 400ms;
-  animation: pulse pulse 2s infinite ease-in-out 400ms;
-} */
-
-/* @-moz-keyframes pulse {
-  0% {
-   	background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-
-  50% {
-	background-color:rgba(230,0,0,0.6);
-	border-color:rgba(230,0,0,0.6);
-  }
-
-  100% {
-    background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-}
-@-webkit-keyframes pulse {
-  0% {
-   	background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-
-  50% {
-	background-color:rgba(230,0,0,0.6);
-	border-color:rgba(230,0,0,0.6);
-  }
-
-  100% {
-    background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-}
-@-o-keyframes pulse {
-  0% {
-   	background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-
-  50% {
-	background-color:rgba(230,0,0,0.6);
-	border-color:rgba(230,0,0,0.6);
-  }
-
-  100% {
-    background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-}
-@-ms-keyframes pulse {
- 0% {
-   	background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-
-  50% {
-	background-color:rgba(230,0,0,0.6);
-	border-color:rgba(230,0,0,0.6);
-  }
-
-  100% {
-    background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-}
-@keyframes pulse {
-  0% {
-   	background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-
-  50% {
-	background-color:rgba(230,0,0,0.6);
-	border-color:rgba(230,0,0,0.6);
-  }
-
-  100% {
-    background-color:rgba(230,0,0,1);
-	border-color:rgba(230,0,0,1);
-  }
-}
- */

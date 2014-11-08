@@ -55,7 +55,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    GameData.resetThrowNumber();
 	    $scope.data = GameData.getData();
 	    initializeMainTable($scope.players.length);
-	    $('#td-player-name').click(); // dirty trick for rendering ng-repeat
+	    $scope.$apply();
 	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
 		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
 		  	$('#modalScoreboard #scoreboardDetails td').css({width:100/$scope.players.length+"%"});

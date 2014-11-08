@@ -36,14 +36,12 @@
 			opacity:0;
 			font-family: "fontello";
 			content: '\00a0\e802';
-			@include transition(opacity, 200ms);
 		}
 		&.active{
 			background-color:$alertColor;
 			border-color:$alertColor;
 			.icon-right-open-outline{
 				opacity:1;
-				@include transition(opacity, 200ms);
 			}
 		}
 		p{
