@@ -1,3 +1,5 @@
+var isLandscape = wasLandscape = true;
+
 $(document).ready(function() {
 	setTableHeight();
 	isLandscape = ($(window).height() < $(window).width());
