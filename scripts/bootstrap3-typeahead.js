@@ -54,6 +54,7 @@
         this.$element
           .val(this.updater(val))
           .change()
+          $('#addPlayerIcon').click()
       }
       return this.hide()
     }
@@ -281,13 +282,9 @@
           break
 
         case 9: // tab
-          if (!this.shown) return
-          this.select()
-          break
         case 13: // enter
           if (!this.shown) return
           this.select()
-          $('#addPlayerIcon').click();
           break
 
         case 27: // escape
