@@ -14,6 +14,14 @@
     src: url(../fonts/NationalChampion-Medium.woff),
     	 url(../fonts/NationalChampion-Medium.otf) format('opentype');
 }
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot');
+  src: url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+       url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+       url('../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular') format('svg');
+}
 
 $boldFontFamily:'Champion-Bold',sans-serif;
 $mediumFontFamily:'Champion-Medium',sans-serif;
