@@ -1,4 +1,6 @@
 /*globals*/
+var loadingTime = 2000;
+
 var warnings = {
 	playerName:{
 		empty:"Please provide a valid player name",
@@ -7,13 +9,20 @@ var warnings = {
 	}
 };
 
+var loading = {
+	firstGame:"starting game",
+	startApp:"starting application",
+	newGame:"starting new game",
+	restartGame:"restarting game",	
+}
+
 var lightColor = '#FFFFFF';
 var alertColor = '#D82A25';
 var darkColor = '#020000';
 var accentColor = '#2DBDE1';
 
 function validatePlayerName(newPlayerName,players,alertElement){
-	if(newPlayerName == ""){
+	if($.trim(newPlayerName) == ""){
 		warn(alertElement, warnings.playerName.empty);
 		return false;
 	}
@@ -198,4 +207,20 @@ function addNewPlayerNamesToLocalStorage(currentPlayers){
 		});
 		localStorage.setItem("playerNames",JSON.stringify(playerNames));
 	}
+}
+
+function showModal(modal){
+	$(modal).modal({
+			keyboard: false, // prevent modal from closing with ESC key 
+			backdrop: 'static'}, // prevent modal from closing with outside click 
+		'show');
+}
+
+function showModalWithLoader(modal, loaderMessage){
+	$('loading-title').text(loaderMessage);
+	$('.loader-container').show();
+	setTimeout(function(){
+		$('.loader-container').hide();
+		showModal(modal);
+	},loadingTime);	
 }

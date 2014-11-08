@@ -25,7 +25,12 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
     	if($scope.players.length > 1){
 			$('#modalAddPlayers').modal('hide');
             addNewPlayerNamesToLocalStorage($scope.players);
-            $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            $('.loading-title').text(loading.firstGame);
+            $('.loader-container').show();
+            setTimeout(function(){
+                $('.loader-container').hide();
+                $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            }, loadingTime);  
 		}
 		else{
 			warn($('#modalAddPlayers .alert'),warnings.playerName.tooFew);

@@ -1,9 +1,11 @@
 app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {	
 	$scope.btnNewGame = function(){
+		$('#mainTable').fadeOut(1000);
 		$('#modalScoreboard').modal('hide');
         $rootScope.$broadcast('initializeNewPlayers');
     };
     $scope.btnExit = function(){
+    	$('#mainTable').fadeOut(1000);
     	if(GameData.gameHasWinner()){ 
     		GameData.emptyPlayersArray();
 	    	$('#mainTable').fadeOut(1000);

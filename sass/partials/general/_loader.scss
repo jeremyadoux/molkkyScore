@@ -1,0 +1,39 @@
+.loader-container {
+	display:none;
+	position:absolute;
+	top:40%;
+	width:100%;
+  	background:#2E2E2E;
+  	text-align: center;
+	margin: 1em auto;
+	color: $lightColor;
+	.loading-title {
+	  display: block;
+	  margin: 0 auto
+	}
+
+	.dot {
+		height: 10px; 
+	  	width: 10px;
+		background: $accentColor;
+		display: inline-block;
+		margin: 12px 2px;
+		border-radius: 100%;
+		animation: loader 3s cubic-bezier(0.030, 0.615, 0.995, 0.415) infinite both
+	}
+
+	.dot-1 {animation-delay: 1s}
+	.dot-2 {animation-delay: 0.8s}
+	.dot-3 {animation-delay: 0.6s}
+	.dot-4 {animation-delay: 0.4s}
+	.dot-5 {animation-delay: 0.2s}
+	.dot-6 {animation-delay: 0}
+
+	@keyframes loader {
+		0% {transform: translateX(-40px); opacity: 0}
+		25% {opacity: 1}
+		50% {transform: translateX(40px); opacity: 0}
+		100% {opacity: 0}
+	}
+}
+

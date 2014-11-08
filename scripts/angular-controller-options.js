@@ -1,5 +1,6 @@
 app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     $scope.restartGame = function(){
+        $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
             GameData.resetPlayers();
             $('#modalOptions').modal('hide');
@@ -12,6 +13,7 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
         }   	
     };
     $scope.newGame = function(){
+        $('#mainTable').fadeOut(1000);
     	$('#modalOptions').modal('hide');
         $rootScope.$broadcast('initializeNewPlayers');
     };
@@ -21,6 +23,7 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     	$rootScope.$broadcast('updateGameBoard'); //generate 'updateGameBoard' event
     };
     $scope.exitGame = function(){
+        $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
             GameData.emptyPlayersArray();
             $('#mainTable').fadeOut(1000);

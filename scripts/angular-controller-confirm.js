@@ -7,14 +7,20 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
             $('#modalStart').modal('show');
         }
         else if(GameData.getConfirmType() == 'Restart'){
-            GameData.resetPlayers();
             $('#modalConfirm').modal('hide');
-            $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            $('.loading-title').text(loading.restartGame);
+            $('.loader-container').show();
+            GameData.resetPlayers();
+            setTimeout(function(){
+                $('.loader-container').hide();
+                $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            }, loadingTime);
         }
         GameData.resetConfirmType();
     };
     $scope.btnNo = function(){
         $('#modalConfirm').modal('hide');
+        $('#mainTable').fadeIn(1000);
     };
 
     //events
