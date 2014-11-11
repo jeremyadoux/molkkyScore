@@ -50,7 +50,8 @@
 				border-bottom: 1px solid $darkColor;
 				background-color: $lightColor;
 				padding:10px;
-				border: 2px solid $darkColor;
+				border: 1px solid $darkColor;
+				border-bottom-width: 2px;
 				p{
 					text-overflow:ellipsis;
 					overflow:hidden;
