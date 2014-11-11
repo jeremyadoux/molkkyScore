@@ -1,5 +1,8 @@
 $(document).ready(function() {
-	showModalWithLoader('#modalStart', loading.startApp);
+	setTimeout(function(){
+		$('.loader-container').hide();
+		showModal('#modalStart');
+	},loadingTime);
 });
 
 app.controller("angular-modal-start", function($scope,$rootScope) {

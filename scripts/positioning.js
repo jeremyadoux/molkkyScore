@@ -28,23 +28,23 @@ function positionTable(){
 }
 
 function setPortrait(){
-	$( ".xs-td-row-2" ).wrapAll( "<tr id='xs-tr-2' />");
-	$( ".xs-td-row-4" ).wrapAll( "<tr id='xs-tr-4' />");
-	$( "#xs-tr-2" ).insertAfter( $( "#xs-tr-1" ) );
-	$( "#xs-tr-4" ).insertAfter( $( "#xs-tr-3" ) );
+	$("<tr id='xs-tr-2' />").insertAfter("#xs-tr-1");
+	$("<tr id='xs-tr-4' />").insertAfter("#xs-tr-3");
+	$("#xs-tr-2").append( $(".xs-td-row-2"));
+	$("#xs-tr-4").append( $(".xs-td-row-4"));
 	$( ".td-colspanned" ).attr( "colspan", "2" );
-	$("#mainTable  > tr > td").css({
+	$("#mainTable  tr td").css({
 		width:"30%"
 	});
 }
 
 function setLandscape(){
-	$( "#xs-tr-2" ).insertAfter( $( "#td-3" ) );
-	$( "#xs-tr-4" ).insertAfter( $( "#td-9" ) );
-	$( "#td-4" ).unwrap();
-	$( "#td-10" ).unwrap();
+	$("#xs-tr-1").append( $(".xs-td-row-2") );
+	$("#xs-tr-3").append( $(".xs-td-row-4") );
+	$("#xs-tr-2").remove();
+	$("#xs-tr-4").remove();
 	$( ".td-colspanned" ).attr( "colspan", "5" );
-	$("#mainTable > tr > td").css({
+	$("#mainTable tr td").css({
 		width:"15%"
 	});
 }
