@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" manifest="manifest.appcache">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="fonts/fontello/css/fontello.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
+        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
+        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css">
         <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
         <title>Mölkky score</title>
     </head>
@@ -154,7 +154,7 @@
                     Same players?
                 </div>
                 <div class="modal-footer">
-                    <button ng-show="stillPlayersInTheGame" id="btn-cancel-newPlayers" type="button" class="btn btn-default pull-left" ng-click="btnCancel()">Cancel</button>
+                    <button ng-show="stillPlayersInTheGame" id="btn-cancel-newPlayers" type="button" class="btn btn-default btn-cancel pull-left" ng-click="btnCancel()">Cancel</button>
                     <button id="btn-no-newPlayers" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
                     <button id="btn-yes-newPlayers" type="button" class="btn btn-default" ng-click="btnYes()">Yes</button>
                 </div>
@@ -175,6 +175,21 @@
                 <div class="modal-footer" >
                     <button id="btn-no-confirm" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
                     <button id="btn-yes-confirm" type="button" class="btn btn-default" ng-click="btnYes()">Yes</button>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal start -->
+
+        <!-- Modal bosklappers -->
+        <div class="modal fade" id="modalBosklappers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-bosklappers">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Bosklappers activated!</h4>
+                </div>
+                <div class="modal-footer" >
+                    <button id="btn-cancel-bosklappers" type="button" class="btn btn-default btn-cancel pull-left" ng-click="btnCancel()">Cancel</button>
+                    <button id="btn-ok-bosklappers" type="button" class="btn btn-default" ng-click="btnOk()">Ok</button>
                 </div>
             </div>
           </div>
@@ -229,15 +244,16 @@
                 <td id="td-12" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(12)">12</td>
             </tr>
         </table>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <!--  
+        <script src="scripts/vendor/angular.min.js"></script>
+        <script src="scripts/vendor/jquery.min.js"></script>
+        <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
         <script src="scripts/bootstrap/modal.js"></script>
         <script src="scripts/bootstrap/tab.js"></script>
-        <script src="scripts/bootstrap/transition.js"></script> <!-- only used by tab.js -->
-        <script src="scripts/bootstrap3-typeahead.js"></script>
+        <script src="scripts/bootstrap/transition.js"></script> 
         <script src="scripts/utilities.js"></script>
         <script src="scripts/positioning.js"></script>
-        <script src="scripts/angular/angular-app.js"></script>
+        <script src="scripts/angular/base/angular-app.js"></script>
         <script src="scripts/angular/angular-controller-addPlayer.js"></script>
         <script src="scripts/angular/angular-controller-start.js"></script>
         <script src="scripts/angular/angular-controller-gameBoard.js"></script>
@@ -245,5 +261,7 @@
         <script src="scripts/angular/angular-controller-newPlayers.js"></script>
         <script src="scripts/angular/angular-controller-options.js"></script>
         <script src="scripts/angular/angular-controller-confirm.js"></script>
+        -->
+        <script src="scripts/dist/script.js"></script>
     </body>
 </html>

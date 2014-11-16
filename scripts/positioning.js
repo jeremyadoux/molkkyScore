@@ -1,4 +1,5 @@
-var isLandscape = wasLandscape = true;
+var isLandscape = true;
+var wasLandscape = true;
 
 $(document).ready(function() {
 	setTableHeight();

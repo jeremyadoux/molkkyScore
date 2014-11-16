@@ -1,3 +1,4 @@
+@import url(../fonts/fontello/css/fontello.css);
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /* line 9, ../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_normalize.scss */
 html {
@@ -5516,16 +5517,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-family: Champion-medium;
   src: url(../fonts/NationalChampion-Medium.woff), url(../fonts/NationalChampion-Medium.otf) format("opentype");
 }
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot");
-  src: url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular") format("svg");
-}
 /* $accentColor-light:#1275B3; */
 /*mixins*/
 /* line 1, ../sass/partials/general/_loader.scss */
 .loader-container {
-  display: none;
   position: absolute;
   top: 40%;
   width: 100%;
@@ -5534,12 +5529,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: 1em auto;
   color: #FFFFFF;
 }
-/* line 10, ../sass/partials/general/_loader.scss */
+/* line 9, ../sass/partials/general/_loader.scss */
 .loader-container .loading-title {
   display: block;
   margin: 0 auto;
 }
-/* line 15, ../sass/partials/general/_loader.scss */
+/* line 14, ../sass/partials/general/_loader.scss */
 .loader-container .dot {
   height: 10px;
   width: 10px;
@@ -5552,7 +5547,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
   animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
 }
-/* line 28, ../sass/partials/general/_loader.scss */
+/* line 27, ../sass/partials/general/_loader.scss */
 .loader-container .dot-1 {
   -webkit-animation-delay: 1s;
   -moz-animation-delay: 1s;
@@ -5560,7 +5555,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation-delay: 1s;
   animation-delay: 1s;
 }
-/* line 29, ../sass/partials/general/_loader.scss */
+/* line 28, ../sass/partials/general/_loader.scss */
 .loader-container .dot-2 {
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay: 0.8s;
@@ -5568,7 +5563,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation-delay: 0.8s;
   animation-delay: 0.8s;
 }
-/* line 30, ../sass/partials/general/_loader.scss */
+/* line 29, ../sass/partials/general/_loader.scss */
 .loader-container .dot-3 {
   -webkit-animation-delay: 0.6s;
   -moz-animation-delay: 0.6s;
@@ -5576,7 +5571,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation-delay: 0.6s;
   animation-delay: 0.6s;
 }
-/* line 31, ../sass/partials/general/_loader.scss */
+/* line 30, ../sass/partials/general/_loader.scss */
 .loader-container .dot-4 {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
@@ -5584,7 +5579,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
-/* line 32, ../sass/partials/general/_loader.scss */
+/* line 31, ../sass/partials/general/_loader.scss */
 .loader-container .dot-5 {
   -webkit-animation-delay: 0.2s;
   -moz-animation-delay: 0.2s;
@@ -5592,7 +5587,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-/* line 33, ../sass/partials/general/_loader.scss */
+/* line 32, ../sass/partials/general/_loader.scss */
 .loader-container .dot-6 {
   -webkit-animation-delay: 0;
   -moz-animation-delay: 0;
@@ -5715,12 +5710,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-color: #2E2E2E;
 }
 /* line 35, ../sass/partials/general/_modals.scss */
+.modal .btn-cancel {
+  border: 0px;
+  padding-left: 0px;
+  font-family: "Champion-Regular", sans-serif;
+  color: #1275B3;
+}
+/* line 41, ../sass/partials/general/_modals.scss */
 .modal .btn-icon-only {
   border: none;
   outline: thin dotted;
   outline-offset: -2px;
 }
-/* line 40, ../sass/partials/general/_modals.scss */
+/* line 46, ../sass/partials/general/_modals.scss */
 .modal .list-group-item {
   border-color: #FFFFFF;
   -webkit-border-radius: 6px;
@@ -5795,8 +5797,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   white-space: nowrap;
 }
 
+/* begin: bosklapper stuff */
+/* line 61, ../sass/partials/gameboard/_base.scss */
+#td-0.billyHalf, #td-0.billySuper {
+  background-color: #E60000;
+}
+
+/* end: bosklapper stuff */
 @media (min-width: 768px) {
-  /* line 61, ../sass/partials/gameboard/_base.scss */
+  /* line 68, ../sass/partials/gameboard/_base.scss */
   #mainTable {
     /* height determined by positioning.js */
     width: 95%;
@@ -5804,7 +5813,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     line-height: 40px;
     border-spacing: 15px;
   }
-  /* line 67, ../sass/partials/gameboard/_base.scss */
+  /* line 74, ../sass/partials/gameboard/_base.scss */
   #mainTable #td-options img {
     width: 60px;
   }
@@ -5911,16 +5920,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #FFFFFF;
   background-color: #1275B3;
   border-color: #2E2E2E;
+  height: 100%;
 }
-/* line 21, ../sass/partials/modals/_addPlayers.scss */
+/* line 22, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .icon-plus {
   line-height: 1rem;
 }
-/* line 24, ../sass/partials/modals/_addPlayers.scss */
+/* line 25, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .icon-plus:hover {
   cursor: pointer;
 }
-/* line 27, ../sass/partials/modals/_addPlayers.scss */
+/* line 28, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .max-message {
   text-align: center;
   color: #E60000;
@@ -5992,42 +6002,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-bottom: 1px solid #2E2E2E;
   background-color: #FFFFFF;
   padding: 10px;
-  border: 2px solid #2E2E2E;
+  border: 1px solid #2E2E2E;
+  border-bottom-width: 2px;
 }
-/* line 54, ../sass/partials/modals/_scoreboard.scss */
+/* line 55, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th p {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 60, ../sass/partials/modals/_scoreboard.scss */
+/* line 61, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th.winner p:after {
   font-family: "fontello";
   content: '\00a0\e800';
   color: #1275B3;
 }
-/* line 67, ../sass/partials/modals/_scoreboard.scss */
+/* line 68, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td {
   border-left: 1px solid #2E2E2E;
   border-right: 1px solid #2E2E2E;
 }
-/* line 70, ../sass/partials/modals/_scoreboard.scss */
+/* line 71, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.empty {
   border: 0px;
   background-color: #FFFFFF;
 }
-/* line 74, ../sass/partials/modals/_scoreboard.scss */
+/* line 75, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.out {
   font-family: "Champion-Medium", sans-serif;
   border-bottom: 1px solid #2E2E2E;
 }
-/* line 78, ../sass/partials/modals/_scoreboard.scss */
+/* line 79, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.disqualified {
   font-family: "Champion-Medium", sans-serif;
   color: #E60000;
   border-bottom: 1px solid #2E2E2E;
 }
-/* line 89, ../sass/partials/modals/_scoreboard.scss */
+/* line 90, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li p {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -6035,74 +6046,66 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 15px;
   line-height: 16px;
 }
-/* line 96, ../sass/partials/modals/_scoreboard.scss */
+/* line 97, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner {
   font-family: "Champion-Medium", sans-serif;
 }
-/* line 98, ../sass/partials/modals/_scoreboard.scss */
+/* line 99, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner p:after {
   font-family: "fontello";
   content: '\00a0\e800';
   color: #1275B3;
 }
-/* line 105, ../sass/partials/modals/_scoreboard.scss */
+/* line 106, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.second p:after, #modalScoreboard #concisePane li.third p:after, #modalScoreboard #concisePane li.fourth p:after, #modalScoreboard #concisePane li.fifth p:after, #modalScoreboard #concisePane li.sixth p:after, #modalScoreboard #concisePane li.seventh p:after, #modalScoreboard #concisePane li.eight p:after {
   font-size: 10px;
   color: #1275B3;
 }
-/* line 110, ../sass/partials/modals/_scoreboard.scss */
+/* line 111, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.second p:after {
   content: ' - 2nd';
 }
-/* line 113, ../sass/partials/modals/_scoreboard.scss */
+/* line 114, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.third p:after {
   content: ' - 3rd';
 }
-/* line 116, ../sass/partials/modals/_scoreboard.scss */
+/* line 117, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.fourth p:after {
   content: ' - 4th';
 }
-/* line 119, ../sass/partials/modals/_scoreboard.scss */
+/* line 120, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.fifth p:after {
   content: ' - 5th';
 }
-/* line 122, ../sass/partials/modals/_scoreboard.scss */
+/* line 123, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.sixth p:after {
   content: ' - 6th';
 }
-/* line 125, ../sass/partials/modals/_scoreboard.scss */
+/* line 126, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.seventh p:after {
   content: ' - 7th';
 }
-/* line 128, ../sass/partials/modals/_scoreboard.scss */
+/* line 129, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.eight p:after {
   content: ' - 8th';
 }
-/* line 132, ../sass/partials/modals/_scoreboard.scss */
+/* line 133, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane span.disqualified {
   font-family: "Champion-Medium", sans-serif;
   color: #E60000;
 }
 
 @media (min-width: 360px) {
-  /* line 143, ../sass/partials/modals/_scoreboard.scss */
+  /* line 144, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .modal-header .nav-tabs li a {
     font-size: 15px;
   }
-  /* line 148, ../sass/partials/modals/_scoreboard.scss */
+  /* line 149, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .btn {
     font-size: 15px;
     padding: 6px 12px;
   }
 }
-/* line 2, ../sass/partials/modals/_newPlayers.scss */
-#modalNewPlayers #btn-cancel-newPlayers {
-  border: 0px;
-  padding-left: 0px;
-  font-family: "Champion-Regular", sans-serif;
-  color: #1275B3;
-}
-
 /* line 1, ../sass/partials/_animations.scss */
 .animate-spin {
   -moz-animation: spin 1.5s cubic-bezier(0, 0, 0.19, 1.17);

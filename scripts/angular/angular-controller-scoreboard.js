@@ -36,7 +36,7 @@ app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {
 		var numberOfRows = 0;
 		for(var i = 0; i < $scope.players.length; i++){
 			if($scope.players[i].scoreHistory.length > numberOfRows){
-				numberOfRows = $scope.players[i].scoreHistory.length
+				numberOfRows = $scope.players[i].scoreHistory.length;
 			}
 		}
 		return numberOfRows;

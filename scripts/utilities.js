@@ -14,12 +14,7 @@ var loading = {
 	startApp:"starting application",
 	newGame:"starting new game",
 	restartGame:"restarting game",	
-}
-
-var lightColor = '#FFFFFF';
-var alertColor = '#D82A25';
-var darkColor = '#020000';
-var accentColor = '#2DBDE1';
+};
 
 function validatePlayerName(newPlayerName,players,alertElement){
 	if($.trim(newPlayerName) == ""){
@@ -51,7 +46,7 @@ Array.prototype.contains = function (string) {
        if (this[i].toLowerCase() == string.toLowerCase()) return true;
    }
    return false;
-}
+};
 
 //Constructor
 function Player(index, name){
@@ -62,12 +57,16 @@ function Player(index, name){
 	this.ranking = 999; // winner has ranking 1, second to reach score 50 has ranking 2, etc...
 	this.wins = 0;
 	this.score = 0;
-	this.scoreHistory = new Array();
+	this.scoreHistory = [];
 	this.misses = 0; // 3 misses in a row means disqualification
 	this.myTurn = false;
 	this.disqualified = false;
 	this.processScore = processScore;
 	this.processMiss = processMiss;
+	/* begin: bosklapper stuff */
+	this.processScoreBosklappers = processScoreBosklappers;
+	this.processMissBosklappers = processMissBosklappers;
+	/* end: bosklapper stuff */
 }
 
 //player methods
@@ -78,7 +77,6 @@ function processScore(number){
 	}
 	else if((this.score + number) > 50){
 		this.score = 25;
-		alert(this.name + " larger than 50");
 	}
 	else{ //player has score 50
 		this.score = 50;
@@ -93,7 +91,6 @@ function processMiss(){
 		this.disqualified = true;
 		this.outOfTheGame = true;
 		this.score = 'X';
-		alert(this.name + " disqualified");
 	}
 	this.scoreHistory.push(this.score);
 }
@@ -133,6 +130,11 @@ function comparePlayerRankings(playerOne,playerTwo){
 
 // DOM manipulation
 function initializeMainTable(numberOfPlayers){
+	$('#mainTable #td-player-name').removeClass("active");
+	$('#mainTable .td-score-number.active').removeClass("active");
+	$('#mainTable #td-0.billyHalf').removeClass("billyHalf");
+	$('#mainTable #td-0.billySuper').removeClass("billySuper");
+	$('#mainTable #td-0').text('0');
 	$('#mainTable').fadeIn(1000, function(){
 		if(numberOfPlayers <= 4){
 			$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
@@ -224,3 +226,100 @@ function showModalWithLoader(modal, loaderMessage){
 		showModal(modal);
 	},loadingTime);	
 }
+
+/* begin: bosklapper stuff */
+var bosklappersActivationCount = 0;
+
+function checkBosklappersActivationCount(reset){
+	if(reset){
+		bosklappersActivationCount = 0;
+	} 
+	else{
+		bosklappersActivationCount++;
+	}
+	if(bosklappersActivationCount < 3){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+function setBillyChar(){
+	if($('#td-0').text() == '0'){
+		if($('#td-0').hasClass('active')){
+			$('#td-0').text('/2');
+			$('#td-0').removeClass('active').addClass('billyHalf');
+		}
+		else{
+			toggleNumberActivation(0);
+		}
+	}
+	else if ($('#td-0').text() == '/2'){
+		$('#td-0').text('0!');
+		$('#td-0').removeClass('billyHalf').addClass('billySuper');
+		$('#mainTable .td-score-number.active').removeClass("active"); // can't choose number with superBilly
+	} 
+	else{
+		$('#td-0').text('0');
+		$('#td-0').removeClass('billySuper');
+		$('#td-player-name').removeClass('active');
+	}
+}
+
+function toggleNumberActivationBosklappers(number){
+	if ($('#td-0').text() == '0!') return; // can't choose number with superBilly
+
+	var idSelector = '#td-'+ number;
+    if($(idSelector).hasClass("active")){
+		$(idSelector).removeClass("active");
+		if($('#td-0').text() != '/2'){
+			$('#mainTable #td-player-name').removeClass("active");
+		}
+	}
+	else{
+		$('#mainTable .td-score-number.active').removeClass("active");
+		$(idSelector).addClass("active");
+		if(!$('#mainTable #td-player-name').hasClass("active")){
+			$('#mainTable #td-player-name').addClass("active");
+		}		
+	}
+}
+
+function processScoreBosklappers(number){
+	this.misses = 0;
+	if($('#td-0').hasClass('billyHalf')){
+		if (number == -1){ // only billy was hit
+			this.score = Math.floor(this.score/2);
+		}
+		else{ // billy and number was hit
+			this.score = Math.floor((this.score + number)/2);
+		}
+	}
+	else if($('#td-0').hasClass('billySuper')){
+		this.score = 0;
+	}
+	else{
+		if((this.score + number) < 50){
+			this.score += number;
+		}
+		else if((this.score + number) > 50){
+			this.score = Math.floor((this.score + number)/2);
+		}
+		else{ //player has score 50
+			this.score = 50;
+			this.outOfTheGame = true;
+		}
+	}
+	this.scoreHistory.push(this.score);	
+}
+
+function processMissBosklappers(){
+	this.misses++;
+	if(this.misses > 2){
+		this.score = Math.floor(this.score/2);
+		this.misses = 0;
+	}
+	this.scoreHistory.push(this.score);
+}
+/* end: bosklapper stuff */
