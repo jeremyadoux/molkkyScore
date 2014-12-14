@@ -7,6 +7,10 @@
 	line-height: $mediumSmallFont;
 	border-collapse: separate;
     border-spacing: 10px;
+    @include user-select-none();
+    tr{
+    	@include user-select-none();
+    }
     td{
     	position:relative;
 		background-color:$darkColor;
@@ -15,6 +19,7 @@
 		text-align: center;
 		border:1px solid $lightColor;
 		@include border-radius(6px);
+		@include user-select-none();
 	}
 	.td-score-number, #td-options,#td-player-name.active{
 		&:hover{

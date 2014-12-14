@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css">
+        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> 
         <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
         <title>Mölkky score</title>
     </head>
@@ -56,10 +56,13 @@
                     </li>
                 </ul>
                 <div class="modal-body">
-                    <div class="input-group input-group-lg" ng-show="players.length<8">
-                      <input type="text" class="form-control typeahead" required placeholder="Player {{players.length + 1}}" autocomplete="off">
-                      <span id="addPlayerIcon" ng-click="addPlayer()" class="input-group-addon icon-plus"></span>
-                    </div>
+                    <form ng-submit="addPlayer()" role="form">
+                        <div class="input-group input-group-lg" ng-show="players.length<8">
+                            <input type="text" class="form-control typeahead" required placeholder="Player {{players.length + 1}}" autocomplete="off">
+                            <span id="addPlayerIcon" ng-click="addPlayer()" class="input-group-addon icon-plus"></span>
+                        </div>
+                        <button type="submit"></button> 
+                    </form>
                     <div class="max-message" ng-show="players.length>7">Max. players reached</div>
                 </div>
                 <div class="alert alert-warning" role="alert">
@@ -245,8 +248,8 @@
             </tr>
         </table>
         <!--  
-        <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/jquery.min.js"></script>
+        <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
         <script src="scripts/bootstrap/modal.js"></script>
         <script src="scripts/bootstrap/tab.js"></script>
@@ -261,6 +264,7 @@
         <script src="scripts/angular/angular-controller-newPlayers.js"></script>
         <script src="scripts/angular/angular-controller-options.js"></script>
         <script src="scripts/angular/angular-controller-confirm.js"></script>
+        <script src="scripts/angular/angular-controller-bosklappers.js"></script>
         -->
         <script src="scripts/dist/script.js"></script>
     </body>

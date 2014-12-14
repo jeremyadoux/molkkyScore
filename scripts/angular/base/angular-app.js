@@ -192,9 +192,10 @@ app.factory('GameData', function(){
 
 app.filter('rangeFirstRow', function () {
   return function (items) {
+  	if(!items) return;
   	var filtered = [];
   	var length = -1;
-  	if(items.length <= 4){
+  	if(items &&items.length <= 4){
   		length = items.length;
   	}
   	else if(items.length > 6){
@@ -212,6 +213,7 @@ app.filter('rangeFirstRow', function () {
 
 app.filter('rangeSecondRow', function () {
   return function (items) {
+  	if(!items) return;
     var filtered = [];
     var startPos = -1;
     if(items.length == 5 || items.length == 6){

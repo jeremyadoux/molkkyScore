@@ -46,7 +46,7 @@
 				padding:5px;
 			}
 			th{
-				font-family: $mediumFontFamily;
+				font-family:$mediumFontFamily;
 				border-bottom: 1px solid $darkColor;
 				background-color: $lightColor;
 				padding:10px;
@@ -73,11 +73,11 @@
 					background-color: $lightColor;
 				}
 				&.out{
-					font-family: $mediumFontFamily;
+					font-family:$mediumFontFamily;
 					border-bottom:1px solid $darkColor;
 				}
 				&.disqualified{
-					font-family: $mediumFontFamily;
+					font-family:$mediumFontFamily;
 					color:$alertColor;
 					border-bottom:1px solid $darkColor;
 				}
@@ -95,7 +95,7 @@
 				line-height: $smallerFont + 1px;
 			}
 			&.winner{
-				font-family: $mediumFontFamily;
+				font-family:$mediumFontFamily;
 				& p:after{
 					font-family: "fontello";
 					content: '\00a0\e800'; // \00a0 is unicode for a space
@@ -131,7 +131,7 @@
 			}
 		}
 		span.disqualified{
-			font-family: $mediumFontFamily;
+			font-family:$mediumFontFamily;
 			color:$alertColor;
 		}
 	}

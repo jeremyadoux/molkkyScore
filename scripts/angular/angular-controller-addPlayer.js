@@ -4,7 +4,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'))){
             GameData.addPlayerToGame(newPlayerName);
             $('#modalAddPlayers input').val('');
-            $('#modalAddPlayers input').focus();
+            $('#modalAddPlayers input').blur();
         }   	
     };
     $scope.shufflePlayers = function(){
@@ -34,7 +34,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
 		}
 		else{
 			warn($('#modalAddPlayers .alert'),warnings.playerName.tooFew);
-            $('#modalAddPlayers input').focus();
+            /*$('#modalAddPlayers input').focus();*/
 		}
     };
     $scope.btnRemovePlayer = function(index){
@@ -48,9 +48,9 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         initializeAddPlayersModal();
     });
 });
-/**
+
 //custom directive: keypress enter 
-app.directive('ngEnter', function () {
+/*app.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
@@ -61,5 +61,4 @@ app.directive('ngEnter', function () {
             }
         });
     };
-});
-*/
+});*/

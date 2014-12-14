@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$('.loader-container').show();
 	setTimeout(function(){
 		$('.loader-container').hide();
 		showModal('#modalStart');

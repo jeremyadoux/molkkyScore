@@ -1,10 +1,5 @@
 //fonts
 @font-face {
-    font-family: Champion-bold;
-    src: url(../fonts/NationalChampion-Bold.woff),
-    	 url(../fonts/NationalChampion-Bold.otf) format('opentype');
-}
-@font-face {
     font-family: Champion-regular;
     src: url(../fonts/NationalChampion-Regular.woff),
     	 url(../fonts/NationalChampion-Regular.otf) format('opentype');
@@ -14,10 +9,15 @@
     src: url(../fonts/NationalChampion-Medium.woff),
     	 url(../fonts/NationalChampion-Medium.otf) format('opentype');
 }
+/* @font-face {
+    font-family: Champion-bold;
+    src: url(../fonts/NationalChampion-Bold.woff),
+       url(../fonts/NationalChampion-Bold.otf) format('opentype');
+} */
 
-$boldFontFamily:'Champion-Bold',sans-serif;
-$mediumFontFamily:'Champion-Medium',sans-serif;
-$regularFontFamily:'Champion-Regular',sans-serif;
+$mediumFontFamily:'Champion-medium',"Arial Black", Gadget, sans-serif;
+$regularFontFamily:'Champion-regular', Arial, Helvetica, sans-serif;
+/* $boldFontFamily:'Champion-bold',serif; */
 $bigFont:40px;
 $mediumFont:30px;
 $mediumSmallFont:25px;
@@ -57,4 +57,22 @@ $accentColor:#1275B3;
     -ms-animation-delay:$delay;
      -o-animation-delay:$delay;
         animation-delay:$delay;
+}
+
+@mixin user-select-none(){
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+@mixin font-family-bold(){
+  font-family:$mediumFontFamily;
+  
+}
+
+@mixin font-family-regular(){
+  font-family:$regularFontFamily;
+  font-weight: normal;
 }

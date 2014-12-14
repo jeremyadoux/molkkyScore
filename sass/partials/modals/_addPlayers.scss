@@ -28,10 +28,19 @@
 	.max-message{
 		text-align: center;
 		color:$alertColor;
-		font-family: $mediumFontFamily;
+		font-family:$mediumFontFamily;
 		padding: 10px 0px;
 		border-width: 1px 0px;
 		border-style: solid;
 		border-color: $alertColor;
+	}
+	input{
+		font-size: 18px;
+	}
+	button[type="submit"]{
+		position: absolute; 
+		left: -9999px; 
+		width: 1px; 
+		height: 1px;
 	}
 }

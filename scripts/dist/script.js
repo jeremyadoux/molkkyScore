@@ -1330,9 +1330,10 @@ app.factory('GameData', function(){
 
 app.filter('rangeFirstRow', function () {
   return function (items) {
+  	if(!items) return;
   	var filtered = [];
   	var length = -1;
-  	if(items.length <= 4){
+  	if(items &&items.length <= 4){
   		length = items.length;
   	}
   	else if(items.length > 6){
@@ -1350,6 +1351,7 @@ app.filter('rangeFirstRow', function () {
 
 app.filter('rangeSecondRow', function () {
   return function (items) {
+  	if(!items) return;
     var filtered = [];
     var startPos = -1;
     if(items.length == 5 || items.length == 6){
@@ -1370,7 +1372,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'))){
             GameData.addPlayerToGame(newPlayerName);
             $('#modalAddPlayers input').val('');
-            $('#modalAddPlayers input').focus();
+            $('#modalAddPlayers input').blur();
         }   	
     };
     $scope.shufflePlayers = function(){
@@ -1400,7 +1402,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
 		}
 		else{
 			warn($('#modalAddPlayers .alert'),warnings.playerName.tooFew);
-            $('#modalAddPlayers input').focus();
+            /*$('#modalAddPlayers input').focus();*/
 		}
     };
     $scope.btnRemovePlayer = function(index){
@@ -1414,9 +1416,9 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         initializeAddPlayersModal();
     });
 });
-/**
+
 //custom directive: keypress enter 
-app.directive('ngEnter', function () {
+/*app.directive('ngEnter', function () {
     return function (scope, element, attrs) {
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
@@ -1427,9 +1429,10 @@ app.directive('ngEnter', function () {
             }
         });
     };
-});
-*/
+});*/
+
 $(document).ready(function() {
+	$('.loader-container').show();
 	setTimeout(function(){
 		$('.loader-container').hide();
 		showModal('#modalStart');
