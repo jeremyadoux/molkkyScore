@@ -9,11 +9,13 @@ app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {
             $('.loader-container').hide();
              $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
         },loadingTime);
+        setIsRestoreGame(false);
     };
     $scope.btnNo = function(){ //other players
         GameData.emptyPlayersArray();
         $('#modalNewPlayers').modal('hide');
         $rootScope.$broadcast('initializeAddPlayers'); //generate 'initializeAddPlayers' event
+        setIsRestoreGame(false);
     };
     $scope.btnCancel = function(){
         $('#mainTable').fadeIn(1000);

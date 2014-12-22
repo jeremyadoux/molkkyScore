@@ -14,6 +14,7 @@ var loading = {
 	startApp:"starting application",
 	newGame:"starting new game",
 	restartGame:"restarting game",	
+	restoreGame:"restoring game"
 };
 
 function validatePlayerName(newPlayerName,players,alertElement){
@@ -61,38 +62,32 @@ function Player(index, name){
 	this.misses = 0; // 3 misses in a row means disqualification
 	this.myTurn = false;
 	this.disqualified = false;
-	this.processScore = processScore;
-	this.processMiss = processMiss;
-	/* begin: bosklapper stuff */
-	this.processScoreBosklappers = processScoreBosklappers;
-	this.processMissBosklappers = processMissBosklappers;
-	/* end: bosklapper stuff */
 }
 
 //player methods
-function processScore(number){
-	this.misses = 0;
-	if((this.score + number) < 50){
-		this.score += number;
+function processScore(player, number){
+	player.misses = 0;
+	if((player.score + number) < 50){
+		player.score += number;
 	}
-	else if((this.score + number) > 50){
-		this.score = 25;
+	else if((player.score + number) > 50){
+		player.score = 25;
 	}
 	else{ //player has score 50
-		this.score = 50;
-		this.outOfTheGame = true;
+		player.score = 50;
+		player.outOfTheGame = true;
 	}
-	this.scoreHistory.push(this.score);
+	player.scoreHistory.push(player.score);
 }
 
-function processMiss(){
-	this.misses++;
-	if(this.misses > 2){
-		this.disqualified = true;
-		this.outOfTheGame = true;
-		this.score = 'X';
+function processMiss(player){
+	player.misses++;
+	if(player.misses > 2){
+		player.disqualified = true;
+		player.outOfTheGame = true;
+		player.score = 'X';
 	}
-	this.scoreHistory.push(this.score);
+	player.scoreHistory.push(player.score);
 }
 
 //sort utilities
@@ -142,7 +137,8 @@ function initializeMainTable(numberOfPlayers){
 		else{
 			$('#mainTable #scoreTable td').css({width:100/Math.ceil(numberOfPlayers/2)+"%"});
 		}		
-	});}
+	});
+}
 
 function initializeAddPlayersModal(){
 	$('#modalAddPlayers .alert').hide();
@@ -227,6 +223,40 @@ function showModalWithLoader(modal, loaderMessage){
 	},loadingTime);	
 }
 
+function isRestoreGame(){
+	if(window["localStorage"]){
+		if(!localStorage.getItem("restoreGame")){ //on first-time usage of app
+			localStorage.setItem("restoreGame",JSON.stringify(restoreGame));
+			return false;
+		}
+		else{
+			restoreGame = JSON.parse(localStorage.getItem("restoreGame"));
+			return restoreGame;
+		}
+	}
+	else{
+		return false;
+	}
+}
+
+function setIsRestoreGame(isRestoreGame){
+	if(window["localStorage"]){
+		localStorage.setItem("restoreGame",JSON.stringify(isRestoreGame));
+		if(!isRestoreGame){
+			localStorage.removeItem("players");
+			localStorage.removeItem("data");
+		}
+	}
+}
+
+function writeGameDataToLocalStorage(players, data){
+	if(window["localStorage"]){
+		localStorage.setItem("players",JSON.stringify(players));
+		localStorage.setItem("data",JSON.stringify(data));
+		setIsRestoreGame(true);
+	}
+}
+
 /* begin: bosklapper stuff */
 var bosklappersActivationCount = 0;
 
@@ -286,40 +316,40 @@ function toggleNumberActivationBosklappers(number){
 	}
 }
 
-function processScoreBosklappers(number){
-	this.misses = 0;
+function processScoreBosklappers(player, number){
+	player.misses = 0;
 	if($('#td-0').hasClass('billyHalf')){
 		if (number == -1){ // only billy was hit
-			this.score = Math.floor(this.score/2);
+			player.score = Math.floor(player.score/2);
 		}
 		else{ // billy and number was hit
-			this.score = Math.floor((this.score + number)/2);
+			player.score = Math.floor((player.score + number)/2);
 		}
 	}
 	else if($('#td-0').hasClass('billySuper')){
-		this.score = 0;
+		player.score = 0;
 	}
 	else{
-		if((this.score + number) < 50){
-			this.score += number;
+		if((player.score + number) < 50){
+			player.score += number;
 		}
-		else if((this.score + number) > 50){
-			this.score = Math.floor((this.score + number)/2);
+		else if((player.score + number) > 50){
+			player.score = Math.floor((player.score + number)/2);
 		}
 		else{ //player has score 50
-			this.score = 50;
-			this.outOfTheGame = true;
+			player.score = 50;
+			player.outOfTheGame = true;
 		}
 	}
-	this.scoreHistory.push(this.score);	
+	player.scoreHistory.push(player.score);	
 }
 
-function processMissBosklappers(){
-	this.misses++;
-	if(this.misses > 2){
-		this.score = Math.floor(this.score/2);
-		this.misses = 0;
+function processMissBosklappers(player){
+	player.misses++;
+	if(player.misses > 2){
+		player.score = Math.floor(player.score/2);
+		player.misses = 0;
 	}
-	this.scoreHistory.push(this.score);
+	player.scoreHistory.push(player.score);
 }
 /* end: bosklapper stuff */

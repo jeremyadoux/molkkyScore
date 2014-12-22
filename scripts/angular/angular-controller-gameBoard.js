@@ -55,13 +55,15 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					scoreNumber = parseInt($('#mainTable .td-score-number.active').text());
 				}
 				if(scoreNumber == 0){
-					$scope.activePlayer.processMissBosklappers();
+					processMissBosklappers($scope.activePlayer);
 				}
 				else{
-					$scope.activePlayer.processScoreBosklappers(scoreNumber);
+					processScoreBosklappers($scope.activePlayer, scoreNumber);
 					if($scope.activePlayer.outOfTheGame){
 						GameData.setRanking($scope.activePlayer);
 						if($scope.activePlayer.winner){
+							setIsRestoreGame(false);
+							clearLocalStorageGameData();
 							$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
 						}
 					}
@@ -93,13 +95,14 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 				//calculate new score
 				var scoreNumber = parseInt($('#mainTable .td-score-number.active').text());
 				if(scoreNumber == 0){
-					$scope.activePlayer.processMiss();
+					processMiss($scope.activePlayer);
 				}
 				else{
-					$scope.activePlayer.processScore(scoreNumber);
+					processScore($scope.activePlayer,scoreNumber);
 					if($scope.activePlayer.outOfTheGame){
 						GameData.setRanking($scope.activePlayer);
 						if($scope.activePlayer.winner){
+							setIsRestoreGame(false);
 							$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
 						}
 					}
@@ -122,6 +125,10 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 				$('#mainTable .td-score-number.active').removeClass("active");
 			}
     	}
+    	/* write gameData to localStorage*/
+    	if(!GameData.gameHasWinner()){
+    		writeGameDataToLocalStorage($scope.players, $scope.data);
+    	}
     };
 
     //events
@@ -142,5 +149,32 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.activePlayer = GameData.getActivePlayer();
 	    $scope.data = GameData.getData(); 
+	    if(!GameData.gameHasWinner()){
+            writeGameDataToLocalStorage($scope.players, $scope.data);
+        }
+	});
+	$scope.$on('restoreGameBoard', function (event) {
+		var players= [];
+		var data = {};
+		if(localStorage.getItem("players") && localStorage.getItem("data")){
+			players = JSON.parse(localStorage.getItem("players"));
+			data = JSON.parse(localStorage.getItem("data"));
+		}
+		else{
+			$rootScope.$broadcast('initializeAddPlayers');
+			return;
+			//TODO: error message
+		}
+		GameData.setPlayers(players);
+		GameData.setData(data);
+	    $scope.players = GameData.getPlayers();
+	    $scope.data = GameData.getData();
+	    $scope.activePlayer = GameData.getActivePlayer();
+	    initializeMainTable($scope.players.length);
+	    $scope.$apply();
+	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
+		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
+		  	$('#modalScoreboard #scoreboardDetails td').css({width:100/$scope.players.length+"%"});
+		});
 	});
 });

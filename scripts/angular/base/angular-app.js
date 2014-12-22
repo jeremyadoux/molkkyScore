@@ -45,8 +45,14 @@ app.factory('GameData', function(){
 		getPlayers: function(){
 			return players;
 		},
+		setPlayers: function(playerArray){
+			players = playerArray;
+		},
 		getData: function(){
 			return data;
+		},
+		setData: function(dataObject){
+			data = dataObject;
 		},
 		resetThrowNumber: function(){
 			data.throwNumber = 1;

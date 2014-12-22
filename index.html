@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> 
+        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
+        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> -->
         <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
         <title>Mölkky score</title>
     </head>
@@ -29,12 +29,13 @@
                     <h4 class="modal-title" id="myModalLabel">What do you want to do?</h4>
                 </div>
                 <div class="modal-body" >
-                    <button ng-click="quickGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Quick game</button>
-                    <button id="btn-signIn-start"type="button" class="btn btn-default btn-lg btn-block">Sign in</button>       
+                    <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
+                    <button id="btn-tutorial-start"type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
+                    <button id="btn-about-start"type="button" class="btn btn-default btn-lg btn-block">About</button>        
                 </div>
-                <div class="modal-footer" >
+                <!-- <div class="modal-footer" >
                     <a href="#" class="pull-left">Create account</a>
-                </div>
+                </div> -->
             </div>
           </div>
         </div> <!-- end Modal start -->
@@ -181,7 +182,27 @@
                 </div>
             </div>
           </div>
-        </div> <!-- end Modal start -->
+        </div> <!-- end Modal confirm -->
+
+         <!-- Modal restoreGame -->
+        <div class="modal fade" id="restoreGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-restoreGame">
+          <div class="modal-dialog modal-md modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Restore game?</h4>
+                </div>
+                <div class="modal-body" >
+                   Last played game ended without a winner. 
+                   <br><br>
+                   Do you want to restore this game?       
+                </div>
+                <div class="modal-footer" >
+                    <button id="btn-no-confirm" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
+                    <button id="btn-yes-confirm" type="button" class="btn btn-default" ng-click="btnYes()">Yes</button>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal restoreGame -->
 
         <!-- Modal bosklappers -->
         <div class="modal fade" id="modalBosklappers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-bosklappers">
@@ -247,7 +268,7 @@
                 <td id="td-12" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(12)">12</td>
             </tr>
         </table>
-        <!--  
+          
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
@@ -264,8 +285,9 @@
         <script src="scripts/angular/angular-controller-newPlayers.js"></script>
         <script src="scripts/angular/angular-controller-options.js"></script>
         <script src="scripts/angular/angular-controller-confirm.js"></script>
+        <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
-        -->
-        <script src="scripts/dist/script.js"></script>
+        
+        <!-- <script src="scripts/dist/script.js"></script> -->
     </body>
 </html>

@@ -16,6 +16,7 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
                 $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
             }, loadingTime);
         }
+        setIsRestoreGame(false);
         GameData.resetConfirmType();
     };
     $scope.btnNo = function(){
