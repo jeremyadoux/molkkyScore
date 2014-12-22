@@ -10,6 +10,32 @@
         <title>Mölkky score</title>
     </head>
     <body ng-app="angular-app">
+        
+        <!-- Modal about -->
+        <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">About</h4>
+                </div>
+                <div class="modal-body" >
+                    <p>
+                        molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named "mölkky"</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href="http://www.molkky.com" target="_blank">www.molkky.com</a>.  
+                    </p>
+                    <p>
+                    molkkyScore.com is developed by <a href="http://www.fredericaerts.com" target="_blank">Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via email address <a href="mailto:info@molkkyScore.com" target="_top">info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href="http://github.confirm/fredericJos/molkkyScore" target="_blank">github</a>.
+                    </p>
+                    <p>
+                        <strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.
+                    </p>
+                </div>
+                <!-- <div class="modal-footer" >
+                </div> -->
+            </div>
+          </div>
+        </div> <!-- end Modal about -->
+
         <!-- Loader animation -->
         <div class="loader-container">
           <span class="loading-title">starting application</span>
@@ -31,7 +57,7 @@
                 <div class="modal-body" >
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
                     <button id="btn-tutorial-start"type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
-                    <button id="btn-about-start"type="button" class="btn btn-default btn-lg btn-block">About</button>        
+                    <button ng-click="about()" id="btn-about-start"type="button" class="btn btn-default btn-lg btn-block">About</button>        
                 </div>
                 <!-- <div class="modal-footer" >
                     <a href="#" class="pull-left">Create account</a>
@@ -184,7 +210,7 @@
           </div>
         </div> <!-- end Modal confirm -->
 
-         <!-- Modal restoreGame -->
+        <!-- Modal restoreGame -->
         <div class="modal fade" id="restoreGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-restoreGame">
           <div class="modal-dialog modal-md modal-vertical-centered">
             <div class="modal-content">
@@ -217,7 +243,7 @@
                 </div>
             </div>
           </div>
-        </div> <!-- end Modal start -->
+        </div> <!-- end Modal bosklappers -->
 
         <table id="mainTable" ng-controller="angular-gameBoard">
             <tr>

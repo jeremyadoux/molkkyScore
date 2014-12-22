@@ -1,6 +1,7 @@
 .modal {
 	font-family:$regularFontFamily;
-	
+	overflow-y:auto;
+
 	.modal-content{
 		@include border-radius(6px);
 	}
@@ -19,9 +20,13 @@
 		margin:0px;
 	}
 	button.close{
-		opacity:0.8;
+		opacity:1;
 		font-size:inherit;
 		color:$alertColor;
+		& span:first-child{
+			position: relative;
+			z-index: 999;
+		}
 	}
 	.btn-primary{
 		background-color: $accentColor;
@@ -46,5 +51,8 @@
 	.list-group-item{
 		border-color:$lightColor;
 		@include border-radius(6px);
+	}
+	strong{
+		font-family: $mediumFontFamily;
 	}
 }
