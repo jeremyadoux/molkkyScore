@@ -126,19 +126,90 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 			}
     	}
     	/* write gameData to localStorage*/
-    	if(!GameData.gameHasWinner()){
+    	if(!GameData.gameHasWinner() && !$scope.tutorial){
     		writeGameDataToLocalStorage($scope.players, $scope.data);
     	}
     };
+    /* begin: tutorial*/
+    $scope.nextStep = function(){
+    	$(".tutorial__content p").fadeOut("fast", function(){
+    		switch($scope.tutorialData.step){
+	    		case 1: $scope.stepText = tutorial.steps.two;
+	    				$("#td-6").click();
+	    				break;
+	    		case 2: $scope.stepText = tutorial.steps.three;
+	    				$("#td-player-name").click();
+	    				break;
+	    		case 3: $scope.stepText = tutorial.steps.four;
+	    				$("#td-0").click();
+	    				setTimeout(function(){
+	    					$("#td-player-name").click();
+	    				}, 1000);
+	    				break;
+	    		case 4: $scope.stepText = tutorial.steps.five;
+	    				$("#scoreTable").click();
+	    				setTimeout(function(){
+	    					if($("#modalScoreboard").hasClass("in")){
+		    					$("#modalScoreboard .btn-primary").click();
+		    				}
+	    				}, 5000);
+	    				break;
+	    		case 5: $scope.stepText = tutorial.steps.six;
+	    				$("#td-options").click();
+	    				setTimeout(function(){
+	    					if($("#modalOptions").hasClass("in")){
+	    						$("#modalOptions #btn-undo-options").click();
+	    					}
+	    				}, 5000);
+	    				break;
+	    	}
+	    	$scope.tutorialData.step++;
+	    	$scope.$apply();
+	    	$(".tutorial__content p").fadeIn("fast", function(){
+	    		setTutorialArrowsPosition(true);
+	    	}); 
+    	});	  	
+    };
+    $scope.prevStep = function(){
+    	$(".tutorial__content p").fadeOut("fast", function(){
+    		switch($scope.tutorialData.step){
+	    		case 2: $scope.stepText = tutorial.steps.one;
+	    				$(".td-score-number").removeClass("active");
+	    				$("#td-player-name").removeClass("active");
+	    				break;
+	    		case 3: $scope.stepText = tutorial.steps.two;
+	    				$(".td-score-number").removeClass("active");
+	    				$("#td-player-name").removeClass("active").addClass("active");
+	    				$("#td-6").addClass("active");
+	    				break;
+	    		case 4: $scope.stepText = tutorial.steps.three;
+	    				$("#modalOptions #btn-undo-options").click();
+	    				break;
+	    		case 5: $scope.stepText = tutorial.steps.four;
+	    				break;
+	    		case 6: $scope.stepText = tutorial.steps.five;
+	    				$("#td-0").click();
+	    				$("#td-player-name").click();
+	    				break;
+	    	}
+	    	$scope.tutorialData.step--;
+	    	$scope.$apply();
+		    $(".tutorial__content p").fadeIn("fast", function(){
+	    		setTutorialArrowsPosition(true);
+	    	});
+    	});
+    };
+    /* end: tutorial*/
 
     //events
 	$scope.$on('initializeGameBoard', function (event) {
+		$scope.tutorial = false;
 	    $scope.players = GameData.getPlayers();
 	    $scope.players[0].myTurn = true;
 	    $scope.activePlayer = $scope.players[0];
 	    GameData.resetThrowNumber();
 	    $scope.data = GameData.getData();
-	    initializeMainTable($scope.players.length);
+	    initializeMainTable($scope.players.length, false);
 	    $scope.$apply();
 	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
 		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
@@ -149,7 +220,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.activePlayer = GameData.getActivePlayer();
 	    $scope.data = GameData.getData(); 
-	    if(!GameData.gameHasWinner()){
+	    if(!GameData.gameHasWinner() && !$scope.tutorial){
             writeGameDataToLocalStorage($scope.players, $scope.data);
         }
 	});
@@ -170,11 +241,31 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.players = GameData.getPlayers();
 	    $scope.data = GameData.getData();
 	    $scope.activePlayer = GameData.getActivePlayer();
-	    initializeMainTable($scope.players.length);
+	    initializeMainTable($scope.players.length, false);
 	    $scope.$apply();
 	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
 		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
 		  	$('#modalScoreboard #scoreboardDetails td').css({width:100/$scope.players.length+"%"});
 		});
+	});
+	$scope.$on('initializeTutorial', function (event) {
+		$scope.tutorial = true;
+		$scope.tutorialData = {
+			step: 1
+		}
+		$scope.stepText = tutorial.steps.one;
+		GameData.setPlayers(getTutorialPlayers());
+		GameData.resetData();
+	    $scope.players = GameData.getPlayers();
+	    $scope.players[0].myTurn = true;
+	    $scope.activePlayer = $scope.players[0];
+	    $scope.data = GameData.getData();
+	    initializeMainTable($scope.players.length, true);
+	    /*$scope.$apply()*/;
+	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
+		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
+		  	$('#modalScoreboard #scoreboardDetails td').css({width:100/$scope.players.length+"%"});
+		});
+		$('#modalTutorialIntro').modal('show');
 	});
 });

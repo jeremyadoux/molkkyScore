@@ -56,7 +56,7 @@
                 </div>
                 <div class="modal-body" >
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
-                    <button id="btn-tutorial-start"type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
+                    <button ng-click="tutorial()" id="btn-tutorial-start"type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
                     <button ng-click="about()" id="btn-about-start"type="button" class="btn btn-default btn-lg btn-block">About</button>        
                 </div>
                 <!-- <div class="modal-footer" >
@@ -230,6 +230,32 @@
           </div>
         </div> <!-- end Modal restoreGame -->
 
+         <!-- Modal tutorialIntro -->
+        <div class="modal fade" id="modalTutorialIntro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-md modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Tutorial</h4>
+                </div>
+                <div class="modal-body" >
+                    <p>
+                       For the tutorial we've started a game with two players, named player A & player B.  
+                    </p>
+                    <p>
+                        You can <strong>navigate</strong> through the tutorial either by following the instructions or by use of the arrows on the bottom of the screen.
+                    </p>
+                    <p>
+                        You can <strong>exit</strong> the tutorial anytime by selecting the gear icon at the top right of the screen.
+                    </p>
+                </div>
+                <div class="modal-footer" >
+                    <button data-dismiss="modal" id="btn-start-tutorial" type="button" class="btn btn-default" >Start tutorial</button>
+                </div>
+            </div>
+          </div>
+        </div> <!-- end Modal tutorialIntro -->
+
         <!-- Modal bosklappers -->
         <div class="modal fade" id="modalBosklappers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-bosklappers">
           <div class="modal-dialog modal-sm modal-vertical-centered">
@@ -292,6 +318,13 @@
                 <td id="td-10" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(10)">10</td>
                 <td id="td-11" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(11)">11</td>
                 <td id="td-12" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(12)">12</td>
+            </tr>
+            <tr ng-if="tutorial">
+                <td id="tutorial" colspan="6" ng-class="{firstStep: tutorialData.step == 1, lastStep: tutorialData.step == 6}">
+                    <div ng-click="nextStep()" ng-hide="tutorialData.step == 6" class="arrow arrow--left"></div>
+                    <div ng-click="prevStep()" ng-hide="tutorialData.step == 1" class="arrow arrow--right"></div>
+                    <div class="tutorial__content"><p>{{stepText}}</p></div>
+                </td>
             </tr>
         </table>
           

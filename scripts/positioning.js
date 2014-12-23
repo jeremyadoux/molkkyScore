@@ -17,6 +17,7 @@ $( window ).resize(function() {
 		wasLandscape = isLandscape;
 		positionTable();
 	}
+	setTutorialArrowsPosition(false);
 });
 
 function positionTable(){
@@ -34,6 +35,7 @@ function setPortrait(){
 	$("#xs-tr-2").append( $(".xs-td-row-2"));
 	$("#xs-tr-4").append( $(".xs-td-row-4"));
 	$( ".td-colspanned" ).attr( "colspan", "2" );
+	$( "#tutorial" ).attr( "colspan", "3" );
 	$("#mainTable  tr td").css({
 		width:"30%"
 	});
@@ -45,9 +47,30 @@ function setLandscape(){
 	$("#xs-tr-2").remove();
 	$("#xs-tr-4").remove();
 	$( ".td-colspanned" ).attr( "colspan", "5" );
+	$( "#tutorial" ).attr( "colspan", "6" );
 	$("#mainTable tr td").css({
 		width:"15%"
 	});
+}
+
+function setInitialColspanTutorial(){
+	isLandscape = ($(window).height() < $(window).width());
+	if(!isLandscape){
+		$( "#tutorial" ).attr( "colspan", "3" );
+	}
+}
+function setTutorialArrowsPosition(animated){
+	var tutorialCellHeight = $("#tutorial").height();
+	if(animated){
+		$("#tutorial .arrow").animate({
+			top: (tutorialCellHeight/2) + "px"
+		}, "fast");
+	}
+	else{
+		$("#tutorial .arrow").css({
+			top: (tutorialCellHeight/2) + "px"
+		});
+	}
 }
 
 function setTableHeight(){

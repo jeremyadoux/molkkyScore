@@ -17,6 +17,17 @@ var loading = {
 	restoreGame:"restoring game"
 };
 
+var tutorial = {
+	steps:{
+		one: "It's player A's turn and he has knocked over 6 pins. Select the number 6...",
+		two: "Nice, now confirm player A's score by touching player A's name. The scoreboard at the top will get updated...",
+		three: "Well done! It's player B's turn. She's didn't hit any pins! Select the number 0 and assign it to player A.",
+		four: "Player A is winning! You can get a detailed score overview by touching the scoreboard at the top. Give it a try...",
+		five: "When you assign a wrong score, you can undo it by touching the gear icon at the top right and selecting 'undo last'. Try it..",
+		six: "Okey, you're all set for some mölkky action! Exit the tutorial game by touching the gear icon and selecting 'exit game'."
+	}
+};
+
 function validatePlayerName(newPlayerName,players,alertElement){
 	if($.trim(newPlayerName) == ""){
 		warn(alertElement, warnings.playerName.empty);
@@ -62,6 +73,12 @@ function Player(index, name){
 	this.misses = 0; // 3 misses in a row means disqualification
 	this.myTurn = false;
 	this.disqualified = false;
+}
+
+function getTutorialPlayers(){
+	var playerOne= new Player(0, "player A");
+	var playerTwo= new Player(1, "player B");
+	return [playerOne, playerTwo];
 }
 
 //player methods
@@ -124,13 +141,17 @@ function comparePlayerRankings(playerOne,playerTwo){
 
 
 // DOM manipulation
-function initializeMainTable(numberOfPlayers){
+function initializeMainTable(numberOfPlayers, tutorial){
 	$('#mainTable #td-player-name').removeClass("active");
 	$('#mainTable .td-score-number.active').removeClass("active");
 	$('#mainTable #td-0.billyHalf').removeClass("billyHalf");
 	$('#mainTable #td-0.billySuper').removeClass("billySuper");
 	$('#mainTable #td-0').text('0');
 	$('#mainTable').fadeIn(1000, function(){
+		if(tutorial){
+			setInitialColspanTutorial();
+			setTutorialArrowsPosition();
+		} 
 		if(numberOfPlayers <= 4){
 			$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
 		}

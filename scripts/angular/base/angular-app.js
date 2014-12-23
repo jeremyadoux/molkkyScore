@@ -54,6 +54,13 @@ app.factory('GameData', function(){
 		setData: function(dataObject){
 			data = dataObject;
 		},
+		resetData: function(dataObject){
+			data = {
+				throwNumber: 1,
+				confirmType: '', // for making player confirm new game & restart game choice
+				bosklappersMode: false
+			};
+		},
 		resetThrowNumber: function(){
 			data.throwNumber = 1;
 		},

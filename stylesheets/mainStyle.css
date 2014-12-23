@@ -5853,7 +5853,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #scoreTable {
   table-layout: fixed;
   font-family: "Champion-regular", Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   height: 100%;
   width: 100%;
   border-collapse: separate;
@@ -5930,6 +5930,93 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block;
   }
 }
+/* line 1, ../sass/partials/gameboard/_tutorial.scss */
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -13px;
+  width: 0;
+  height: 0;
+}
+/* line 7, ../sass/partials/gameboard/_tutorial.scss */
+.arrow:hover {
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  /* line 1, ../sass/partials/gameboard/_tutorial.scss */
+  .arrow {
+    margin-top: -20px;
+  }
+}
+
+/* line 16, ../sass/partials/gameboard/_tutorial.scss */
+#tutorial {
+  position: relative;
+  padding: 5px 35px;
+  background-color: #FFFFFF !important;
+}
+/* line 22, ../sass/partials/gameboard/_tutorial.scss */
+#tutorial.firstStep {
+  padding-left: 15px;
+}
+/* line 26, ../sass/partials/gameboard/_tutorial.scss */
+#tutorial.lastStep {
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  /* line 16, ../sass/partials/gameboard/_tutorial.scss */
+  #tutorial {
+    padding: 5px 50px;
+  }
+  /* line 32, ../sass/partials/gameboard/_tutorial.scss */
+  #tutorial.firstStep {
+    padding-left: 25px;
+  }
+  /* line 35, ../sass/partials/gameboard/_tutorial.scss */
+  #tutorial.lastStep {
+    padding-right: 25px;
+  }
+}
+/* line 40, ../sass/partials/gameboard/_tutorial.scss */
+#tutorial .tutorial__content p {
+  font-family: "Champion-regular", Arial, Helvetica, sans-serif;
+  line-height: 1.3;
+  color: #2E2E2E;
+  font-size: 14px;
+}
+/* line 47, ../sass/partials/gameboard/_tutorial.scss */
+#tutorial .arrow--left {
+  right: 10px;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 13px solid #E60000;
+}
+@media (min-width: 768px) {
+  /* line 47, ../sass/partials/gameboard/_tutorial.scss */
+  #tutorial .arrow--left {
+    right: 15px;
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    border-left-width: 20px;
+  }
+}
+/* line 60, ../sass/partials/gameboard/_tutorial.scss */
+#tutorial .arrow--right {
+  left: 10px;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-right: 13px solid #E60000;
+}
+@media (min-width: 768px) {
+  /* line 60, ../sass/partials/gameboard/_tutorial.scss */
+  #tutorial .arrow--right {
+    left: 15px;
+    border-top-width: 20px;
+    border-bottom-width: 20px;
+    border-right-width: 20px;
+  }
+}
+
 /* line 2, ../sass/partials/modals/_start.scss */
 #modalStart .modal-body {
   padding-bottom: 30px;
@@ -6001,6 +6088,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 9, ../sass/partials/modals/_about.scss */
 #modalAbout p:last-child {
   padding-bottom: 50px;
+}
+
+/* line 2, ../sass/partials/modals/_tutorialIntro.scss */
+#modalTutorialIntro p {
+  line-height: 1.3;
+  padding-bottom: 20px;
+}
+/* line 5, ../sass/partials/modals/_tutorialIntro.scss */
+#modalTutorialIntro p:last-child {
+  padding-bottom: 0px;
 }
 
 /* line 2, ../sass/partials/modals/_scoreboard.scss */
@@ -6105,8 +6202,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 15px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 15px;
 }
 /* line 97, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner {
@@ -6160,11 +6257,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 @media (min-width: 360px) {
   /* line 144, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .modal-header .nav-tabs li a {
-    font-size: 15px;
+    font-size: 14px;
   }
   /* line 149, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .btn {
-    font-size: 15px;
+    font-size: 14px;
     padding: 6px 12px;
   }
 }
@@ -6232,7 +6329,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     transform: rotate(359deg);
   }
 }
-/* line 16, ../sass/mainStyle.scss */
+/* line 18, ../sass/mainStyle.scss */
 body {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
   background-color: #2E2E2E;

@@ -25,6 +25,10 @@ app.controller("angular-modal-start", function($scope,$rootScope) {
     	$('#modalStart').modal('hide');
     	$('#modalAbout').modal('show');
     };
+    $scope.tutorial = function(){
+    	$('#modalStart').modal('hide');
+    	$rootScope.$broadcast('initializeTutorial'); //generate 'initializeTutorial' event
+    };
 });
 
 
