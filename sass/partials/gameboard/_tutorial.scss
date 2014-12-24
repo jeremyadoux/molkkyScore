@@ -4,11 +4,13 @@
 	margin-top: -13px;
 	width: 0; 
 	height: 0;
-	&:hover{
-		cursor: pointer;
-	}
+	cursor: pointer;
 	@media (min-width:768px) { 
 		margin-top: -20px;
+	}
+	&.disabled{
+		opacity: 0.5;
+		cursor: auto;
 	}
 }
 

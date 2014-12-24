@@ -22,6 +22,7 @@ app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {
     //events
 	$scope.$on('initializeScoreboard', function (event) {
 	    $scope.players = GameData.getPlayers();
+	    $scope.isTutorial = GameData.isTutorial();
 	    // set number of table rows in details pane
 	    $scope.throwNumberArrayForNgRepeat = new Array(getNumberOfScoreDetailsRows());
 	    if(!GameData.stillPlayersInTheGame()){

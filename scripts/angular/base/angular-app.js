@@ -5,6 +5,8 @@ app.factory('GameData', function(){
 	var data = {
 		throwNumber: 1,
 		confirmType: '', // for making player confirm new game & restart game choice
+		tutorial: false,
+		tutorialStepFive: false,
 		bosklappersMode: false
 	};
 	return{
@@ -19,6 +21,18 @@ app.factory('GameData', function(){
 		},
 		resetConfirmType: function(){
 			data.confirmType = '';
+		},
+		isTutorial: function(){
+			return data.tutorial;
+		},
+		setTutorial: function(isTutorial){
+			data.tutorial = isTutorial;
+		},
+		isTutorialStepFive: function(){
+			return data.tutorialStepFive;
+		},
+		setTutorialStepFive: function(isStepFive){
+			data.tutorialStepFive = isStepFive;
 		},
 		resetPlayers: function(){
 			var newIndex = 0;
@@ -58,6 +72,8 @@ app.factory('GameData', function(){
 			data = {
 				throwNumber: 1,
 				confirmType: '', // for making player confirm new game & restart game choice
+				isTutorial: false,
+				tutorialStepFive: false,
 				bosklappersMode: false
 			};
 		},

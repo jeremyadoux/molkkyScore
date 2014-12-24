@@ -20,13 +20,38 @@ var loading = {
 var tutorial = {
 	steps:{
 		one: "It's player A's turn and he has knocked over 6 pins. Select the number 6...",
-		two: "Nice, now confirm player A's score by touching player A's name. The scoreboard at the top will get updated...",
-		three: "Well done! It's player B's turn. She's didn't hit any pins! Select the number 0 and assign it to player A.",
+		two: "Nice, now confirm player A's score by touching his name. The scoreboard at the top will get updated...",
+		three: "Well done! It's player B's turn. She's didn't hit any pins! Select the number 0 and assign it to player B.",
 		four: "Player A is winning! You can get a detailed score overview by touching the scoreboard at the top. Give it a try...",
-		five: "When you assign a wrong score, you can undo it by touching the gear icon at the top right and selecting 'undo last'. Try it..",
+		five: "If you assign a wrong score, you can undo it by touching the gear icon at the top and selecting 'undo last'. Try it..",
 		six: "Okey, you're all set for some mölkky action! Exit the tutorial game by touching the gear icon and selecting 'exit game'."
+	},
+	help:{
+		one: "Nope! Select number 6",
+		two: "Nope! Select player A (marked red)",
+		threeA: "Nope! Select number 0 and then select player B",
+		four: "Nope! Select the scoreboard at the top of the screen & then close it again",
+		five: "Nope! Select the gear icon at the top right of the screen and then the 'Undo Last' button",
+		six: "Nope! Select the gear icon at the top right of the screen and then the 'Exit game' button"
 	}
 };
+
+function getTutorialHelpText(step){
+	switch(step){
+		case 1: return tutorial.help.one;
+				break;
+		case 2: return tutorial.help.two;
+				break;
+		case 3: return tutorial.help.threeA;
+				break;
+		case 4: return tutorial.help.four;
+				break;
+		case 5: return tutorial.help.five;
+				break;
+		case 6: return tutorial.help.six;
+				break;
+	}
+}
 
 function validatePlayerName(newPlayerName,players,alertElement){
 	if($.trim(newPlayerName) == ""){
@@ -150,7 +175,7 @@ function initializeMainTable(numberOfPlayers, tutorial){
 	$('#mainTable').fadeIn(1000, function(){
 		if(tutorial){
 			setInitialColspanTutorial();
-			setTutorialArrowsPosition();
+			setTutorialArrowsPosition(false);
 		} 
 		if(numberOfPlayers <= 4){
 			$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});

@@ -5937,9 +5937,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin-top: -13px;
   width: 0;
   height: 0;
-}
-/* line 7, ../sass/partials/gameboard/_tutorial.scss */
-.arrow:hover {
   cursor: pointer;
 }
 @media (min-width: 768px) {
@@ -5948,43 +5945,48 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     margin-top: -20px;
   }
 }
+/* line 11, ../sass/partials/gameboard/_tutorial.scss */
+.arrow.disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
 
-/* line 16, ../sass/partials/gameboard/_tutorial.scss */
+/* line 18, ../sass/partials/gameboard/_tutorial.scss */
 #tutorial {
   position: relative;
   padding: 5px 35px;
   background-color: #FFFFFF !important;
 }
-/* line 22, ../sass/partials/gameboard/_tutorial.scss */
+/* line 24, ../sass/partials/gameboard/_tutorial.scss */
 #tutorial.firstStep {
   padding-left: 15px;
 }
-/* line 26, ../sass/partials/gameboard/_tutorial.scss */
+/* line 28, ../sass/partials/gameboard/_tutorial.scss */
 #tutorial.lastStep {
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  /* line 16, ../sass/partials/gameboard/_tutorial.scss */
+  /* line 18, ../sass/partials/gameboard/_tutorial.scss */
   #tutorial {
     padding: 5px 50px;
   }
-  /* line 32, ../sass/partials/gameboard/_tutorial.scss */
+  /* line 34, ../sass/partials/gameboard/_tutorial.scss */
   #tutorial.firstStep {
     padding-left: 25px;
   }
-  /* line 35, ../sass/partials/gameboard/_tutorial.scss */
+  /* line 37, ../sass/partials/gameboard/_tutorial.scss */
   #tutorial.lastStep {
     padding-right: 25px;
   }
 }
-/* line 40, ../sass/partials/gameboard/_tutorial.scss */
+/* line 42, ../sass/partials/gameboard/_tutorial.scss */
 #tutorial .tutorial__content p {
   font-family: "Champion-regular", Arial, Helvetica, sans-serif;
   line-height: 1.3;
   color: #2E2E2E;
   font-size: 14px;
 }
-/* line 47, ../sass/partials/gameboard/_tutorial.scss */
+/* line 49, ../sass/partials/gameboard/_tutorial.scss */
 #tutorial .arrow--left {
   right: 10px;
   border-top: 13px solid transparent;
@@ -5992,7 +5994,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-left: 13px solid #E60000;
 }
 @media (min-width: 768px) {
-  /* line 47, ../sass/partials/gameboard/_tutorial.scss */
+  /* line 49, ../sass/partials/gameboard/_tutorial.scss */
   #tutorial .arrow--left {
     right: 15px;
     border-top-width: 20px;
@@ -6000,7 +6002,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     border-left-width: 20px;
   }
 }
-/* line 60, ../sass/partials/gameboard/_tutorial.scss */
+/* line 62, ../sass/partials/gameboard/_tutorial.scss */
 #tutorial .arrow--right {
   left: 10px;
   border-top: 13px solid transparent;
@@ -6008,7 +6010,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-right: 13px solid #E60000;
 }
 @media (min-width: 768px) {
-  /* line 60, ../sass/partials/gameboard/_tutorial.scss */
+  /* line 62, ../sass/partials/gameboard/_tutorial.scss */
   #tutorial .arrow--right {
     left: 15px;
     border-top-width: 20px;

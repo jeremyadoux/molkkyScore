@@ -40,6 +40,8 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     //events
     $scope.$on('initializeOptions', function (event) {
         $scope.gameStarted = GameData.gameHasStarted();
+        $scope.isTutorial = GameData.isTutorial();
+        $scope.isTutorialStepFive = GameData.isTutorialStepFive();
         $('#modalOptions').modal('show');
     });
 });
