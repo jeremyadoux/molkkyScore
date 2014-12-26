@@ -27,7 +27,12 @@ app.controller("angular-modal-start", function($scope,$rootScope) {
     };
     $scope.tutorial = function(){
     	$('#modalStart').modal('hide');
-    	$rootScope.$broadcast('initializeTutorial'); //generate 'initializeTutorial' event
+        $('.loading-title').text(loading.tutorial);
+        $('.loader-container').show();
+        setTimeout(function(){
+            $('.loader-container').hide();
+            $rootScope.$broadcast('initializeTutorial'); //generate 'initializeTutorial' event
+        }, loadingTime); 
     };
 });
 

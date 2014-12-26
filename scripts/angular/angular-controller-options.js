@@ -24,7 +24,7 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     };
     $scope.exitGame = function(){
         $('#mainTable').fadeOut(1000);
-        if(GameData.gameHasWinner()){ 
+        if(GameData.gameHasWinner() || $scope.isTutorial){ 
             GameData.emptyPlayersArray();
             $('#mainTable').fadeOut(1000);
             $('#modalOptions').modal('hide');

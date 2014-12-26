@@ -2,37 +2,19 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	$scope.toggleNumber = function(number){
 		/* begin: tutorial */
 		if($scope.tutorial && !$scope.tutorialInProcess){
-			switch($scope.tutorialData.step){
-				case 1: if(number == 6) {
-							$scope.manualTutorial = true;
-							this.nextStep();
-						}
-						else {
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
-						}
-						break;
-				case 3: if(number == 0){
-							$("#td-0").toggleClass("active");
-							$("#td-player-name").toggleClass("active");
-						} 
-						else{
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
-						}
-						break;
-				default: $scope.stepText = getTutorialHelpText($scope.tutorialData.step);						 
-			}
-			$scope.$apply();
-			setTutorialArrowsPosition(true);
+			processNumberInTutorialModeScoped(number);
 			return;
 		}
 		/* end: tutorial */
 
 		/* begin: bosklapper stuff */
 		if(GameData.getBosklappersMode()){
+			// logic for number click bosklappers
 			if(number == 0) {
 				setBillyChar();
 			}
-			else{
+			else{ 
+				// bosklapper specific because of billy logic
 				toggleNumberActivationBosklappers(number);
 			}		
 		}
@@ -41,7 +23,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		else toggleNumberActivation(number);
 
 		/* begin: bosklapper stuff */
-		/* activation */
+		/* bosklappers activation logic */
 		if(!GameData.gameHasStarted() && number == 0 && !GameData.getBosklappersMode()){
 			if(checkBosklappersActivationCount(false)){
 				GameData.setBosklappersMode(true);
@@ -53,21 +35,11 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		if(number != 0)	checkBosklappersActivationCount(true);
 		/* end: bosklapper stuff */		
     };
+
     $scope.options = function(number){
     	/* begin: tutorial */
 		if($scope.tutorial && !$scope.tutorialInProcess){
-			switch($scope.tutorialData.step){
-				case 5: $scope.manualTutorial = true;
-						this.nextStep();
-						break;
-				default: 	$("#td-options img").addClass("animate-spin");
-					    	setTimeout(function(){
-					    		$("#td-options img").removeClass("animate-spin");
-					    	},2500);
-							$rootScope.$broadcast('initializeOptions'); //generate 'initializeOptions' event						 
-			}
-			$scope.$apply();
-			setTutorialArrowsPosition(true);
+			optionsInTutorialModeScoped();
 			return;
 		}
 		/* end: tutorial */
@@ -76,24 +48,13 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     	checkBosklappersActivationCount(true);
     	/* end: bosklapper stuff */
 
-    	$("#td-options img").addClass("animate-spin");
-    	setTimeout(function(){
-    		$("#td-options img").removeClass("animate-spin");
-    	},2500);
+    	animateOptionsIcon();
 		$rootScope.$broadcast('initializeOptions'); //generate 'initializeOptions' event
     };
     $scope.showScoreboard = function(number){
     	/* begin: tutorial */
 		if($scope.tutorial && !$scope.tutorialInProcess){
-			switch($scope.tutorialData.step){
-				case 4: $rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
-						$scope.manualTutorial = true;
-						this.nextStep();
-						break;
-				default:	$scope.stepText = getTutorialHelpText($scope.tutorialData.step);		
-							$scope.$apply();
-							setTutorialArrowsPosition(true);				 
-			}
+			showScoreboardInTutorialModeScoped();
 			return;	
 		}
 		/* end: tutorial */
@@ -107,21 +68,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	$scope.processThrow = function(){
 		/* begin: tutorial */
 		if($scope.tutorial && !$scope.tutorialInProcess){
-			switch($scope.tutorialData.step){
-				case 2: this.nextStep();
-						break;
-				case 3: if($("#td-0").hasClass("active")){
-							$scope.manualTutorial = true;
-							this.nextStep();
-						} 
-						else{
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
-						}
-						break;
-				default: $scope.stepText = getTutorialHelpText($scope.tutorialData.step);						 
-			}
-			$scope.$apply();
-			setTutorialArrowsPosition(true);
+			processThrowTutorialScoped();
 			return;	
 		}
 		/* end: tutorial */
@@ -129,46 +76,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		/* begin: bosklapper stuff */
     	checkBosklappersActivationCount(true);
     	if(GameData.getBosklappersMode()){
-    		if($('#mainTable #td-player-name').hasClass("active")){
-				//calculate new score
-				var scoreNumber = -1;
-				if ($("#mainTable .td-score-number.active")[0]){
-					scoreNumber = parseInt($('#mainTable .td-score-number.active').text());
-				}
-				if(scoreNumber == 0){
-					processMissBosklappers($scope.activePlayer);
-				}
-				else{
-					processScoreBosklappers($scope.activePlayer, scoreNumber);
-					if($scope.activePlayer.outOfTheGame){
-						GameData.setRanking($scope.activePlayer);
-						if($scope.activePlayer.winner){
-							setIsRestoreGame(false);
-							clearLocalStorageGameData();
-							$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
-						}
-					}
-				}
-
-				//go to next player
-				$scope.activePlayer.myTurn = false;
-				if(GameData.stillPlayersInTheGame()){
-					var nextPlayer = GameData.getNextInGamePlayer($scope.activePlayer.index);						
-					nextPlayer.myTurn = true;
-					if(nextPlayer.index <= $scope.activePlayer.index){
-						$scope.data.throwNumber++;
-					}
-					$scope.activePlayer = nextPlayer;
-				}
-				else{
-					$rootScope.$broadcast('initializeScoreboard'); //game finished
-				}
-				$('#mainTable #td-player-name').removeClass("active");
-				$('#mainTable .td-score-number.active').removeClass("active");
-				$('#mainTable .td-score-number.active').removeClass("active");
-				$('#mainTable #td-0.billyHalf').removeClass("billyHalf").text('0');
-				$('#mainTable #td-0.billySuper').removeClass("billySuper").text('0');
-			}
+    		processThrowBosklappersScoped();
     	}
     	/* end: bosklapper stuff */
     	else{
@@ -228,67 +136,79 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    		case 3: if( !$("#td-0").hasClass("active")) $("#td-0").click();
 	    				if($scope.manualTutorial){
 	    					$("#td-player-name").click();
-	    					$scope.stepText = tutorial.steps.four;
 	    					$scope.tutorialInProcess = false;
-	    					$scope.$apply();
-	    					setTutorialArrowsPosition(true);
-	    					$scope.manualTutorial = false;
+	    						$scope.manualTutorial = false;
+	    					$(".tutorial__content p").fadeOut("fast", function(){
+	    						$scope.stepText = tutorial.steps.four;
+	    						$scope.$apply();
+	    					}).fadeIn("fast", function(){
+					    		setTutorialArrowsPosition(true);
+					    	});
 	    				}
 	    				else{
 	    					setTimeout(function(){
 		    					$("#td-player-name").click();
-		    					$scope.stepText = tutorial.steps.four;
 		    					$scope.tutorialInProcess = false;
-		    					$scope.$apply();
-		    					setTutorialArrowsPosition(true);
+		    					$(".tutorial__content p").fadeOut("fast", function(){
+		    						$scope.stepText = tutorial.steps.four;
+			    					$scope.$apply();
+		    					}).fadeIn("fast", function(){
+						    		setTutorialArrowsPosition(true);
+						    	});
 		    				}, 1000);
 	    				}
 	    				break;
 	    		case 4: $("#scoreTable").click();
 	    				var checkScoreboardOpen = setInterval(function(){ 
 	    					if(!$("#modalScoreboard").hasClass("in")){
-	    						$scope.stepText = tutorial.steps.five;
-	    						$scope.tutorialInProcess = false;
 	    						clearInterval(checkScoreboardOpen);
-	    						$scope.$apply();
-	    						setTutorialArrowsPosition(true);
 	    						$scope.manualTutorial = false;
+	    						$scope.tutorialInProcess = false;
+	    						$(".tutorial__content p").fadeOut("fast", function(){
+	    							$scope.stepText = tutorial.steps.five;
+		    						$scope.$apply();
+	    						}).fadeIn("fast", function(){
+						    		setTutorialArrowsPosition(true);
+						    	});
 	    					} 
 	    				}, 500);
-	    				if(!$scope.manualTutorial){
+	    				/*if(!$scope.manualTutorial){
 	    					setTimeout(function(){
 		    					if($("#modalScoreboard").hasClass("in")){
 			    					$("#modalScoreboard .btn-primary").click();
 			    				}
 		    				}, 5000);
-	    				}
+	    				}*/
 	    				break;
 	    		case 5: GameData.setTutorialStepFive(true);
 	    				$("#td-options").click();
 	    				var checkOptionsOpen = setInterval(function(){ 
 	    					if(!$("#modalOptions").hasClass("in")){
-	    						$scope.tutorialInProcess = false;
 	    						clearInterval(checkOptionsOpen);
+	    						$scope.tutorialInProcess = false;
 	    						$scope.manualTutorial = false;
-	    						if($scope.players[1].misses == 0){
-	    							$scope.stepText = tutorial.steps.six;
-	    							GameData.setTutorialStepFive(false);
-	    						}
-	    						else{
-	    							$scope.tutorialData.step--;
-	    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
-	    						}
-	    						$scope.$apply();
-	    						setTutorialArrowsPosition(true);
+	    						$(".tutorial__content p").fadeOut("fast", function(){
+	    							if($scope.players[1].misses == 0){
+		    							$scope.stepText = tutorial.steps.six;
+		    							GameData.setTutorialStepFive(false);
+		    						}
+		    						else{
+		    							$scope.tutorialData.step--;
+		    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+		    						}
+	    							$scope.$apply();
+	    						}).fadeIn("fast", function(){
+						    		setTutorialArrowsPosition(true);
+						    	});
 	    					} 
 	    				}, 500);
-	    				if(!$scope.manualTutorial){
+	    				/*if(!$scope.manualTutorial){
 	    					setTimeout(function(){
 		    					if($("#modalOptions").hasClass("in")){
 		    						$("#modalOptions #btn-undo-options").click();
 		    					}
 		    				}, 5000);
-	    				}
+	    				}*/
 	    				break;
 	    	}
 	    	$scope.tutorialData.step++;
@@ -331,6 +251,137 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     	});
     };
     /* end: tutorial*/
+
+    /* begin: functions */
+    function processNumberInTutorialModeScoped(number){
+    	switch($scope.tutorialData.step){
+			case 1: if(number == 6) {
+						$scope.manualTutorial = true;
+						$scope.nextStep();
+					}
+					else {
+						$(".tutorial__content p").fadeOut("fast", function(){
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.$apply();
+						}).fadeIn("fast", function(){
+				    		setTutorialArrowsPosition(true);
+				    	});
+					}
+					break;
+			case 3: if(number == 0){
+						$("#td-0").toggleClass("active");
+						$("#td-player-name").toggleClass("active");
+					} 
+					else{
+						$(".tutorial__content p").fadeOut("fast", function(){
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.$apply();
+						}).fadeIn("fast", function(){
+				    		setTutorialArrowsPosition(true);
+				    	});
+					}
+					break;
+			default: 	$(".tutorial__content p").fadeOut("fast", function(){
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.$apply();	
+						}).fadeIn("fast", function(){
+				    		setTutorialArrowsPosition(true);
+				    	});					 
+		}
+    }
+    function optionsInTutorialModeScoped(){
+    	switch($scope.tutorialData.step){
+			case 5: $scope.manualTutorial = true;
+					$scope.nextStep();
+					break;
+			default: 	animateOptionsIcon();
+						$rootScope.$broadcast('initializeOptions'); //generate 'initializeOptions' event						 
+		}
+		/*$scope.$apply();*/
+		/*setTutorialArrowsPosition(true);*/
+    }
+    function processThrowTutorialScoped(){
+    	switch($scope.tutorialData.step){
+			case 2: $scope.nextStep();
+					break;
+			case 3: if($("#td-0").hasClass("active")){
+						$scope.manualTutorial = true;
+						$scope.nextStep();
+					} 
+					else{
+						$(".tutorial__content p").fadeOut("fast", function(){
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.$apply();
+						}).fadeIn("fast", function(){
+				    		setTutorialArrowsPosition(true);
+				    	});
+					}
+					break;
+			default: 	$(".tutorial__content p").fadeOut("fast", function(){
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.$apply();
+						}).fadeIn("fast", function(){
+				    		setTutorialArrowsPosition(true);
+				    	});					 
+		}
+    }
+    function showScoreboardInTutorialModeScoped(){
+    	switch($scope.tutorialData.step){
+			case 4: $rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+					$scope.manualTutorial = true;
+					$scope.nextStep();
+					break;
+			default:	$(".tutorial__content p").fadeOut("fast", function(){
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.$apply();
+						}).fadeIn("fast", function(){
+				    		setTutorialArrowsPosition(true);
+				    	});				 
+		}
+    }
+    function processThrowBosklappersScoped(){
+    	if($('#mainTable #td-player-name').hasClass("active")){
+			//calculate new score
+			var scoreNumber = -1;
+			if ($("#mainTable .td-score-number.active")[0]){
+				scoreNumber = parseInt($('#mainTable .td-score-number.active').text());
+			}
+			if(scoreNumber == 0){
+				processMissBosklappers($scope.activePlayer);
+			}
+			else{
+				processScoreBosklappers($scope.activePlayer, scoreNumber);
+				if($scope.activePlayer.outOfTheGame){
+					GameData.setRanking($scope.activePlayer);
+					if($scope.activePlayer.winner){
+						setIsRestoreGame(false);
+						clearLocalStorageGameData();
+						$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+					}
+				}
+			}
+
+			//go to next player
+			$scope.activePlayer.myTurn = false;
+			if(GameData.stillPlayersInTheGame()){
+				var nextPlayer = GameData.getNextInGamePlayer($scope.activePlayer.index);						
+				nextPlayer.myTurn = true;
+				if(nextPlayer.index <= $scope.activePlayer.index){
+					$scope.data.throwNumber++;
+				}
+				$scope.activePlayer = nextPlayer;
+			}
+			else{
+				$rootScope.$broadcast('initializeScoreboard'); //game finished
+			}
+			$('#mainTable #td-player-name').removeClass("active");
+			$('#mainTable .td-score-number.active').removeClass("active");
+			$('#mainTable .td-score-number.active').removeClass("active");
+			$('#mainTable #td-0.billyHalf').removeClass("billyHalf").text('0');
+			$('#mainTable #td-0.billySuper').removeClass("billySuper").text('0');
+		}
+    }
+    /* end: functions */
 
     //events
 	$scope.$on('initializeGameBoard', function (event) {
@@ -393,12 +444,12 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    $scope.activePlayer = $scope.players[0];
 	    $scope.data = GameData.getData();
 	    initializeMainTable($scope.players.length, true);
-	    /*$scope.$apply();*/
+	    $scope.tutorial = GameData.isTutorial();
+	    $scope.$apply();
 	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
 		  	$('#modalScoreboard #scoreboardDetails th').css({width:100/$scope.players.length+"%"});
 		  	$('#modalScoreboard #scoreboardDetails td').css({width:100/$scope.players.length+"%"});
 		});
-		$scope.tutorial = GameData.isTutorial();
 		$('#modalTutorialIntro').modal('show');
 	});
 });

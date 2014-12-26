@@ -5931,88 +5931,113 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   }
 }
 /* line 1, ../sass/partials/gameboard/_tutorial.scss */
-.arrow {
+.arrow__container {
   position: absolute;
   top: 50%;
-  margin-top: -13px;
-  width: 0;
-  height: 0;
+  height: 50px;
+  margin-top: -25px;
+  padding: 12px 10px;
   cursor: pointer;
 }
 @media (min-width: 768px) {
   /* line 1, ../sass/partials/gameboard/_tutorial.scss */
-  .arrow {
-    margin-top: -20px;
+  .arrow__container {
+    padding: 5px 15px;
   }
 }
 /* line 11, ../sass/partials/gameboard/_tutorial.scss */
+.arrow__container--left {
+  right: 0px;
+  padding-left: 13px;
+}
+@media (min-width: 768px) {
+  /* line 11, ../sass/partials/gameboard/_tutorial.scss */
+  .arrow__container--left {
+    padding-left: 20px;
+  }
+}
+/* line 18, ../sass/partials/gameboard/_tutorial.scss */
+.arrow__container--right {
+  left: 0px;
+  padding-right: 13px;
+}
+@media (min-width: 768px) {
+  /* line 18, ../sass/partials/gameboard/_tutorial.scss */
+  .arrow__container--right {
+    padding-right: 20px;
+  }
+}
+
+/* line 27, ../sass/partials/gameboard/_tutorial.scss */
+.arrow {
+  width: 0;
+  height: 0;
+}
+/* line 30, ../sass/partials/gameboard/_tutorial.scss */
 .arrow.disabled {
   opacity: 0.5;
   cursor: auto;
 }
 
-/* line 18, ../sass/partials/gameboard/_tutorial.scss */
-#tutorial {
+/* line 37, ../sass/partials/gameboard/_tutorial.scss */
+#td-tutorial {
   position: relative;
   padding: 5px 35px;
+  min-height: 50px;
   background-color: #FFFFFF !important;
 }
-/* line 24, ../sass/partials/gameboard/_tutorial.scss */
-#tutorial.firstStep {
+/* line 44, ../sass/partials/gameboard/_tutorial.scss */
+#td-tutorial.firstStep {
   padding-left: 15px;
 }
-/* line 28, ../sass/partials/gameboard/_tutorial.scss */
-#tutorial.lastStep {
+/* line 48, ../sass/partials/gameboard/_tutorial.scss */
+#td-tutorial.lastStep {
   padding-right: 15px;
 }
 @media (min-width: 768px) {
-  /* line 18, ../sass/partials/gameboard/_tutorial.scss */
-  #tutorial {
+  /* line 37, ../sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial {
     padding: 5px 50px;
   }
-  /* line 34, ../sass/partials/gameboard/_tutorial.scss */
-  #tutorial.firstStep {
+  /* line 54, ../sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial.firstStep {
     padding-left: 25px;
   }
-  /* line 37, ../sass/partials/gameboard/_tutorial.scss */
-  #tutorial.lastStep {
+  /* line 57, ../sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial.lastStep {
     padding-right: 25px;
   }
 }
-/* line 42, ../sass/partials/gameboard/_tutorial.scss */
-#tutorial .tutorial__content p {
+/* line 62, ../sass/partials/gameboard/_tutorial.scss */
+#td-tutorial .tutorial__content p {
   font-family: "Champion-regular", Arial, Helvetica, sans-serif;
   line-height: 1.3;
   color: #2E2E2E;
   font-size: 14px;
 }
-/* line 49, ../sass/partials/gameboard/_tutorial.scss */
-#tutorial .arrow--left {
-  right: 10px;
+/* line 69, ../sass/partials/gameboard/_tutorial.scss */
+#td-tutorial .arrow--left {
   border-top: 13px solid transparent;
   border-bottom: 13px solid transparent;
   border-left: 13px solid #E60000;
 }
 @media (min-width: 768px) {
-  /* line 49, ../sass/partials/gameboard/_tutorial.scss */
-  #tutorial .arrow--left {
-    right: 15px;
+  /* line 69, ../sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial .arrow--left {
     border-top-width: 20px;
     border-bottom-width: 20px;
     border-left-width: 20px;
   }
 }
-/* line 62, ../sass/partials/gameboard/_tutorial.scss */
-#tutorial .arrow--right {
-  left: 10px;
+/* line 80, ../sass/partials/gameboard/_tutorial.scss */
+#td-tutorial .arrow--right {
   border-top: 13px solid transparent;
   border-bottom: 13px solid transparent;
   border-right: 13px solid #E60000;
 }
 @media (min-width: 768px) {
-  /* line 62, ../sass/partials/gameboard/_tutorial.scss */
-  #tutorial .arrow--right {
-    left: 15px;
+  /* line 80, ../sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial .arrow--right {
     border-top-width: 20px;
     border-bottom-width: 20px;
     border-right-width: 20px;
@@ -6033,29 +6058,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: 0px;
   display: none;
 }
-/* line 10, ../sass/partials/modals/_addPlayers.scss */
+/* line 9, ../sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .alert.alert-info {
+  color: #1275B3;
+}
+/* line 13, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .form-control {
   color: #2E2E2E;
   border: 1px solid #2E2E2E;
   border-right: none;
   box-shadow: none;
 }
-/* line 16, ../sass/partials/modals/_addPlayers.scss */
+/* line 19, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .input-group-addon {
   color: #FFFFFF;
   background-color: #1275B3;
   border-color: #2E2E2E;
   height: 100%;
 }
-/* line 22, ../sass/partials/modals/_addPlayers.scss */
+/* line 25, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .icon-plus {
   line-height: 1rem;
 }
-/* line 25, ../sass/partials/modals/_addPlayers.scss */
+/* line 28, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .icon-plus:hover {
   cursor: pointer;
 }
-/* line 28, ../sass/partials/modals/_addPlayers.scss */
+/* line 31, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .max-message {
   text-align: center;
   color: #E60000;
@@ -6065,11 +6094,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-style: solid;
   border-color: #E60000;
 }
-/* line 37, ../sass/partials/modals/_addPlayers.scss */
+/* line 40, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers input {
   font-size: 18px;
 }
-/* line 40, ../sass/partials/modals/_addPlayers.scss */
+/* line 43, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers button[type="submit"] {
   position: absolute;
   left: -9999px;

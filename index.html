@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
         <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> -->
-        <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+        <link rel="icon" type="image/png" href="images/favicon.png">
         <title>Mölkky score</title>
     </head>
     <body ng-app="angular-app">
@@ -38,7 +38,7 @@
 
         <!-- Loader animation -->
         <div class="loader-container">
-          <span class="loading-title">starting application</span>
+          <span class="loading-title">loading application</span>
           <span class="dot dot-1"></span>
           <span class="dot dot-2"></span>
           <span class="dot dot-3"></span>
@@ -52,7 +52,7 @@
           <div class="modal-dialog modal-sm modal-vertical-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">What do you want to do?</h4>
+                    <h4 class="modal-title" id="myModalLabel">Mölkky Score</h4>
                 </div>
                 <div class="modal-body" >
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
@@ -144,8 +144,8 @@
                    
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-exit-scoreboard" type="button" ng-disabled="isTutorial" class="btn btn-default pull-left" ng-click="btnExit()">Exit</button>
-                    <button id="btn-newGame-scoreboard" type="button" ng-disabled="isTutorial" class="btn btn-default pull-left" ng-click="btnNewGame()">New game</button>
+                    <button id="btn-exit-scoreboard" type="button" ng-hide="isTutorial" class="btn btn-default pull-left" ng-click="btnExit()">Exit</button>
+                    <button id="btn-newGame-scoreboard" type="button" ng-hide="isTutorial" class="btn btn-default pull-left" ng-click="btnNewGame()">New game</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
               </div>
             </div>
@@ -161,8 +161,8 @@
                     <h4 class="modal-title" id="myModalLabel">Options</h4>
                 </div>
                 <div class="modal-body" >
-                    <button ng-click="restartGame()" ng-disabled="isTutorial" id="btn-restart-options" type="button" class="btn btn-default btn-lg btn-block">Restart game</button>
-                    <button ng-click="newGame()" ng-disabled="isTutorial" id="btn-new-options" type="button" class="btn btn-default btn-lg btn-block">New game</button>
+                    <button ng-click="restartGame()" ng-hide="isTutorial" id="btn-restart-options" type="button" class="btn btn-default btn-lg btn-block">Restart game</button>
+                    <button ng-click="newGame()" ng-hide="isTutorial" id="btn-new-options" type="button" class="btn btn-default btn-lg btn-block">New game</button>
                     <button ng-click="undoLast()" ng-disabled="!gameStarted || (isTutorial && !isTutorialStepFive)" id="btn-undo-options" type="button" class="btn btn-default btn-lg btn-block">Undo last</button>
                     <button ng-click="exitGame()" id="btn-exit-options" type="button" class="btn btn-default btn-lg btn-block">Exit game</button>       
                 </div>
@@ -246,7 +246,7 @@
                         You can <strong>navigate</strong> through the tutorial either by following the instructions or by use of the arrows on the bottom of the screen.
                     </p>
                     <p>
-                        You can <strong>exit</strong> the tutorial anytime by selecting the gear icon at the top right of the screen.
+                        You can <strong>exit</strong> the tutorial anytime by selecting the settings icon at the top right of the screen.
                     </p>
                 </div>
                 <div class="modal-footer" >
@@ -320,9 +320,13 @@
                 <td id="td-12" class="xs-td-row-4 td-score-number" ng-click="toggleNumber(12)">12</td>
             </tr>
             <tr ng-if="tutorial">
-                <td id="tutorial" colspan="6" ng-class="{firstStep: tutorialData.step == 1, lastStep: tutorialData.step == 6}">
-                    <div ng-click="nextStep()" ng-hide="tutorialData.step == 6" class="arrow arrow--left" ng-class="{disabled: tutorialInProcess}"></div>
-                    <div ng-click="prevStep()" ng-hide="tutorialData.step == 1" class="arrow arrow--right" ng-class="{disabled: tutorialInProcess}"></div>
+                <td id="td-tutorial" colspan="6" ng-class="{firstStep: tutorialData.step == 1, lastStep: tutorialData.step == 6}">
+                    <div class="arrow__container arrow__container--left" ng-click="nextStep()" ng-hide="tutorialData.step == 6">
+                        <div  class="arrow arrow--left" ng-class="{disabled: tutorialInProcess}"></div>
+                    </div>
+                    <div class="arrow__container arrow__container--right" ng-click="prevStep()" ng-hide="tutorialData.step == 1" >
+                        <div class="arrow arrow--right" ng-class="{disabled: tutorialInProcess}"></div>
+                    </div>
                     <div class="tutorial__content"><p>{{stepText}}</p></div>
                 </td>
             </tr>

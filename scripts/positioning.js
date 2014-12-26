@@ -30,12 +30,16 @@ function positionTable(){
 }
 
 function setPortrait(){
-	$("<tr id='xs-tr-2' />").insertAfter("#xs-tr-1");
-	$("<tr id='xs-tr-4' />").insertAfter("#xs-tr-3");
+	if ( $('#xs-tr-2').length == 0 ) {
+		$("<tr id='xs-tr-2' />").insertAfter("#xs-tr-1");
+	}
+	if( $('#xs-tr-4').length == 0 ){
+		$("<tr id='xs-tr-4' />").insertAfter("#xs-tr-3");
+	}
 	$("#xs-tr-2").append( $(".xs-td-row-2"));
 	$("#xs-tr-4").append( $(".xs-td-row-4"));
 	$( ".td-colspanned" ).attr( "colspan", "2" );
-	$( "#tutorial" ).attr( "colspan", "3" );
+	$( "#td-tutorial" ).attr( "colspan", "3" );
 	$("#mainTable  tr td").css({
 		width:"30%"
 	});
@@ -47,7 +51,7 @@ function setLandscape(){
 	$("#xs-tr-2").remove();
 	$("#xs-tr-4").remove();
 	$( ".td-colspanned" ).attr( "colspan", "5" );
-	$( "#tutorial" ).attr( "colspan", "6" );
+	$( "#td-tutorial" ).attr( "colspan", "6" );
 	$("#mainTable tr td").css({
 		width:"15%"
 	});
@@ -56,18 +60,18 @@ function setLandscape(){
 function setInitialColspanTutorial(){
 	isLandscape = ($(window).height() < $(window).width());
 	if(!isLandscape){
-		$( "#tutorial" ).attr( "colspan", "3" );
+		$( "#td-tutorial" ).attr( "colspan", "3" );
 	}
 }
 function setTutorialArrowsPosition(animated){
-	var tutorialCellHeight = $("#tutorial").height();
+	var tutorialCellHeight = $("#td-tutorial").height();
 	if(animated){
-		$("#tutorial .arrow").animate({
+		$("#td-tutorial .arrow").animate({
 			top: (tutorialCellHeight/2) + "px"
 		}, "fast");
 	}
 	else{
-		$("#tutorial .arrow").css({
+		$("#td-tutorial .arrow").css({
 			top: (tutorialCellHeight/2) + "px"
 		});
 	}

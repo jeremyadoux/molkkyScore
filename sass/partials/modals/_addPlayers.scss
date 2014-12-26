@@ -6,6 +6,9 @@
 		padding:0px 15px;
 		margin:0px;
 		display:none;
+		&.alert-info{
+			color:$accentColor;
+		}
 	}
 	.form-control{
 		color:$darkColor;

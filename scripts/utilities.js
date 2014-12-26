@@ -11,10 +11,11 @@ var warnings = {
 
 var loading = {
 	firstGame:"starting game",
-	startApp:"starting application",
+	startApp:"loading application",
 	newGame:"starting new game",
 	restartGame:"restarting game",	
-	restoreGame:"restoring game"
+	restoreGame:"restoring game",
+	tutorial:"loading tutorial"
 };
 
 var tutorial = {
@@ -23,16 +24,16 @@ var tutorial = {
 		two: "Nice, now confirm player A's score by touching his name. The scoreboard at the top will get updated...",
 		three: "Well done! It's player B's turn. She's didn't hit any pins! Select the number 0 and assign it to player B.",
 		four: "Player A is winning! You can get a detailed score overview by touching the scoreboard at the top. Give it a try...",
-		five: "If you assign a wrong score, you can undo it by touching the gear icon at the top and selecting 'undo last'. Try it..",
-		six: "Okey, you're all set for some mölkky action! Exit the tutorial game by touching the gear icon and selecting 'exit game'."
+		five: "If you assign a wrong score, you can undo it by touching the settings icon at the top and selecting 'undo last'. Try it..",
+		six: "Okey, you're all set for some mölkky action! Exit the tutorial game by touching the settings icon and selecting 'exit game'."
 	},
 	help:{
 		one: "Nope! Select number 6",
 		two: "Nope! Select player A (marked red)",
 		threeA: "Nope! Select number 0 and then select player B",
 		four: "Nope! Select the scoreboard at the top of the screen & then close it again",
-		five: "Nope! Select the gear icon at the top right of the screen and then the 'Undo Last' button",
-		six: "Nope! Select the gear icon at the top right of the screen and then the 'Exit game' button"
+		five: "Nope! Select the settings icon at the top right of the screen and then the 'Undo Last' button",
+		six: "Nope! Select the settings icon at the top right of the screen and then the 'Exit game' button"
 	}
 };
 
@@ -75,6 +76,14 @@ function validatePlayerName(newPlayerName,players,alertElement){
 function warn(alertElement,warning){
 	alertElement.text(warning);
 	alertElement.show();
+}
+
+function infoMessage(infoElement,message){
+	infoElement.text(message);
+	infoElement.removeClass("alert-info").addClass("alert-info");
+	infoElement.fadeIn("slow").fadeOut("slow", function(){
+		infoElement.removeClass("alert-info");
+	});
 }
 
 //Prototype extensions
@@ -269,6 +278,13 @@ function showModalWithLoader(modal, loaderMessage){
 	},loadingTime);	
 }
 
+function animateOptionsIcon(){
+	$("#td-options img").addClass("animate-spin");
+	setTimeout(function(){
+		$("#td-options img").removeClass("animate-spin");
+	},2500);
+}
+						
 function isRestoreGame(){
 	if(window["localStorage"]){
 		if(!localStorage.getItem("restoreGame")){ //on first-time usage of app

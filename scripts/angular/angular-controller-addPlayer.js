@@ -3,6 +3,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         var newPlayerName = $('#modalAddPlayers input').val();
         if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'))){
             GameData.addPlayerToGame(newPlayerName);
+            infoMessage($('#modalAddPlayers .alert'), newPlayerName + " added to game");
             $('#modalAddPlayers input').val('');
             $('#modalAddPlayers input').blur();
         }   	
