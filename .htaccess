@@ -1,1 +1,9 @@
 AddType text/cache-manifest .appcache
+
+ExpiresActive On
+ExpiresByType image/x-icon "access plus 2592000 seconds"
+ExpiresByType image/png "access plus 2592000 seconds"
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www\.molkkyscore\.com [NC]
+RewriteRule ^(.*)$ http://molkkyscore.com/$1 [R=301,L]

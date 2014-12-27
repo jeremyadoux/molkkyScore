@@ -4,10 +4,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
-        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> -->
-        <link rel="icon" type="image/png" href="images/favicon3.ico">
+        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <!-- <link rel="icon" type="image/png" href="images/favicon.ico"> -->
+        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css">
         <title>Mölkky score</title>
+        <meta name="description" content="Web app that makes keeping score on the game named 'molkky' (also known as number kubb) as easy as pie"></meta>
+        <meta name="keywords" content="molkky mölkky score app"></meta>
     </head>
     <body ng-app="angular-app">
         
@@ -56,8 +59,8 @@
                 </div>
                 <div class="modal-body" >
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
-                    <button ng-click="tutorial()" id="btn-tutorial-start"type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
-                    <button ng-click="about()" id="btn-about-start"type="button" class="btn btn-default btn-lg btn-block">About</button>        
+                    <button ng-click="tutorial()" id="btn-tutorial-start "type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
+                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block">About</button>        
                 </div>
                 <!-- <div class="modal-footer" >
                     <a href="#" class="pull-left">Create account</a>
@@ -331,7 +334,8 @@
                 </td>
             </tr>
         </table>
-          
+        
+        <!--  
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
@@ -350,7 +354,7 @@
         <script src="scripts/angular/angular-controller-confirm.js"></script>
         <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
-        
-        <!-- <script src="scripts/dist/script.js"></script> -->
+        -->
+        <script async src="scripts/dist/script.js"></script> 
     </body>
 </html>

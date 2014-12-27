@@ -288,7 +288,7 @@ function animateOptionsIcon(){
 function isRestoreGame(){
 	if(window["localStorage"]){
 		if(!localStorage.getItem("restoreGame")){ //on first-time usage of app
-			localStorage.setItem("restoreGame",JSON.stringify(restoreGame));
+			localStorage.setItem("restoreGame",JSON.stringify(false));
 			return false;
 		}
 		else{
