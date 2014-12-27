@@ -38,8 +38,7 @@ module.exports = function(grunt) {
 		      'scripts/angular/angular-controller-options.js',
 		      'scripts/angular/angular-controller-confirm.js',
 		      'scripts/angular/angular-controller-restoreGame.js',
-		      'scripts/angular/angular-controller-bosklappers.js',
-		      'scripts/seo/ga.js'
+		      'scripts/angular/angular-controller-bosklappers.js'
 		      ],
 		      dest: 'scripts/dist/script.js',
 		    }
