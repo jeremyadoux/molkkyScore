@@ -4,26 +4,43 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <!-- <link rel="icon" type="image/png" href="images/favicon.ico"> -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css">
-        <title>Mölkky score</title>
         <meta name="description" content="Web app that makes keeping score on the game named 'molkky' (also known as number kubb) as easy as pie"></meta>
         <meta name="keywords" content="molkky mölkky score app"></meta>
+        <title>Mölkky score</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">   
+        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> -->
         <!-- begin: google analytics -->
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
             ga('create', 'UA-58033000-1', 'auto');
             ga('send', 'pageview');
         </script>
         <!-- end: google analytics -->
     </head>
     <body ng-app="angular-app">
+
+        <!-- Modal start -->
+        <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-start">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="myModalLabel">Mölkky Score</h1>
+                </div>
+                <div class="modal-body" >
+                    <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
+                    <button ng-click="tutorial()" id="btn-tutorial-start "type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
+                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block">About</button>        
+                </div>
+                <!-- <div class="modal-footer" >
+                    <a href="#" class="pull-left">Create account</a>
+                </div> -->
+            </div>
+          </div>
+        </div> <!-- end Modal start -->
         
         <!-- Modal about -->
         <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -38,7 +55,7 @@
                         molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named "mölkky"</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href="http://www.molkky.com" target="_blank">www.molkky.com</a>.  
                     </p>
                     <p>
-                    molkkyScore.com is developed by <a href="http://www.fredericaerts.com" target="_blank">Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href="mailto:info@molkkyScore.com" target="_top">info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href="http://github.confirm/fredericJos/molkkyScore" target="_blank">github</a>.
+                        molkkyScore.com is developed by <a href="http://www.fredericaerts.com" target="_blank">Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href="mailto:info@molkkyScore.com" target="_top">info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href="http://github.contributefirm/fredericJos/molkkyScore" target="_blank">github</a>.
                     </p>
                     <p>
                         <strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.
@@ -60,25 +77,6 @@
           <span class="dot dot-5"></span>
           <span class="dot dot-6"></span>
         </div><!-- end Loader animation -->
-
-        <!-- Modal start -->
-        <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-start">
-          <div class="modal-dialog modal-sm modal-vertical-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="myModalLabel">Mölkky Score</h1>
-                </div>
-                <div class="modal-body" >
-                    <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
-                    <button ng-click="tutorial()" id="btn-tutorial-start "type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
-                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block">About</button>        
-                </div>
-                <!-- <div class="modal-footer" >
-                    <a href="#" class="pull-left">Create account</a>
-                </div> -->
-            </div>
-          </div>
-        </div> <!-- end Modal start -->
 
         <!-- Modal add players -->
         <div class="modal fade" id="modalAddPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-addPlayers">
@@ -345,8 +343,7 @@
                 </td>
             </tr>
         </table>
-        
-        <!--  
+              
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
@@ -365,7 +362,8 @@
         <script src="scripts/angular/angular-controller-confirm.js"></script>
         <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
-        -->
+        <!--  
         <script async src="scripts/dist/script.js"></script> 
+        -->
     </body>
 </html>

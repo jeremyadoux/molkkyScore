@@ -2,9 +2,14 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     $scope.restartGame = function(){
         $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
-            GameData.resetPlayers();
             $('#modalOptions').modal('hide');
-            $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            $('.loading-title').text(loading.restartGame);
+            $('.loader-container').show();
+            GameData.resetPlayers();
+            setTimeout(function(){
+                $('.loader-container').hide();
+                $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            }, loadingTime);
         }
         else{ //ask confirmation
             $('#modalOptions').modal('hide');
