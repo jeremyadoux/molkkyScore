@@ -1,13 +1,13 @@
 //fonts
 @font-face {
+    font-family: Champion-medium;
+    src: url(../fonts/NationalChampion-Medium.woff),
+       url(../fonts/NationalChampion-Medium.otf) format('opentype');
+}
+@font-face {
     font-family: Champion-regular;
     src: url(../fonts/NationalChampion-Regular.woff),
     	 url(../fonts/NationalChampion-Regular.otf) format('opentype');
-}
-@font-face {
-    font-family: Champion-medium;
-    src: url(../fonts/NationalChampion-Medium.woff),
-    	 url(../fonts/NationalChampion-Medium.otf) format('opentype');
 }
 /* @font-face {
     font-family: Champion-bold;

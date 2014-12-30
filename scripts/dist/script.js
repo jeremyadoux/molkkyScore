@@ -859,8 +859,8 @@ function Player(index, name){
 }
 
 function getTutorialPlayers(){
-	var playerOne= new Player(0, "player A");
-	var playerTwo= new Player(1, "player B");
+	var playerOne= new Player(0, "Bob");
+	var playerTwo= new Player(1, "Sara");
 	return [playerOne, playerTwo];
 }
 
@@ -1577,22 +1577,22 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
     };
 });*/
 
-$(document).ready(function() {
-	$('.loader-container').show();
-	setTimeout(function(){
-		$('.loader-container').hide();
-		if(isRestoreGame()){
-			showModal('#restoreGame');
-		}
-    	else{
-    		showModal('#modalStart');
-    	}
-	},loadingTime);
+$(document).ready(function(){   
+    $('.loader-container').show();
+    setTimeout(function(){
+        $('.loader-container').hide();
+        if(isRestoreGame()){
+            showModal('#restoreGame');
+        }
+        else{
+            showModal('#modalStart');
+        }
+    }, 4000);
 
-	// reopen 'start' modal on closing 'about' modal
-	$('#modalAbout').on('hidden.bs.modal', function (e) {
-		showModal('#modalStart');
-	});
+    // reopen 'start' modal on closing 'about' modal
+    $('#modalAbout').on('hidden.bs.modal', function (e) {
+        showModal('#modalStart');
+    });
 });
 
 app.controller("angular-modal-start", function($scope,$rootScope) {
@@ -1742,23 +1742,41 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     $scope.nextStep = function(){
     	if($scope.tutorialInProcess) return;
     	$scope.tutorialInProcess = true;
-    	$(".tutorial__content p").fadeOut("fast", function(){
+    	
     		switch($scope.tutorialData.step){
-	    		case 1: $scope.stepText = tutorial.steps.two;
-	    				$("#td-6").click();
-	    				$scope.tutorialInProcess = false;
+	    		case 1: $(".tutorial__content p").fadeOut("fast", function(){
+	    					$scope.stepText = tutorial.steps.two;
+		    				$scope.toggleNumber(6);
+		    				$scope.tutorialInProcess = false;
+		    				$scope.tutorialData.step++;
+					    	$scope.$apply();
+					    	$(".tutorial__content p").fadeIn("fast", function(){
+					    		setTutorialArrowsPosition(true);
+					    	});
+	    				});	
 	    				break;
-	    		case 2: $scope.stepText = tutorial.steps.three;
-	    				$("#td-player-name").click();
-	    				$scope.tutorialInProcess = false;
+	    		case 2: $(".tutorial__content p").fadeOut("fast", function(){
+	    					$scope.stepText = tutorial.steps.three;
+		    				$scope.processThrow();
+		    				$scope.tutorialInProcess = false;
+		    				$scope.tutorialData.step++;
+					    	$scope.$apply();
+					    	$(".tutorial__content p").fadeIn("fast", function(){
+					    		setTutorialArrowsPosition(true);
+					    	});
+	    				});	
 	    				break;
-	    		case 3: if( !$("#td-0").hasClass("active")) $("#td-0").click();
+	    		case 3: if( !$("#td-0").hasClass("active")){
+	    					$("#td-0").addClass("active");
+	    					$("#td-player-name").addClass("active");
+	    				} 
 	    				if($scope.manualTutorial){
-	    					$("#td-player-name").click();
+	    					$scope.processThrow();
 	    					$scope.tutorialInProcess = false;
-	    						$scope.manualTutorial = false;
+	    					$scope.manualTutorial = false;
 	    					$(".tutorial__content p").fadeOut("fast", function(){
 	    						$scope.stepText = tutorial.steps.four;
+	    						$scope.tutorialData.step++;
 	    						$scope.$apply();
 	    					}).fadeIn("fast", function(){
 					    		setTutorialArrowsPosition(true);
@@ -1766,10 +1784,11 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    				}
 	    				else{
 	    					setTimeout(function(){
-		    					$("#td-player-name").click();
+		    					$scope.processThrow();
 		    					$scope.tutorialInProcess = false;
 		    					$(".tutorial__content p").fadeOut("fast", function(){
 		    						$scope.stepText = tutorial.steps.four;
+		    						$scope.tutorialData.step++;
 			    					$scope.$apply();
 		    					}).fadeIn("fast", function(){
 						    		setTutorialArrowsPosition(true);
@@ -1777,7 +1796,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		    				}, 1000);
 	    				}
 	    				break;
-	    		case 4: $("#scoreTable").click();
+	    		case 4: $scope.showScoreboard();
 	    				var checkScoreboardOpen = setInterval(function(){ 
 	    					if(!$("#modalScoreboard").hasClass("in")){
 	    						clearInterval(checkScoreboardOpen);
@@ -1785,22 +1804,16 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    						$scope.tutorialInProcess = false;
 	    						$(".tutorial__content p").fadeOut("fast", function(){
 	    							$scope.stepText = tutorial.steps.five;
+	    							$scope.tutorialData.step++;
 		    						$scope.$apply();
 	    						}).fadeIn("fast", function(){
 						    		setTutorialArrowsPosition(true);
 						    	});
 	    					} 
 	    				}, 500);
-	    				/*if(!$scope.manualTutorial){
-	    					setTimeout(function(){
-		    					if($("#modalScoreboard").hasClass("in")){
-			    					$("#modalScoreboard .btn-primary").click();
-			    				}
-		    				}, 5000);
-	    				}*/
 	    				break;
 	    		case 5: GameData.setTutorialStepFive(true);
-	    				$("#td-options").click();
+	    				$scope.options();
 	    				var checkOptionsOpen = setInterval(function(){ 
 	    					if(!$("#modalOptions").hasClass("in")){
 	    						clearInterval(checkOptionsOpen);
@@ -1809,10 +1822,10 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    						$(".tutorial__content p").fadeOut("fast", function(){
 	    							if($scope.players[1].misses == 0){
 		    							$scope.stepText = tutorial.steps.six;
+		    							$scope.tutorialData.step++;
 		    							GameData.setTutorialStepFive(false);
 		    						}
 		    						else{
-		    							$scope.tutorialData.step--;
 		    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
 		    						}
 	    							$scope.$apply();
@@ -1821,20 +1834,8 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 						    	});
 	    					} 
 	    				}, 500);
-	    				/*if(!$scope.manualTutorial){
-	    					setTimeout(function(){
-		    					if($("#modalOptions").hasClass("in")){
-		    						$("#modalOptions #btn-undo-options").click();
-		    					}
-		    				}, 5000);
-	    				}*/
 	    				break;
 	    	}
-	    	$scope.tutorialData.step++;
-	    	$scope.$apply();
-	    	$(".tutorial__content p").show();
-	    	setTutorialArrowsPosition(true);
-    	});	  	
     };
     $scope.prevStep = function(){
     	if($scope.tutorialInProcess) return;
@@ -2153,9 +2154,14 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
     $scope.restartGame = function(){
         $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
-            GameData.resetPlayers();
             $('#modalOptions').modal('hide');
-            $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            $('.loading-title').text(loading.restartGame);
+            $('.loader-container').show();
+            GameData.resetPlayers();
+            setTimeout(function(){
+                $('.loader-container').hide();
+                $rootScope.$broadcast('initializeGameBoard'); //generate 'initializeGameBoard' event
+            }, loadingTime);
         }
         else{ //ask confirmation
             $('#modalOptions').modal('hide');
@@ -2224,7 +2230,7 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
 
     //events
     $scope.$on('initializeConfirm', function (event) {
-        $('#modalConfirm .modal-header h4').text(GameData.getConfirmType() + ' game');
+        $('#modalConfirm .modal-header h2').text(GameData.getConfirmType() + ' game');
     	$('#modalConfirm').modal('show');
     });
 });

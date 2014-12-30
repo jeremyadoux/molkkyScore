@@ -1,19 +1,19 @@
-$(document).ready(function() {
-	$('.loader-container').show();
-	setTimeout(function(){
-		$('.loader-container').hide();
-		if(isRestoreGame()){
-			showModal('#restoreGame');
-		}
-    	else{
-    		showModal('#modalStart');
-    	}
-	},loadingTime);
+$(document).ready(function(){   
+    $('.loader-container').show();
+    setTimeout(function(){
+        $('.loader-container').hide();
+        if(isRestoreGame()){
+            showModal('#restoreGame');
+        }
+        else{
+            showModal('#modalStart');
+        }
+    }, 4000);
 
-	// reopen 'start' modal on closing 'about' modal
-	$('#modalAbout').on('hidden.bs.modal', function (e) {
-		showModal('#modalStart');
-	});
+    // reopen 'start' modal on closing 'about' modal
+    $('#modalAbout').on('hidden.bs.modal', function (e) {
+        showModal('#modalStart');
+    });
 });
 
 app.controller("angular-modal-start", function($scope,$rootScope) {
