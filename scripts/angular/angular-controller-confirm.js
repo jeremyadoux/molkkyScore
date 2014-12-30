@@ -26,7 +26,7 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
 
     //events
     $scope.$on('initializeConfirm', function (event) {
-        $('#modalConfirm .modal-header h4').text(GameData.getConfirmType() + ' game');
+        $('#modalConfirm .modal-header h2').text(GameData.getConfirmType() + ' game');
     	$('#modalConfirm').modal('show');
     });
 });

@@ -110,8 +110,8 @@ function Player(index, name){
 }
 
 function getTutorialPlayers(){
-	var playerOne= new Player(0, "player A");
-	var playerTwo= new Player(1, "player B");
+	var playerOne= new Player(0, "Bob");
+	var playerTwo= new Player(1, "Sara");
 	return [playerOne, playerTwo];
 }
 
