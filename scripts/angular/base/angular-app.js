@@ -9,7 +9,14 @@ app.factory('GameData', function(){
 		tutorialStepFive: false,
 		bosklappersMode: false
 	};
+	var language = "En";
 	return{
+		getLanguage: function(){
+			return language;
+		},
+		setLanguage: function(lang){
+			language = lang;
+		},
 		emptyPlayersArray: function(){
 			players = [];
 		},

@@ -1,6 +1,19 @@
 /*globals*/
 var loadingTime = 2000;
 
+var start = {
+	En:{
+		quickGame:"Start Game",
+		tutorial:"Tutorial",
+		about:"About"
+	},
+	Fr:{
+		quickGame:"Démarrer le jeu",
+		tutorial:"Aidez-Moi",
+		about:"À propos"
+	}
+}
+
 var warnings = {
 	playerName:{
 		empty:"Please provide a valid player name",
@@ -36,6 +49,12 @@ var tutorial = {
 		six: "Nope! Select the settings icon at the top right of the screen and then the 'Exit game' button"
 	}
 };
+
+function setTextModalStart(language){
+	$('#btn-quickGame-start').text(eval("start."+language+".quickGame"));
+	$('#btn-tutorial-start').text(eval("start."+language+".tutorial"));
+	$('#btn-about-start').text(eval("start."+language+".about"));
+}
 
 function getTutorialHelpText(step){
 	switch(step){

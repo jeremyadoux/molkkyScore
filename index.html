@@ -7,9 +7,9 @@
         <meta name="description" content="Web app that makes keeping score on the game named 'molkky' (also known as number kubb) as easy as pie"></meta>
         <meta name="keywords" content="molkky mölkky score app"></meta>
         <title>Mölkky score</title>
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
-        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css">
+        <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+        <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
+        <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.min.css"> -->
         <!-- begin: google analytics -->
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -32,8 +32,14 @@
                 </div>
                 <div class="modal-body" >
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block">Start game</button>
-                    <button ng-click="tutorial()" id="btn-tutorial-start "type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
-                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block">About</button>        
+                    <button ng-click="tutorial()" id="btn-tutorial-start" type="button" class="btn btn-default btn-lg btn-block">Tutorial</button>
+                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block">About</button>    
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group" role="group">
+                            <button id="btn-en-start" type="button" ng-click="En()" class="btn" ng-class="{'btn-primary':language == 'En','btn-default':language != 'En'}">En</button>
+                            <button id="btn-fr-start" type="button" ng-click="Fr()" class="btn" ng-class="{'btn-primary':language == 'Fr','btn-default':language != 'Fr'}">Fr</button>
+                        </div>
+                    </div>   
                 </div>
                 <!-- <div class="modal-footer" >
                     <a href="#" class="pull-left">Create account</a>
@@ -343,7 +349,7 @@
                 </td>
             </tr>
         </table>
-        <!--    
+           
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
@@ -362,7 +368,8 @@
         <script src="scripts/angular/angular-controller-confirm.js"></script>
         <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
-        -->
-        <script async src="scripts/dist/script.js"></script>       
+        <!--  
+        <script async src="scripts/dist/script.js"></script>  
+        -->     
     </body>
 </html>
