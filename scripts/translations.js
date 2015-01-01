@@ -31,12 +31,14 @@ var buttons = {
 	En:{
 		ready:"Ready",
 		yes:"Yes",
-		no:"No"
+		no:"No",
+		cancel:"Cancel"
 	},
 	Fr:{
 		ready:"Prêt",
 		yes:"Oui",
-		no:"Non"
+		no:"Non",
+		cancel:"Annuler"
 	}
 }
 
@@ -73,6 +75,34 @@ var loading = {
 		tutorial:"manuel d'instruction se charge"
 	}
 };
+
+var options = {
+	En:{
+		restart: "Restart game",
+		newGame: "New game",
+		undo: "Undo last",
+		exit: "Exit game",
+		continueGame: "Continue"
+	},
+	Fr:{
+		restart: "Redémarrez le jeu",
+		newGame: "Nouveau jeu",
+		undo: "Annulez la dernière",
+		exit: "Quittez le jeu",
+		continueGame: "Continuer"
+	}
+}
+
+var newPlayers = {
+	En:{
+		title: "New game",
+		body: "Same players?"
+	},
+	Fr:{
+		title: "Nouveau jeu",
+		body: "Voulez-vous garder les mêmes joueurs?"
+	}
+}
 
 var confirm = {
 	En:{
@@ -127,7 +157,7 @@ function setTextModalAddPlayer(language){
 
 function setTextModalConfirm(confirmType, language){
 	//title
-	var titleText = '';
+	var titleText = 'Confirmation required';
 	if(confirmType == 'Restart'){
 		titleText = eval("confirm."+language+".restart");
 	}
@@ -141,3 +171,19 @@ function setTextModalConfirm(confirmType, language){
 	$('#modalConfirm #btn-no-confirm').text(eval("buttons."+language+".no"));
 	$('#modalConfirm #btn-yes-confirm').text(eval("buttons."+language+".yes"));
 }	
+
+function setTextModalOptions(language){
+	$("#modalOptions #btn-restart-options").text(eval("options."+language+".restart"));
+	$("#modalOptions #btn-new-options").text(eval("options."+language+".newGame"));
+	$("#modalOptions #btn-undo-options").text(eval("options."+language+".undo"));
+	$("#modalOptions #btn-exit-options").text(eval("options."+language+".exit"));
+	$("#modalOptions .btn-primary").text(eval("options."+language+".continueGame"));
+}
+
+function setTextModalNewPlayers(language){
+	$("#modalNewPlayers .modal-title").text(eval("newPlayers."+language+".title"));
+	$("#modalNewPlayers .modal-body").text(eval("newPlayers."+language+".body"));
+	$("#modalNewPlayers #btn-no-newPlayers").text(eval("buttons."+language+".no"));
+	$("#modalNewPlayers #btn-yes-newPlayers").text(eval("buttons."+language+".yes"));
+	$("#modalNewPlayers #btn-cancel-newPlayers").text(eval("buttons."+language+".cancel"));
+}

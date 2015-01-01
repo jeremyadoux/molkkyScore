@@ -3,7 +3,7 @@ app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {
         GameData.getPlayers().sort(comparePlayerScores);
         GameData.resetPlayers();
         $('#modalNewPlayers').modal('hide');
-        $('.loading-title').text(loading.newGame);
+        $('.loading-title').text(eval("loading."+$scope.language+".newGame"));
         $('.loader-container').show();
         setTimeout(function(){
             $('.loader-container').hide();
@@ -23,6 +23,8 @@ app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {
     };
 
     $scope.$on('initializeNewPlayers', function (event) {
+        $scope.language = GameData.getLanguage();
+        setTextModalNewPlayers($scope.language);
         $scope.stillPlayersInTheGame = GameData.stillPlayersInTheGame();
         $('#modalNewPlayers').modal('show');
     });

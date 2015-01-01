@@ -3,7 +3,7 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
         $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
             $('#modalOptions').modal('hide');
-            $('.loading-title').text(loading.restartGame);
+            $('.loading-title').text(eval("loading."+$scope.language+".restartGame"));
             $('.loader-container').show();
             GameData.resetPlayers();
             setTimeout(function(){
@@ -44,6 +44,8 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
 
     //events
     $scope.$on('initializeOptions', function (event) {
+        $scope.language = GameData.getLanguage();
+        setTextModalOptions($scope.language);
         $scope.gameStarted = GameData.gameHasStarted();
         $scope.isTutorial = GameData.isTutorial();
         $scope.isTutorialStepFive = GameData.isTutorialStepFive();
