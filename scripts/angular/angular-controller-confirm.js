@@ -8,7 +8,7 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
         }
         else if(GameData.getConfirmType() == 'Restart'){
             $('#modalConfirm').modal('hide');
-            $('.loading-title').text(loading.restartGame);
+            $('.loading-title').text(eval("loading."+$scope.language+".restartGame"));
             $('.loader-container').show();
             GameData.resetPlayers();
             setTimeout(function(){
@@ -26,7 +26,8 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
 
     //events
     $scope.$on('initializeConfirm', function (event) {
-        $('#modalConfirm .modal-header h2').text(GameData.getConfirmType() + ' game');
+        $scope.language = GameData.getLanguage();
+        setTextModalConfirm(GameData.getConfirmType(),$scope.language);
     	$('#modalConfirm').modal('show');
     });
 });

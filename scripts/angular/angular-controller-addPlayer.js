@@ -28,7 +28,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
     	if($scope.players.length > 1){
 			$('#modalAddPlayers').modal('hide');
             addNewPlayerNamesToLocalStorage($scope.players);
-            $('.loading-title').text(loading.firstGame);
+            $('.loading-title').text(eval("loading."+$scope.language+".firstGame"));
             $('.loader-container').show();
             setTimeout(function(){
                 $('.loader-container').hide();
@@ -37,7 +37,6 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
 		}
 		else{
 			warn($('#modalAddPlayers .alert'),eval("warnings.playerName."+$scope.language+".tooFew"));
-            /*$('#modalAddPlayers input').focus();*/
 		}
     };
     $scope.btnRemovePlayer = function(index){
@@ -55,17 +54,3 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         initializeAddPlayersModal();
     });
 });
-
-//custom directive: keypress enter 
-/*app.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
-                event.preventDefault();
-            }
-        });
-    };
-});*/

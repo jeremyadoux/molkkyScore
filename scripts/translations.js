@@ -29,10 +29,14 @@ var addPlayers = {
 
 var buttons = {
 	En:{
-		ready:"Ready"
+		ready:"Ready",
+		yes:"Yes",
+		no:"No"
 	},
 	Fr:{
-		ready:"Prêt"
+		ready:"Prêt",
+		yes:"Oui",
+		no:"Non"
 	}
 }
 
@@ -52,13 +56,36 @@ var warnings = {
 };
 
 var loading = {
-	firstGame:"starting game",
-	startApp:"loading application",
-	newGame:"starting new game",
-	restartGame:"restarting game",	
-	restoreGame:"restoring game",
-	tutorial:"loading tutorial"
+	En:{
+		firstGame:"starting game",
+		startApp:"loading application",
+		newGame:"starting new game",
+		restartGame:"restarting game",	
+		restoreGame:"restoring game",
+		tutorial:"loading tutorial"
+	},
+	Fr:{
+		firstGame:"jeu en cours de démarrage",
+		startApp:"l'application se charge",
+		newGame:"nouveau jeu en cours de démarrage",
+		restartGame:"jeu en cours de redémarrage",	
+		restoreGame:"jeu en cours de restaurage",
+		tutorial:"manuel d'instruction se charge"
+	}
 };
+
+var confirm = {
+	En:{
+		restart:"Restart game",
+		exit:"Exit game",
+		body:"Are you sure?"
+	},
+	Fr:{
+		restart:"Redémarrez le jeu",
+		exit:"Quittez le jeu",
+		body:"Êtes-vous sûr?"
+	}
+}
 
 var tutorial = {
 	steps:{
@@ -81,9 +108,15 @@ var tutorial = {
 
 // functions
 function setTextModalStart(language){
-	$('#btn-quickGame-start').text(eval("start."+language+".quickGame"));
-	$('#btn-tutorial-start').text(eval("start."+language+".tutorial"));
-	$('#btn-about-start').text(eval("start."+language+".about"));
+	$('#btn-quickGame-start span').fadeOut("fast",function(){
+		$('#btn-quickGame-start span').text(eval("start."+language+".quickGame"));
+	}).fadeIn("fast");
+	$('#btn-tutorial-start span').fadeOut("fast",function(){
+		$('#btn-tutorial-start span').text(eval("start."+language+".tutorial"));
+	}).fadeIn("fast");
+	$('#btn-about-start span').fadeOut("fast",function(){
+		$('#btn-about-start span').text(eval("start."+language+".about"));
+	}).fadeIn("fast");
 }
 
 function setTextModalAddPlayer(language){
@@ -91,3 +124,20 @@ function setTextModalAddPlayer(language){
 	$("#modalAddPlayers .btn-ready").text(eval("buttons."+language+".ready"));
 	$("#modalAddPlayers .max-message").text(eval("addPlayers."+language+".max"));
 }
+
+function setTextModalConfirm(confirmType, language){
+	//title
+	var titleText = '';
+	if(confirmType == 'Restart'){
+		titleText = eval("confirm."+language+".restart");
+	}
+	else if (confirmType == 'Exit'){
+		titleText = eval("confirm."+language+".exit");
+	}
+	$('#modalConfirm .modal-header h2').text(titleText);
+	//body
+	$('#modalConfirm .modal-body').text(eval("confirm."+language+".body"));
+	//buttons
+	$('#modalConfirm #btn-no-confirm').text(eval("buttons."+language+".no"));
+	$('#modalConfirm #btn-yes-confirm').text(eval("buttons."+language+".yes"));
+}	

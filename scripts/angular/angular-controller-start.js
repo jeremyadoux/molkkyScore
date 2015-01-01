@@ -1,4 +1,12 @@
-$(document).ready(function(){   
+$(document).ready(function(){  
+    if(window["localStorage"]){
+        var language = localStorage.getItem("language");
+        if(!language){ //on first-time usage of app
+            language = 'En';
+            localStorage.setItem("language",language);
+        }
+        $('.loading-title').text(eval("loading."+language+".firstGame"));
+    }// else english is default 
     $('.loader-container').show();
     setTimeout(function(){
         $('.loader-container').hide();
@@ -27,7 +35,7 @@ app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
     };
     $scope.tutorial = function(){
     	$('#modalStart').modal('hide');
-        $('.loading-title').text(loading.tutorial);
+        $('.loading-title').text(eval("loading."+$scope.language+".tutorial"));
         $('.loader-container').show();
         setTimeout(function(){
             $('.loader-container').hide();
