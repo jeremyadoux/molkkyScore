@@ -103,7 +103,7 @@
                 <div class="modal-body">
                     <form ng-submit="addPlayer()" role="form">
                         <div class="input-group input-group-lg" ng-show="players.length<8">
-                            <input type="text" class="form-control typeahead" required placeholder="Player {{players.length + 1}}" autocomplete="off">
+                            <input type="text" class="form-control typeahead" required placeholder="{{placeholder}}" autocomplete="off">
                             <span id="addPlayerIcon" ng-click="addPlayer()" class="input-group-addon icon-plus"></span>
                         </div>
                         <button type="submit"></button> 
@@ -115,7 +115,7 @@
                 </div>
                 <div class="modal-footer">
                     <button ng-show="players.length > 1" ng-click="shufflePlayers()" type="button" class="btn btn-default btn-icon-only pull-left"><span class="icon-shuffle"></span></button>
-                    <button ng-click="btnReady()" type="button" class="btn btn-default">Ready</button>
+                    <button ng-click="btnReady()" type="button" class="btn btn-default btn-ready">Ready</button>
               </div>
             </div>
           </div>
@@ -358,6 +358,7 @@
         <script src="scripts/bootstrap/transition.js"></script> 
         <script src="scripts/utilities.js"></script>
         <script src="scripts/positioning.js"></script>
+        <script src="scripts/translations.js"></script>
         <script src="scripts/angular/base/angular-app.js"></script>
         <script src="scripts/angular/angular-controller-addPlayer.js"></script>
         <script src="scripts/angular/angular-controller-start.js"></script>

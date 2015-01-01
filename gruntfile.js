@@ -29,6 +29,7 @@ module.exports = function(grunt) {
 		      'scripts/bootstrap/transition.js',
 		      'scripts/utilities.js',
 		      'scripts/positioning.js',
+		      'scripts/translations.js',
 		      'scripts/angular/base/angular-app.js',
 		      'scripts/angular/angular-controller-addPlayer.js',
 		      'scripts/angular/angular-controller-start.js',
