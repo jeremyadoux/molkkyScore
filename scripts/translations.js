@@ -38,9 +38,16 @@ var buttons = {
 
 var warnings = {
 	playerName:{
-		empty:"Please provide a valid player name",
-		unique:"Player name already in use",
-		tooFew:"At least 2 player names are required"
+		En:{
+			empty:"Please provide a valid player name",
+			unique:"Player name already in use",
+			tooFew:"At least 2 player names are required"
+		},
+		Fr:{
+			empty:"Remplissez un nom valide",
+			unique:"Nom du joueur est déjà utilisée",
+			tooFew:"Au moins 2 noms de joueurs sont obligatoires"
+		}
 	}
 };
 

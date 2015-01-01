@@ -18,15 +18,15 @@ function getTutorialHelpText(step){
 	}
 }
 
-function validatePlayerName(newPlayerName,players,alertElement){
+function validatePlayerName(newPlayerName,players,alertElement, language){
 	if($.trim(newPlayerName) == ""){
-		warn(alertElement, warnings.playerName.empty);
+		warn(alertElement, eval("warnings.playerName."+language+".empty"));
 		return false;
 	}
 	var isValid = true;
 	$.each(players,function(){
 		if(this.name.toLowerCase().trim() == newPlayerName.toLowerCase().trim()){
-			warn(alertElement, warnings.playerName.unique);
+			warn(alertElement, eval("warnings.playerName."+language+".unique"));
 			isValid = false;
 			return false;
 		}

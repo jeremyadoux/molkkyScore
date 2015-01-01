@@ -1,7 +1,7 @@
 app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope) {
     $scope.addPlayer = function(){
         var newPlayerName = $('#modalAddPlayers input').val();
-        if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'))){
+        if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'),$scope.language)){
             GameData.addPlayerToGame(newPlayerName);
             infoMessage($('#modalAddPlayers .alert'),
                 newPlayerName + " " + eval("addPlayers."+$scope.language+".added"));
@@ -36,7 +36,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
             }, loadingTime);  
 		}
 		else{
-			warn($('#modalAddPlayers .alert'),warnings.playerName.tooFew);
+			warn($('#modalAddPlayers .alert'),eval("warnings.playerName."+$scope.language+".tooFew"));
             /*$('#modalAddPlayers input').focus();*/
 		}
     };

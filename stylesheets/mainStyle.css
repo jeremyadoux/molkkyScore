@@ -3600,34 +3600,35 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 0px 15px;
   margin: 0px;
   display: none;
+  line-height: 1.3;
 }
-/* line 9, ../sass/partials/modals/_addPlayers.scss */
+/* line 10, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .alert.alert-info {
   color: #1275B3;
 }
-/* line 13, ../sass/partials/modals/_addPlayers.scss */
+/* line 14, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .form-control {
   color: #2E2E2E;
   border: 1px solid #2E2E2E;
   border-right: none;
   box-shadow: none;
 }
-/* line 19, ../sass/partials/modals/_addPlayers.scss */
+/* line 20, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .input-group-addon {
   color: #FFFFFF;
   background-color: #1275B3;
   border-color: #2E2E2E;
   height: 100%;
 }
-/* line 25, ../sass/partials/modals/_addPlayers.scss */
+/* line 26, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .icon-plus {
   line-height: 1rem;
 }
-/* line 28, ../sass/partials/modals/_addPlayers.scss */
+/* line 29, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .icon-plus:hover {
   cursor: pointer;
 }
-/* line 31, ../sass/partials/modals/_addPlayers.scss */
+/* line 32, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers .max-message {
   text-align: center;
   color: #E60000;
@@ -3637,12 +3638,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-style: solid;
   border-color: #E60000;
 }
-/* line 40, ../sass/partials/modals/_addPlayers.scss */
+/* line 41, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers input {
   font-size: 18px;
   line-height: 46px;
 }
-/* line 44, ../sass/partials/modals/_addPlayers.scss */
+/* line 45, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers button[type="submit"] {
   position: absolute;
   left: -9999px;
