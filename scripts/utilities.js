@@ -1,23 +1,6 @@
 /*globals*/
 var loadingTime = 2000;
 
-function getTutorialHelpText(step){
-	switch(step){
-		case 1: return tutorial.help.one;
-				break;
-		case 2: return tutorial.help.two;
-				break;
-		case 3: return tutorial.help.threeA;
-				break;
-		case 4: return tutorial.help.four;
-				break;
-		case 5: return tutorial.help.five;
-				break;
-		case 6: return tutorial.help.six;
-				break;
-	}
-}
-
 function validatePlayerName(newPlayerName,players,alertElement, language){
 	if($.trim(newPlayerName) == ""){
 		warn(alertElement, eval("warnings.playerName."+language+".empty"));
@@ -73,9 +56,17 @@ function Player(index, name){
 	this.disqualified = false;
 }
 
-function getTutorialPlayers(){
-	var playerOne= new Player(0, "Bob");
-	var playerTwo= new Player(1, "Sara");
+function getTutorialPlayers(language){
+	var playerOne = {};
+	var playerTwo = {};
+	if(language == "En"){
+		playerOne= new Player(0, "Bob");
+		playerTwo= new Player(1, "Sara");
+	}
+	else if(language == "Fr"){
+		playerOne= new Player(0, "Hugo");
+		playerTwo= new Player(1, "Emma");
+	}
 	return [playerOne, playerTwo];
 }
 

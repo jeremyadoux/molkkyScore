@@ -21,6 +21,8 @@ app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {
 
     //events
 	$scope.$on('initializeScoreboard', function (event) {
+		$scope.language = GameData.getLanguage();
+        setTextModalScoreboard($scope.language);
 	    $scope.players = GameData.getPlayers();
 	    $scope.isTutorial = GameData.isTutorial();
 	    // set number of table rows in details pane

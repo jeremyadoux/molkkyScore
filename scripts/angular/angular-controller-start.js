@@ -31,6 +31,8 @@ app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
     };
     $scope.about = function(){
     	$('#modalStart').modal('hide');
+        $scope.language = GameData.getLanguage();
+        setTextModalAbout($scope.language);
     	$('#modalAbout').modal('show');
     };
     $scope.tutorial = function(){

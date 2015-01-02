@@ -126,7 +126,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     	
     		switch($scope.tutorialData.step){
 	    		case 1: $(".tutorial__content p").fadeOut("fast", function(){
-	    					$scope.stepText = tutorial.steps.two;
+	    					$scope.stepText = eval("tutorial."+$scope.language+".steps.two");
 		    				$scope.toggleNumber(6);
 		    				$scope.tutorialInProcess = false;
 		    				$scope.tutorialData.step++;
@@ -137,7 +137,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    				});	
 	    				break;
 	    		case 2: $(".tutorial__content p").fadeOut("fast", function(){
-	    					$scope.stepText = tutorial.steps.three;
+	    					$scope.stepText = eval("tutorial."+$scope.language+".steps.three");
 		    				$scope.processThrow();
 		    				$scope.tutorialInProcess = false;
 		    				$scope.tutorialData.step++;
@@ -156,7 +156,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    					$scope.tutorialInProcess = false;
 	    					$scope.manualTutorial = false;
 	    					$(".tutorial__content p").fadeOut("fast", function(){
-	    						$scope.stepText = tutorial.steps.four;
+	    						$scope.stepText = eval("tutorial."+$scope.language+".steps.four");
 	    						$scope.tutorialData.step++;
 	    						$scope.$apply();
 	    					}).fadeIn("fast", function(){
@@ -168,7 +168,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		    					$scope.processThrow();
 		    					$scope.tutorialInProcess = false;
 		    					$(".tutorial__content p").fadeOut("fast", function(){
-		    						$scope.stepText = tutorial.steps.four;
+		    						$scope.stepText = eval("tutorial."+$scope.language+".steps.four");
 		    						$scope.tutorialData.step++;
 			    					$scope.$apply();
 		    					}).fadeIn("fast", function(){
@@ -184,7 +184,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    						$scope.manualTutorial = false;
 	    						$scope.tutorialInProcess = false;
 	    						$(".tutorial__content p").fadeOut("fast", function(){
-	    							$scope.stepText = tutorial.steps.five;
+	    							$scope.stepText = eval("tutorial."+$scope.language+".steps.five");
 	    							$scope.tutorialData.step++;
 		    						$scope.$apply();
 	    						}).fadeIn("fast", function(){
@@ -202,12 +202,12 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    						$scope.manualTutorial = false;
 	    						$(".tutorial__content p").fadeOut("fast", function(){
 	    							if($scope.players[1].misses == 0){
-		    							$scope.stepText = tutorial.steps.six;
+		    							$scope.stepText = eval("tutorial."+$scope.language+".steps.six");
 		    							$scope.tutorialData.step++;
 		    							GameData.setTutorialStepFive(false);
 		    						}
 		    						else{
-		    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+		    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 		    						}
 	    							$scope.$apply();
 	    						}).fadeIn("fast", function(){
@@ -223,22 +223,22 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     	$scope.tutorialInProcess = true;
     	$(".tutorial__content p").fadeOut("fast", function(){
     		switch($scope.tutorialData.step){
-	    		case 2: $scope.stepText = tutorial.steps.one;
+	    		case 2: $scope.stepText = eval("tutorial."+$scope.language+".steps.one");
 	    				$(".td-score-number").removeClass("active");
 	    				$("#td-player-name").removeClass("active");
 	    				break;
-	    		case 3: $scope.stepText = tutorial.steps.two;
+	    		case 3: $scope.stepText = eval("tutorial."+$scope.language+".steps.two");
 	    				$("#modalOptions #btn-undo-options").click();
 	    				$(".td-score-number").removeClass("active");
 	    				$("#td-player-name").removeClass("active").addClass("active");
 	    				$("#td-6").addClass("active");
 	    				break;
-	    		case 4: $scope.stepText = tutorial.steps.three;
+	    		case 4: $scope.stepText = eval("tutorial."+$scope.language+".steps.three");
 	    				$("#modalOptions #btn-undo-options").click();
 	    				break;
-	    		case 5: $scope.stepText = tutorial.steps.four;
+	    		case 5: $scope.stepText = eval("tutorial."+$scope.language+".steps.four");
 	    				break;
-	    		case 6: $scope.stepText = tutorial.steps.five;
+	    		case 6: $scope.stepText = eval("tutorial."+$scope.language+".steps.five");
 	    				$("#td-0").click();
 	    				$("#td-player-name").click();
 	    				break;
@@ -262,7 +262,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					}
 					else {
 						$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -275,7 +275,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					} 
 					else{
 						$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -283,7 +283,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					}
 					break;
 			default: 	$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();	
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -311,7 +311,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					} 
 					else{
 						$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -319,7 +319,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					}
 					break;
 			default: 	$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -333,7 +333,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					$scope.nextStep();
 					break;
 			default:	$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -433,11 +433,13 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		});
 	});
 	$scope.$on('initializeTutorial', function (event) {
+		$scope.language = GameData.getLanguage();
+        setTextTutorial($scope.language);
 		$scope.tutorialData = {
 			step: 1
 		}
-		$scope.stepText = tutorial.steps.one;
-		GameData.setPlayers(getTutorialPlayers());
+		$scope.stepText = eval("tutorial."+$scope.language+".steps.one");
+		GameData.setPlayers(getTutorialPlayers($scope.language));
 		GameData.resetData();
 		GameData.setTutorial(true);
 	    $scope.players = GameData.getPlayers();
