@@ -251,1272 +251,21 @@ J(e),c;if(a&&H(a)){c=Array(a.length);for(var d=0,f=a.length;d<f;d++)c[d]=h(E,d,a
 0===a.length});s?p(e,g,k):n?m(e,g,k):l(e,g,k,q)}}}}],Vd=["$interpolate",function(a){var c={addOption:A,removeOption:A};return{restrict:"E",priority:100,compile:function(d,e){if(w(e.value)){var f=a(d.text(),!0);f||e.$set("value",d.text())}return function(a,d,e){var l=d.parent(),m=l.data("$selectController")||l.parent().data("$selectController");m&&m.databound||(m=c);f?a.$watch(f,function(a,c){e.$set("value",a);c!==a&&m.removeOption(c);m.addOption(a,d)}):m.addOption(e.value,d);d.on("$destroy",function(){m.removeOption(e.value)})}}}}],
 Ud=da({restrict:"E",terminal:!1});T.angular.bootstrap?console.log("WARNING: Tried to load angular more than once."):(Kd(),Md(wa),z(U).ready(function(){Gd(U,sc)}))})(window,document);!window.angular.$$csp()&&window.angular.element(document).find("head").prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 !function($){"use strict";var Typeahead=function(element,options){this.$element=$(element),this.options=$.extend({},$.fn.typeahead.defaults,options),this.matcher=this.options.matcher||this.matcher,this.sorter=this.options.sorter||this.sorter,this.select=this.options.select||this.select,this.autoSelect="boolean"==typeof this.options.autoSelect?this.options.autoSelect:!0,this.highlighter=this.options.highlighter||this.highlighter,this.updater=this.options.updater||this.updater,this.source=this.options.source,this.$menu=$(this.options.menu),this.shown=!1,this.listen(),this.showHintOnFocus="boolean"==typeof this.options.showHintOnFocus?this.options.showHintOnFocus:!1};Typeahead.prototype={constructor:Typeahead,select:function(){var val=this.$menu.find(".active").attr("data-value");return(this.autoSelect||val)&&this.$element.val(this.updater(val)).change(),this.hide()},updater:function(item){return item},setSource:function(source){this.source=source},show:function(){var scrollHeight,pos=$.extend({},this.$element.position(),{height:this.$element[0].offsetHeight});return scrollHeight="function"==typeof this.options.scrollHeight?this.options.scrollHeight.call():this.options.scrollHeight,this.$menu.insertAfter(this.$element).css({top:pos.top+pos.height+scrollHeight,left:pos.left}).show(),this.shown=!0,this},hide:function(){return this.$menu.hide(),this.shown=!1,this},lookup:function(query){var items;return this.query="undefined"!=typeof query&&null!=query?query:this.$element.val()||"",this.query.length<this.options.minLength?this.shown?this.hide():this:(items=$.isFunction(this.source)?this.source(this.query,$.proxy(this.process,this)):this.source,items?this.process(items):this)},process:function(items){var that=this;return items=$.grep(items,function(item){return that.matcher(item)}),items=this.sorter(items),items.length?"all"==this.options.items||0==this.options.minLength&&!this.$element.val()?this.render(items).show():this.render(items.slice(0,this.options.items)).show():this.shown?this.hide():this},matcher:function(item){return~item.toLowerCase().indexOf(this.query.toLowerCase())},sorter:function(items){for(var item,beginswith=[],caseSensitive=[],caseInsensitive=[];item=items.shift();)item.toLowerCase().indexOf(this.query.toLowerCase())?~item.indexOf(this.query)?caseSensitive.push(item):caseInsensitive.push(item):beginswith.push(item);return beginswith.concat(caseSensitive,caseInsensitive)},highlighter:function(item){var query=this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g,"\\$&");return item.replace(new RegExp("("+query+")","ig"),function($1,match){return"<strong>"+match+"</strong>"})},render:function(items){var that=this;return items=$(items).map(function(i,item){return i=$(that.options.item).attr("data-value",item),i.find("a").html(that.highlighter(item)),i[0]}),this.autoSelect&&items.first().addClass("active"),this.$menu.html(items),this},next:function(){var active=this.$menu.find(".active").removeClass("active"),next=active.next();next.length||(next=$(this.$menu.find("li")[0])),next.addClass("active")},prev:function(){var active=this.$menu.find(".active").removeClass("active"),prev=active.prev();prev.length||(prev=this.$menu.find("li").last()),prev.addClass("active")},listen:function(){this.$element.on("focus",$.proxy(this.focus,this)).on("blur",$.proxy(this.blur,this)).on("keypress",$.proxy(this.keypress,this)).on("keyup",$.proxy(this.keyup,this)),this.eventSupported("keydown")&&this.$element.on("keydown",$.proxy(this.keydown,this)),this.$menu.on("click",$.proxy(this.click,this)).on("mouseenter","li",$.proxy(this.mouseenter,this)).on("mouseleave","li",$.proxy(this.mouseleave,this))},destroy:function(){this.$element.data("typeahead",null),this.$element.off("focus").off("blur").off("keypress").off("keyup"),this.eventSupported("keydown")&&this.$element.off("keydown"),this.$menu.remove()},eventSupported:function(eventName){var isSupported=eventName in this.$element;return isSupported||(this.$element.setAttribute(eventName,"return;"),isSupported="function"==typeof this.$element[eventName]),isSupported},move:function(e){if(this.shown){switch(e.keyCode){case 9:case 13:case 27:e.preventDefault();break;case 38:e.preventDefault(),this.prev();break;case 40:e.preventDefault(),this.next()}e.stopPropagation()}},keydown:function(e){this.suppressKeyPressRepeat=~$.inArray(e.keyCode,[40,38,9,13,27]),this.shown||40!=e.keyCode?this.move(e):this.lookup("")},keypress:function(e){this.suppressKeyPressRepeat||this.move(e)},keyup:function(e){switch(e.keyCode){case 40:case 38:case 16:case 17:case 18:break;case 9:case 13:if(!this.shown)return;this.select();break;case 27:if(!this.shown)return;this.hide();break;default:this.lookup()}e.stopPropagation(),e.preventDefault()},focus:function(){console.log("focus"),this.focused||(this.focused=!0,(0==this.options.minLength&&!this.$element.val()||this.options.showHintOnFocus)&&this.lookup())},blur:function(){this.focused=!1,!this.mousedover&&this.shown&&this.hide()},click:function(e){e.stopPropagation(),e.preventDefault(),this.select(),this.$element.focus()},mouseenter:function(e){this.mousedover=!0,this.$menu.find(".active").removeClass("active"),$(e.currentTarget).addClass("active")},mouseleave:function(){this.mousedover=!1,!this.focused&&this.shown&&this.hide()}};var old=$.fn.typeahead;$.fn.typeahead=function(option){var arg=arguments;return this.each(function(){var $this=$(this),data=$this.data("typeahead"),options="object"==typeof option&&option;data||$this.data("typeahead",data=new Typeahead(this,options)),"string"==typeof option&&(arg.length>1?data[option].apply(data,Array.prototype.slice.call(arg,1)):data[option]())})},$.fn.typeahead.defaults={source:[],items:8,menu:'<ul class="typeahead dropdown-menu"></ul>',item:'<li><a href="#"></a></li>',minLength:1,scrollHeight:0,autoSelect:!0},$.fn.typeahead.Constructor=Typeahead,$.fn.typeahead.noConflict=function(){return $.fn.typeahead=old,this},$(document).on("focus.typeahead.data-api",'[data-provide="typeahead"]',function(){var $this=$(this);$this.data("typeahead")||$this.typeahead($this.data())})}(window.jQuery);
-/* ========================================================================
- * Bootstrap: modal.js v3.3.0
- * http://getbootstrap.com/javascript/#modals
- * ========================================================================
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
-+function ($) {
-  'use strict';
-
-  // MODAL CLASS DEFINITION
-  // ======================
-
-  var Modal = function (element, options) {
-    this.options        = options
-    this.$body          = $(document.body)
-    this.$element       = $(element)
-    this.$backdrop      =
-    this.isShown        = null
-    this.scrollbarWidth = 0
-
-    if (this.options.remote) {
-      this.$element
-        .find('.modal-content')
-        .load(this.options.remote, $.proxy(function () {
-          this.$element.trigger('loaded.bs.modal')
-        }, this))
-    }
-  }
-
-  Modal.VERSION  = '3.3.0'
-
-  Modal.TRANSITION_DURATION = 300
-  Modal.BACKDROP_TRANSITION_DURATION = 150
-
-  Modal.DEFAULTS = {
-    backdrop: true,
-    keyboard: true,
-    show: true
-  }
-
-  Modal.prototype.toggle = function (_relatedTarget) {
-    return this.isShown ? this.hide() : this.show(_relatedTarget)
-  }
-
-  Modal.prototype.show = function (_relatedTarget) {
-    var that = this
-    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
-
-    this.$element.trigger(e)
-
-    if (this.isShown || e.isDefaultPrevented()) return
-
-    this.isShown = true
-
-    this.checkScrollbar()
-    this.$body.addClass('modal-open')
-
-    this.setScrollbar()
-    this.escape()
-
-    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
-
-    this.backdrop(function () {
-      var transition = $.support.transition && that.$element.hasClass('fade')
-
-      if (!that.$element.parent().length) {
-        that.$element.appendTo(that.$body) // don't move modals dom position
-      }
-
-      that.$element
-        .show()
-        .scrollTop(0)
-
-      if (transition) {
-        that.$element[0].offsetWidth // force reflow
-      }
-
-      that.$element
-        .addClass('in')
-        .attr('aria-hidden', false)
-
-      that.enforceFocus()
-
-      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
-
-      transition ?
-        that.$element.find('.modal-dialog') // wait for modal to slide in
-          .one('bsTransitionEnd', function () {
-            that.$element.trigger('focus').trigger(e)
-          })
-          .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
-        that.$element.trigger('focus').trigger(e)
-    })
-  }
-
-  Modal.prototype.hide = function (e) {
-    if (e) e.preventDefault()
-
-    e = $.Event('hide.bs.modal')
-
-    this.$element.trigger(e)
-
-    if (!this.isShown || e.isDefaultPrevented()) return
-
-    this.isShown = false
-
-    this.escape()
-
-    $(document).off('focusin.bs.modal')
-
-    this.$element
-      .removeClass('in')
-      .attr('aria-hidden', true)
-      .off('click.dismiss.bs.modal')
-
-    $.support.transition && this.$element.hasClass('fade') ?
-      this.$element
-        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
-        .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
-      this.hideModal()
-  }
-
-  Modal.prototype.enforceFocus = function () {
-    $(document)
-      .off('focusin.bs.modal') // guard against infinite focus loop
-      .on('focusin.bs.modal', $.proxy(function (e) {
-        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-          this.$element.trigger('focus')
-        }
-      }, this))
-  }
-
-  Modal.prototype.escape = function () {
-    if (this.isShown && this.options.keyboard) {
-      this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
-        e.which == 27 && this.hide()
-      }, this))
-    } else if (!this.isShown) {
-      this.$element.off('keydown.dismiss.bs.modal')
-    }
-  }
-
-  Modal.prototype.hideModal = function () {
-    var that = this
-    this.$element.hide()
-    this.backdrop(function () {
-      that.$body.removeClass('modal-open')
-      that.resetScrollbar()
-      that.$element.trigger('hidden.bs.modal')
-    })
-  }
-
-  Modal.prototype.removeBackdrop = function () {
-    this.$backdrop && this.$backdrop.remove()
-    this.$backdrop = null
-  }
-
-  Modal.prototype.backdrop = function (callback) {
-    var that = this
-    var animate = this.$element.hasClass('fade') ? 'fade' : ''
-
-    if (this.isShown && this.options.backdrop) {
-      var doAnimate = $.support.transition && animate
-
-      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-        .prependTo(this.$element)
-        .on('click.dismiss.bs.modal', $.proxy(function (e) {
-          if (e.target !== e.currentTarget) return
-          this.options.backdrop == 'static'
-            ? this.$element[0].focus.call(this.$element[0])
-            : this.hide.call(this)
-        }, this))
-
-      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
-
-      this.$backdrop.addClass('in')
-
-      if (!callback) return
-
-      doAnimate ?
-        this.$backdrop
-          .one('bsTransitionEnd', callback)
-          .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
-        callback()
-
-    } else if (!this.isShown && this.$backdrop) {
-      this.$backdrop.removeClass('in')
-
-      var callbackRemove = function () {
-        that.removeBackdrop()
-        callback && callback()
-      }
-      $.support.transition && this.$element.hasClass('fade') ?
-        this.$backdrop
-          .one('bsTransitionEnd', callbackRemove)
-          .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
-        callbackRemove()
-
-    } else if (callback) {
-      callback()
-    }
-  }
-
-  Modal.prototype.checkScrollbar = function () {
-    this.scrollbarWidth = this.measureScrollbar()
-  }
-
-  Modal.prototype.setScrollbar = function () {
-    var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
-    if (this.scrollbarWidth) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
-  }
-
-  Modal.prototype.resetScrollbar = function () {
-    this.$body.css('padding-right', '')
-  }
-
-  Modal.prototype.measureScrollbar = function () { // thx walsh
-    if (document.body.clientWidth >= window.innerWidth) return 0
-    var scrollDiv = document.createElement('div')
-    scrollDiv.className = 'modal-scrollbar-measure'
-    this.$body.append(scrollDiv)
-    var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
-    this.$body[0].removeChild(scrollDiv)
-    return scrollbarWidth
-  }
-
-
-  // MODAL PLUGIN DEFINITION
-  // =======================
-
-  function Plugin(option, _relatedTarget) {
-    return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.modal')
-      var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
-
-      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
-      if (typeof option == 'string') data[option](_relatedTarget)
-      else if (options.show) data.show(_relatedTarget)
-    })
-  }
-
-  var old = $.fn.modal
-
-  $.fn.modal             = Plugin
-  $.fn.modal.Constructor = Modal
-
-
-  // MODAL NO CONFLICT
-  // =================
-
-  $.fn.modal.noConflict = function () {
-    $.fn.modal = old
-    return this
-  }
-
-
-  // MODAL DATA-API
-  // ==============
-
-  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
-    var $this   = $(this)
-    var href    = $this.attr('href')
-    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
-    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
-
-    if ($this.is('a')) e.preventDefault()
-
-    $target.one('show.bs.modal', function (showEvent) {
-      if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
-      $target.one('hidden.bs.modal', function () {
-        $this.is(':visible') && $this.trigger('focus')
-      })
-    })
-    Plugin.call($target, option, this)
-  })
-
-}(jQuery);
-
-/* ========================================================================
- * Bootstrap: tab.js v3.3.0
- * http://getbootstrap.com/javascript/#tabs
- * ========================================================================
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
-+function ($) {
-  'use strict';
-
-  // TAB CLASS DEFINITION
-  // ====================
-
-  var Tab = function (element) {
-    this.element = $(element)
-  }
-
-  Tab.VERSION = '3.3.0'
-
-  Tab.TRANSITION_DURATION = 150
-
-  Tab.prototype.show = function () {
-    var $this    = this.element
-    var $ul      = $this.closest('ul:not(.dropdown-menu)')
-    var selector = $this.data('target')
-
-    if (!selector) {
-      selector = $this.attr('href')
-      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-    }
-
-    if ($this.parent('li').hasClass('active')) return
-
-    var $previous = $ul.find('.active:last a')
-    var hideEvent = $.Event('hide.bs.tab', {
-      relatedTarget: $this[0]
-    })
-    var showEvent = $.Event('show.bs.tab', {
-      relatedTarget: $previous[0]
-    })
-
-    $previous.trigger(hideEvent)
-    $this.trigger(showEvent)
-
-    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return
-
-    var $target = $(selector)
-
-    this.activate($this.closest('li'), $ul)
-    this.activate($target, $target.parent(), function () {
-      $previous.trigger({
-        type: 'hidden.bs.tab',
-        relatedTarget: $this[0]
-      })
-      $this.trigger({
-        type: 'shown.bs.tab',
-        relatedTarget: $previous[0]
-      })
-    })
-  }
-
-  Tab.prototype.activate = function (element, container, callback) {
-    var $active    = container.find('> .active')
-    var transition = callback
-      && $.support.transition
-      && (($active.length && $active.hasClass('fade')) || !!container.find('> .fade').length)
-
-    function next() {
-      $active
-        .removeClass('active')
-        .find('> .dropdown-menu > .active')
-          .removeClass('active')
-        .end()
-        .find('[data-toggle="tab"]')
-          .attr('aria-expanded', false)
-
-      element
-        .addClass('active')
-        .find('[data-toggle="tab"]')
-          .attr('aria-expanded', true)
-
-      if (transition) {
-        element[0].offsetWidth // reflow for transition
-        element.addClass('in')
-      } else {
-        element.removeClass('fade')
-      }
-
-      if (element.parent('.dropdown-menu')) {
-        element
-          .closest('li.dropdown')
-            .addClass('active')
-          .end()
-          .find('[data-toggle="tab"]')
-            .attr('aria-expanded', true)
-      }
-
-      callback && callback()
-    }
-
-    $active.length && transition ?
-      $active
-        .one('bsTransitionEnd', next)
-        .emulateTransitionEnd(Tab.TRANSITION_DURATION) :
-      next()
-
-    $active.removeClass('in')
-  }
-
-
-  // TAB PLUGIN DEFINITION
-  // =====================
-
-  function Plugin(option) {
-    return this.each(function () {
-      var $this = $(this)
-      var data  = $this.data('bs.tab')
-
-      if (!data) $this.data('bs.tab', (data = new Tab(this)))
-      if (typeof option == 'string') data[option]()
-    })
-  }
-
-  var old = $.fn.tab
-
-  $.fn.tab             = Plugin
-  $.fn.tab.Constructor = Tab
-
-
-  // TAB NO CONFLICT
-  // ===============
-
-  $.fn.tab.noConflict = function () {
-    $.fn.tab = old
-    return this
-  }
-
-
-  // TAB DATA-API
-  // ============
-
-  var clickHandler = function (e) {
-    e.preventDefault()
-    Plugin.call($(this), 'show')
-  }
-
-  $(document)
-    .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
-    .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
-
-}(jQuery);
-
-/* ========================================================================
- * Bootstrap: transition.js v3.3.0
- * http://getbootstrap.com/javascript/#transitions
- * ========================================================================
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * ======================================================================== */
-
-
-+function ($) {
-  'use strict';
-
-  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
-  // ============================================================
-
-  function transitionEnd() {
-    var el = document.createElement('bootstrap')
-
-    var transEndEventNames = {
-      WebkitTransition : 'webkitTransitionEnd',
-      MozTransition    : 'transitionend',
-      OTransition      : 'oTransitionEnd otransitionend',
-      transition       : 'transitionend'
-    }
-
-    for (var name in transEndEventNames) {
-      if (el.style[name] !== undefined) {
-        return { end: transEndEventNames[name] }
-      }
-    }
-
-    return false // explicit for ie8 (  ._.)
-  }
-
-  // http://blog.alexmaccaw.com/css-transitions
-  $.fn.emulateTransitionEnd = function (duration) {
-    var called = false
-    var $el = this
-    $(this).one('bsTransitionEnd', function () { called = true })
-    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
-    setTimeout(callback, duration)
-    return this
-  }
-
-  $(function () {
-    $.support.transition = transitionEnd()
-
-    if (!$.support.transition) return
-
-    $.event.special.bsTransitionEnd = {
-      bindType: $.support.transition.end,
-      delegateType: $.support.transition.end,
-      handle: function (e) {
-        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
-      }
-    }
-  })
-
-}(jQuery);
-
-/*globals*/
-var loadingTime = 2000;
-
-var warnings = {
-	playerName:{
-		empty:"Please provide a valid player name",
-		unique:"Player name already in use",
-		tooFew:"At least 2 player names are required"
-	}
-};
-
-var loading = {
-	firstGame:"starting game",
-	startApp:"loading application",
-	newGame:"starting new game",
-	restartGame:"restarting game",	
-	restoreGame:"restoring game",
-	tutorial:"loading tutorial"
-};
-
-var tutorial = {
-	steps:{
-		one: "It's Bob's turn and he has knocked over 6 pins. Select the number 6...",
-		two: "Nice, now confirm Bob's score by touching his name. The scoreboard at the top will get updated...",
-		three: "Well done! It's Sara's turn. She's didn't hit any pins! Select the number 0 and assign it to Sara.",
-		four: "Bob is winning! You can get a detailed score overview by touching the scoreboard at the top. Give it a try...",
-		five: "If you assign a wrong score, you can undo it by touching the settings icon at the top and selecting 'undo last'. Try it..",
-		six: "Okey, you're all set for some mölkky action! Exit the tutorial game by touching the settings icon and selecting 'exit game'."
-	},
-	help:{
-		one: "Nope! Select number 6",
-		two: "Nope! Select Bob's name (marked red)",
-		threeA: "Nope! Select number 0 and then select Sara's name",
-		four: "Nope! Select the scoreboard at the top of the screen & then close it again",
-		five: "Nope! Select the settings icon at the top right of the screen and then the 'Undo Last' button",
-		six: "Nope! Select the settings icon at the top right of the screen and then the 'Exit game' button"
-	}
-};
-
-function getTutorialHelpText(step){
-	switch(step){
-		case 1: return tutorial.help.one;
-				break;
-		case 2: return tutorial.help.two;
-				break;
-		case 3: return tutorial.help.threeA;
-				break;
-		case 4: return tutorial.help.four;
-				break;
-		case 5: return tutorial.help.five;
-				break;
-		case 6: return tutorial.help.six;
-				break;
-	}
-}
-
-function validatePlayerName(newPlayerName,players,alertElement){
-	if($.trim(newPlayerName) == ""){
-		warn(alertElement, warnings.playerName.empty);
-		return false;
-	}
-	var isValid = true;
-	$.each(players,function(){
-		if(this.name.toLowerCase().trim() == newPlayerName.toLowerCase().trim()){
-			warn(alertElement, warnings.playerName.unique);
-			isValid = false;
-			return false;
-		}
-	});
-	if(isValid){
-		alertElement.hide();
-	}
-	return isValid;
-}
-
-function warn(alertElement,warning){
-	alertElement.text(warning);
-	alertElement.show();
-}
-
-function infoMessage(infoElement,message){
-	infoElement.text(message);
-	infoElement.removeClass("alert-info").addClass("alert-info");
-	infoElement.fadeIn("slow").fadeOut("slow", function(){
-		infoElement.removeClass("alert-info");
-	});
-}
-
-//Prototype extensions
-Array.prototype.contains = function (string) {
-   for (var i = 0; i < this.length; i++) {
-       if (this[i].toLowerCase() == string.toLowerCase()) return true;
-   }
-   return false;
-};
-
-//Constructor
-function Player(index, name){
-	this.index = index; //starts at 0
-	this.name = name;
-	this.outOfTheGame = false;
-	this.winner = false;
-	this.ranking = 999; // winner has ranking 1, second to reach score 50 has ranking 2, etc...
-	this.wins = 0;
-	this.score = 0;
-	this.scoreHistory = [];
-	this.misses = 0; // 3 misses in a row means disqualification
-	this.myTurn = false;
-	this.disqualified = false;
-}
-
-function getTutorialPlayers(){
-	var playerOne= new Player(0, "Bob");
-	var playerTwo= new Player(1, "Sara");
-	return [playerOne, playerTwo];
-}
-
-//player methods
-function processScore(player, number){
-	player.misses = 0;
-	if((player.score + number) < 50){
-		player.score += number;
-	}
-	else if((player.score + number) > 50){
-		player.score = 25;
-	}
-	else{ //player has score 50
-		player.score = 50;
-		player.outOfTheGame = true;
-	}
-	player.scoreHistory.push(player.score);
-}
-
-function processMiss(player){
-	player.misses++;
-	if(player.misses > 2){
-		player.disqualified = true;
-		player.outOfTheGame = true;
-		player.score = 'X';
-	}
-	player.scoreHistory.push(player.score);
-}
-
-//sort utilities
-function comparePlayerScores(playerOne,playerTwo){
-	var scoreOne = playerOne.disqualified ? playerOne.scoreHistory[playerOne.scoreHistory.length-2] : playerOne.score;
-	var scoreTwo = playerTwo.disqualified ? playerTwo.scoreHistory[playerTwo.scoreHistory.length-2] : playerTwo.score;
-	if(scoreOne > scoreTwo){
-		return -1;
-	}
-	else if(scoreOne === scoreTwo){
-		if(scoreOne !== 50){
-			return 0;
-		}
-		else{
-			return comparePlayerRankings(playerOne, playerTwo); // both players are out, so they have a ranking
-		}
-	}
-	else{
-		return 1;
-	}
-}
-
-function comparePlayerRankings(playerOne,playerTwo){
-	if(playerOne.ranking > playerTwo.ranking){
-		return 1;
-	}
-	else if(playerOne.ranking === playerTwo.ranking){
-		return 0;
-	}
-	else{
-		return -1;
-	}
-}
-
-
-// DOM manipulation
-function initializeMainTable(numberOfPlayers, tutorial){
-	$('#mainTable #td-player-name').removeClass("active");
-	$('#mainTable .td-score-number.active').removeClass("active");
-	$('#mainTable #td-0.billyHalf').removeClass("billyHalf");
-	$('#mainTable #td-0.billySuper').removeClass("billySuper");
-	$('#mainTable #td-0').text('0');
-	$('#mainTable').fadeIn(1000, function(){
-		if(tutorial){
-			setInitialColspanTutorial();
-			setTutorialArrowsPosition(false);
-		} 
-		if(numberOfPlayers <= 4){
-			$('#mainTable #scoreTable td').css({width:100/numberOfPlayers+"%"});
-		}
-		else{
-			$('#mainTable #scoreTable td').css({width:100/Math.ceil(numberOfPlayers/2)+"%"});
-		}		
-	});
-}
-
-function initializeAddPlayersModal(){
-	$('#modalAddPlayers .alert').hide();
-	$('#modalAddPlayers').modal({
-			keyboard: false, // prevent modal from closing with ESC key 
-			backdrop: 'static'}, // prevent modal from closing with outside click 
-		'show');
-	$('#modalAddPlayers input').val('');
-	$('#modalAddPlayers input').focus();
-	if(window["localStorage"]){
-		var playerNames = localStorage.getItem("playerNames");
-		if(!playerNames){ //on first-time usage of app
-			playerNames = [];
-			localStorage.setItem("playerNames",JSON.stringify(playerNames));
-		}
-		else{
-			playerNames = JSON.parse(playerNames);
-		}
-		$('input').typeahead().data('typeahead').source = playerNames; //initialize Bootstrap3-Typeahead plugin
-	}
-}
-
-function initializeScoreboardModalEndedGame(){
-	$('#modalScoreboard .modal-header .close').hide();
-	$('#modalScoreboard .modal-footer .btn-primary').hide();
-	$('#modalScoreboard .modal-footer .btn-default').removeClass('pull-left');
-	$('#modalScoreboard').modal({
-		keyboard: false, // prevent modal from closing with ESC key 
-		backdrop: 'static'}, // prevent modal from closing with outside click 
-	'show');
-}
-
-function initializeScoreboardModalContinuableGame(numberOfPlayers){
-	$('#modalScoreboard .modal-header .close').show();
-	$('#modalScoreboard .modal-footer .btn-primary').show();
-	$('#modalScoreboard .modal-footer .btn-default').addClass('pull-left');
-	$('#modalScoreboard').modal({
-		keyboard: false, // prevent modal from closing with ESC key 
-		backdrop: 'static'}, // prevent modal from closing with outside click 
-	'show');
-}
-
-function toggleNumberActivation(number){
-	var idSelector = '#td-'+ number;
-    if($(idSelector).hasClass("active")){
-		$(idSelector).removeClass("active");
-		$('#mainTable #td-player-name').removeClass("active");
-	}
-	else{
-		$('#mainTable .td-score-number.active').removeClass("active");
-		$(idSelector).addClass("active");
-		$('#mainTable #td-player-name').addClass("active");
-	}
-}
-
-function addNewPlayerNamesToLocalStorage(currentPlayers){
-	if(window["localStorage"]){
-		var playerNames = JSON.parse(localStorage.getItem("playerNames"));
-		$.each(currentPlayers,function(){
-			var currentName = this.name;
-			if (!playerNames.contains(currentName)) { //case-insensitive
-			   playerNames.push(this.name);
-			}
-		});
-		localStorage.setItem("playerNames",JSON.stringify(playerNames));
-	}
-}
-
-function showModal(modal){
-	$(modal).modal({
-			keyboard: false, // prevent modal from closing with ESC key 
-			backdrop: 'static'}, // prevent modal from closing with outside click 
-		'show');
-}
-
-function showModalWithLoader(modal, loaderMessage){
-	$('loading-title').text(loaderMessage);
-	$('.loader-container').show();
-	setTimeout(function(){
-		$('.loader-container').hide();
-		showModal(modal);
-	},loadingTime);	
-}
-
-function animateOptionsIcon(){
-	$("#td-options img").addClass("animate-spin");
-	setTimeout(function(){
-		$("#td-options img").removeClass("animate-spin");
-	},2500);
-}
-						
-function isRestoreGame(){
-	if(window["localStorage"]){
-		if(!localStorage.getItem("restoreGame")){ //on first-time usage of app
-			localStorage.setItem("restoreGame",JSON.stringify(false));
-			return false;
-		}
-		else{
-			restoreGame = JSON.parse(localStorage.getItem("restoreGame"));
-			return restoreGame;
-		}
-	}
-	else{
-		return false;
-	}
-}
-
-function setIsRestoreGame(isRestoreGame){
-	if(window["localStorage"]){
-		localStorage.setItem("restoreGame",JSON.stringify(isRestoreGame));
-		if(!isRestoreGame){
-			localStorage.removeItem("players");
-			localStorage.removeItem("data");
-		}
-	}
-}
-
-function writeGameDataToLocalStorage(players, data){
-	if(window["localStorage"]){
-		localStorage.setItem("players",JSON.stringify(players));
-		localStorage.setItem("data",JSON.stringify(data));
-		setIsRestoreGame(true);
-	}
-}
-
-/* begin: bosklapper stuff */
-var bosklappersActivationCount = 0;
-
-function checkBosklappersActivationCount(reset){
-	if(reset){
-		bosklappersActivationCount = 0;
-	} 
-	else{
-		bosklappersActivationCount++;
-	}
-	if(bosklappersActivationCount < 3){
-		return false;
-	}
-	else{
-		return true;
-	}
-}
-
-function setBillyChar(){
-	if($('#td-0').text() == '0'){
-		if($('#td-0').hasClass('active')){
-			$('#td-0').text('/2');
-			$('#td-0').removeClass('active').addClass('billyHalf');
-		}
-		else{
-			toggleNumberActivation(0);
-		}
-	}
-	else if ($('#td-0').text() == '/2'){
-		$('#td-0').text('0!');
-		$('#td-0').removeClass('billyHalf').addClass('billySuper');
-		$('#mainTable .td-score-number.active').removeClass("active"); // can't choose number with superBilly
-	} 
-	else{
-		$('#td-0').text('0');
-		$('#td-0').removeClass('billySuper');
-		$('#td-player-name').removeClass('active');
-	}
-}
-
-function toggleNumberActivationBosklappers(number){
-	if ($('#td-0').text() == '0!') return; // can't choose number with superBilly
-
-	var idSelector = '#td-'+ number;
-    if($(idSelector).hasClass("active")){
-		$(idSelector).removeClass("active");
-		if($('#td-0').text() != '/2'){
-			$('#mainTable #td-player-name').removeClass("active");
-		}
-	}
-	else{
-		$('#mainTable .td-score-number.active').removeClass("active");
-		$(idSelector).addClass("active");
-		if(!$('#mainTable #td-player-name').hasClass("active")){
-			$('#mainTable #td-player-name').addClass("active");
-		}		
-	}
-}
-
-function processScoreBosklappers(player, number){
-	player.misses = 0;
-	if($('#td-0').hasClass('billyHalf')){
-		if (number == -1){ // only billy was hit
-			player.score = Math.floor(player.score/2);
-		}
-		else{ // billy and number was hit
-			player.score = Math.floor((player.score + number)/2);
-		}
-	}
-	else if($('#td-0').hasClass('billySuper')){
-		player.score = 0;
-	}
-	else{
-		if((player.score + number) < 50){
-			player.score += number;
-		}
-		else if((player.score + number) > 50){
-			player.score = Math.floor((player.score + number)/2);
-		}
-		else{ //player has score 50
-			player.score = 50;
-			player.outOfTheGame = true;
-		}
-	}
-	player.scoreHistory.push(player.score);	
-}
-
-function processMissBosklappers(player){
-	player.misses++;
-	if(player.misses > 2){
-		player.score = Math.floor(player.score/2);
-		player.misses = 0;
-	}
-	player.scoreHistory.push(player.score);
-}
-/* end: bosklapper stuff */
-var isLandscape = true;
-var wasLandscape = true;
-
-$(document).ready(function() {
-	setTableHeight();
-	isLandscape = ($(window).height() < $(window).width());
-	wasLandscape = isLandscape;
-	if(!isLandscape){ /* default layout is landscape */
-		setPortrait();
-	}
-});
-
-$( window ).resize(function() {
-	setTableHeight();
-	isLandscape = ($(window).height() < $(window).width());
-	if(isLandscape !== wasLandscape){
-		wasLandscape = isLandscape;
-		positionTable();
-	}
-	setTutorialArrowsPosition(false);
-});
-
-function positionTable(){
-	if(isLandscape){
-		setLandscape();
-	}
-	else{
-		setPortrait();
-	}
-}
-
-function setPortrait(){
-	if ( $('#xs-tr-2').length == 0 ) {
-		$("<tr id='xs-tr-2' />").insertAfter("#xs-tr-1");
-	}
-	if( $('#xs-tr-4').length == 0 ){
-		$("<tr id='xs-tr-4' />").insertAfter("#xs-tr-3");
-	}
-	$("#xs-tr-2").append( $(".xs-td-row-2"));
-	$("#xs-tr-4").append( $(".xs-td-row-4"));
-	$( ".td-colspanned" ).attr( "colspan", "2" );
-	$( "#td-tutorial" ).attr( "colspan", "3" );
-	$("#mainTable  tr td").css({
-		width:"30%"
-	});
-}
-
-function setLandscape(){
-	$("#xs-tr-1").append( $(".xs-td-row-2") );
-	$("#xs-tr-3").append( $(".xs-td-row-4") );
-	$("#xs-tr-2").remove();
-	$("#xs-tr-4").remove();
-	$( ".td-colspanned" ).attr( "colspan", "5" );
-	$( "#td-tutorial" ).attr( "colspan", "6" );
-	$("#mainTable tr td").css({
-		width:"15%"
-	});
-}
-
-function setInitialColspanTutorial(){
-	isLandscape = ($(window).height() < $(window).width());
-	if(!isLandscape){
-		$( "#td-tutorial" ).attr( "colspan", "3" );
-	}
-}
-function setTutorialArrowsPosition(animated){
-	var tutorialCellHeight = $("#td-tutorial").height();
-	if(animated){
-		$("#td-tutorial .arrow").animate({
-			top: (tutorialCellHeight/2) + "px"
-		}, "fast");
-	}
-	else{
-		$("#td-tutorial .arrow").css({
-			top: (tutorialCellHeight/2) + "px"
-		});
-	}
-}
-
-function setTableHeight(){
-	$("table#mainTable").css({
-		height:$(window).height()*0.90 + "px", /* height:90% */
-	 	marginTop:$(window).height()/20 + "px", /* margin-top:5% */
-	});
-}
-
-
-
-var app = angular.module("angular-app", []); 
-
-app.factory('GameData', function(){
-	var players = [];
-	var data = {
-		throwNumber: 1,
-		confirmType: '', // for making player confirm new game & restart game choice
-		tutorial: false,
-		tutorialStepFive: false,
-		bosklappersMode: false
-	};
-	return{
-		emptyPlayersArray: function(){
-			players = [];
-		},
-		setConfirmType: function(type){
-			data.confirmType = type;
-		},
-		getConfirmType: function(type){
-			return data.confirmType;
-		},
-		resetConfirmType: function(){
-			data.confirmType = '';
-		},
-		isTutorial: function(){
-			return data.tutorial;
-		},
-		setTutorial: function(isTutorial){
-			data.tutorial = isTutorial;
-		},
-		isTutorialStepFive: function(){
-			return data.tutorialStepFive;
-		},
-		setTutorialStepFive: function(isStepFive){
-			data.tutorialStepFive = isStepFive;
-		},
-		resetPlayers: function(){
-			var newIndex = 0;
-			$.each(players,function(){
-				this.index = newIndex;
-				newIndex++;
-				this.outOfTheGame = false;
-				this.winner = false;
-				this.ranking = 999;
-				this.score = 0;
-				this.scoreHistory = [];
-				this.misses = 0; /*3 misses in a row means disqualification*/
-				this.myTurn = false;
-				this.disqualified = false;
-			});
-		},
-		resetPlayerIndexes: function(){
-			var newIndex = 0;
-			$.each(players,function(){
-				this.index = newIndex;
-				newIndex++;
-			});
-		},
-		getPlayers: function(){
-			return players;
-		},
-		setPlayers: function(playerArray){
-			players = playerArray;
-		},
-		getData: function(){
-			return data;
-		},
-		setData: function(dataObject){
-			data = dataObject;
-		},
-		resetData: function(dataObject){
-			data = {
-				throwNumber: 1,
-				confirmType: '', // for making player confirm new game & restart game choice
-				isTutorial: false,
-				tutorialStepFive: false,
-				bosklappersMode: false
-			};
-		},
-		resetThrowNumber: function(){
-			data.throwNumber = 1;
-		},
-		getActivePlayer: function(){
-			var activePlayer;
-			$.each(players,function(){
-				if(this.myTurn){
-					activePlayer = this;
-					return false;
-				}
-			});
-			return activePlayer;
-		},
-		getNextInGamePlayer: function(activePlayerIndex){ // infinite loop when !this.stillPlayersInTheGame()
-			var nextPlayer;
-			if(activePlayerIndex == (players.length-1)){
-				nextPlayer = players[0];
-			}
-			else{
-				nextPlayer = players[activePlayerIndex + 1];
-			}
-			if(!nextPlayer.outOfTheGame){
-				return nextPlayer;
-			}
-			else{
-				return this.getNextInGamePlayer(nextPlayer.index);
-			}
-		},
-		getFirstInGamePlayer: function(){ // infinite loop when !this.stillPlayersInTheGame()
-			var firstInGamePlayer;
-			for(var i = 0; i < players.length; i++){
-				if(!players[i].outOfTheGame){
-					firstInGamePlayer = players[i];
-					break;
-				}
-			}
-			return firstInGamePlayer;
-		},
-		undoLastThrow: function(){ 
-            var indexActivePlayer = this.getActivePlayer().index;
-            var previousPlayer = this.getPreviousPlayer(indexActivePlayer);
-            while(previousPlayer.scoreHistory.length <= (data.throwNumber-1)){
-            	if(indexActivePlayer <= previousPlayer.index && previousPlayer.scoreHistory.length == (data.throwNumber-1)){
-            		data.throwNumber--;
-            		break; //previous player is in previous throw round
-            	}
-            	else{
-            		previousPlayer = this.getPreviousPlayer(previousPlayer.index);
-            	}
-            }
-            previousPlayer.scoreHistory.pop();
-            if(previousPlayer.scoreHistory.length == 0){ // back on first throw
-            	previousPlayer.score = 0;
-            }
-            else{
-            	previousPlayer.score = previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 1];
-            }
-            //reset misses
-            if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 2]){
-                previousPlayer.misses = 1;
-                if(previousPlayer.score == previousPlayer.scoreHistory[previousPlayer.scoreHistory.length - 3]){
-                    previousPlayer.misses = 2;
-                }
-            }
-            else{
-                previousPlayer.misses = 0;
-            }
-            this.getActivePlayer().myTurn = false;
-            previousPlayer.myTurn = true;
-            previousPlayer.outOfTheGame = false;
-            previousPlayer.winner = false;
-            previousPlayer.ranking = 999;
-            previousPlayer.disqualified = false;
-        }, 
-		getPreviousPlayer: function(playerIndex){ 
-			var previousPlayer;
-			if(playerIndex == 0){
-				previousPlayer = players[players.length-1];
-			}
-			else{
-				previousPlayer = players[playerIndex - 1];
-			}
-			return previousPlayer;
-		},
-		setRanking: function(player){ // infinite loop when !this.stillPlayersInTheGame()
-			if(!this.gameHasWinner()){
-				player.winner = true;
-				player.ranking = 1;
-			}
-			else{
-				player.ranking = this.getLowestRanking() + 1;
-			}
-		},
-		getLowestRanking: function(){
-			var lowestRanking = -1;
-			$.each(players,function(){
-				if(this.ranking !== 999 && this.ranking > lowestRanking){
-					lowestRanking = this.ranking;
-				}
-			});
-			if(lowestRanking == -1){ // no winner yet -> this if should never be true
-				lowestRanking = 999;
-			}
-			return lowestRanking;
-		},
-		stillPlayersInTheGame: function(){
-			var stillPlayersInTheGame = false;
-			$.each(players,function(){
-				if(!this.outOfTheGame){
-					stillPlayersInTheGame = true;
-					return false;
-				}
-			});
-			return stillPlayersInTheGame;
-		},
-		gameHasWinner: function(){
-			var gameHasWinner = false;
-			$.each(players,function(){
-				if(this.winner){
-					gameHasWinner = true;
-					return false;
-				}
-			});
-			return gameHasWinner;
-		},
-		gameHasStarted: function(){
-			return players[0].scoreHistory.length > 0;
-		},
-		addPlayerToGame: function(newPlayerName){
-			players.push(new Player(players.length, newPlayerName));
-		},
-		/* begin: bosklapper stuff */
-		setBosklappersMode: function(bosklappersMode){
-			data.bosklappersMode = bosklappersMode;
-		},
-		getBosklappersMode: function(){
-			return data.bosklappersMode;
-		}
-		/* end: bosklapper stuff */
-	};
-});
-
-app.filter('rangeFirstRow', function () {
-  return function (items) {
-  	if(!items) return;
-  	var filtered = [];
-  	var length = -1;
-  	if(items &&items.length <= 4){
-  		length = items.length;
-  	}
-  	else if(items.length > 6){
-  		length = 4;
-  	}
-  	else{
-  		length = 3;
-  	}
-    for (var i = 0; i < length; i++) {
-        filtered.push(items[i]);
-    }
-    return filtered;
-  };
-});
-
-app.filter('rangeSecondRow', function () {
-  return function (items) {
-  	if(!items) return;
-    var filtered = [];
-    var startPos = -1;
-    if(items.length == 5 || items.length == 6){
-  		startPos = 3;
-  	}
-  	else{
-  		startPos = 4;
-  	}
-    for (var i = startPos; i < items.length; i++) {
-        filtered.push(items[i]);
-    }
-    return filtered;
-  };
-});
++function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$backdrop=this.isShown=null,this.scrollbarWidth=0,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.3.0",c.TRANSITION_DURATION=300,c.BACKDROP_TRANSITION_DURATION=150,c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var d=this,e=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(e),this.isShown||e.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.$body.addClass("modal-open"),this.setScrollbar(),this.escape(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.backdrop(function(){var e=a.support.transition&&d.$element.hasClass("fade");d.$element.parent().length||d.$element.appendTo(d.$body),d.$element.show().scrollTop(0),e&&d.$element[0].offsetWidth,d.$element.addClass("in").attr("aria-hidden",!1),d.enforceFocus();var f=a.Event("shown.bs.modal",{relatedTarget:b});e?d.$element.find(".modal-dialog").one("bsTransitionEnd",function(){d.$element.trigger("focus").trigger(f)}).emulateTransitionEnd(c.TRANSITION_DURATION):d.$element.trigger("focus").trigger(f)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.escape(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").attr("aria-hidden",!0).off("click.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(c.TRANSITION_DURATION):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keydown.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keydown.dismiss.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$body.removeClass("modal-open"),a.resetScrollbar(),a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var d=this,e=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var f=a.support.transition&&e;if(this.$backdrop=a('<div class="modal-backdrop '+e+'" />').prependTo(this.$element).on("click.dismiss.bs.modal",a.proxy(function(a){a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus.call(this.$element[0]):this.hide.call(this))},this)),f&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;f?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var g=function(){d.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",g).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):g()}else b&&b()},c.prototype.checkScrollbar=function(){this.scrollbarWidth=this.measureScrollbar()},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.scrollbarWidth&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right","")},c.prototype.measureScrollbar=function(){if(document.body.clientWidth>=window.innerWidth)return 0;var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery);
++function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.3.0",c.TRANSITION_DURATION=150,c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a.Event("show.bs.tab",{relatedTarget:e[0]});if(e.trigger(f),b.trigger(g),!g.isDefaultPrevented()&&!f.isDefaultPrevented()){var h=a(d);this.activate(b.closest("li"),c),this.activate(h,h.parent(),function(){e.trigger({type:"hidden.bs.tab",relatedTarget:b[0]}),b.trigger({type:"shown.bs.tab",relatedTarget:e[0]})})}}},c.prototype.activate=function(b,d,e){function f(){g.removeClass("active").find("> .dropdown-menu > .active").removeClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!1),b.addClass("active").find('[data-toggle="tab"]').attr("aria-expanded",!0),h?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu")&&b.closest("li.dropdown").addClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!0),e&&e()}var g=d.find("> .active"),h=e&&a.support.transition&&(g.length&&g.hasClass("fade")||!!d.find("> .fade").length);g.length&&h?g.one("bsTransitionEnd",f).emulateTransitionEnd(c.TRANSITION_DURATION):f(),g.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this};var e=function(c){c.preventDefault(),b.call(a(this),"show")};a(document).on("click.bs.tab.data-api",'[data-toggle="tab"]',e).on("click.bs.tab.data-api",'[data-toggle="pill"]',e)}(jQuery);
++function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery);
+function validatePlayerName(newPlayerName,players,alertElement,language){if(""==$.trim(newPlayerName))return warn(alertElement,eval("warnings.playerName."+language+".empty")),!1;var isValid=!0;return $.each(players,function(){return this.name.toLowerCase().trim()==newPlayerName.toLowerCase().trim()?(warn(alertElement,eval("warnings.playerName."+language+".unique")),isValid=!1,!1):void 0}),isValid&&alertElement.hide(),isValid}function warn(a,b){a.text(b),a.show()}function infoMessage(a,b){a.text(b),a.removeClass("alert-info").addClass("alert-info"),a.fadeIn("slow").fadeOut("slow",function(){a.removeClass("alert-info")})}function Player(a,b){this.index=a,this.name=b,this.outOfTheGame=!1,this.winner=!1,this.ranking=999,this.wins=0,this.score=0,this.scoreHistory=[],this.misses=0,this.myTurn=!1,this.disqualified=!1}function getTutorialPlayers(a){var b={},c={};return"En"==a?(b=new Player(0,"Bob"),c=new Player(1,"Sara")):"Fr"==a&&(b=new Player(0,"Hugo"),c=new Player(1,"Emma")),[b,c]}function processScore(a,b){a.misses=0,a.score+b<50?a.score+=b:a.score+b>50?a.score=25:(a.score=50,a.outOfTheGame=!0),a.scoreHistory.push(a.score)}function processMiss(a){a.misses++,a.misses>2&&(a.disqualified=!0,a.outOfTheGame=!0,a.score="X"),a.scoreHistory.push(a.score)}function comparePlayerScores(a,b){var c=a.disqualified?a.scoreHistory[a.scoreHistory.length-2]:a.score,d=b.disqualified?b.scoreHistory[b.scoreHistory.length-2]:b.score;return c>d?-1:c===d?50!==c?0:comparePlayerRankings(a,b):1}function comparePlayerRankings(a,b){return a.ranking>b.ranking?1:a.ranking===b.ranking?0:-1}function initializeMainTable(a,b){$("#mainTable #td-player-name").removeClass("active"),$("#mainTable .td-score-number.active").removeClass("active"),$("#mainTable #td-0.billyHalf").removeClass("billyHalf"),$("#mainTable #td-0.billySuper").removeClass("billySuper"),$("#mainTable #td-0").text("0"),$("#mainTable").fadeIn(1e3,function(){b&&(setInitialColspanTutorial(),setTutorialArrowsPosition(!1)),$("#mainTable #scoreTable td").css(4>=a?{width:100/a+"%"}:{width:100/Math.ceil(a/2)+"%"})})}function initializeAddPlayersModal(){if($("#modalAddPlayers .alert").hide(),$("#modalAddPlayers").modal({keyboard:!1,backdrop:"static"},"show"),$("#modalAddPlayers input").val(""),$("#modalAddPlayers input").focus(),window.localStorage){var a=localStorage.getItem("playerNames");a?a=JSON.parse(a):(a=[],localStorage.setItem("playerNames",JSON.stringify(a))),$("input").typeahead().data("typeahead").source=a}}function initializeScoreboardModalEndedGame(){$("#modalScoreboard .modal-header .close").hide(),$("#modalScoreboard .modal-footer .btn-primary").hide(),$("#modalScoreboard .modal-footer .btn-default").removeClass("pull-left"),$("#modalScoreboard").modal({keyboard:!1,backdrop:"static"},"show")}function initializeScoreboardModalContinuableGame(){$("#modalScoreboard .modal-header .close").show(),$("#modalScoreboard .modal-footer .btn-primary").show(),$("#modalScoreboard .modal-footer .btn-default").addClass("pull-left"),$("#modalScoreboard").modal({keyboard:!1,backdrop:"static"},"show")}function toggleNumberActivation(a){var b="#td-"+a;$(b).hasClass("active")?($(b).removeClass("active"),$("#mainTable #td-player-name").removeClass("active")):($("#mainTable .td-score-number.active").removeClass("active"),$(b).addClass("active"),$("#mainTable #td-player-name").addClass("active"))}function addNewPlayerNamesToLocalStorage(a){if(window.localStorage){var b=JSON.parse(localStorage.getItem("playerNames"));$.each(a,function(){var a=this.name;b.contains(a)||b.push(this.name)}),localStorage.setItem("playerNames",JSON.stringify(b))}}function showModal(a){$(a).modal({keyboard:!1,backdrop:"static"},"show")}function showModalWithLoader(a,b){$("loading-title").text(b),$(".loader-container").show(),setTimeout(function(){$(".loader-container").hide(),showModal(a)},loadingTime)}function animateOptionsIcon(){$("#td-options img").addClass("animate-spin"),setTimeout(function(){$("#td-options img").removeClass("animate-spin")},2500)}function isRestoreGame(){return window.localStorage?localStorage.getItem("restoreGame")?restoreGame=JSON.parse(localStorage.getItem("restoreGame")):(localStorage.setItem("restoreGame",JSON.stringify(!1)),!1):!1}function setIsRestoreGame(a){window.localStorage&&(localStorage.setItem("restoreGame",JSON.stringify(a)),a||(localStorage.removeItem("players"),localStorage.removeItem("data")))}function writeGameDataToLocalStorage(a,b){window.localStorage&&(localStorage.setItem("players",JSON.stringify(a)),localStorage.setItem("data",JSON.stringify(b)),setIsRestoreGame(!0))}function checkBosklappersActivationCount(a){return a?bosklappersActivationCount=0:bosklappersActivationCount++,3>bosklappersActivationCount?!1:!0}function setBillyChar(){"0"==$("#td-0").text()?$("#td-0").hasClass("active")?($("#td-0").text("/2"),$("#td-0").removeClass("active").addClass("billyHalf")):toggleNumberActivation(0):"/2"==$("#td-0").text()?($("#td-0").text("0!"),$("#td-0").removeClass("billyHalf").addClass("billySuper"),$("#mainTable .td-score-number.active").removeClass("active")):($("#td-0").text("0"),$("#td-0").removeClass("billySuper"),$("#td-player-name").removeClass("active"))}function toggleNumberActivationBosklappers(a){if("0!"!=$("#td-0").text()){var b="#td-"+a;$(b).hasClass("active")?($(b).removeClass("active"),"/2"!=$("#td-0").text()&&$("#mainTable #td-player-name").removeClass("active")):($("#mainTable .td-score-number.active").removeClass("active"),$(b).addClass("active"),$("#mainTable #td-player-name").hasClass("active")||$("#mainTable #td-player-name").addClass("active"))}}function processScoreBosklappers(a,b){a.misses=0,$("#td-0").hasClass("billyHalf")?a.score=Math.floor(-1==b?a.score/2:(a.score+b)/2):$("#td-0").hasClass("billySuper")?a.score=0:a.score+b<50?a.score+=b:a.score+b>50?a.score=Math.floor((a.score+b)/2):(a.score=50,a.outOfTheGame=!0),a.scoreHistory.push(a.score)}function processMissBosklappers(a){a.misses++,a.misses>2&&(a.score=Math.floor(a.score/2),a.misses=0),a.scoreHistory.push(a.score)}var loadingTime=2e3;Array.prototype.contains=function(a){for(var b=0;b<this.length;b++)if(this[b].toLowerCase()==a.toLowerCase())return!0;return!1};var bosklappersActivationCount=0;
+function positionTable(){isLandscape?setLandscape():setPortrait()}function setPortrait(){0==$("#xs-tr-2").length&&$("<tr id='xs-tr-2' />").insertAfter("#xs-tr-1"),0==$("#xs-tr-4").length&&$("<tr id='xs-tr-4' />").insertAfter("#xs-tr-3"),$("#xs-tr-2").append($(".xs-td-row-2")),$("#xs-tr-4").append($(".xs-td-row-4")),$(".td-colspanned").attr("colspan","2"),$("#td-tutorial").attr("colspan","3"),$("#mainTable  tr td").css({width:"30%"})}function setLandscape(){$("#xs-tr-1").append($(".xs-td-row-2")),$("#xs-tr-3").append($(".xs-td-row-4")),$("#xs-tr-2").remove(),$("#xs-tr-4").remove(),$(".td-colspanned").attr("colspan","5"),$("#td-tutorial").attr("colspan","6"),$("#mainTable tr td").css({width:"15%"})}function setInitialColspanTutorial(){isLandscape=$(window).height()<$(window).width(),isLandscape||$("#td-tutorial").attr("colspan","3")}function setTutorialArrowsPosition(a){var b=$("#td-tutorial").height();a?$("#td-tutorial .arrow").animate({top:b/2+"px"},"fast"):$("#td-tutorial .arrow").css({top:b/2+"px"})}function setTableHeight(){$("table#mainTable").css({height:.9*$(window).height()+"px",marginTop:$(window).height()/20+"px"})}var isLandscape=!0,wasLandscape=!0;$(document).ready(function(){setTableHeight(),isLandscape=$(window).height()<$(window).width(),wasLandscape=isLandscape,isLandscape||setPortrait()}),$(window).resize(function(){setTableHeight(),isLandscape=$(window).height()<$(window).width(),isLandscape!==wasLandscape&&(wasLandscape=isLandscape,positionTable()),setTutorialArrowsPosition(!1)});
+function setTextModalStart(language){$("#btn-quickGame-start span").fadeOut("fast",function(){$("#btn-quickGame-start span").text(eval("start."+language+".quickGame"))}).fadeIn("fast"),$("#btn-tutorial-start span").fadeOut("fast",function(){$("#btn-tutorial-start span").text(eval("start."+language+".tutorial"))}).fadeIn("fast"),$("#btn-about-start span").fadeOut("fast",function(){$("#btn-about-start span").text(eval("start."+language+".about"))}).fadeIn("fast")}function setTextModalAddPlayer(language){$("#modalAddPlayers .modal-title").text(eval("addPlayers."+language+".title")),$("#modalAddPlayers .btn-ready").text(eval("buttons."+language+".ready")),$("#modalAddPlayers .max-message").text(eval("addPlayers."+language+".max"))}function setTextModalConfirm(confirmType,language){var titleText="Confirmation required";"Restart"==confirmType?titleText=eval("confirm."+language+".restart"):"Exit"==confirmType&&(titleText=eval("confirm."+language+".exit")),$("#modalConfirm .modal-header h2").text(titleText),$("#modalConfirm .modal-body").text(eval("confirm."+language+".body")),$("#modalConfirm #btn-no-confirm").text(eval("buttons."+language+".no")),$("#modalConfirm #btn-yes-confirm").text(eval("buttons."+language+".yes"))}function setTextModalOptions(language){$("#modalOptions #btn-restart-options").text(eval("buttons."+language+".restart")),$("#modalOptions #btn-new-options").text(eval("buttons."+language+".newGame")),$("#modalOptions #btn-undo-options").text(eval("buttons."+language+".undo")),$("#modalOptions #btn-exit-options").text(eval("buttons."+language+".exit")),$("#modalOptions .btn-primary").text(eval("buttons."+language+".continueGame"))}function setTextModalNewPlayers(language){$("#modalNewPlayers .modal-title").text(eval("newPlayers."+language+".title")),$("#modalNewPlayers .modal-body").text(eval("newPlayers."+language+".body")),$("#modalNewPlayers #btn-no-newPlayers").text(eval("buttons."+language+".no")),$("#modalNewPlayers #btn-yes-newPlayers").text(eval("buttons."+language+".yes")),$("#modalNewPlayers #btn-cancel-newPlayers").text(eval("buttons."+language+".cancel"))}function setTextModalScoreboard(language){$("#modalScoreboard #btn-exit-scoreboard").text(eval("scoreboard."+language+".buttonExit")),$("#modalScoreboard #btn-newGame-scoreboard").text(eval("scoreboard."+language+".buttonNew")),$("#modalScoreboard .btn-primary").text(eval("buttons."+language+".continueGame")),$("#modalScoreboard #scoreboard__overview__link").text(eval("scoreboard."+language+".scoreboard")),$("#modalScoreboard #scoreboard__details__link").text(eval("scoreboard."+language+".details"))}function setTextModalAbout(language){$("#modalAbout .modal-title").text(eval("about."+language+".title")),$("#modalAbout .modal-body").html($.parseHTML(eval("about."+language+".body")))}function setTextTutorial(language){$("#modalTutorialIntro .modal-title").text(eval("tutorial."+language+".title")),$("#modalTutorialIntro .modal-body").html($.parseHTML(eval("tutorial."+language+".intro"))),$("#modalTutorialIntro #btn-start-tutorial").text(eval("tutorial."+language+".introButton"))}function getTutorialHelpText(step,language){switch(step){case 1:return eval("tutorial."+language+".help.one");case 2:return eval("tutorial."+language+".help.two");case 3:return eval("tutorial."+language+".help.three");case 4:return eval("tutorial."+language+".help.four");case 5:return eval("tutorial."+language+".help.five");case 6:return eval("tutorial."+language+".help.six")}}var start={En:{quickGame:"Start Game",tutorial:"Tutorial",about:"About"},Fr:{quickGame:"Démarrer le jeu",tutorial:"Aidez-Moi",about:"À propos"}},addPlayers={En:{title:"Enter player names..",placeholder:"Player",added:"added to game",max:"Max. players reached"},Fr:{title:"Entrez les noms des joueurs..",placeholder:"Joueur",added:"ajouté au jeu",max:"Max. de joueurs est atteint"}},buttons={En:{ready:"Ready",yes:"Yes",no:"No",cancel:"Cancel",restart:"Restart game",newGame:"New game",undo:"Undo last",exit:"Exit game",continueGame:"Continue"},Fr:{ready:"Prêt",yes:"Oui",no:"Non",cancel:"Annuler",restart:"Redémarrez le jeu",newGame:"Nouveau jeu",undo:"Annulez la dernière",exit:"Quittez le jeu",continueGame:"Continuer"}},warnings={playerName:{En:{empty:"Please provide a valid player name",unique:"Player name already in use",tooFew:"At least 2 player names are required"},Fr:{empty:"Remplissez un nom valide",unique:"Nom du joueur est déjà utilisée",tooFew:"Au moins 2 noms de joueurs sont obligatoires"}}},loading={En:{firstGame:"starting game",startApp:"loading application",newGame:"starting new game",restartGame:"restarting game",restoreGame:"restoring game",tutorial:"loading tutorial"},Fr:{firstGame:"jeu en cours de démarrage",startApp:"l'application se charge",newGame:"jeu en cours de démarrage",restartGame:"jeu en cours de redémarrage",restoreGame:"jeu en cours de restaurage",tutorial:"manuel d'instruction se charge"}},newPlayers={En:{title:"New game",body:"Same players?"},Fr:{title:"Nouveau jeu",body:"Voulez-vous garder les mêmes joueurs?"}},confirm={En:{restart:"Restart game",exit:"Exit game",body:"Are you sure?"},Fr:{restart:"Redémarrez le jeu",exit:"Quittez le jeu",body:"Êtes-vous sûr?"}},scoreboard={En:{scoreboard:"Scoreboard",details:"Details",buttonNew:"New game",buttonExit:"Exit"},Fr:{scoreboard:"Feuille de scorage",details:"Détails",buttonNew:"Nouveau",buttonExit:"Quittez"}},tutorial={En:{title:"Tutorial",intro:"<p>For the tutorial we've started a game with two players, named Bob & Sara.</p><p>You can <strong>navigate</strong> through the tutorial either by following the instructions or by use of the arrows on the bottom of the screen.</p><p>You can <strong>exit</strong> the tutorial anytime by selecting the options icon at the top right of the screen.</p>",introButton:"Start tutorial",steps:{one:"It's Bob's turn and he has knocked over 6 pins. Select the number 6...",two:"Nice, now confirm Bob's score by touching his name. The scoreboard at the top will get updated...",three:"Well done! It's Sara's turn. She's didn't hit any pins! Select the number 0 and assign it to Sara.",four:"Bob is winning! You can get a detailed score overview by touching the scoreboard at the top. Give it a try...",five:"If you assign a wrong score, you can undo it by touching the options icon at the top and selecting 'undo last'. Try it..",six:"Okey, you're all set for some mölkky action! Exit the tutorial game by touching the options icon and selecting 'exit game'."},help:{one:"Nope! Select number 6",two:"Nope! Select Bob's name (marked red)",three:"Nope! Select number 0 and then select Sara's name",four:"Nope! Select the scoreboard at the top of the screen & then close it again",five:"Nope! Select the options icon at the top right of the screen and then the 'Undo Last' button",six:"Nope! Select the options icon at the top right of the screen and then the 'Exit game' button"}},Fr:{title:"Aidez-Moi",intro:"<p>Pour ce tutoriel, nous avons commencé un jeu à deux joueurs, nommé Hugo & Emma.</p><p>Vous pouvez <strong>naviguer</strong> dans le tutoriel soit en suivant les instructions ou par l'utilisation des flèches sur le fond de l'écran.</p><p>Vous pouvez <strong>quitter</strong> le tutoriel tout moment en sélectionnant l'icône des options en haut à droite de l'écran.</p>",introButton:"Lancer tutoriel",steps:{one:"C'est au tour d'Hugo et il a renversé six quilles. Sélectionnez le numéro 6...",two:"Top! Maintenant, confirmez le score d'Hugo en touchant son nom. La feuille de scorage au sommet sera mise à jour...",three:"Bravo! C'est au tour d'Emma. Elle n'a pas touché des quilles! Sélectionnez le numéro 0 et l'affecter à Emma.",four:"Hugo est en train de gagner! Vous pouvez obtenir le score aperçu détaillé en touchant la feuille de scorage en haut. Essayez-le..",five:"Si vous attribuez un mauvais score, vous pouvez annuler en touchant l'icône des options en haut et en sélectionnant 'Annulez la dernière'. Essayez-le..",six:"Voila, vous êtes prêt! Quittez le jeu de tutoriel en touchant l'icône des options et en sélectionnant 'Quittez le jeu'."},help:{one:"Non! Sélectionnez le numéro 6",two:"Non! Sélectionnez le nom d'Hugo (marqué en rouge)",three:"Non! Sélectionnez le numéro 0, puis sélectionnez le nom d'Emma",four:"Non! Sélectionnez la feuille de scorage en haut de l'écran, puis refermez-le",five:"Non! Sélectionnez l'icône des options en haut à droite de l'écran, puis pousse le bouton 'Annulez la dernière'",six:"Non! Sélectionnez l'icône des options en haut à droite de l'écran, puis pousse le bouton 'Quittez le jeu'"}}},about={En:{title:"About",body:"<p>molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named 'mölkky'</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com is developed by <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.</p>"},Fr:{title:"À propos",body:"<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui via l'adresse e-mail <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Développeurs sont encouragés à contribuer par bifurquer sur <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"}};
+var app=angular.module("angular-app",[]);app.factory("GameData",function(){var a=[],b={throwNumber:1,confirmType:"",tutorial:!1,tutorialStepFive:!1,bosklappersMode:!1},c="En";return{getLanguage:function(){return c},setLanguage:function(a){c=a},emptyPlayersArray:function(){a=[]},setConfirmType:function(a){b.confirmType=a},getConfirmType:function(){return b.confirmType},resetConfirmType:function(){b.confirmType=""},isTutorial:function(){return b.tutorial},setTutorial:function(a){b.tutorial=a},isTutorialStepFive:function(){return b.tutorialStepFive},setTutorialStepFive:function(a){b.tutorialStepFive=a},resetPlayers:function(){var b=0;$.each(a,function(){this.index=b,b++,this.outOfTheGame=!1,this.winner=!1,this.ranking=999,this.score=0,this.scoreHistory=[],this.misses=0,this.myTurn=!1,this.disqualified=!1})},resetPlayerIndexes:function(){var b=0;$.each(a,function(){this.index=b,b++})},getPlayers:function(){return a},setPlayers:function(b){a=b},getData:function(){return b},setData:function(a){b=a},resetData:function(){b={throwNumber:1,confirmType:"",isTutorial:!1,tutorialStepFive:!1,bosklappersMode:!1}},resetThrowNumber:function(){b.throwNumber=1},getActivePlayer:function(){var b;return $.each(a,function(){return this.myTurn?(b=this,!1):void 0}),b},getNextInGamePlayer:function(b){var c;return c=b==a.length-1?a[0]:a[b+1],c.outOfTheGame?this.getNextInGamePlayer(c.index):c},getFirstInGamePlayer:function(){for(var b,c=0;c<a.length;c++)if(!a[c].outOfTheGame){b=a[c];break}return b},undoLastThrow:function(){for(var a=this.getActivePlayer().index,c=this.getPreviousPlayer(a);c.scoreHistory.length<=b.throwNumber-1;){if(a<=c.index&&c.scoreHistory.length==b.throwNumber-1){b.throwNumber--;break}c=this.getPreviousPlayer(c.index)}c.scoreHistory.pop(),c.score=0==c.scoreHistory.length?0:c.scoreHistory[c.scoreHistory.length-1],c.score==c.scoreHistory[c.scoreHistory.length-2]?(c.misses=1,c.score==c.scoreHistory[c.scoreHistory.length-3]&&(c.misses=2)):c.misses=0,this.getActivePlayer().myTurn=!1,c.myTurn=!0,c.outOfTheGame=!1,c.winner=!1,c.ranking=999,c.disqualified=!1},getPreviousPlayer:function(b){var c;return c=0==b?a[a.length-1]:a[b-1]},setRanking:function(a){this.gameHasWinner()?a.ranking=this.getLowestRanking()+1:(a.winner=!0,a.ranking=1)},getLowestRanking:function(){var b=-1;return $.each(a,function(){999!==this.ranking&&this.ranking>b&&(b=this.ranking)}),-1==b&&(b=999),b},stillPlayersInTheGame:function(){var b=!1;return $.each(a,function(){return this.outOfTheGame?void 0:(b=!0,!1)}),b},gameHasWinner:function(){var b=!1;return $.each(a,function(){return this.winner?(b=!0,!1):void 0}),b},gameHasStarted:function(){return a[0].scoreHistory.length>0},addPlayerToGame:function(b){a.push(new Player(a.length,b))},setBosklappersMode:function(a){b.bosklappersMode=a},getBosklappersMode:function(){return b.bosklappersMode}}}),app.filter("rangeFirstRow",function(){return function(a){if(a){var b=[],c=-1;c=a&&a.length<=4?a.length:a.length>6?4:3;for(var d=0;c>d;d++)b.push(a[d]);return b}}}),app.filter("rangeSecondRow",function(){return function(a){if(a){var b=[],c=-1;c=5==a.length||6==a.length?3:4;for(var d=c;d<a.length;d++)b.push(a[d]);return b}}});
 app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope) {
     $scope.addPlayer = function(){
         var newPlayerName = $('#modalAddPlayers input').val();
-        if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'))){
+        if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'),$scope.language)){
             GameData.addPlayerToGame(newPlayerName);
-            infoMessage($('#modalAddPlayers .alert'), newPlayerName + " added to game");
+            infoMessage($('#modalAddPlayers .alert'),
+                newPlayerName + " " + eval("addPlayers."+$scope.language+".added"));
+            $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
             $('#modalAddPlayers input').val('');
             $('#modalAddPlayers input').blur();
         }   	
@@ -1539,7 +288,7 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
     	if($scope.players.length > 1){
 			$('#modalAddPlayers').modal('hide');
             addNewPlayerNamesToLocalStorage($scope.players);
-            $('.loading-title').text(loading.firstGame);
+            $('.loading-title').text(eval("loading."+$scope.language+".firstGame"));
             $('.loader-container').show();
             setTimeout(function(){
                 $('.loader-container').hide();
@@ -1547,37 +296,33 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
             }, loadingTime);  
 		}
 		else{
-			warn($('#modalAddPlayers .alert'),warnings.playerName.tooFew);
-            /*$('#modalAddPlayers input').focus();*/
+			warn($('#modalAddPlayers .alert'),eval("warnings.playerName."+$scope.language+".tooFew"));
 		}
     };
     $scope.btnRemovePlayer = function(index){
         $scope.players.splice(index,1);
+        $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
         GameData.resetPlayerIndexes();
     };
 
     //events
     $scope.$on('initializeAddPlayers', function (event) {
         $scope.players = GameData.getPlayers();
+        $scope.language = GameData.getLanguage();
+        setTextModalAddPlayer($scope.language);
+        $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
         initializeAddPlayersModal();
     });
 });
-
-//custom directive: keypress enter 
-/*app.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
-                event.preventDefault();
-            }
-        });
-    };
-});*/
-
-$(document).ready(function(){   
+$(document).ready(function(){  
+    if(window["localStorage"]){
+        var language = localStorage.getItem("language");
+        if(!language){ //on first-time usage of app
+            language = 'En';
+            localStorage.setItem("language",language);
+        }
+        $('.loading-title').text(eval("loading."+language+".firstGame"));
+    }// else english is default 
     $('.loader-container').show();
     setTimeout(function(){
         $('.loader-container').hide();
@@ -1585,7 +330,7 @@ $(document).ready(function(){
             showModal('#restoreGame');
         }
         else{
-            showModal('#modalStart');
+            showModal('#modalStart');          
         }
     }, 4000);
 
@@ -1595,24 +340,55 @@ $(document).ready(function(){
     });
 });
 
-app.controller("angular-modal-start", function($scope,$rootScope) {
+app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
     $scope.startGame = function(){
     	$('#modalStart').modal('hide');
     	$rootScope.$broadcast('initializeAddPlayers'); //generate 'initializeAddPlayers' event
     };
     $scope.about = function(){
     	$('#modalStart').modal('hide');
+        $scope.language = GameData.getLanguage();
+        setTextModalAbout($scope.language);
     	$('#modalAbout').modal('show');
     };
     $scope.tutorial = function(){
     	$('#modalStart').modal('hide');
-        $('.loading-title').text(loading.tutorial);
+        $('.loading-title').text(eval("loading."+$scope.language+".tutorial"));
         $('.loader-container').show();
         setTimeout(function(){
             $('.loader-container').hide();
             $rootScope.$broadcast('initializeTutorial'); //generate 'initializeTutorial' event
         }, loadingTime); 
     };
+    $scope.En = function(){
+        if($scope.language == 'En') return;
+        $scope.language = 'En';
+        setTextModalStart($scope.language);
+        GameData.setLanguage($scope.language);
+        if(window["localStorage"]){
+            localStorage.setItem("language",$scope.language);
+        }
+    };
+    $scope.Fr = function(){
+        if($scope.language == 'Fr') return;
+        $scope.language = 'Fr';
+        setTextModalStart($scope.language);
+        GameData.setLanguage($scope.language);
+        if(window["localStorage"]){
+            localStorage.setItem("language",$scope.language);
+        }
+    };
+
+    if(window["localStorage"]){
+        var language = localStorage.getItem("language");
+        if(!language){ //on first-time usage of app
+            language = 'En';
+            localStorage.setItem("language",language);
+        }
+        GameData.setLanguage(language);
+    }
+    $scope.language = GameData.getLanguage();
+    setTextModalStart($scope.language);
 });
 
 
@@ -1745,7 +521,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     	
     		switch($scope.tutorialData.step){
 	    		case 1: $(".tutorial__content p").fadeOut("fast", function(){
-	    					$scope.stepText = tutorial.steps.two;
+	    					$scope.stepText = eval("tutorial."+$scope.language+".steps.two");
 		    				$scope.toggleNumber(6);
 		    				$scope.tutorialInProcess = false;
 		    				$scope.tutorialData.step++;
@@ -1756,7 +532,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    				});	
 	    				break;
 	    		case 2: $(".tutorial__content p").fadeOut("fast", function(){
-	    					$scope.stepText = tutorial.steps.three;
+	    					$scope.stepText = eval("tutorial."+$scope.language+".steps.three");
 		    				$scope.processThrow();
 		    				$scope.tutorialInProcess = false;
 		    				$scope.tutorialData.step++;
@@ -1775,7 +551,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    					$scope.tutorialInProcess = false;
 	    					$scope.manualTutorial = false;
 	    					$(".tutorial__content p").fadeOut("fast", function(){
-	    						$scope.stepText = tutorial.steps.four;
+	    						$scope.stepText = eval("tutorial."+$scope.language+".steps.four");
 	    						$scope.tutorialData.step++;
 	    						$scope.$apply();
 	    					}).fadeIn("fast", function(){
@@ -1787,7 +563,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		    					$scope.processThrow();
 		    					$scope.tutorialInProcess = false;
 		    					$(".tutorial__content p").fadeOut("fast", function(){
-		    						$scope.stepText = tutorial.steps.four;
+		    						$scope.stepText = eval("tutorial."+$scope.language+".steps.four");
 		    						$scope.tutorialData.step++;
 			    					$scope.$apply();
 		    					}).fadeIn("fast", function(){
@@ -1803,7 +579,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    						$scope.manualTutorial = false;
 	    						$scope.tutorialInProcess = false;
 	    						$(".tutorial__content p").fadeOut("fast", function(){
-	    							$scope.stepText = tutorial.steps.five;
+	    							$scope.stepText = eval("tutorial."+$scope.language+".steps.five");
 	    							$scope.tutorialData.step++;
 		    						$scope.$apply();
 	    						}).fadeIn("fast", function(){
@@ -1821,12 +597,12 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 	    						$scope.manualTutorial = false;
 	    						$(".tutorial__content p").fadeOut("fast", function(){
 	    							if($scope.players[1].misses == 0){
-		    							$scope.stepText = tutorial.steps.six;
+		    							$scope.stepText = eval("tutorial."+$scope.language+".steps.six");
 		    							$scope.tutorialData.step++;
 		    							GameData.setTutorialStepFive(false);
 		    						}
 		    						else{
-		    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+		    							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 		    						}
 	    							$scope.$apply();
 	    						}).fadeIn("fast", function(){
@@ -1842,22 +618,22 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
     	$scope.tutorialInProcess = true;
     	$(".tutorial__content p").fadeOut("fast", function(){
     		switch($scope.tutorialData.step){
-	    		case 2: $scope.stepText = tutorial.steps.one;
+	    		case 2: $scope.stepText = eval("tutorial."+$scope.language+".steps.one");
 	    				$(".td-score-number").removeClass("active");
 	    				$("#td-player-name").removeClass("active");
 	    				break;
-	    		case 3: $scope.stepText = tutorial.steps.two;
+	    		case 3: $scope.stepText = eval("tutorial."+$scope.language+".steps.two");
 	    				$("#modalOptions #btn-undo-options").click();
 	    				$(".td-score-number").removeClass("active");
 	    				$("#td-player-name").removeClass("active").addClass("active");
 	    				$("#td-6").addClass("active");
 	    				break;
-	    		case 4: $scope.stepText = tutorial.steps.three;
+	    		case 4: $scope.stepText = eval("tutorial."+$scope.language+".steps.three");
 	    				$("#modalOptions #btn-undo-options").click();
 	    				break;
-	    		case 5: $scope.stepText = tutorial.steps.four;
+	    		case 5: $scope.stepText = eval("tutorial."+$scope.language+".steps.four");
 	    				break;
-	    		case 6: $scope.stepText = tutorial.steps.five;
+	    		case 6: $scope.stepText = eval("tutorial."+$scope.language+".steps.five");
 	    				$("#td-0").click();
 	    				$("#td-player-name").click();
 	    				break;
@@ -1881,7 +657,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					}
 					else {
 						$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -1894,7 +670,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					} 
 					else{
 						$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -1902,7 +678,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					}
 					break;
 			default: 	$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();	
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -1930,7 +706,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					} 
 					else{
 						$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -1938,7 +714,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					}
 					break;
 			default: 	$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -1952,7 +728,7 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 					$scope.nextStep();
 					break;
 			default:	$(".tutorial__content p").fadeOut("fast", function(){
-							$scope.stepText = getTutorialHelpText($scope.tutorialData.step);
+							$scope.stepText = getTutorialHelpText($scope.tutorialData.step,$scope.language);
 							$scope.$apply();
 						}).fadeIn("fast", function(){
 				    		setTutorialArrowsPosition(true);
@@ -2052,11 +828,13 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		});
 	});
 	$scope.$on('initializeTutorial', function (event) {
+		$scope.language = GameData.getLanguage();
+        setTextTutorial($scope.language);
 		$scope.tutorialData = {
 			step: 1
 		}
-		$scope.stepText = tutorial.steps.one;
-		GameData.setPlayers(getTutorialPlayers());
+		$scope.stepText = eval("tutorial."+$scope.language+".steps.one");
+		GameData.setPlayers(getTutorialPlayers($scope.language));
 		GameData.resetData();
 		GameData.setTutorial(true);
 	    $scope.players = GameData.getPlayers();
@@ -2099,6 +877,8 @@ app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {
 
     //events
 	$scope.$on('initializeScoreboard', function (event) {
+		$scope.language = GameData.getLanguage();
+        setTextModalScoreboard($scope.language);
 	    $scope.players = GameData.getPlayers();
 	    $scope.isTutorial = GameData.isTutorial();
 	    // set number of table rows in details pane
@@ -2126,7 +906,7 @@ app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {
         GameData.getPlayers().sort(comparePlayerScores);
         GameData.resetPlayers();
         $('#modalNewPlayers').modal('hide');
-        $('.loading-title').text(loading.newGame);
+        $('.loading-title').text(eval("loading."+$scope.language+".newGame"));
         $('.loader-container').show();
         setTimeout(function(){
             $('.loader-container').hide();
@@ -2146,6 +926,8 @@ app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {
     };
 
     $scope.$on('initializeNewPlayers', function (event) {
+        $scope.language = GameData.getLanguage();
+        setTextModalNewPlayers($scope.language);
         $scope.stillPlayersInTheGame = GameData.stillPlayersInTheGame();
         $('#modalNewPlayers').modal('show');
     });
@@ -2155,7 +937,7 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
         $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
             $('#modalOptions').modal('hide');
-            $('.loading-title').text(loading.restartGame);
+            $('.loading-title').text(eval("loading."+$scope.language+".restartGame"));
             $('.loader-container').show();
             GameData.resetPlayers();
             setTimeout(function(){
@@ -2196,6 +978,8 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
 
     //events
     $scope.$on('initializeOptions', function (event) {
+        $scope.language = GameData.getLanguage();
+        setTextModalOptions($scope.language);
         $scope.gameStarted = GameData.gameHasStarted();
         $scope.isTutorial = GameData.isTutorial();
         $scope.isTutorialStepFive = GameData.isTutorialStepFive();
@@ -2212,7 +996,7 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
         }
         else if(GameData.getConfirmType() == 'Restart'){
             $('#modalConfirm').modal('hide');
-            $('.loading-title').text(loading.restartGame);
+            $('.loading-title').text(eval("loading."+$scope.language+".restartGame"));
             $('.loader-container').show();
             GameData.resetPlayers();
             setTimeout(function(){
@@ -2230,7 +1014,8 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
 
     //events
     $scope.$on('initializeConfirm', function (event) {
-        $('#modalConfirm .modal-header h2').text(GameData.getConfirmType() + ' game');
+        $scope.language = GameData.getLanguage();
+        setTextModalConfirm(GameData.getConfirmType(),$scope.language);
     	$('#modalConfirm').modal('show');
     });
 });

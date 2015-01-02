@@ -5,6 +5,7 @@
 		.nav-tabs{
 			border-bottom: 0px;
 			li a{
+				padding: 10px;
 				color:$lightColor;
 				font-size:$smallestFont;
 				&:hover{
@@ -142,6 +143,7 @@
 		.modal-header{
 			.nav-tabs{
 				li a{
+					padding: 10px 15px;
 					font-size:$smallerFont;
 				}
 			}

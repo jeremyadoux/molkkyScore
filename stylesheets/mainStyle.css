@@ -3691,51 +3691,52 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 7, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li a {
+  padding: 10px;
   color: #FFFFFF;
   font-size: 12px;
 }
-/* line 10, ../sass/partials/modals/_scoreboard.scss */
+/* line 11, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li a:hover {
   background-color: #2E2E2E;
 }
-/* line 13, ../sass/partials/modals/_scoreboard.scss */
+/* line 14, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li a:active, #modalScoreboard .modal-header .nav-tabs li a:focus, #modalScoreboard .modal-header .nav-tabs li a:visited {
   outline: none;
 }
-/* line 17, ../sass/partials/modals/_scoreboard.scss */
+/* line 18, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li.active a {
   color: #2E2E2E;
 }
-/* line 19, ../sass/partials/modals/_scoreboard.scss */
+/* line 20, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .nav-tabs li.active a:hover {
   background-color: #FFFFFF;
 }
-/* line 24, ../sass/partials/modals/_scoreboard.scss */
+/* line 25, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .modal-header .close {
   padding: 10px;
 }
-/* line 28, ../sass/partials/modals/_scoreboard.scss */
+/* line 29, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard .btn {
   font-size: 12px;
   padding: 4px 8px;
 }
-/* line 33, ../sass/partials/modals/_scoreboard.scss */
+/* line 34, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table {
   height: 100%;
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
-/* line 39, ../sass/partials/modals/_scoreboard.scss */
+/* line 40, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table tr:nth-child(odd) {
   background-color: #E6E6E6;
 }
-/* line 44, ../sass/partials/modals/_scoreboard.scss */
+/* line 45, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td, #modalScoreboard #detailedPane table th {
   text-align: center;
   padding: 5px;
 }
-/* line 48, ../sass/partials/modals/_scoreboard.scss */
+/* line 49, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
   border-bottom: 1px solid #2E2E2E;
@@ -3744,40 +3745,40 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border: 1px solid #2E2E2E;
   border-bottom-width: 2px;
 }
-/* line 55, ../sass/partials/modals/_scoreboard.scss */
+/* line 56, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th p {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-/* line 61, ../sass/partials/modals/_scoreboard.scss */
+/* line 62, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table th.winner p:after {
   font-family: "fontello";
   content: '\00a0\e800';
   color: #1275B3;
 }
-/* line 68, ../sass/partials/modals/_scoreboard.scss */
+/* line 69, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td {
   border-left: 1px solid #2E2E2E;
   border-right: 1px solid #2E2E2E;
 }
-/* line 71, ../sass/partials/modals/_scoreboard.scss */
+/* line 72, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.empty {
   border: 0px;
   background-color: #FFFFFF;
 }
-/* line 75, ../sass/partials/modals/_scoreboard.scss */
+/* line 76, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.out {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
   border-bottom: 1px solid #2E2E2E;
 }
-/* line 79, ../sass/partials/modals/_scoreboard.scss */
+/* line 80, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #detailedPane table td.disqualified {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
   color: #E60000;
   border-bottom: 1px solid #2E2E2E;
 }
-/* line 90, ../sass/partials/modals/_scoreboard.scss */
+/* line 91, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li p {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -3785,61 +3786,62 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 14px;
   line-height: 15px;
 }
-/* line 97, ../sass/partials/modals/_scoreboard.scss */
+/* line 98, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
 }
-/* line 99, ../sass/partials/modals/_scoreboard.scss */
+/* line 100, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.winner p:after {
   font-family: "fontello";
   content: '\00a0\e800';
   color: #1275B3;
 }
-/* line 106, ../sass/partials/modals/_scoreboard.scss */
+/* line 107, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.second p:after, #modalScoreboard #concisePane li.third p:after, #modalScoreboard #concisePane li.fourth p:after, #modalScoreboard #concisePane li.fifth p:after, #modalScoreboard #concisePane li.sixth p:after, #modalScoreboard #concisePane li.seventh p:after, #modalScoreboard #concisePane li.eight p:after {
   font-size: 10px;
   color: #1275B3;
 }
-/* line 111, ../sass/partials/modals/_scoreboard.scss */
+/* line 112, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.second p:after {
   content: ' - 2nd';
 }
-/* line 114, ../sass/partials/modals/_scoreboard.scss */
+/* line 115, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.third p:after {
   content: ' - 3rd';
 }
-/* line 117, ../sass/partials/modals/_scoreboard.scss */
+/* line 118, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.fourth p:after {
   content: ' - 4th';
 }
-/* line 120, ../sass/partials/modals/_scoreboard.scss */
+/* line 121, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.fifth p:after {
   content: ' - 5th';
 }
-/* line 123, ../sass/partials/modals/_scoreboard.scss */
+/* line 124, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.sixth p:after {
   content: ' - 6th';
 }
-/* line 126, ../sass/partials/modals/_scoreboard.scss */
+/* line 127, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.seventh p:after {
   content: ' - 7th';
 }
-/* line 129, ../sass/partials/modals/_scoreboard.scss */
+/* line 130, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane li.eight p:after {
   content: ' - 8th';
 }
-/* line 133, ../sass/partials/modals/_scoreboard.scss */
+/* line 134, ../sass/partials/modals/_scoreboard.scss */
 #modalScoreboard #concisePane span.disqualified {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
   color: #E60000;
 }
 
 @media (min-width: 360px) {
-  /* line 144, ../sass/partials/modals/_scoreboard.scss */
+  /* line 145, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .modal-header .nav-tabs li a {
+    padding: 10px 15px;
     font-size: 14px;
   }
-  /* line 149, ../sass/partials/modals/_scoreboard.scss */
+  /* line 151, ../sass/partials/modals/_scoreboard.scss */
   #modalScoreboard .btn {
     font-size: 14px;
     padding: 6px 12px;

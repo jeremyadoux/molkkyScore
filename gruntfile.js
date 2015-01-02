@@ -24,13 +24,13 @@ module.exports = function(grunt) {
 		      'scripts/vendor/jquery.min.js',
 		      'scripts/vendor/angular.min.js',
 		      'scripts/vendor/bootstrap3-typeahead.min.js',
-		      'scripts/bootstrap/modal.js', 
-		      'scripts/bootstrap/tab.js',
-		      'scripts/bootstrap/transition.js',
-		      'scripts/utilities.js',
-		      'scripts/positioning.js',
-		      'scripts/translations.js',
-		      'scripts/angular/base/angular-app.js',
+		      'scripts/.temp/bootstrap/modal.min.js', 
+		      'scripts/.temp/bootstrap/tab.min.js',
+		      'scripts/.temp/bootstrap/transition.min.js',
+		      'scripts/.temp/utilities.min.js',
+		      'scripts/.temp/positioning.min.js',
+		      'scripts/.temp/translations.min.js',
+		      'scripts/.temp/angular/base/angular-app.min.js',
 		      'scripts/angular/angular-controller-addPlayer.js',
 		      'scripts/angular/angular-controller-start.js',
 		      'scripts/angular/angular-controller-gameBoard.js',
@@ -47,7 +47,14 @@ module.exports = function(grunt) {
 		uglify: {
 		  dist: {
 		    files: {
-		     'scripts/dist/script.min.js': 'scripts/dist/script.js'
+		     /*'scripts/dist/script.min.js': 'scripts/dist/script.js',*/
+		     'scripts/.temp/bootstrap/modal.min.js': 'scripts/bootstrap/modal.js',
+		     'scripts/.temp/bootstrap/tab.min.js': 'scripts/bootstrap/tab.js',
+		     'scripts/.temp/bootstrap/transition.min.js': 'scripts/bootstrap/transition.js',
+		     'scripts/.temp/utilities.min.js': 'scripts/utilities.js',
+		     'scripts/.temp/positioning.min.js': 'scripts/positioning.js',
+		     'scripts/.temp/translations.min.js': 'scripts/translations.js',
+		     'scripts/.temp/angular/base/angular-app.min.js': 'scripts/angular/base/angular-app.js'
 		    }
 		  }
 		}
@@ -56,5 +63,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.registerTask('default',['cssmin'/*,'jshint'*/,'concat','uglify']);
+	grunt.registerTask('default',['cssmin'/*,'jshint'*/,'uglify','concat']);
 }

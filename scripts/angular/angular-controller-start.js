@@ -16,7 +16,7 @@ $(document).ready(function(){
         else{
             showModal('#modalStart');          
         }
-    }, 100);
+    }, 4000);
 
     // reopen 'start' modal on closing 'about' modal
     $('#modalAbout').on('hidden.bs.modal', function (e) {

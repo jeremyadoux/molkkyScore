@@ -113,11 +113,15 @@ var confirm = {
 var scoreboard = {
 	En:{
 		scoreboard: "Scoreboard",
-		details: "Details"
+		details: "Details",
+		buttonNew: "New game",
+		buttonExit: "Exit"
 	},
 	Fr:{
 		scoreboard: "Feuille de scorage",
-		details: "Détails"
+		details: "Détails",
+		buttonNew: "Nouveau",
+		buttonExit: "Quittez"
 	}
 }
 
@@ -169,11 +173,11 @@ var tutorial = {
 var about = {
 	En:{
 		title:"About",
-		body: 	"<p>molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named 'mölkky'</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com is developed by <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href='http://github.contributefirm/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.</p>"
+		body: 	"<p>molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named 'mölkky'</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com is developed by <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.</p>"
 	},
 	Fr:{
 		title:"À propos",
-		body: "<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui via l'adresse e-mail <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Développeurs sont encouragés à contribuer par bifurquer sur <a href='http://github.contributefirm/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"
+		body: "<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui via l'adresse e-mail <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Développeurs sont encouragés à contribuer par bifurquer sur <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"
 	}
 }
 
@@ -230,8 +234,8 @@ function setTextModalNewPlayers(language){
 }
 
 function setTextModalScoreboard(language){
-	$("#modalScoreboard #btn-exit-scoreboard").text(eval("buttons."+language+".exit"));
-	$("#modalScoreboard #btn-newGame-scoreboard").text(eval("buttons."+language+".newGame"));
+	$("#modalScoreboard #btn-exit-scoreboard").text(eval("scoreboard."+language+".buttonExit"));
+	$("#modalScoreboard #btn-newGame-scoreboard").text(eval("scoreboard."+language+".buttonNew"));
 	$("#modalScoreboard .btn-primary").text(eval("buttons."+language+".continueGame"));
 	$("#modalScoreboard #scoreboard__overview__link").text(eval("scoreboard."+language+".scoreboard"));
 	$("#modalScoreboard #scoreboard__details__link").text(eval("scoreboard."+language+".details"));
