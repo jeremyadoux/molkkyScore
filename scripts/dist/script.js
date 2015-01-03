@@ -265,9 +265,9 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
             GameData.addPlayerToGame(newPlayerName);
             infoMessage($('#modalAddPlayers .alert'),
                 newPlayerName + " " + eval("addPlayers."+$scope.language+".added"));
-            $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
             $('#modalAddPlayers input').val('');
-            $('#modalAddPlayers input').blur();
+            $scope.applied = true;
+            $('#modalAddPlayers input').blur(); // focusout event is triggered
         }   	
     };
     $scope.shufflePlayers = function(){
@@ -311,8 +311,29 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         $scope.language = GameData.getLanguage();
         setTextModalAddPlayer($scope.language);
         $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
-        initializeAddPlayersModal();
+        // focus events are used for positioning placeholder
+        $('#modalAddPlayers input').focus(function(){
+            $(this).css('lineHeight','1.33');
+            $scope.placeholder = "";
+            $scope.$apply();
+        });
+        $('#modalAddPlayers input').focusout(function(){
+            if($('#modalAddPlayers input').val() == ''){
+                $('#modalAddPlayers input').css('lineHeight','46px');
+            }
+            else{
+                $('#modalAddPlayers input').css('lineHeight','1.33');
+            }
+            $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
+            if(!$scope.applied){
+                $scope.$apply();
+            }
+            $scope.applied = false;
+        });
+        initializeAddPlayersModal();   
     });
+
+    
 });
 $(document).ready(function(){  
     if(window["localStorage"]){
@@ -321,7 +342,7 @@ $(document).ready(function(){
             language = 'En';
             localStorage.setItem("language",language);
         }
-        $('.loading-title').text(eval("loading."+language+".firstGame"));
+        $('.loading-title').text(eval("loading."+language+".startApp"));
     }// else english is default 
     $('.loader-container').show();
     setTimeout(function(){

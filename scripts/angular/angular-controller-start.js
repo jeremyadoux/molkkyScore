@@ -5,7 +5,7 @@ $(document).ready(function(){
             language = 'En';
             localStorage.setItem("language",language);
         }
-        $('.loading-title').text(eval("loading."+language+".firstGame"));
+        $('.loading-title').text(eval("loading."+language+".startApp"));
     }// else english is default 
     $('.loader-container').show();
     setTimeout(function(){
