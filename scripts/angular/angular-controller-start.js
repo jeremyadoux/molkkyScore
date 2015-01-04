@@ -16,7 +16,7 @@ $(document).ready(function(){
         else{
             showModal('#modalStart');          
         }
-    }, 100);
+    }, 4000);
 
     // reopen 'start' modal on closing 'about' modal
     $('#modalAbout').on('hidden.bs.modal', function (e) {
@@ -52,7 +52,28 @@ app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
         }, function(response){});
     };
     $scope.shareTwitter = function(){
-         
+        var width  = 575,
+            height = 400,
+            left   = ($(window).width()  - width)  / 2,
+            top    = ($(window).height() - height) / 2,
+            url    = '',
+            opts   = 'status=1' +
+                ',width='  + width  +
+                ',height=' + height +
+                ',top='    + top    +
+                ',left='   + left;
+        if($scope.language == "En"){
+            url= 'https://twitter.com/share?lang=en&text=Keeping%20score%20on%20the%20game%20%27m%C3%B6lkky%27%20made%20easy%20by&url=http%3A%2F%2Fmolkky.com';
+        }
+        else if($scope.language == "Fr"){
+            url='https://twitter.com/share?lang=fr&text=Compter%20les%20points%20sur%20le%20jeu%20M%C3%B6lkky%20est%20facilit%C3%A9%20par&url=http%3A%2F%2Fmolkky.com';
+        }
+        else{ // english
+            url= 'https://twitter.com/share?lang=entext=Keeping%20score%20on%20the%20game%20%27m%C3%B6lkky%27%20made%20easy%20by&url=http%3A%2F%2Fmolkky.com';
+        }
+            
+        window.open(url, 'twitter', opts);
+        return false;
     };
     $scope.En = function(){
         if($scope.language == 'En') return;
