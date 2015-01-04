@@ -7,6 +7,8 @@ index.html
 stylesheets/mainStyle.min.css
 scripts/dist/script.js
 images/options.png
+images/facebook.svg
+images/twitter.svg
 favicon.ico
 
 # Resources that require the user to be online.

@@ -3,14 +3,40 @@
 		padding-bottom: 20px;
 	}
 	.btn-toolbar{
-		margin: auto;
+		margin: 20px auto;
+		margin-bottom: 30px;
 		width: 120px;
-		margin-top: 20px;
 	}
 	.btn-group{
 		width: 120px;
 		.btn{
 			width: 60px;
 		}
+	}
+	.share-icons__wrapper{
+		position: relative;
+		padding-top: 20px;
+		font-size: 0;
+		border-top: 1px solid $darkColor;
+	}
+	.share-label{
+		position: absolute;
+		top: -10px;
+		left:50%;
+		margin-left: -50px;
+		width:100px;
+		background: $lightColor;
+		font-family: $mediumFontFamily;
+		text-align: center;
+		font-size: $smallerFont;
+	}
+	.share-icon__wrapper{
+		display: inline-block;
+		width: 50%;
+		text-align: center;
+	}
+	.share-icon{
+		width: 60px;
+		cursor: pointer;
 	}
 }

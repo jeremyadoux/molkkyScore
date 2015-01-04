@@ -3583,9 +3583,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 5, ../sass/partials/modals/_start.scss */
 #modalStart .btn-toolbar {
-  margin: auto;
+  margin: 20px auto;
+  margin-bottom: 30px;
   width: 120px;
-  margin-top: 20px;
 }
 /* line 10, ../sass/partials/modals/_start.scss */
 #modalStart .btn-group {
@@ -3594,6 +3594,36 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 12, ../sass/partials/modals/_start.scss */
 #modalStart .btn-group .btn {
   width: 60px;
+}
+/* line 16, ../sass/partials/modals/_start.scss */
+#modalStart .share-icons__wrapper {
+  position: relative;
+  padding-top: 20px;
+  font-size: 0;
+  border-top: 1px solid #2E2E2E;
+}
+/* line 22, ../sass/partials/modals/_start.scss */
+#modalStart .share-label {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  background: #FFFFFF;
+  font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
+  text-align: center;
+  font-size: 14px;
+}
+/* line 33, ../sass/partials/modals/_start.scss */
+#modalStart .share-icon__wrapper {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+/* line 38, ../sass/partials/modals/_start.scss */
+#modalStart .share-icon {
+  width: 60px;
+  cursor: pointer;
 }
 
 /* line 2, ../sass/partials/modals/_addPlayers.scss */
@@ -3645,9 +3675,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 41, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers input {
   font-size: 18px;
-  line-height: 46px;
 }
-/* line 45, ../sass/partials/modals/_addPlayers.scss */
+/* line 44, ../sass/partials/modals/_addPlayers.scss */
 #modalAddPlayers button[type="submit"] {
   position: absolute;
   left: -9999px;

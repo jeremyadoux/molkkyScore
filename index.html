@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Free web app that makes keeping score on the game named 'mölkky' (also known as number kubb) as easy as pie"></meta>
         <meta name="keywords" content="molkky mölkky score app free"></meta>
+        <meta property="fb:app_id" content="207575136079478" /> 
+        <meta property="og:image" content="http://molkkyscore.com/images/share.png" /> 
         <title>Mölkky score | web app</title>
         <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
         <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
@@ -22,6 +24,23 @@
         <!-- end: google analytics -->
     </head>
     <body ng-app="angular-app">
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '207575136079478',
+              xfbml      : true,
+              version    : 'v2.2'
+            });
+          };
+
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "//connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+        </script>
 
         <!-- Modal start -->
         <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-start">
@@ -39,7 +58,18 @@
                             <button id="btn-en-start" type="button" ng-click="En()" class="btn" ng-class="{'btn-primary':language == 'En','btn-default':language != 'En'}">En</button>
                             <button id="btn-fr-start" type="button" ng-click="Fr()" class="btn" ng-class="{'btn-primary':language == 'Fr','btn-default':language != 'Fr'}">Fr</button>
                         </div>
-                    </div>   
+                    </div>
+                    <div class="share-icons__wrapper">
+                        <div class="share-label">
+                            <span>share</span>
+                        </div>
+                        <div class="share-icon__wrapper">
+                            <img ng-click="shareFacebook()" src="images/facebook.svg" class="share-icon"/>
+                        </div>
+                        <div class="share-icon__wrapper">
+                            <img ng-click="shareTwitter()" src="images/twitter.svg" class="share-icon"/>
+                        </div> 
+                    </div> 
                 </div>
                 <!-- <div class="modal-footer" >
                     <a href="#" class="pull-left">Create account</a>
@@ -349,7 +379,7 @@
                 </td>
             </tr>
         </table>
-          
+         
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
@@ -369,8 +399,8 @@
         <script src="scripts/angular/angular-controller-confirm.js"></script>
         <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
-        <!--   
+         <!-- 
         <script async src="scripts/dist/script.js"></script>  
-         --> 
+         -->
     </body>
 </html>

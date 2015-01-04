@@ -16,7 +16,7 @@ $(document).ready(function(){
         else{
             showModal('#modalStart');          
         }
-    }, 4000);
+    }, 100);
 
     // reopen 'start' modal on closing 'about' modal
     $('#modalAbout').on('hidden.bs.modal', function (e) {
@@ -43,6 +43,16 @@ app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
             $('.loader-container').hide();
             $rootScope.$broadcast('initializeTutorial'); //generate 'initializeTutorial' event
         }, loadingTime); 
+    };
+    $scope.shareFacebook = function(){
+        FB.ui(
+         {
+          method: 'share',
+          href: 'http://molkkyscore.com/'
+        }, function(response){});
+    };
+    $scope.shareTwitter = function(){
+         
     };
     $scope.En = function(){
         if($scope.language == 'En') return;
