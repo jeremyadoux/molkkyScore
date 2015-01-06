@@ -3616,13 +3616,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 33, ../sass/partials/modals/_start.scss */
 #modalStart .share-icon__wrapper {
-  display: inline-block;
-  width: 50%;
+  width: 45%;
   text-align: center;
 }
-/* line 38, ../sass/partials/modals/_start.scss */
+/* line 37, ../sass/partials/modals/_start.scss */
+#modalStart .share-icon__wrapper--twitter {
+  float: right;
+}
+/* line 40, ../sass/partials/modals/_start.scss */
 #modalStart .share-icon {
   width: 60px;
+  height: 60px;
   cursor: pointer;
 }
 

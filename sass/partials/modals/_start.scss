@@ -31,12 +31,15 @@
 		font-size: $smallerFont;
 	}
 	.share-icon__wrapper{
-		display: inline-block;
-		width: 50%;
+		width: 45%;
 		text-align: center;
+	}
+	.share-icon__wrapper--twitter{
+		float:right;
 	}
 	.share-icon{
 		width: 60px;
+		height: 60px;
 		cursor: pointer;
 	}
 }

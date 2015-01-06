@@ -46,10 +46,10 @@ var buttons = {
 		yes:"Oui",
 		no:"Non",
 		cancel:"Annuler",
-		restart: "Redémarrez le jeu",
+		restart: "Redémarrer",
 		newGame: "Nouveau jeu",
-		undo: "Annulez la dernière",
-		exit: "Quittez le jeu",
+		undo: "Annuler dernière",
+		exit: "Quitter",
 		continueGame: "Continuer"
 	}
 }
@@ -63,7 +63,7 @@ var warnings = {
 		},
 		Fr:{
 			empty:"Remplissez un nom valide",
-			unique:"Nom du joueur est déjà utilisée",
+			unique:"Nom du joueur est déjà utilisé",
 			tooFew:"Au moins 2 noms de joueurs sont obligatoires"
 		}
 	}
@@ -79,11 +79,11 @@ var loading = {
 		tutorial:"loading tutorial"
 	},
 	Fr:{
-		firstGame:"jeu en cours de démarrage",
+		firstGame:"démarrage du jeu",
 		startApp:"l'application se charge",
-		newGame:"jeu en cours de démarrage",
-		restartGame:"jeu en cours de redémarrage",	
-		restoreGame:"jeu en cours de restaurage",
+		newGame:"nouveau jeu",
+		restartGame:"redémarrer le jeu",	
+		restoreGame:"en cours de restaurage",
 		tutorial:"manuel d'instruction se charge"
 	}
 };
@@ -106,8 +106,8 @@ var confirm = {
 		body:"Are you sure?"
 	},
 	Fr:{
-		restart:"Redémarrez le jeu",
-		exit:"Quittez le jeu",
+		restart:"Redémarrer",
+		exit:"Quitter le jeu",
 		body:"Êtes-vous sûr?"
 	}
 }
@@ -123,7 +123,7 @@ var scoreboard = {
 		scoreboard: "Feuille de scorage",
 		details: "Détails",
 		buttonNew: "Nouveau",
-		buttonExit: "Quittez"
+		buttonExit: "Quitter"
 	}
 }
 
@@ -151,23 +151,23 @@ var tutorial = {
 	},
 	Fr:{
 		title:"Aidez-Moi",
-		intro:"<p>Pour ce tutoriel, nous avons commencé un jeu à deux joueurs, nommé Hugo & Emma.</p><p>Vous pouvez <strong>naviguer</strong> dans le tutoriel soit en suivant les instructions ou par l'utilisation des flèches sur le fond de l'écran.</p><p>Vous pouvez <strong>quitter</strong> le tutoriel tout moment en sélectionnant l'icône des options en haut à droite de l'écran.</p>",
+		intro:"<p>Pour ce tutoriel, nous avons créé un jeu de deux joueurs, nommé Hugo & Emma.</p><p>Vous pouvez <strong>naviguer</strong> dans le tutoriel soit en suivant les instructions ou par l'utilisation des flèches sur le fond de l'écran.</p><p>Vous pouvez <strong>quitter</strong> le tutoriel tout moment en sélectionnant l'icône des options en haut à droite de l'écran.</p>",
 		introButton:"Lancer tutoriel",
 		steps:{
 			one: "C'est au tour d'Hugo et il a renversé six quilles. Sélectionnez le numéro 6...",
 			two: "Top! Maintenant, confirmez le score d'Hugo en touchant son nom. La feuille de scorage au sommet sera mise à jour...",
 			three: "Bravo! C'est au tour d'Emma. Elle n'a pas touché des quilles! Sélectionnez le numéro 0 et l'affecter à Emma.",
 			four: "Hugo est en train de gagner! Vous pouvez obtenir le score aperçu détaillé en touchant la feuille de scorage en haut. Essayez-le..",
-			five: "Si vous attribuez un mauvais score, vous pouvez annuler en touchant l'icône des options en haut et en sélectionnant 'Annulez la dernière'. Essayez-le..",
-			six: "Voila, vous êtes prêt! Quittez le jeu de tutoriel en touchant l'icône des options et en sélectionnant 'Quittez le jeu'."
+			five: "Si vous attribuez un mauvais score, vous pouvez annuler en touchant l'icône des options en haut et en sélectionnant 'Annuler dernière'. Essayez-le..",
+			six: "Voila, vous êtes prêt! Quittez le jeu de tutoriel en touchant l'icône des options et en sélectionnant 'Quitter'."
 		},
 		help:{
 			one: "Non! Sélectionnez le numéro 6",
 			two: "Non! Sélectionnez le nom d'Hugo (marqué en rouge)",
 			three: "Non! Sélectionnez le numéro 0, puis sélectionnez le nom d'Emma",
 			four: "Non! Sélectionnez la feuille de scorage en haut de l'écran, puis refermez-le",
-			five: "Non! Sélectionnez l'icône des options en haut à droite de l'écran, puis pousse le bouton 'Annulez la dernière'",
-			six: "Non! Sélectionnez l'icône des options en haut à droite de l'écran, puis pousse le bouton 'Quittez le jeu'"
+			five: "Non! Sélectionnez l'icône des options en haut à droite de l'écran, puis poussez le bouton 'Annuler dernière'",
+			six: "Non! Sélectionnez l'icône des options en haut à droite de l'écran, puis poussez le bouton 'Quitter'"
 		}
 	}
 };
@@ -179,7 +179,7 @@ var about = {
 	},
 	Fr:{
 		title:"À propos",
-		body: "<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui via l'adresse e-mail <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Développeurs sont encouragés à contribuer par bifurquer sur <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"
+		body: "<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui en utilisant l'adresse e-mail <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Les développeurs sont encouragés à contribuer par bifurquer sur <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"
 	}
 }
 

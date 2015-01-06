@@ -27,10 +27,12 @@
         <!-- end: google analytics -->
     </head>
     <body ng-app="angular-app">
-
+        <!-- begin: twitter -->
         <script>
         window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
         </script>
+        <!-- end: twitter -->
+        <!-- begin: facebook -->
         <script>
           window.fbAsyncInit = function() {
             FB.init({
@@ -39,7 +41,6 @@
               version    : 'v2.2'
             });
           };
-
           (function(d, s, id){
              var js, fjs = d.getElementsByTagName(s)[0];
              if (d.getElementById(id)) {return;}
@@ -48,6 +49,7 @@
              fjs.parentNode.insertBefore(js, fjs);
            }(document, 'script', 'facebook-jssdk'));
         </script>
+        <!-- end: facebook -->
 
         <!-- Modal start -->
         <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-start">
@@ -71,12 +73,12 @@
                         <div class="share-label">
                             <span>share</span>
                         </div>
+                        <div class="share-icon__wrapper share-icon__wrapper--twitter">
+                            <img ng-click="shareTwitter()" src="images/twitter.svg" class="share-icon"/>
+                        </div> 
                         <div class="share-icon__wrapper">
                             <img ng-click="shareFacebook()" src="images/facebook.svg" class="share-icon"/>
                         </div>
-                        <div class="share-icon__wrapper">
-                            <img ng-click="shareTwitter()" src="images/twitter.svg" class="share-icon"/>
-                        </div> 
                     </div> 
                 </div>
                 <!-- <div class="modal-footer" >
@@ -387,7 +389,7 @@
                 </td>
             </tr>
         </table>
-          
+        
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
