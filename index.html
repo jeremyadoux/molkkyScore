@@ -25,8 +25,6 @@
             ga('send', 'pageview');
         </script>
         <!-- end: google analytics -->
-    </head>
-    <body ng-app="angular-app">
         <!-- begin: twitter -->
         <script>
         window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
@@ -50,6 +48,10 @@
            }(document, 'script', 'facebook-jssdk'));
         </script>
         <!-- end: facebook -->
+    </head>
+    <body ng-app="angular-app">
+        <!-- Font only gets loaded when shown on screen, hence this text -->
+        <p class="secondaryFontloader">Text</p>
 
         <!-- Modal start -->
         <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-start">

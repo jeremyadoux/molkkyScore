@@ -1,3 +1,11 @@
+.secondaryFontloader{
+	font-family: $regularFontFamily;
+	position: absolute;
+	left: -9999px; 
+	width: 1px; 
+	height: 1px;
+}
+
 .loader-container {
 	display: none;
 	position:absolute;
