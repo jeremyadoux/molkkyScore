@@ -1,4 +1,4 @@
-app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
+app.controller("angular-modal-options", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {
     $scope.restartGame = function(){
         $('#mainTable').fadeOut(1000);
         if(GameData.gameHasWinner()){ 
@@ -51,4 +51,4 @@ app.controller("angular-modal-options", function($scope,GameData,$rootScope) {
         $scope.isTutorialStepFive = GameData.isTutorialStepFive();
         $('#modalOptions').modal('show');
     });
-});
+}]);

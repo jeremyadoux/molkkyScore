@@ -1,4 +1,4 @@
-app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {	
+app.controller("angular-scoreboard", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {	
 	$scope.btnNewGame = function(){
 		$('#mainTable').fadeOut(1000);
 		$('#modalScoreboard').modal('hide');
@@ -44,4 +44,4 @@ app.controller("angular-scoreboard", function($scope,GameData,$rootScope) {
 		}
 		return numberOfRows;
 	}
-});
+}]);

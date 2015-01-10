@@ -31,17 +31,17 @@ module.exports = function(grunt) {
 		      'scripts/.temp/positioning.min.js',
 		      'scripts/.temp/translations.min.js',
 		      'scripts/.temp/angular/base/angular-app.min.js',
-		      'scripts/angular/angular-controller-addPlayer.js',
-		      'scripts/angular/angular-controller-start.js',
-		      'scripts/angular/angular-controller-gameBoard.js',
-		      'scripts/angular/angular-controller-scoreboard.js',
-		      'scripts/angular/angular-controller-newPlayers.js',
-		      'scripts/angular/angular-controller-options.js',
-		      'scripts/angular/angular-controller-confirm.js',
-		      'scripts/angular/angular-controller-restoreGame.js',
-		      'scripts/angular/angular-controller-bosklappers.js'
+		      'scripts/.temp/angular/angular-controller-addPlayer.min.js',
+		      'scripts/.temp/angular/angular-controller-start.min.js',
+		      'scripts/.temp/angular/angular-controller-gameBoard.min.js',
+		      'scripts/.temp/angular/angular-controller-scoreboard.min.js',
+		      'scripts/.temp/angular/angular-controller-newPlayers.min.js',
+		      'scripts/.temp/angular/angular-controller-options.min.js',
+		      'scripts/.temp/angular/angular-controller-confirm.min.js',
+		      'scripts/.temp/angular/angular-controller-restoreGame.min.js',
+		      'scripts/.temp/angular/angular-controller-bosklappers.min.js'
 		      ],
-		      dest: 'scripts/dist/script.js',
+		      dest: 'scripts/dist/script.min.js',
 		    }
 		},
 		uglify: {
@@ -54,8 +54,16 @@ module.exports = function(grunt) {
 		     'scripts/.temp/utilities.min.js': 'scripts/utilities.js',
 		     'scripts/.temp/positioning.min.js': 'scripts/positioning.js',
 		     'scripts/.temp/translations.min.js': 'scripts/translations.js',
-		     'scripts/.temp/share.min.js': 'scripts/share.js',
-		     'scripts/.temp/angular/base/angular-app.min.js': 'scripts/angular/base/angular-app.js'
+		     'scripts/.temp/angular/base/angular-app.min.js': 'scripts/angular/base/angular-app.js',
+		     'scripts/.temp/angular/angular-controller-start.min.js': 'scripts/angular/angular-controller-start.js',
+		     'scripts/.temp/angular/angular-controller-addPlayer.min.js': 'scripts/angular/angular-controller-addPlayer.js',
+		     'scripts/.temp/angular/angular-controller-bosklappers.min.js': 'scripts/angular/angular-controller-bosklappers.js',
+		     'scripts/.temp/angular/angular-controller-confirm.min.js': 'scripts/angular/angular-controller-confirm.js',
+		     'scripts/.temp/angular/angular-controller-gameBoard.min.js': 'scripts/angular/angular-controller-gameBoard.js',
+		     'scripts/.temp/angular/angular-controller-newPlayers.min.js': 'scripts/angular/angular-controller-newPlayers.js',
+		     'scripts/.temp/angular/angular-controller-options.min.js': 'scripts/angular/angular-controller-options.js',
+		     'scripts/.temp/angular/angular-controller-restoreGame.min.js': 'scripts/angular/angular-controller-restoreGame.js',
+		     'scripts/.temp/angular/angular-controller-scoreboard.min.js': 'scripts/angular/angular-controller-scoreboard.js'
 		    }
 		  }
 		}

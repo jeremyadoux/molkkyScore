@@ -1,4 +1,4 @@
-app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {	
+app.controller("angular-modal-confirm", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {	
 	$scope.btnYes = function(){
         if(GameData.getConfirmType() == 'Exit'){
             GameData.emptyPlayersArray();
@@ -30,4 +30,4 @@ app.controller("angular-modal-confirm", function($scope,GameData,$rootScope) {
         setTextModalConfirm(GameData.getConfirmType(),$scope.language);
     	$('#modalConfirm').modal('show');
     });
-});
+}]);

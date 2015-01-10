@@ -1,4 +1,4 @@
-app.controller("angular-modal-bosklappers", function($scope,GameData,$rootScope) {	
+app.controller("angular-modal-bosklappers", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {	
     $scope.btnOk = function(){
         $('#modalBosklappers').modal('hide');
         $('#mainTable').fadeIn(1000);
@@ -14,4 +14,4 @@ app.controller("angular-modal-bosklappers", function($scope,GameData,$rootScope)
     $scope.$on('initializeBosklappers', function (event) {
     	$('#modalBosklappers').modal('show');
     });
-});
+}]);

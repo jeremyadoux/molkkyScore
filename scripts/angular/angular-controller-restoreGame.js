@@ -1,4 +1,4 @@
-app.controller("angular-modal-restoreGame", function($scope, $rootScope) {	
+app.controller("angular-modal-restoreGame", ['$scope', '$rootScope', function($scope, $rootScope) {	
 	$scope.btnYes = function(){
 		$('#restoreGame').modal('hide');
 		$('.loading-title').text(loading.restoreGame);
@@ -13,4 +13,4 @@ app.controller("angular-modal-restoreGame", function($scope, $rootScope) {
         $('#restoreGame').modal('hide');
         showModal('#modalStart');
     };
-});
+}]);

@@ -1,4 +1,4 @@
-app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {	
+app.controller("angular-newPlayers", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {	
 	$scope.btnYes = function(){ //same players
         GameData.getPlayers().sort(comparePlayerScores);
         GameData.resetPlayers();
@@ -28,4 +28,4 @@ app.controller("angular-newPlayers", function($scope,GameData,$rootScope) {
         $scope.stillPlayersInTheGame = GameData.stillPlayersInTheGame();
         $('#modalNewPlayers').modal('show');
     });
-});
+}]);

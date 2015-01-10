@@ -1,4 +1,4 @@
-app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope) {
+app.controller("angular-modal-addPlayers", ['$scope','GameData','$rootScope', function($scope, GameData, $rootScope) {
     $scope.addPlayer = function(){
         var newPlayerName = $('#modalAddPlayers input').val();
         if(validatePlayerName(newPlayerName,$scope.players,$('#modalAddPlayers .alert'),$scope.language)){
@@ -53,4 +53,4 @@ app.controller("angular-modal-addPlayers", function($scope, GameData, $rootScope
         $scope.placeholder = eval("addPlayers."+$scope.language+".placeholder")+" "+($scope.players.length + 1);
         initializeAddPlayersModal();   
     });
-});
+}]);

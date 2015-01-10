@@ -1,4 +1,4 @@
-app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
+app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {
 	$scope.toggleNumber = function(number){
 		/* begin: tutorial */
 		if($scope.tutorial && !$scope.tutorialInProcess){
@@ -455,6 +455,6 @@ app.controller("angular-gameBoard", function($scope,GameData,$rootScope) {
 		});
 		$('#modalTutorialIntro').modal('show');
 	});
-});
+}]);
 
 

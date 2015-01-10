@@ -27,7 +27,7 @@ $(document).ready(function(){
     });
 });
 
-app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
+app.controller("angular-modal-start", ['$scope','GameData','$rootScope', function($scope,GameData,$rootScope) {
     $scope.startGame = function(){
     	$('#modalStart').modal('hide');
     	$rootScope.$broadcast('initializeAddPlayers'); //generate 'initializeAddPlayers' event
@@ -107,6 +107,6 @@ app.controller("angular-modal-start", function($scope,GameData,$rootScope) {
     }
     $scope.language = GameData.getLanguage();
     setTextModalStart($scope.language);
-});
+}]);
 
 
