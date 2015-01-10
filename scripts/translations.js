@@ -14,6 +14,17 @@ var start = {
 	}
 }
 
+var restore = {
+	En:{
+		title:"Restore game?",
+		body:"Last played game ended without a winner.<br><br>Do you want to restore this game?"
+	},
+	Fr:{
+		title:"Restaurer jeu?",
+		body:"Dernier jeu joué a été terminée sans vainqueur.<br><br>Voulez-vous restaurer ce jeu?"
+	}
+}
+
 var addPlayers = {
 	En:{
 		title:"Enter player names..",
@@ -249,6 +260,13 @@ function setTextModalScoreboard(language){
 function setTextModalAbout(language){
 	$("#modalAbout .modal-title").text(eval("about."+language+".title"));
 	$("#modalAbout .modal-body").html($.parseHTML(eval("about."+language+".body")));
+}
+
+function setTextModalRestoreGame(language){
+	$("#restoreGame .modal-title").text(eval("restore."+language+".title"));
+	$("#restoreGame .modal-body").html($.parseHTML(eval("restore."+language+".body")));
+	$('#restoreGame #btn-no-confirm').text(eval("buttons."+language+".no"));
+	$('#restoreGame #btn-yes-confirm').text(eval("buttons."+language+".yes"));
 }
 
 function setTextTutorial(language){

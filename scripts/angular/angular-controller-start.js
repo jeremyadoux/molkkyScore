@@ -1,6 +1,7 @@
 $(document).ready(function(){  
+    var language = 'En';
     if(window["localStorage"]){
-        var language = localStorage.getItem("language");
+        language = localStorage.getItem("language");
         if(!language){ //on first-time usage of app
             language = 'En';
             localStorage.setItem("language",language);
@@ -12,12 +13,13 @@ $(document).ready(function(){
         $('.secondaryFontloader').remove();
         $('.loader-container').hide();
         if(isRestoreGame()){
+            setTextModalRestoreGame(language);
             showModal('#restoreGame');
         }
         else{
             showModal('#modalStart');          
         }
-    }, 4000);
+    }, 100);
 
     // reopen 'start' modal on closing 'about' modal
     $('#modalAbout').on('hidden.bs.modal', function (e) {
