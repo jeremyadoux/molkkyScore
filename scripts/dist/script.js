@@ -325,6 +325,7 @@ $(document).ready(function(){
     }// else english is default 
     $('.loader-container').show();
     setTimeout(function(){
+        $('.secondaryFontloader').remove();
         $('.loader-container').hide();
         if(isRestoreGame()){
             showModal('#restoreGame');

@@ -18,9 +18,6 @@ $( window ).resize(function() {
 		positionTable();
 	}
 	setTutorialArrowsPosition(false);
-	if(browserIE){
-		$scoreTable.height($scoreTableContainer.height());  // height is not set automatically in IE
-	}
 });
 
 function positionTable(){

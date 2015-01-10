@@ -55,8 +55,7 @@ module.exports = function(grunt) {
 		     'scripts/.temp/positioning.min.js': 'scripts/positioning.js',
 		     'scripts/.temp/translations.min.js': 'scripts/translations.js',
 		     'scripts/.temp/share.min.js': 'scripts/share.js',
-		     'scripts/.temp/angular/base/angular-app.min.js': 'scripts/angular/base/angular-app.js',
-		     'scripts/dist/IEscript.min.js': 'scripts/IEscript.js'
+		     'scripts/.temp/angular/base/angular-app.min.js': 'scripts/angular/base/angular-app.js'
 		    }
 		  }
 		}
