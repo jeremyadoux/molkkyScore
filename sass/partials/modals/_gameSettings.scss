@@ -1,0 +1,82 @@
+
+#modalSettingsGame{
+	.game-settings__question{
+		text-align: center;
+		font-size: $smallerFont;
+		font-family: $mediumFontFamily;
+	}
+	.game-settings__question__underline{
+		width: 30%;
+		margin: 10px auto;
+		border-bottom: 1px solid $darkColor;
+	}
+	.game-settings__divider{
+		width: 50%;
+		margin: 30px auto 10px auto;
+		border-bottom: 1px solid $darkColor;
+		&--first{
+			margin-top: 0;
+		}
+	}
+	.game-settings-form{
+		display: table;
+		margin: auto;
+		width: 100%;
+		text-align: center;
+		font-size: 0;
+		.input-list__row{
+			display: table-row;
+		}
+		.input-list--one-line-labels{
+			input[type="radio"] + label:after{
+				top:25px;
+			}
+			input[type="radio"] + label:before{
+				top:30px;
+			}
+		}
+		.input-list__item{
+			position: relative;
+			display: table-cell;
+			vertical-align: middle;
+			width: 33%;
+		}
+		input[type="radio"]{
+			display:none;
+			& + label{
+				padding-bottom: 35px;
+				font-size: $smallestFont;
+				cursor: pointer;
+			}
+			& + label:after{
+				position: absolute;
+				top:40px;
+				left: 50%;
+				margin-left: -10px; 
+				display: inline-block;
+				content:" ";
+				width: 20px;
+				height: 20px;
+				border: 1px solid $accentColor;
+				border-radius: 100%;
+			}
+			& + label:before{
+				position: absolute;
+				top:45px;
+				left: 50%;
+				margin-left: -5px;
+				display: inline-block;
+				content:" ";
+				width: 10px;
+				height: 10px;
+				background-color: $accentColor;
+				border-radius: 100%;
+				transition: transform 0.1s linear;
+				transform: scale(0);
+			}
+			&:checked + label:before{
+				transform: scale(1);
+			}
+		}
+	}
+}
