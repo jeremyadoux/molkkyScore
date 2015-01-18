@@ -1,0 +1,12 @@
+# dist #
+######################
+stylesheets/*
+scripts/dist/*
+
+# temporary files #
+######################
+scripts/.temp/*
+
+# OS generated files #
+######################
+.DS_Store
