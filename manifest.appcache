@@ -1,6 +1,5 @@
 CACHE MANIFEST
 # 2015-01-18:v1
-
 # Explicitly cached 'master entries'.
 CACHE:
 index.html
@@ -13,7 +12,6 @@ fonts/nationalchampion-medium-webfont.ttf
 fonts/nationalchampion-regular-webfont.ttf
 fonts/fontello/font/fontello.ttf
 favicon.ico
-
 # Resources that require the user to be online.
 NETWORK:
 index.html
