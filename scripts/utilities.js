@@ -71,27 +71,44 @@ function getTutorialPlayers(language){
 }
 
 //player methods
-function processScore(player, number){
+function processScore(player, number, maxScore, exceedMaxSetting){
 	player.misses = 0;
-	if((player.score + number) < 50){
+	if((player.score + number) < maxScore){
 		player.score += number;
 	}
-	else if((player.score + number) > 50){
-		player.score = 25;
+	else if((player.score + number) > maxScore){
+		if(exceedMaxSetting == 'Zero'){
+			player.score = 0;
+		}
+		else if(exceedMaxSetting == 'HalfMax'){
+			player.score = Math.floor(maxScore/2);
+		}
+		else{ // Half
+			player.score = Math.floor((player.score + number)/2);
+		} 	
 	}
-	else{ //player has score 50
-		player.score = 50;
+	else{ //player has score maxScore
+		player.score = maxScore;
 		player.outOfTheGame = true;
 	}
 	player.scoreHistory.push(player.score);
 }
 
-function processMiss(player){
+function processMiss(player, missesSetting){
 	player.misses++;
 	if(player.misses > 2){
-		player.disqualified = true;
-		player.outOfTheGame = true;
-		player.score = 'X';
+		if(missesSetting == 'Disqualified'){
+			player.disqualified = true;
+			player.outOfTheGame = true;
+			player.score = 'X';	
+		}
+		else if(missesSetting == 'Half'){
+			player.score = Math.floor(player.score/2);	
+		}
+		else{ // Zero
+			player.score = 0;
+		}
+		
 	}
 	player.scoreHistory.push(player.score);
 }
@@ -167,7 +184,7 @@ function initializeAddPlayersModal(){
 		else{
 			playerNames = JSON.parse(playerNames);
 		}
-		$('input').typeahead().data('typeahead').source = playerNames; //initialize Bootstrap3-Typeahead plugin
+		$('#modalAddPlayers input').typeahead().data('typeahead').source = playerNames; //initialize Bootstrap3-Typeahead plugin
 	}
 }
 
@@ -340,7 +357,7 @@ function toggleNumberActivationBosklappers(number){
 	}
 }
 
-function processScoreBosklappers(player, number){
+function processScoreBosklappers(player, number, maxScore){
 	player.misses = 0;
 	if($('#td-0').hasClass('billyHalf')){
 		if (number == -1){ // only billy was hit
@@ -354,14 +371,14 @@ function processScoreBosklappers(player, number){
 		player.score = 0;
 	}
 	else{
-		if((player.score + number) < 50){
+		if((player.score + number) < maxScore){
 			player.score += number;
 		}
-		else if((player.score + number) > 50){
+		else if((player.score + number) > maxScore){
 			player.score = Math.floor((player.score + number)/2);
 		}
-		else{ //player has score 50
-			player.score = 50;
+		else{ //player has score maxScore
+			player.score = maxScore;
 			player.outOfTheGame = true;
 		}
 	}

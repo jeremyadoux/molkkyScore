@@ -11,7 +11,8 @@ app.factory('GameData', function(){
 	};
 	var settings = {
 		maxPoints: 50,
-		misses: 'Disqualified'
+		misses: 'Disqualified',
+		exceedMax: 'HalfMax'
 	};
 	var language = "En";
 	return{
@@ -214,6 +215,15 @@ app.factory('GameData', function(){
 				}
 			});
 			return stillPlayersInTheGame;
+		},
+		numberOfPlayersInTheGame: function(){
+			var numberOfPlayersInTheGame = 0;
+			$.each(players,function(){
+				if(!this.outOfTheGame){
+					numberOfPlayersInTheGame++;
+				}
+			});
+			return numberOfPlayersInTheGame;
 		},
 		gameHasWinner: function(){
 			var gameHasWinner = false;

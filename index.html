@@ -135,14 +135,14 @@
 
         <!-- Modal settingsGame -->
         <div class="modal fade" id="modalSettingsGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-settingsGame">
-          <div class="modal-dialog modal-sm modal-vertical-centered">
+          <div class="modal-dialog modal-md modal-vertical-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h2 class="modal-title" id="myModalLabel">Game settings</h2>
               </div>
                 <div class="modal-body">
                     <div class="game-settings__divider game-settings__divider--first"></div>
-                    <p class="game-settings__question">Game is won when player scores how many points?</p>
+                    <p id="game-settings__question--one" class="game-settings__question">Game is won when player scores how many points?</p>
                     <div class="game-settings__question__underline"></div>
                     <form class="game-settings-form">
                         <div class="input-list__row input-list--one-line-labels">
@@ -161,21 +161,40 @@
                         </div>
                     </form>
                     <div class="game-settings__divider"></div>
-                    <p class="game-settings__question">What happens when a player throws 3 misses in a row?</p>
+                    <p id="game-settings__question--two" class="game-settings__question">What happens when player scores more than maximum points?</p>
                     <div class="game-settings__question__underline"></div>
                     <form class="game-settings-form">
                         <div class="input-list__row">
                             <div class="input-list__item">
-                                <input id="radioDisqualified" ng-click="setMisses('Disqualified')" type="radio" class="radioButtons" name="radio-misses" value="disqualified" ng-checked="settings.misses == 'Disqualified'">
-                                <label for="radioDisqualified">Disqualified</label>
+                                <input id="radioZeroOne" ng-click="setExceedMax('Zero')" type="radio" class="radioButtons" name="radio-exceedMax" value="disqualified" ng-checked="settings.exceedMax == 'Zero'">
+                                <label for="radioZeroOne" class="labelZero">Back<br> to zero</label>
                             </div>
                             <div class="input-list__item">
-                                <input id="radioZero" type="radio" ng-click="setMisses('Zero')"adio" class="radioButtons" name="radio-misses" value="zero" ng-checked="settings.misses == 'Zero'">
-                                <label for="radioZero">Back<br> to zero</label>
+                                <input id="radioHalfOne" type="radio" ng-click="setExceedMax('Half')" class="radioButtons" name="radio-exceedMax" value="half" ng-checked="settings.exceedMax == 'Half'">
+                                <label for="radioHalfOne" class="labelHalf">Score<br> in half</label>
                             </div>
                             <div class="input-list__item">
-                                <input id="radioHalf" type="radio" ng-click="setMisses('Half')"adio" class="radioButtons" name="radio-misses" value="half" ng-checked="settings.misses == 'Half'">
-                                <label for="radioHalf">Score<br> in half</label>
+                                <input id="radioHalfMaxOne" type="radio" ng-click="setExceedMax('HalfMax')" class="radioButtons" name="radio-exceedMax" value="halfMax" ng-checked="settings.exceedMax == 'HalfMax'">
+                                <label for="radioHalfMaxOne" class="labelHalfMax">Max score<br> in half</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="game-settings__divider"></div>
+                    <p id="game-settings__question--three" class="game-settings__question">What happens when a player throws 3 misses in a row?</p>
+                    <div class="game-settings__question__underline"></div>
+                    <form class="game-settings-form">
+                        <div class="input-list__row">
+                            <div class="input-list__item">
+                                <input id="radioDisqualifiedTwo" ng-click="setMisses('Disqualified')" type="radio" class="radioButtons" name="radio-misses" value="disqualified" ng-checked="settings.misses == 'Disqualified'">
+                                <label for="radioDisqualifiedTwo" class="labelDisqualified">Disqualified</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radioZeroTwo" type="radio" ng-click="setMisses('Zero')" class="radioButtons" name="radio-misses" value="zero" ng-checked="settings.misses == 'Zero'">
+                                <label for="radioZeroTwo" class="labelZero">Back<br> to zero</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radioHalfTwo" type="radio" ng-click="setMisses('Half')" class="radioButtons" name="radio-misses" value="half" ng-checked="settings.misses == 'Half'">
+                                <label for="radioHalfTwo" class="labelHalf">Score<br> in half</label>
                             </div>
                         </div>
                     </form>

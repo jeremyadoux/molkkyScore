@@ -7,6 +7,10 @@ scripts/dist/*
 ######################
 scripts/.temp/*
 
+# cache files #
+######################
+.sass-cache
+
 # OS generated files #
 ######################
 .DS_Store

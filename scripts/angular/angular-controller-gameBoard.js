@@ -84,10 +84,14 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 				//calculate new score
 				var scoreNumber = parseInt($('#mainTable .td-score-number.active').text());
 				if(scoreNumber == 0){
-					processMiss($scope.activePlayer);
+					processMiss($scope.activePlayer, $scope.settings.misses);
+					if($scope.activePlayer.disqualified == true && GameData.numberOfPlayersInTheGame() < 2){
+						setIsRestoreGame(false);
+						$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+					}
 				}
 				else{
-					processScore($scope.activePlayer,scoreNumber);
+					processScore($scope.activePlayer,scoreNumber,$scope.settings.maxPoints,$scope.settings.exceedMax);
 					if($scope.activePlayer.outOfTheGame){
 						GameData.setRanking($scope.activePlayer);
 						if($scope.activePlayer.winner){
@@ -351,7 +355,7 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 				processMissBosklappers($scope.activePlayer);
 			}
 			else{
-				processScoreBosklappers($scope.activePlayer, scoreNumber);
+				processScoreBosklappers($scope.activePlayer, scoreNumber, $scope.settings.maxPoints);
 				if($scope.activePlayer.outOfTheGame){
 					GameData.setRanking($scope.activePlayer);
 					if($scope.activePlayer.winner){
@@ -393,6 +397,7 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 	    $scope.activePlayer = $scope.players[0];
 	    GameData.resetThrowNumber();
 	    $scope.data = GameData.getData();
+	    $scope.settings = GameData.getSettings();
 	    initializeMainTable($scope.players.length, false);
 	    $scope.$apply();
 	    $('#modalScoreboard').on('shown.bs.modal', function (e) {
@@ -404,6 +409,7 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 	    $scope.players = GameData.getPlayers();
 	    $scope.activePlayer = GameData.getActivePlayer();
 	    $scope.data = GameData.getData(); 
+	    $scope.settings = GameData.getSettings();
 	    if(!GameData.gameHasWinner() && !$scope.tutorial){
             writeGameDataToLocalStorage($scope.players, $scope.data);
         }
@@ -411,19 +417,23 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 	$scope.$on('restoreGameBoard', function (event) {
 		var players= [];
 		var data = {};
-		if(localStorage.getItem("players") && localStorage.getItem("data")){
+		var settings = {};
+		if(localStorage.getItem("players") && localStorage.getItem("data") && localStorage.getItem("settings")){
 			players = JSON.parse(localStorage.getItem("players"));
 			data = JSON.parse(localStorage.getItem("data"));
+			settings = JSON.parse(localStorage.getItem("settings"));
 		}
-		else{
+		else{ // not all necessary data for restore available in localStorage
 			$rootScope.$broadcast('initializeAddPlayers');
 			return;
 			//TODO: error message
 		}
 		GameData.setPlayers(players);
 		GameData.setData(data);
+		GameData.setSettings(settings);
 	    $scope.players = GameData.getPlayers();
 	    $scope.data = GameData.getData();
+	    $scope.settings = GameData.getSettings();
 	    $scope.activePlayer = GameData.getActivePlayer();
 	    initializeMainTable($scope.players.length, false);
 	    $scope.$apply();

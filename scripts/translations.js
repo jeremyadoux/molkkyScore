@@ -27,6 +27,35 @@ var restore = {
 	}
 }
 
+var settingsGame = {
+	En:{
+		title:"Settings",
+		questionOne:"Game is won when player scores how many points?",
+		questionTwo:"What happens when player scores more than maximum points?",
+		questionThree:"What happens when a player throws 3 misses in a row?",
+		answer:{
+			disqualified:"Disqualified",
+			zero:"Back<br> to zero",
+			half:"Score<br> in half",
+			halfMax:"Max score<br> in half"
+		},
+		save:"Save"
+	},
+	Fr:{
+		title:"Paramètres",
+		questionOne:"Jeu est gagné quand joueur marque combien de points?",
+		questionTwo:"Qu'est-ce qui se passe quand un joueur marque plus de points que le maximum?",
+		questionThree:"Qu'est-ce qui arrive quand un joueur ne marque aucun point trois fois de suite?",
+		answer:{
+			disqualified:"Disqualifié",
+			zero:"Retour<br> à zéro",
+			half:"Score<br> à moitié",
+			halfMax:"Score max<br> à moitié"
+		},
+		save:"Garder"
+	}
+}
+
 var addPlayers = {
 	En:{
 		title:"Enter player names..",
@@ -219,6 +248,18 @@ function setTextModalAddPlayer(language){
 	$("#modalAddPlayers .modal-title").text(eval("addPlayers."+language+".title"));
 	$("#modalAddPlayers .btn-ready").text(eval("buttons."+language+".ready"));
 	$("#modalAddPlayers .max-message").text(eval("addPlayers."+language+".max"));
+}
+
+function setTextModalSettingsGame(language){
+	$("#modalSettingsGame .modal-title").text(eval("settingsGame."+language+".title"));
+	$("#game-settings__question--one").text(eval("settingsGame."+language+".questionOne"));
+	$("#game-settings__question--two").text(eval("settingsGame."+language+".questionTwo"));
+	$("#game-settings__question--three").text(eval("settingsGame."+language+".questionThree"));
+	$("#modalSettingsGame .labelDisqualified").text(eval("settingsGame."+language+".answer.disqualified"));
+	$("#modalSettingsGame .labelZero").html($.parseHTML(eval("settingsGame."+language+".answer.zero")));
+	$("#modalSettingsGame .labelHalf").html($.parseHTML(eval("settingsGame."+language+".answer.half")));
+	$("#modalSettingsGame .labelHalfMax").html($.parseHTML(eval("settingsGame."+language+".answer.halfMax")));
+	$("#modalSettingsGame .btn-ready").text(eval("settingsGame."+language+".save"));
 }
 
 function setTextModalConfirm(confirmType, language){

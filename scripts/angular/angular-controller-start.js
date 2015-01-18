@@ -19,7 +19,7 @@ $(document).ready(function(){
         else{
             showModal('#modalStart');          
         }
-    }, 4000);
+    }, 100);
 
     // reopen 'start' modal on closing 'about' modal
     $('#modalAbout').on('hidden.bs.modal', function (e) {
@@ -102,12 +102,22 @@ app.controller("angular-modal-start", ['$scope','GameData','$rootScope', functio
     };
 
     if(window["localStorage"]){
+        // set language
         var language = localStorage.getItem("language");
         if(!language){ //on first-time usage of app
             language = 'En';
             localStorage.setItem("language",language);
         }
         GameData.setLanguage(language);
+        // set settingsGame
+        var settings = localStorage.getItem("settings");
+        if(!settings){ //on first-time usage of app
+            settings = GameData.getSettings();
+            localStorage.setItem("settings",JSON.stringify(settings));
+        }
+        else{
+            GameData.setSettings(JSON.parse(settings));
+        }
     }
     $scope.language = GameData.getLanguage();
     setTextModalStart($scope.language);
