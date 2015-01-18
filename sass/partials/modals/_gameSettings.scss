@@ -61,6 +61,7 @@
 				border-radius: 100%;
 			}
 			& + label:before{
+				visibility: hidden;
 				position: absolute;
 				top:45px;
 				left: 50%;
@@ -75,6 +76,7 @@
 				transform: scale(0);
 			}
 			&:checked + label:before{
+				visibility: visible;
 				transform: scale(1);
 			}
 		}

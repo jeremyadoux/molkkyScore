@@ -64,25 +64,25 @@
   content: '\e800';
 }
 
-/* '¯áÇ' */
+/* '' */
 /* line 58, ../sass/vendor/_fontello.scss */
 .icon-plus:before {
   content: '\e801';
 }
 
-/* '¯áü' */
+/* '' */
 /* line 59, ../sass/vendor/_fontello.scss */
 .icon-right-open-outline:before {
   content: '\e802';
 }
 
-/* '¯áé' */
+/* '' */
 /* line 60, ../sass/vendor/_fontello.scss */
 .icon-shuffle:before {
   content: '\e803';
 }
 
-/* '¯áâ' */
+/* '' */
 /* @import "bootstrap/normalize"; */
 /* @import "bootstrap/print";*/
 /* @import "bootstrap/glyphicons"; */
@@ -3002,7 +3002,7 @@ button.close {
 }
 
 /* @import "bootstrap/responsive-utilities"; */
-/* line 5, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -3024,45 +3024,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -3432,8 +3432,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: absolute;
   width: 100%;
   top: 0px;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 10px;
+  line-height: 10px;
   padding: 3px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -3464,10 +3464,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /* line 57, ../sass/partials/gameboard/_scoreTable.scss */
   #scoreTable .score-table-item p.misses {
     bottom: 5px;
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 14px;
   }
-  /* line 62, ../sass/partials/gameboard/_scoreTable.scss */
+}
+@media (min-width: 1224px) {
+  /* line 68, ../sass/partials/gameboard/_scoreTable.scss */
   #scoreTable .score-table-item p.playerName {
     display: block;
   }
@@ -3771,6 +3773,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 63, ../sass/partials/modals/_gameSettings.scss */
 #modalSettingsGame .game-settings-form input[type="radio"] + label:before {
+  visibility: hidden;
   position: absolute;
   top: 45px;
   left: 50%;
@@ -3784,8 +3787,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   transition: transform 0.1s linear;
   transform: scale(0);
 }
-/* line 77, ../sass/partials/modals/_gameSettings.scss */
+/* line 78, ../sass/partials/modals/_gameSettings.scss */
 #modalSettingsGame .game-settings-form input[type="radio"]:checked + label:before {
+  visibility: visible;
   transform: scale(1);
 }
 

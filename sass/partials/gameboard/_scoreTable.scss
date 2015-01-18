@@ -30,8 +30,8 @@
 			position:absolute;
 			width:100%;
 			top:0px;
-			font-size:$smallestFont;
-			line-height: $smallestFont;
+			font-size:$extra-smallFont;
+			line-height: $extra-smallFont;
 			padding:3px;
 			text-overflow:ellipsis;
 			overflow:hidden;
@@ -56,9 +56,15 @@
 			border:5px solid $darkColor;
 			& p.misses{
 				bottom: 5px;
-				font-size:$smallFont;
-				line-height: $smallFont;
+				font-size:$smallerFont;
+				line-height: $smallerFont;
 			}
+		}
+	}
+}
+@media (min-width:1224px) { 
+	#scoreTable{
+		.score-table-item{
 			& p.playerName{
 				display:block;
 			}
