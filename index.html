@@ -68,6 +68,7 @@
                 </div>
                 <div class="modal-body" >
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block"><span>Start game</span></button>
+                    <button ng-click="settings()" id="btn-settings-start" type="button" class="btn btn-default btn-lg btn-block"><span>Settings</span></button>
                     <button ng-click="tutorial()" id="btn-tutorial-start" type="button" class="btn btn-default btn-lg btn-block"><span>Tutorial</span></button>
                     <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block"><span>About</span></button>    
                     <div class="btn-toolbar" role="toolbar">
@@ -131,6 +132,60 @@
           <span class="dot dot-5"></span>
           <span class="dot dot-6"></span>
         </div><!-- end Loader animation -->
+
+        <!-- Modal settingsGame -->
+        <div class="modal fade" id="modalSettingsGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-settingsGame">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">Game settings</h2>
+              </div>
+                <div class="modal-body">
+                    <div class="game-settings__divider game-settings__divider--first"></div>
+                    <p class="game-settings__question">Game is won when player scores how many points?</p>
+                    <div class="game-settings__question__underline"></div>
+                    <form class="game-settings-form">
+                        <div class="input-list__row input-list--one-line-labels">
+                            <div class="input-list__item">
+                                <input id="radio25" ng-click="setMaxPoints(25)" type="radio" class="radioButtons" name="radio-end-score" value="25" ng-checked="settings.maxPoints == 25">
+                                <label for="radio25">25</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radio50" ng-click="setMaxPoints(50)" type="radio" class="radioButtons" name="radio-end-score" value="50" ng-checked="settings.maxPoints == 50">
+                                <label for="radio50">50</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radio100" ng-click="setMaxPoints(100)"  type="radio" class="radioButtons" name="radio-end-score" value="100" ng-checked="settings.maxPoints == 100">
+                                <label for="radio100">100</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="game-settings__divider"></div>
+                    <p class="game-settings__question">What happens when a player throws 3 misses in a row?</p>
+                    <div class="game-settings__question__underline"></div>
+                    <form class="game-settings-form">
+                        <div class="input-list__row">
+                            <div class="input-list__item">
+                                <input id="radioDisqualified" ng-click="setMisses('Disqualified')" type="radio" class="radioButtons" name="radio-misses" value="disqualified" ng-checked="settings.misses == 'Disqualified'">
+                                <label for="radioDisqualified">Disqualified</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radioZero" type="radio" ng-click="setMisses('Zero')"adio" class="radioButtons" name="radio-misses" value="zero" ng-checked="settings.misses == 'Zero'">
+                                <label for="radioZero">Back<br> to zero</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radioHalf" type="radio" ng-click="setMisses('Half')"adio" class="radioButtons" name="radio-misses" value="half" ng-checked="settings.misses == 'Half'">
+                                <label for="radioHalf">Score<br> in half</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="btnSave()" type="button" class="btn btn-default btn-ready">Save</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end Modal settingsGame -->
 
         <!-- Modal add players -->
         <div class="modal fade" id="modalAddPlayers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="angular-modal-addPlayers">
@@ -397,7 +452,7 @@
                 </td>
             </tr>
         </table>
-        <!--
+        
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/angular.min.js"></script>
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
@@ -410,6 +465,7 @@
         <script src="scripts/angular/base/angular-app.js"></script>
         <script src="scripts/angular/angular-controller-addPlayer.js"></script>
         <script src="scripts/angular/angular-controller-start.js"></script>
+        <script src="scripts/angular/angular-controller-settingsGame.js"></script>
         <script src="scripts/angular/angular-controller-gameBoard.js"></script>
         <script src="scripts/angular/angular-controller-scoreboard.js"></script>
         <script src="scripts/angular/angular-controller-newPlayers.js"></script>
@@ -417,8 +473,8 @@
         <script src="scripts/angular/angular-controller-confirm.js"></script>
         <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
-        -->
+        <!--
         <script async src="scripts/dist/script.min.js"></script>  
-       
+        -->
     </body>
 </html>

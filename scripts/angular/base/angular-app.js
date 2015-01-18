@@ -9,8 +9,24 @@ app.factory('GameData', function(){
 		tutorialStepFive: false,
 		bosklappersMode: false
 	};
+	var settings = {
+		maxPoints: 50,
+		misses: 'Disqualified'
+	};
 	var language = "En";
 	return{
+		getSettings: function(){
+			return settings;
+		},
+		setSettings: function(newSettings){
+			settings = newSettings;
+		},
+		setMaxPointsSetting: function(maxPointsSetting){
+			settings.maxPoints = maxPointsSetting;
+		},
+		setMissesSetting: function(missesSetting){
+			settings.misses = missesSetting;
+		},
 		getLanguage: function(){
 			return language;
 		},

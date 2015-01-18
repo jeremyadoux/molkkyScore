@@ -3068,6 +3068,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 1, ../sass/partials/general/_loader.scss */
+.secondaryFontloader {
+  font-family: "Champion-regular", Arial, Helvetica, sans-serif;
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+}
+
+/* line 9, ../sass/partials/general/_loader.scss */
 .loader-container {
   display: none;
   position: absolute;
@@ -3078,12 +3087,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: 1em auto;
   color: #FFFFFF;
 }
-/* line 10, ../sass/partials/general/_loader.scss */
+/* line 18, ../sass/partials/general/_loader.scss */
 .loader-container .loading-title {
   display: block;
   margin: 0 auto;
 }
-/* line 15, ../sass/partials/general/_loader.scss */
+/* line 23, ../sass/partials/general/_loader.scss */
 .loader-container .dot {
   height: 10px;
   width: 10px;
@@ -3096,37 +3105,37 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
   animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
 }
-/* line 28, ../sass/partials/general/_loader.scss */
+/* line 36, ../sass/partials/general/_loader.scss */
 .loader-container .dot-1 {
   -moz-animation-delay: 1s;
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
-/* line 29, ../sass/partials/general/_loader.scss */
+/* line 37, ../sass/partials/general/_loader.scss */
 .loader-container .dot-2 {
   -moz-animation-delay: 0.8s;
   -webkit-animation-delay: 0.8s;
   animation-delay: 0.8s;
 }
-/* line 30, ../sass/partials/general/_loader.scss */
+/* line 38, ../sass/partials/general/_loader.scss */
 .loader-container .dot-3 {
   -moz-animation-delay: 0.6s;
   -webkit-animation-delay: 0.6s;
   animation-delay: 0.6s;
 }
-/* line 31, ../sass/partials/general/_loader.scss */
+/* line 39, ../sass/partials/general/_loader.scss */
 .loader-container .dot-4 {
   -moz-animation-delay: 0.4s;
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
-/* line 32, ../sass/partials/general/_loader.scss */
+/* line 40, ../sass/partials/general/_loader.scss */
 .loader-container .dot-5 {
   -moz-animation-delay: 0.2s;
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s;
 }
-/* line 33, ../sass/partials/general/_loader.scss */
+/* line 41, ../sass/partials/general/_loader.scss */
 .loader-container .dot-6 {
   -moz-animation-delay: 0;
   -webkit-animation-delay: 0;
@@ -3688,6 +3697,98 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 1px;
 }
 
+/* line 3, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__question {
+  text-align: center;
+  font-size: 14px;
+  font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
+}
+/* line 8, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__question__underline {
+  width: 30%;
+  margin: 10px auto;
+  border-bottom: 1px solid #2E2E2E;
+}
+/* line 13, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__divider {
+  width: 50%;
+  margin: 30px auto 10px auto;
+  border-bottom: 1px solid #2E2E2E;
+}
+/* line 17, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__divider--first {
+  margin-top: 0;
+}
+/* line 21, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form {
+  display: table;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 0;
+}
+/* line 27, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form .input-list__row {
+  display: table-row;
+}
+/* line 31, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form .input-list--one-line-labels input[type="radio"] + label:after {
+  top: 25px;
+}
+/* line 34, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form .input-list--one-line-labels input[type="radio"] + label:before {
+  top: 30px;
+}
+/* line 38, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form .input-list__item {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 33%;
+}
+/* line 44, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form input[type="radio"] {
+  display: none;
+}
+/* line 46, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form input[type="radio"] + label {
+  padding-bottom: 35px;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* line 51, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form input[type="radio"] + label:after {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: -10px;
+  display: inline-block;
+  content: " ";
+  width: 20px;
+  height: 20px;
+  border: 1px solid #1275B3;
+  border-radius: 100%;
+}
+/* line 63, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form input[type="radio"] + label:before {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  margin-left: -5px;
+  display: inline-block;
+  content: " ";
+  width: 10px;
+  height: 10px;
+  background-color: #1275B3;
+  border-radius: 100%;
+  transition: transform 0.1s linear;
+  transform: scale(0);
+}
+/* line 77, ../sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form input[type="radio"]:checked + label:before {
+  transform: scale(1);
+}
+
 /* line 2, ../sass/partials/modals/_about.scss */
 #modalAbout .modal-body {
   max-height: 420px;
@@ -3944,7 +4045,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     transform: rotate(359deg);
   }
 }
-/* line 18, ../sass/mainStyle.scss */
+/* line 19, ../sass/mainStyle.scss */
 body {
   font-family: "Champion-medium", "Arial Black", Gadget, sans-serif;
   background-color: #2E2E2E;

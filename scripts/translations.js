@@ -2,12 +2,14 @@
 var start = {
 	En:{
 		quickGame:"Start Game",
+		settings:"Settings",
 		tutorial:"Tutorial",
 		about:"About",
 		share:"share"
 	},
 	Fr:{
 		quickGame:"Démarrer le jeu",
+		settings:"Paramètres",
 		tutorial:"Aidez-Moi",
 		about:"À propos",
 		share:"partager"
@@ -198,6 +200,9 @@ var about = {
 function setTextModalStart(language){
 	$('#btn-quickGame-start span').fadeOut("fast",function(){
 		$('#btn-quickGame-start span').text(eval("start."+language+".quickGame"));
+	}).fadeIn("fast");
+	$('#btn-settings-start span').fadeOut("fast",function(){
+		$('#btn-settings-start span').text(eval("start."+language+".settings"));
 	}).fadeIn("fast");
 	$('#btn-tutorial-start span').fadeOut("fast",function(){
 		$('#btn-tutorial-start span').text(eval("start."+language+".tutorial"));

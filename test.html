@@ -1,0 +1,68 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css">
+</head>
+<body style="background: white;">
+	<!-- Modal settingsGame -->
+        <div class="modal fade" id="modalSettingsGame" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-vertical-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">Game settings</h2>
+              </div>
+                <div class="modal-body">
+                    <div class="game-settings__divider game-settings__divider--first"></div>
+                    <p class="game-settings__question">Game is won when player scores how many points?</p>
+                    <div class="game-settings__question__underline"></div>
+                    <form class="game-settings-form">
+                        <div class="input-list__row input-list--one-line-labels">
+                            <div class="input-list__item">
+                                <input id="radio25" type="radio" name="radio-end-score" value="25" checked>
+                                <label for="radio25">25</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radio50" type="radio" name="radio-end-score" value="50">
+                                <label for="radio50">50</label>
+                            </div>
+                            <div class="input-list__item">
+                                <input id="radio100" type="radio" name="radio-end-score" value="100">
+                                <label for="radio100">100</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="game-settings__divider"></div>
+                    <p class="game-settings__question">What happens when a player throws 3 misses in a row?</p>
+                    <div class="game-settings__question__underline"></div>
+                    <form class="game-settings-form">
+                        <div class="input-list__row">
+                            <div class="input-list__item">
+        						<input id="radioDisqualified" type="radio" name="radio-misses" value="disqualified" checked>
+        						<label for="radioDisqualified">Disqualified</label>
+                            </div>
+                            <div class="input-list__item">
+        						<input id="radioZero" type="radio" name="radio-misses" value="zero">
+        						<label for="radioZero">Back<br> to zero</label>
+                            </div>
+                            <div class="input-list__item">
+        						<input id="radioHalf" type="radio" name="radio-misses" value="half">
+        						<label for="radioHalf">Score<br> in half</label>
+                            </div>
+                        </div>
+					</form>
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="btnSave()" type="button" class="btn btn-default btn-ready">Save</button>
+              </div>
+            </div>
+          </div>
+        </div> <!-- end Modal settingsGame -->
+        <script src="scripts/vendor/jquery.min.js"></script>
+        <script src="scripts/bootstrap/modal.js"></script>
+        <script>
+        	$(document).ready(function(){  
+                $('#modalSettingsGame').modal('show')
+            });
+        </script>
+</body>
+</html>

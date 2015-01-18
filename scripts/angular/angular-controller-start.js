@@ -32,6 +32,10 @@ app.controller("angular-modal-start", ['$scope','GameData','$rootScope', functio
     	$('#modalStart').modal('hide');
     	$rootScope.$broadcast('initializeAddPlayers'); //generate 'initializeAddPlayers' event
     };
+    $scope.settings = function(){
+        $('#modalStart').modal('hide');
+        $rootScope.$broadcast('initializeSettingsGame'); //generate 'initializeSettingsGame' event
+    };
     $scope.about = function(){
     	$('#modalStart').modal('hide');
         $scope.language = GameData.getLanguage();
