@@ -4,11 +4,8 @@
 
 @font-face {
   font-family: 'fontello';
-  src: url('../fonts/fontello/font/fontello.eot?90055628');
-  src: url('../fonts/fontello/font/fontello.eot?90055628#iefix') format('embedded-opentype'),
-       url('../fonts/fontello/font/fontello.woff?90055628') format('woff'),
-       url('../fonts/fontello/font/fontello.ttf?90055628') format('truetype'),
-       url('../fonts/fontello/font/fontello.svg?90055628#fontello') format('svg');
+  src:  local('fontello'),
+        url('../fonts/fontello/font/fontello.ttf?90055628') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
