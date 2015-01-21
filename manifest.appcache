@@ -10,17 +10,8 @@ images/facebook.svg
 images/twitter.svg
 fonts/nationalchampion-medium-webfont.ttf
 fonts/nationalchampion-regular-webfont.ttf
-fonts/fontello/font/fontello.ttf
+fonts/fontello/font/fontello.ttf?90055628
 favicon.ico
 # Resources that require the user to be online.
 NETWORK:
-index.html
-stylesheets/mainStyle.min.css
-scripts/dist/script.min.js
-images/options.png
-images/facebook.svg
-images/twitter.svg
-fonts/nationalchampion-medium-webfont.ttf
-fonts/nationalchampion-regular-webfont.ttf
-fonts/fontello/font/fontello.ttf
-favicon.ico
+*

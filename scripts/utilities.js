@@ -1,5 +1,6 @@
 /*globals*/
 var loadingTime = 2000;
+var hasNetwork = hasNetwork();
 
 function validatePlayerName(newPlayerName,players,alertElement, language){
 	if($.trim(newPlayerName) == ""){
@@ -143,6 +144,27 @@ function comparePlayerRankings(playerOne,playerTwo){
 	else{
 		return -1;
 	}
+}
+
+/* http://www.kirupa.com/html5/check_if_internet_connection_exists_in_javascript.htm */
+function hasNetwork() {
+    var xhr = new XMLHttpRequest();
+    var file = "http://molkkyscore.com/index.html";
+    var randomNum = Math.round(Math.random() * 10000);
+
+    xhr.open('HEAD', file + "?rand=" + randomNum, false);
+     
+    try {
+        xhr.send();
+         
+        if (xhr.status >= 200 && xhr.status < 304) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (e) {
+        return false;
+    }
 }
 
 
