@@ -16,6 +16,17 @@ var start = {
 	}
 }
 
+var noNetwork = {
+	En:{
+		title:"No network",
+		body:"<p>You are not connected to a network!</p><br><p>If you want to share this app, connect to a network and refresh your browser.</p>"
+	},
+	Fr:{
+		title:"Pas d'Internet",
+		body:"<p>Vous n'êtes pas connecté à l'Internet!</p><br><p>Si vous souhaitez partager cette application, connectez-vous à l'Internet et rafraîchissez votre navigateur.</p>"
+	}
+}
+
 var restore = {
 	En:{
 		title:"Restore game?",
@@ -260,6 +271,11 @@ function setTextModalSettingsGame(language){
 	$("#modalSettingsGame .labelHalf").html($.parseHTML(eval("settingsGame."+language+".answer.half")));
 	$("#modalSettingsGame .labelHalfMax").html($.parseHTML(eval("settingsGame."+language+".answer.halfMax")));
 	$("#modalSettingsGame .btn-ready").text(eval("settingsGame."+language+".save"));
+}
+
+function setTextModalNoNetwork(language){
+	$('#modalNoNetwork .modal-title').text(eval('noNetwork.'+language+'.title'));
+	$('#modalNoNetwork .modal-body').html($.parseHTML(eval('noNetwork.'+language+'.body')));
 }
 
 function setTextModalConfirm(confirmType, language){

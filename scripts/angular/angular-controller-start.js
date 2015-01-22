@@ -60,7 +60,8 @@ app.controller("angular-modal-start", ['$scope','GameData','$rootScope', functio
             }, function(response){});
         }
         else{
-            //todo: show message
+            setTextModalNoNetwork($scope.language);
+            $('#modalNoNetwork').modal('show');
         }
     };
     $scope.shareTwitter = function(){
@@ -89,7 +90,8 @@ app.controller("angular-modal-start", ['$scope','GameData','$rootScope', functio
             return false;
         }
         else{
-            //todo: show message
+            setTextModalNoNetwork($scope.language);
+            $('#modalNoNetwork').modal('show');
         }
     };
     $scope.En = function(){
