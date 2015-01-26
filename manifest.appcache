@@ -3,8 +3,8 @@ CACHE MANIFEST
 # Explicitly cached 'master entries'.
 CACHE:
 index.html
-stylesheets/mainStyle.min.css
-scripts/dist/script.min.js
+stylesheets/mainStyle-v1.min.css
+scripts/dist/script-v1.min.js
 images/options.png
 images/facebook.svg
 images/twitter.svg

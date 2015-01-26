@@ -456,6 +456,7 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 	    $scope.players[0].myTurn = true;
 	    $scope.activePlayer = $scope.players[0];
 	    $scope.data = GameData.getData();
+	    $scope.settings = GameData.getSettings(); 
 	    initializeMainTable($scope.players.length, true);
 	    $scope.tutorial = GameData.isTutorial();
 	    $scope.$apply();

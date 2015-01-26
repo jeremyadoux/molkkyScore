@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 		  },
 		  dist: {
 		    files: {
-		      'stylesheets/mainStyle.min.css': 'stylesheets/mainStyle.css'
+		      'stylesheets/mainStyle-v1.min.css': 'stylesheets/mainStyle.css'
 		    }
 		  }
 		},
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 		      'scripts/.temp/angular/angular-controller-restoreGame.min.js',
 		      'scripts/.temp/angular/angular-controller-bosklappers.min.js'
 		      ],
-		      dest: 'scripts/dist/script.min.js',
+		      dest: 'scripts/dist/script-v1.min.js',
 		    }
 		},
 		uglify: {
