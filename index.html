@@ -241,7 +241,7 @@
                                     </th>
                                 </tr>
                                 <tr ng-repeat="i in throwNumberArrayForNgRepeat track by $index">
-                                    <td ng-repeat="player in players" ng-class="{out: player.scoreHistory[$parent.$index] == 50, disqualified:player.scoreHistory[$parent.$index] == 'X', empty:player.scoreHistory[$parent.$index] == undefined}">
+                                    <td ng-repeat="player in players" ng-class="{out: player.scoreHistory[$parent.$index] == maxPoints, disqualified:player.scoreHistory[$parent.$index] == 'X', empty:player.scoreHistory[$parent.$index] == undefined}">
                                         {{player.scoreHistory[$parent.$index]}}
                                     </td>
                                 </tr>

@@ -25,6 +25,7 @@ app.controller("angular-scoreboard", ['$scope','GameData','$rootScope', function
         setTextModalScoreboard($scope.language);
 	    $scope.players = GameData.getPlayers();
 	    $scope.isTutorial = GameData.isTutorial();
+	    $scope.maxPoints = GameData.getSettings().maxPoints;
 	    // set number of table rows in details pane
 	    $scope.throwNumberArrayForNgRepeat = new Array(getNumberOfScoreDetailsRows());
 	    if(!GameData.stillPlayersInTheGame()){
