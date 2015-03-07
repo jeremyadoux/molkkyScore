@@ -26,7 +26,8 @@ images/favicons/favicon-194x194.png
 images/favicons/favicon-96x96.png
 images/favicons/android-chrome-192x192.png
 images/favicons/favicon-16x16.png
-images/favicons/manifest.json
+manifest.json
+browserconfig.xml
 images/favicons/mstile-144x144.png
 # Resources that require the user to be online.
 NETWORK:
