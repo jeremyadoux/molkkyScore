@@ -64,6 +64,14 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
     	/* end: bosklapper stuff */
 
 		$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+
+		if(hasNetwork && !$scope.tutorial){
+            ga('send', {
+              'hitType': 'event',
+              'eventCategory': 'buttonClick',
+              'eventAction': 'showScoreboard'
+            });
+        }
     };
 	$scope.processThrow = function(){
 		/* begin: tutorial */
@@ -97,6 +105,13 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 						if($scope.activePlayer.winner){
 							setIsRestoreGame(false);
 							$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
+							if(hasNetwork){
+					            ga('send', {
+					              'hitType': 'event',
+					              'eventCategory': 'gameEvent',
+					              'eventAction': 'gamesHasWinner'
+					            });
+					        }
 						}
 					}
 				}
@@ -219,6 +234,13 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 						    	});
 	    					} 
 	    				}, 500);
+	    				if(hasNetwork){
+				            ga('send', {
+				              'hitType': 'event',
+				              'eventCategory': 'tutorialEvent',
+				              'eventAction': 'finishTutorial'
+				            });
+				        }
 	    				break;
 	    	}
     };
