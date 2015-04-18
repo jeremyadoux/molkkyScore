@@ -18,7 +18,7 @@ var errorHandler = function(err) {
 var paths = {
   src: {
     all: {
-      scss: [
+      sass: [
         'sass/**/*.scss'
       ],
       js: [
@@ -35,9 +35,6 @@ var paths = {
         'scripts/angular/*.js'
       ]
     },
-    vendor: {
-      js: 'scripts/vendor/'
-    },
     custom: {
       js: [
       'scripts/**/*.js'
@@ -45,7 +42,7 @@ var paths = {
     }  
   },
   livereload: [
-    'web/styles/*.css', 
+    'web/css/*.css', 
     'web/scripts/*.js', 
     'index.html'
   ]
@@ -98,7 +95,7 @@ gulp.task('livereload', function() {
 
 // styles
 gulp.task('styles', function() {
-  return gulp.src( paths.src.all.scss )
+  return gulp.src( paths.src.all.sass )
     .pipe(plugins.plumber({
         handleError: errorHandler
     }))
@@ -112,11 +109,11 @@ gulp.task('styles', function() {
       }
     }))
     .pipe(plugins.autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(plugins.concat('style.css'))
-    .pipe(gulp.dest('web/.temp/styles'))
+    .pipe(plugins.concat('mainStyle-v1.css'))
+    .pipe(gulp.dest('web/.temp/css'))
     .pipe(plugins.rename({suffix: '.min'}))
     .pipe(plugins.minifyCss())
-    .pipe(gulp.dest('web/styles'));
+    .pipe(gulp.dest('web/css'));
 });
 
 // scripts 
@@ -143,19 +140,6 @@ gulp.task('jshint', function() {
     .pipe(plugins.jshint.reporter(require('jshint-stylish')));
 });
 
-// images
-gulp.task('images', function() {
-  return gulp.src( paths.src.all.img )
-    .pipe(plugins.changed(paths.web.images))
-    .pipe(plugins.imagemin({ 
-      optimizationLevel: 5, 
-      progressive: true, 
-      interlaced: true,
-      svgoPlugins: [{removeViewBox: false}]
-    }))
-    .pipe(gulp.dest('web/img'));
-});
-
 
 // clean web folder
 gulp.task('clean', function(cb) {
@@ -164,13 +148,11 @@ gulp.task('clean', function(cb) {
 
 gulp.task('watch', function() {
   // Watch .scss files
-  gulp.watch(paths.src.all.scss, ['styles']);
+  gulp.watch(paths.src.all.sass, ['styles']);
   // Watch .js files
   gulp.watch(paths.src.all.js, ['scripts']);
   // jsHint 
   gulp.watch(paths.src.custom.js, ['jshint']);
-  // Watch image files
-  gulp.watch(paths.src.all.img, ['images']);
 });
 
 /*============================================================*/
@@ -181,5 +163,5 @@ gulp.task('default', ['build'], function() {
 });
 
 gulp.task('build', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
+    gulp.start('styles', 'scripts');
 });
