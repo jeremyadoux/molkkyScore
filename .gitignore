@@ -1,11 +1,6 @@
 # dist #
 ######################
-stylesheets/*
-scripts/dist/*
-
-# temporary files #
-######################
-scripts/.temp/*
+web/*
 
 # cache files #
 ######################
