@@ -39,34 +39,34 @@
 	.dot-4 {@include animation-delay(0.4s)}
 	.dot-5 {@include animation-delay(0.2s)}
 	.dot-6 {@include animation-delay(0)}
+}
 
-	@-webkit-keyframes loader {
-		0% {
-			-webkit-transform: translateX(-40px); opacity: 0;
-		}
-		25% {opacity: 1}
-		50% {
-			-webkit-transform: translateX(40px); opacity: 0;
-		}
-		100% {opacity: 0}
+@-webkit-keyframes loader {
+	0% {
+		-webkit-transform: translateX(-40px); opacity: 0;
 	}
-	@-moz-keyframes loader {
-		0% {-moz-transform: translateX(-40px); opacity: 0}
-		25% {opacity: 1}
-		50% {-moz-transform: translateX(40px); opacity: 0}
-		100% {opacity: 0}
+	25% {opacity: 1}
+	50% {
+		-webkit-transform: translateX(40px); opacity: 0;
 	}
-	@-o-keyframes loader {
-		0% {-o-transform: translateX(-40px); opacity: 0}
-		25% {opacity: 1}
-		50% {-o-transform: translateX(40px); opacity: 0}
-		100% {opacity: 0}
-	}
-	@keyframes loader {
-		0% {transform: translateX(-40px); opacity: 0}
-		25% {opacity: 1}
-		50% {transform: translateX(40px); opacity: 0}
-		100% {opacity: 0}
-	}
+	100% {opacity: 0}
+}
+@-moz-keyframes loader {
+	0% {-moz-transform: translateX(-40px); opacity: 0}
+	25% {opacity: 1}
+	50% {-moz-transform: translateX(40px); opacity: 0}
+	100% {opacity: 0}
+}
+@-o-keyframes loader {
+	0% {-o-transform: translateX(-40px); opacity: 0}
+	25% {opacity: 1}
+	50% {-o-transform: translateX(40px); opacity: 0}
+	100% {opacity: 0}
+}
+@keyframes loader {
+	0% {transform: translateX(-40px); opacity: 0}
+	25% {opacity: 1}
+	50% {transform: translateX(40px); opacity: 0}
+	100% {opacity: 0}
 }
 

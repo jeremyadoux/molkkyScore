@@ -1,0 +1,3024 @@
+@charset "UTF-8";
+/* .ttf is best choice for offline apps  */
+@font-face {
+  font-family: 'Champion-medium';
+  src: local('Champion-medium'), url('../../fonts/nationalchampion-medium-webfont.ttf') format('truetype'); }
+
+@font-face {
+  font-family: 'Champion-regular';
+  src: local('Champion-regular'), url('../../fonts/nationalchampion-regular-webfont.ttf') format('truetype'); }
+
+/* $boldFontFamily:'Champion-bold',serif; */
+/* $accentColor-light:#1275B3; */
+/*mixins*/
+/* @import "../fonts/fontello/css/fontello.css"; */
+/* @import commented out in favor of putting in css -> on less http request*/
+@font-face {
+  font-family: 'fontello';
+  src: local('fontello'), url('../../fonts/fontello/font/fontello.ttf?90055628') format('truetype');
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../fonts/fontello/font/fontello.svg?90055628#fontello') format('svg');
+  }
+}
+*/
+/* line 23, /Users/frederic/projects/molkkyScore/sass/vendor/_fontello.scss */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+/* line 54, /Users/frederic/projects/molkkyScore/sass/vendor/_fontello.scss */
+.icon-flag:before {
+  content: '\e800'; }
+
+/* '' */
+/* line 55, /Users/frederic/projects/molkkyScore/sass/vendor/_fontello.scss */
+.icon-plus:before {
+  content: '\e801'; }
+
+/* '' */
+/* line 56, /Users/frederic/projects/molkkyScore/sass/vendor/_fontello.scss */
+.icon-right-open-outline:before {
+  content: '\e802'; }
+
+/* '' */
+/* line 57, /Users/frederic/projects/molkkyScore/sass/vendor/_fontello.scss */
+.icon-shuffle:before {
+  content: '\e803'; }
+
+/* '' */
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/normalize"; */
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/print";*/
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/glyphicons"; */
+/* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+* {
+  box-sizing: border-box; }
+
+/* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+*:before, *:after {
+  box-sizing: border-box; }
+
+/* line 22, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: transparent; }
+
+/* line 27, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #333333;
+  background-color: #fff; }
+
+/* line 39, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+/* line 48, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+a {
+  color: #428bca;
+  text-decoration: none; }
+  /* line 53, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+  a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: underline; }
+  /* line 58, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+  a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+
+/* line 69, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+figure {
+  margin: 0; }
+
+/* line 76, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+img {
+  vertical-align: middle; }
+
+/* line 81, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto; }
+
+/* line 86, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+.img-rounded {
+  border-radius: 6px; }
+
+/* line 93, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+.img-thumbnail {
+  padding: 4px;
+  line-height: 1.42857;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  display: inline-block;
+  max-width: 100%;
+  height: auto; }
+
+/* line 106, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+.img-circle {
+  border-radius: 50%; }
+
+/* line 113, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eeeeee; }
+
+/* line 125, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+/* line 142, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_scaffolding.scss */
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto; }
+
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/type"; */
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/code";
+/*@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/grid"; */
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/tables"; */
+/* line 10, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 0; }
+
+/* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 20px;
+  font-size: 21px;
+  line-height: inherit;
+  color: #333333;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5; }
+
+/* line 32, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold; }
+
+/* line 47, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="search"] {
+  box-sizing: border-box; }
+
+/* line 53, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="radio"], input[type="checkbox"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  line-height: normal; }
+
+/* line 60, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="file"] {
+  display: block; }
+
+/* line 65, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="range"] {
+  display: block;
+  width: 100%; }
+
+/* line 72, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+select[multiple], select[size] {
+  height: auto; }
+
+/* line 79, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px; }
+
+/* line 84, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+output {
+  display: block;
+  padding-top: 7px;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #555555; }
+
+/* line 115, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #555555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s; }
+  /* line 57, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+  .form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
+  /* line 103, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
+  .form-control::-moz-placeholder {
+    color: #999;
+    opacity: 1; }
+  /* line 107, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
+  .form-control:-ms-input-placeholder {
+    color: #999; }
+  /* line 108, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_vendor-prefixes.scss */
+  .form-control::-webkit-input-placeholder {
+    color: #999; }
+  /* line 143, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    cursor: false;
+    background-color: #eeeeee;
+    opacity: 1; }
+
+/* line 153, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+textarea.form-control {
+  height: auto; }
+
+/* line 165, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="search"] {
+  -webkit-appearance: none; }
+
+/* line 181, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"] {
+  line-height: 34px;
+  line-height: 1.42857 \0; }
+  /* line 186, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  input[type="date"].input-sm, .input-group-sm > input[type="date"].form-control, .input-group-sm > input[type="date"].input-group-addon, .input-group-sm > .input-group-btn > input[type="date"].btn, input[type="time"].input-sm, .input-group-sm > input[type="time"].form-control, .input-group-sm > input[type="time"].input-group-addon, .input-group-sm > .input-group-btn > input[type="time"].btn, input[type="datetime-local"].input-sm, .input-group-sm > input[type="datetime-local"].form-control, .input-group-sm > input[type="datetime-local"].input-group-addon, .input-group-sm > .input-group-btn > input[type="datetime-local"].btn, input[type="month"].input-sm, .input-group-sm > input[type="month"].form-control, .input-group-sm > input[type="month"].input-group-addon, .input-group-sm > .input-group-btn > input[type="month"].btn {
+    line-height: 30px;
+    line-height: 1.5 \0; }
+  /* line 190, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  input[type="date"].input-lg, .input-group-lg > input[type="date"].form-control, .input-group-lg > input[type="date"].input-group-addon, .input-group-lg > .input-group-btn > input[type="date"].btn, input[type="time"].input-lg, .input-group-lg > input[type="time"].form-control, .input-group-lg > input[type="time"].input-group-addon, .input-group-lg > .input-group-btn > input[type="time"].btn, input[type="datetime-local"].input-lg, .input-group-lg > input[type="datetime-local"].form-control, .input-group-lg > input[type="datetime-local"].input-group-addon, .input-group-lg > .input-group-btn > input[type="datetime-local"].btn, input[type="month"].input-lg, .input-group-lg > input[type="month"].form-control, .input-group-lg > input[type="month"].input-group-addon, .input-group-lg > .input-group-btn > input[type="month"].btn {
+    line-height: 46px;
+    line-height: 1.33 \0; }
+
+/* line 200, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+_:-ms-fullscreen, :root input[type="date"], _:-ms-fullscreen, :root input[type="time"], _:-ms-fullscreen, :root input[type="datetime-local"], _:-ms-fullscreen, :root input[type="month"] {
+  line-height: 1.42857; }
+  /* line 203, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  _:-ms-fullscreen.input-sm, .input-group-sm > _.form-control:-ms-fullscreen, .input-group-sm > _.input-group-addon:-ms-fullscreen, .input-group-sm > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="date"].input-sm, :root .input-group-sm > input[type="date"].form-control, :root .input-group-sm > input[type="date"].input-group-addon, :root .input-group-sm > .input-group-btn > input[type="date"].btn, _:-ms-fullscreen.input-sm, .input-group-sm > _.form-control:-ms-fullscreen, .input-group-sm > _.input-group-addon:-ms-fullscreen, .input-group-sm > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="time"].input-sm, :root .input-group-sm > input[type="time"].form-control, :root .input-group-sm > input[type="time"].input-group-addon, :root .input-group-sm > .input-group-btn > input[type="time"].btn, _:-ms-fullscreen.input-sm, .input-group-sm > _.form-control:-ms-fullscreen, .input-group-sm > _.input-group-addon:-ms-fullscreen, .input-group-sm > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="datetime-local"].input-sm, :root .input-group-sm > input[type="datetime-local"].form-control, :root .input-group-sm > input[type="datetime-local"].input-group-addon, :root .input-group-sm > .input-group-btn > input[type="datetime-local"].btn, _:-ms-fullscreen.input-sm, .input-group-sm > _.form-control:-ms-fullscreen, .input-group-sm > _.input-group-addon:-ms-fullscreen, .input-group-sm > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="month"].input-sm, :root .input-group-sm > input[type="month"].form-control, :root .input-group-sm > input[type="month"].input-group-addon, :root .input-group-sm > .input-group-btn > input[type="month"].btn {
+    line-height: 1.5; }
+  /* line 206, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  _:-ms-fullscreen.input-lg, .input-group-lg > _.form-control:-ms-fullscreen, .input-group-lg > _.input-group-addon:-ms-fullscreen, .input-group-lg > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="date"].input-lg, :root .input-group-lg > input[type="date"].form-control, :root .input-group-lg > input[type="date"].input-group-addon, :root .input-group-lg > .input-group-btn > input[type="date"].btn, _:-ms-fullscreen.input-lg, .input-group-lg > _.form-control:-ms-fullscreen, .input-group-lg > _.input-group-addon:-ms-fullscreen, .input-group-lg > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="time"].input-lg, :root .input-group-lg > input[type="time"].form-control, :root .input-group-lg > input[type="time"].input-group-addon, :root .input-group-lg > .input-group-btn > input[type="time"].btn, _:-ms-fullscreen.input-lg, .input-group-lg > _.form-control:-ms-fullscreen, .input-group-lg > _.input-group-addon:-ms-fullscreen, .input-group-lg > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="datetime-local"].input-lg, :root .input-group-lg > input[type="datetime-local"].form-control, :root .input-group-lg > input[type="datetime-local"].input-group-addon, :root .input-group-lg > .input-group-btn > input[type="datetime-local"].btn, _:-ms-fullscreen.input-lg, .input-group-lg > _.form-control:-ms-fullscreen, .input-group-lg > _.input-group-addon:-ms-fullscreen, .input-group-lg > .input-group-btn > _.btn:-ms-fullscreen, :root input[type="month"].input-lg, :root .input-group-lg > input[type="month"].form-control, :root .input-group-lg > input[type="month"].input-group-addon, :root .input-group-lg > .input-group-btn > input[type="month"].btn {
+    line-height: 1.33; }
+
+/* line 217, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-group {
+  margin-bottom: 15px; }
+
+/* line 227, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio, .checkbox {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+  /* line 233, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .radio label, .checkbox label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer; }
+
+/* line 244, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px \9; }
+
+/* line 251, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio + .radio, .checkbox + .checkbox {
+  margin-top: -5px; }
+
+/* line 257, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio-inline, .checkbox-inline {
+  display: inline-block;
+  padding-left: 20px;
+  margin-bottom: 0;
+  vertical-align: middle;
+  font-weight: normal;
+  cursor: pointer; }
+
+/* line 266, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+  margin-top: 0;
+  margin-left: 10px; }
+
+/* line 279, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+input[type="radio"][disabled], input[type="radio"].disabled, fieldset[disabled] input[type="radio"], input[type="checkbox"][disabled], input[type="checkbox"].disabled, fieldset[disabled] input[type="checkbox"] {
+  cursor: false; }
+
+/* line 287, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio-inline.disabled, fieldset[disabled] .radio-inline, .checkbox-inline.disabled, fieldset[disabled] .checkbox-inline {
+  cursor: false; }
+
+/* line 296, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.radio.disabled label, fieldset[disabled] .radio label, .checkbox.disabled label, fieldset[disabled] .checkbox label {
+  cursor: false; }
+
+/* line 308, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-control-static {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 0; }
+  /* line 316, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-control-static.input-lg, .input-group-lg > .form-control-static.form-control, .input-group-lg > .form-control-static.input-group-addon, .input-group-lg > .input-group-btn > .form-control-static.btn, .form-control-static.input-sm, .input-group-sm > .form-control-static.form-control, .input-group-sm > .form-control-static.input-group-addon, .input-group-sm > .input-group-btn > .form-control-static.btn {
+    padding-left: 0;
+    padding-right: 0; }
+
+/* line 71, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.input-sm, .input-group-sm > .form-control, .input-group-sm > .input-group-addon, .input-group-sm > .input-group-btn > .btn, .form-group-sm .form-control {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px; }
+
+/* line 79, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+select.input-sm, .input-group-sm > select.form-control, .input-group-sm > select.input-group-addon, .input-group-sm > .input-group-btn > select.btn, .form-group-sm .form-control {
+  height: 30px;
+  line-height: 30px; }
+
+/* line 84, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+textarea.input-sm, .input-group-sm > textarea.form-control, .input-group-sm > textarea.input-group-addon, .input-group-sm > .input-group-btn > textarea.btn, .form-group-sm .form-control, select[multiple].input-sm, .input-group-sm > select[multiple].form-control, .input-group-sm > select[multiple].input-group-addon, .input-group-sm > .input-group-btn > select[multiple].btn, .form-group-sm .form-control {
+  height: auto; }
+
+/* line 71, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.input-lg, .input-group-lg > .form-control, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .btn, .form-group-lg .form-control {
+  height: 46px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px; }
+
+/* line 79, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+select.input-lg, .input-group-lg > select.form-control, .input-group-lg > select.input-group-addon, .input-group-lg > .input-group-btn > select.btn, .form-group-lg .form-control {
+  height: 46px;
+  line-height: 46px; }
+
+/* line 84, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > textarea.input-group-addon, .input-group-lg > .input-group-btn > textarea.btn, .form-group-lg .form-control, select[multiple].input-lg, .input-group-lg > select[multiple].form-control, .input-group-lg > select[multiple].input-group-addon, .input-group-lg > .input-group-btn > select[multiple].btn, .form-group-lg .form-control {
+  height: auto; }
+
+/* line 337, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.has-feedback {
+  position: relative; }
+  /* line 342, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .has-feedback .form-control {
+    padding-right: 42.5px; }
+
+/* line 347, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-control-feedback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  display: block;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  pointer-events: none; }
+
+/* line 359, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.input-lg + .form-control-feedback, .input-group-lg > .form-control + .form-control-feedback, .input-group-lg > .input-group-addon + .form-control-feedback, .input-group-lg > .input-group-btn > .btn + .form-control-feedback {
+  width: 46px;
+  height: 46px;
+  line-height: 46px; }
+
+/* line 364, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.input-sm + .form-control-feedback, .input-group-sm > .form-control + .form-control-feedback, .input-group-sm > .input-group-addon + .form-control-feedback, .input-group-sm > .input-group-btn > .btn + .form-control-feedback {
+  width: 30px;
+  height: 30px;
+  line-height: 30px; }
+
+/* line 17, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label {
+  color: #3c763d; }
+/* line 21, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-success .form-control {
+  border-color: #3c763d;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+  /* line 24, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+  .has-success .form-control:focus {
+    border-color: #2b542c;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168; }
+/* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-success .input-group-addon {
+  color: #3c763d;
+  border-color: #3c763d;
+  background-color: #dff0d8; }
+/* line 37, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-success .form-control-feedback {
+  color: #3c763d; }
+
+/* line 17, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-warning .help-block, .has-warning .control-label, .has-warning .radio, .has-warning .checkbox, .has-warning .radio-inline, .has-warning .checkbox-inline, .has-warning.radio label, .has-warning.checkbox label, .has-warning.radio-inline label, .has-warning.checkbox-inline label {
+  color: #8a6d3b; }
+/* line 21, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-warning .form-control {
+  border-color: #8a6d3b;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+  /* line 24, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+  .has-warning .form-control:focus {
+    border-color: #66512c;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }
+/* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-warning .input-group-addon {
+  color: #8a6d3b;
+  border-color: #8a6d3b;
+  background-color: #fcf8e3; }
+/* line 37, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-warning .form-control-feedback {
+  color: #8a6d3b; }
+
+/* line 17, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+  color: #a94442; }
+/* line 21, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-error .form-control {
+  border-color: #a94442;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075); }
+  /* line 24, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+  .has-error .form-control:focus {
+    border-color: #843534;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483; }
+/* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-error .input-group-addon {
+  color: #a94442;
+  border-color: #a94442;
+  background-color: #f2dede; }
+/* line 37, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_forms.scss */
+.has-error .form-control-feedback {
+  color: #a94442; }
+
+/* line 384, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.has-feedback label ~ .form-control-feedback {
+  top: 25px; }
+/* line 387, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.has-feedback label.sr-only ~ .form-control-feedback {
+  top: 0; }
+
+/* line 398, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #737373; }
+
+@media (min-width: 768px) {
+  /* line 423, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle; }
+  /* line 430, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle; }
+  /* line 437, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .form-control-static {
+    display: inline-block; }
+  /* line 441, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .input-group {
+    display: inline-table;
+    vertical-align: middle; }
+    /* line 447, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+    .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn, .form-inline .input-group .form-control {
+      width: auto; }
+  /* line 453, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .input-group > .form-control {
+    width: 100%; }
+  /* line 457, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .control-label {
+    margin-bottom: 0;
+    vertical-align: middle; }
+  /* line 466, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .radio, .form-inline .checkbox {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 0;
+    vertical-align: middle; }
+    /* line 472, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+    .form-inline .radio label, .form-inline .checkbox label {
+      padding-left: 0; }
+  /* line 477, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .radio input[type="radio"], .form-inline .checkbox input[type="checkbox"] {
+    position: relative;
+    margin-left: 0; }
+  /* line 483, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-inline .has-feedback .form-control-feedback {
+    top: 0; } }
+
+/* line 508, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 7px; }
+/* line 516, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-horizontal .radio, .form-horizontal .checkbox {
+  min-height: 27px; }
+/* line 521, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-horizontal .form-group {
+  margin-left: -15px;
+  margin-right: -15px; }
+  /* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .form-horizontal .form-group:before, .form-horizontal .form-group:after {
+    content: " ";
+    display: table; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .form-horizontal .form-group:after {
+    clear: both; }
+@media (min-width: 768px) {
+  /* line 528, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-horizontal .control-label {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px; } }
+/* line 539, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+.form-horizontal .has-feedback .form-control-feedback {
+  right: 15px; }
+@media (min-width: 768px) {
+  /* line 549, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-horizontal .form-group-lg .control-label {
+    padding-top: 14.3px; } }
+@media (min-width: 768px) {
+  /* line 556, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_forms.scss */
+  .form-horizontal .form-group-sm .control-label {
+    padding-top: 6px; } }
+
+/* line 9, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  /* line 27, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn:focus, .btn.focus, .btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn:hover, .btn:focus, .btn.focus {
+    color: #333;
+    text-decoration: none; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn:active, .btn.active {
+    outline: 0;
+    background-image: none;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
+  /* line 48, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor: false;
+    pointer-events: none;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    box-shadow: none; }
+
+/* line 60, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad; }
+  /* line 23, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+    background-image: none; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled.focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled].focus, .btn-default[disabled]:active, .btn-default[disabled].active, fieldset[disabled] .btn-default, fieldset[disabled] .btn-default:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active {
+    background-color: #fff;
+    border-color: #ccc; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-default .badge {
+    color: #fff;
+    background-color: #333; }
+
+/* line 63, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-primary:hover, .btn-primary:focus, .btn-primary.focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #3071a9;
+    border-color: #285e8e; }
+  /* line 23, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
+    background-image: none; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
+    background-color: #428bca;
+    border-color: #357ebd; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-primary .badge {
+    color: #428bca;
+    background-color: #fff; }
+
+/* line 67, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-success:hover, .btn-success:focus, .btn-success.focus, .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439; }
+  /* line 23, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
+    background-image: none; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-success.disabled, .btn-success.disabled:hover, .btn-success.disabled:focus, .btn-success.disabled.focus, .btn-success.disabled:active, .btn-success.disabled.active, .btn-success[disabled], .btn-success[disabled]:hover, .btn-success[disabled]:focus, .btn-success[disabled].focus, .btn-success[disabled]:active, .btn-success[disabled].active, fieldset[disabled] .btn-success, fieldset[disabled] .btn-success:hover, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success.focus, fieldset[disabled] .btn-success:active, fieldset[disabled] .btn-success.active {
+    background-color: #5cb85c;
+    border-color: #4cae4c; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-success .badge {
+    color: #5cb85c;
+    background-color: #fff; }
+
+/* line 71, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-info:hover, .btn-info:focus, .btn-info.focus, .btn-info:active, .btn-info.active, .open > .btn-info.dropdown-toggle {
+    color: #fff;
+    background-color: #31b0d5;
+    border-color: #269abc; }
+  /* line 23, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-info:active, .btn-info.active, .open > .btn-info.dropdown-toggle {
+    background-image: none; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-info.disabled, .btn-info.disabled:hover, .btn-info.disabled:focus, .btn-info.disabled.focus, .btn-info.disabled:active, .btn-info.disabled.active, .btn-info[disabled], .btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled].focus, .btn-info[disabled]:active, .btn-info[disabled].active, fieldset[disabled] .btn-info, fieldset[disabled] .btn-info:hover, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:active, fieldset[disabled] .btn-info.active {
+    background-color: #5bc0de;
+    border-color: #46b8da; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-info .badge {
+    color: #5bc0de;
+    background-color: #fff; }
+
+/* line 75, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-warning:hover, .btn-warning:focus, .btn-warning.focus, .btn-warning:active, .btn-warning.active, .open > .btn-warning.dropdown-toggle {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512; }
+  /* line 23, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-warning:active, .btn-warning.active, .open > .btn-warning.dropdown-toggle {
+    background-image: none; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-warning.disabled, .btn-warning.disabled:hover, .btn-warning.disabled:focus, .btn-warning.disabled.focus, .btn-warning.disabled:active, .btn-warning.disabled.active, .btn-warning[disabled], .btn-warning[disabled]:hover, .btn-warning[disabled]:focus, .btn-warning[disabled].focus, .btn-warning[disabled]:active, .btn-warning[disabled].active, fieldset[disabled] .btn-warning, fieldset[disabled] .btn-warning:hover, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning.focus, fieldset[disabled] .btn-warning:active, fieldset[disabled] .btn-warning.active {
+    background-color: #f0ad4e;
+    border-color: #eea236; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-warning .badge {
+    color: #f0ad4e;
+    background-color: #fff; }
+
+/* line 79, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-danger:hover, .btn-danger:focus, .btn-danger.focus, .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925; }
+  /* line 23, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-danger:active, .btn-danger.active, .open > .btn-danger.dropdown-toggle {
+    background-image: none; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled].active, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
+    background-color: #d9534f;
+    border-color: #d43f3a; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_buttons.scss */
+  .btn-danger .badge {
+    color: #d9534f;
+    background-color: #fff; }
+
+/* line 88, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-link {
+  color: #428bca;
+  font-weight: normal;
+  border-radius: 0; }
+  /* line 97, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn-link, .btn-link:active, .btn-link.active, .btn-link[disabled], fieldset[disabled] .btn-link {
+    background-color: transparent;
+    box-shadow: none; }
+  /* line 104, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn-link, .btn-link:hover, .btn-link:focus, .btn-link:active {
+    border-color: transparent; }
+  /* line 108, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn-link:hover, .btn-link:focus {
+    color: #2a6496;
+    text-decoration: underline;
+    background-color: transparent; }
+  /* line 116, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+  .btn-link[disabled]:hover, .btn-link[disabled]:focus, fieldset[disabled] .btn-link:hover, fieldset[disabled] .btn-link:focus {
+    color: #777777;
+    text-decoration: none; }
+
+/* line 127, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-lg, .btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px; }
+
+/* line 131, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-sm, .btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px; }
+
+/* line 135, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-xs, .btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px; }
+
+/* line 143, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-block {
+  display: block;
+  width: 100%; }
+
+/* line 149, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+.btn-block + .btn-block {
+  margin-top: 5px; }
+
+/* line 157, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_buttons.scss */
+input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="button"].btn-block {
+  width: 100%; }
+
+/* line 10, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  transition: opacity .15s linear; }
+  /* line 13, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+  .fade.in {
+    opacity: 1; }
+
+/* line 18, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+.collapse {
+  display: none;
+  visibility: hidden; }
+  /* line 22, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+  .collapse.in {
+    display: block;
+    visibility: visible; }
+
+/* line 27, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+tr.collapse.in {
+  display: table-row; }
+
+/* line 29, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+tbody.collapse.in {
+  display: table-row-group; }
+
+/* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_component-animations.scss */
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-duration: .35s;
+  transition-duration: .35s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease; }
+
+/* line 7, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent; }
+
+/* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown {
+  position: relative; }
+
+/* line 24, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-toggle:focus {
+  outline: 0; }
+
+/* line 29, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box; }
+  /* line 52, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .dropdown-menu.pull-right {
+    right: 0;
+    left: auto; }
+  /* line 58, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .dropdown-menu .divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5; }
+  /* line 63, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857;
+    color: #333333;
+    white-space: nowrap; }
+
+/* line 77, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5; }
+
+/* line 88, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #428bca; }
+
+/* line 103, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:hover, .dropdown-menu > .disabled > a:focus {
+  color: #777777; }
+/* line 109, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu > .disabled > a:hover, .dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  cursor: false; }
+
+/* line 121, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.open > .dropdown-menu {
+  display: block; }
+/* line 126, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.open > a {
+  outline: 0; }
+
+/* line 135, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-right {
+  left: auto;
+  right: 0; }
+
+/* line 145, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-menu-left {
+  left: 0;
+  right: auto; }
+
+/* line 151, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857;
+  color: #777777;
+  white-space: nowrap; }
+
+/* line 161, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 990; }
+
+/* line 171, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.pull-right > .dropdown-menu {
+  right: 0;
+  left: auto; }
+
+/* line 184, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropup .caret, .navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px solid;
+  content: ""; }
+/* line 190, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 1px; }
+
+@media (min-width: 768px) {
+  /* line 204, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .navbar-right .dropdown-menu {
+    right: 0;
+    left: auto; }
+  /* line 209, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_dropdowns.scss */
+  .navbar-right .dropdown-menu-left {
+    left: 0;
+    right: auto; } }
+
+/* line 7, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group, .btn-group-vertical {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; }
+  /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-group > .btn, .btn-group-vertical > .btn {
+    position: relative;
+    float: left; }
+    /* line 18, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+    .btn-group > .btn:hover, .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active, .btn-group-vertical > .btn:hover, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn.active {
+      z-index: 2; }
+    /* line 21, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+    .btn-group > .btn:focus, .btn-group-vertical > .btn:focus {
+      outline: 0; }
+
+/* line 33, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+  margin-left: -1px; }
+
+/* line 39, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-toolbar {
+  margin-left: -5px; }
+  /* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .btn-toolbar:before, .btn-toolbar:after {
+    content: " ";
+    display: table; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .btn-toolbar:after {
+    clear: both; }
+  /* line 44, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-toolbar .btn-group, .btn-toolbar .input-group {
+    float: left; }
+  /* line 49, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-toolbar > .btn, .btn-toolbar > .btn-group, .btn-toolbar > .input-group {
+    margin-left: 5px; }
+
+/* line 54, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0; }
+
+/* line 59, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn:first-child {
+  margin-left: 0; }
+  /* line 61, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0; }
+
+/* line 67, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn:last-child:not(:first-child), .btn-group > .dropdown-toggle:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0; }
+
+/* line 72, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn-group {
+  float: left; }
+
+/* line 75, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0; }
+
+/* line 80, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn-group:first-child > .btn:last-child, .btn-group > .btn-group:first-child > .dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0; }
+
+/* line 84, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn-group:last-child > .btn:first-child {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0; }
+
+/* line 90, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group .dropdown-toggle:active, .btn-group.open .dropdown-toggle {
+  outline: 0; }
+
+/* line 108, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn + .dropdown-toggle {
+  padding-left: 8px;
+  padding-right: 8px; }
+
+/* line 112, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group > .btn-lg + .dropdown-toggle, .btn-group-lg.btn-group > .btn + .dropdown-toggle {
+  padding-left: 12px;
+  padding-right: 12px; }
+
+/* line 119, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group.open .dropdown-toggle {
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); }
+  /* line 123, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-group.open .dropdown-toggle.btn-link {
+    box-shadow: none; }
+
+/* line 130, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn .caret {
+  margin-left: 0; }
+
+/* line 134, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-lg .caret, .btn-group-lg > .btn .caret {
+  border-width: 5px 5px 0;
+  border-bottom-width: 0; }
+
+/* line 139, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.dropup .btn-lg .caret, .dropup .btn-group-lg > .btn .caret {
+  border-width: 0 5px 5px; }
+
+/* line 150, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn, .btn-group-vertical > .btn-group, .btn-group-vertical > .btn-group > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%; }
+/* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+.btn-group-vertical > .btn-group:before, .btn-group-vertical > .btn-group:after {
+  content: " ";
+  display: table; }
+/* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+.btn-group-vertical > .btn-group:after {
+  clear: both; }
+/* line 160, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn-group > .btn {
+  float: none; }
+/* line 168, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn + .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {
+  margin-top: -1px;
+  margin-left: 0; }
+
+/* line 175, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn:not(:first-child):not(:last-child) {
+  border-radius: 0; }
+/* line 178, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn:first-child:not(:last-child) {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+/* line 182, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn:last-child:not(:first-child) {
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+/* line 187, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
+  border-radius: 0; }
+
+/* line 192, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child, .btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
+
+/* line 196, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+/* line 204, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate; }
+  /* line 210, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-group-justified > .btn, .btn-group-justified > .btn-group {
+    float: none;
+    display: table-cell;
+    width: 1%; }
+  /* line 215, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-group-justified > .btn-group .btn {
+    width: 100%; }
+  /* line 219, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+  .btn-group-justified > .btn-group .dropdown-menu {
+    left: auto; }
+
+/* line 241, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_button-groups.scss */
+[data-toggle="buttons"] > .btn input[type="radio"], [data-toggle="buttons"] > .btn input[type="checkbox"], [data-toggle="buttons"] > .btn-group > .btn input[type="radio"], [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none; }
+
+/* line 7, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate; }
+  /* line 13, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group[class*="col-"] {
+    float: none;
+    padding-left: 0;
+    padding-right: 0; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0; }
+
+/* line 56, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group-addon, .input-group-btn, .input-group .form-control {
+  display: table-cell; }
+  /* line 59, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child), .input-group .form-control:not(:first-child):not(:last-child) {
+    border-radius: 0; }
+
+/* line 65, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group-addon, .input-group-btn {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle; }
+
+/* line 73, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group-addon {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  color: #555555;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+  border-radius: 4px; }
+  /* line 85, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-addon.input-sm, .input-group-sm > .input-group-addon, .input-group-sm > .input-group-btn > .input-group-addon.btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px; }
+  /* line 90, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-addon.input-lg, .input-group-lg > .input-group-addon, .input-group-lg > .input-group-btn > .input-group-addon.btn {
+    padding: 10px 16px;
+    font-size: 18px;
+    border-radius: 6px; }
+  /* line 98, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-addon input[type="radio"], .input-group-addon input[type="checkbox"] {
+    margin-top: 0; }
+
+/* line 110, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group .form-control:first-child, .input-group-addon:first-child, .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group > .btn, .input-group-btn:first-child > .dropdown-toggle, .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0; }
+
+/* line 113, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group-addon:first-child {
+  border-right: 0; }
+
+/* line 122, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group .form-control:last-child, .input-group-addon:last-child, .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group > .btn, .input-group-btn:last-child > .dropdown-toggle, .input-group-btn:first-child > .btn:not(:first-child), .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0; }
+
+/* line 125, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group-addon:last-child {
+  border-left: 0; }
+
+/* line 131, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+.input-group-btn {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap; }
+  /* line 140, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-btn > .btn {
+    position: relative; }
+    /* line 142, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+    .input-group-btn > .btn + .btn {
+      margin-left: -1px; }
+    /* line 148, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+    .input-group-btn > .btn:hover, .input-group-btn > .btn:focus, .input-group-btn > .btn:active {
+      z-index: 2; }
+  /* line 156, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-btn:first-child > .btn, .input-group-btn:first-child > .btn-group {
+    margin-right: -1px; }
+  /* line 162, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_input-groups.scss */
+  .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+    margin-left: -1px; }
+
+/* line 9, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none; }
+  /* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .nav:before, .nav:after {
+    content: " ";
+    display: table; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .nav:after {
+    clear: both; }
+  /* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav > li {
+    position: relative;
+    display: block; }
+    /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav > li > a {
+      position: relative;
+      display: block;
+      padding: 10px 15px; }
+      /* line 24, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+      .nav > li > a:hover, .nav > li > a:focus {
+        text-decoration: none;
+        background-color: #eeeeee; }
+    /* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav > li.disabled > a {
+      color: #777777; }
+      /* line 35, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+      .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+        color: #777777;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: false; }
+  /* line 48, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    background-color: #eeeeee;
+    border-color: #428bca; }
+  /* line 59, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav .nav-divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5; }
+  /* line 66, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav > li > a > img {
+    max-width: none; }
+
+/* line 76, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav-tabs {
+  border-bottom: 1px solid #ddd; }
+  /* line 78, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-tabs > li {
+    float: left;
+    margin-bottom: -1px; }
+    /* line 84, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav-tabs > li > a {
+      margin-right: 2px;
+      line-height: 1.42857;
+      border: 1px solid transparent;
+      border-radius: 4px 4px 0 0; }
+      /* line 89, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+      .nav-tabs > li > a:hover {
+        border-color: #eeeeee #eeeeee #ddd; }
+    /* line 98, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+      color: #555555;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-bottom-color: transparent;
+      cursor: default; }
+
+/* line 118, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav-pills > li {
+  float: left; }
+  /* line 122, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-pills > li > a {
+    border-radius: 4px; }
+  /* line 125, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-pills > li + li {
+    margin-left: 2px; }
+  /* line 133, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #fff;
+    background-color: #428bca; }
+
+/* line 144, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav-stacked > li {
+  float: none; }
+  /* line 146, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-stacked > li + li {
+    margin-top: 2px;
+    margin-left: 0; }
+
+/* line 160, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav-justified, .nav-tabs.nav-justified {
+  width: 100%; }
+  /* line 163, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-justified > li, .nav-tabs.nav-justified > li {
+    float: none; }
+    /* line 165, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
+      text-align: center;
+      margin-bottom: 5px; }
+  /* line 171, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-justified > .dropdown .dropdown-menu {
+    top: auto;
+    left: auto; }
+  @media (min-width: 768px) {
+    /* line 177, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav-justified > li, .nav-tabs.nav-justified > li {
+      display: table-cell;
+      width: 1%; }
+      /* line 180, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+      .nav-justified > li > a, .nav-tabs.nav-justified > li > a {
+        margin-bottom: 0; } }
+
+/* line 190, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav-tabs-justified, .nav-tabs.nav-justified {
+  border-bottom: 0; }
+  /* line 193, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+    margin-right: 0;
+    border-radius: 4px; }
+  /* line 201, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+  .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a, .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
+    border: 1px solid #ddd; }
+  @media (min-width: 768px) {
+    /* line 206, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a {
+      border-bottom: 1px solid #ddd;
+      border-radius: 4px 4px 0 0; }
+    /* line 212, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+    .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a, .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
+      border-bottom-color: #fff; } }
+
+/* line 224, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.tab-content > .tab-pane {
+  display: none;
+  visibility: hidden; }
+/* line 228, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.tab-content > .active {
+  display: block;
+  visibility: visible; }
+
+/* line 239, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_navs.scss */
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0; }
+
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/navbar";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/breadcrumbs";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/pagination";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/pager"; */
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/labels"; */
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/badges";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/jumbotron";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/thumbnails"; */
+/* line 9, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+  .alert h4 {
+    margin-top: 0;
+    color: inherit; }
+  /* line 22, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+  .alert .alert-link {
+    font-weight: bold; }
+  /* line 28, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+  .alert > p, .alert > ul {
+    margin-bottom: 0; }
+  /* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+  .alert > p + p {
+    margin-top: 5px; }
+
+/* line 41, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-dismissable, .alert-dismissible {
+  padding-right: 35px; }
+  /* line 45, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+  .alert-dismissable .close, .alert-dismissible .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit; }
+
+/* line 57, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d; }
+  /* line 8, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-success hr {
+    border-top-color: #c9e2b3; }
+  /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-success .alert-link {
+    color: #2b542c; }
+
+/* line 60, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f; }
+  /* line 8, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-info hr {
+    border-top-color: #a6e1ec; }
+  /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-info .alert-link {
+    color: #245269; }
+
+/* line 63, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b; }
+  /* line 8, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-warning hr {
+    border-top-color: #f7e1b5; }
+  /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-warning .alert-link {
+    color: #66512c; }
+
+/* line 66, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_alerts.scss */
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442; }
+  /* line 8, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-danger hr {
+    border-top-color: #e4b9c0; }
+  /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_alerts.scss */
+  .alert-danger .alert-link {
+    color: #843534; }
+
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/progress-bars";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/media"; */
+/* line 10, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+.list-group {
+  margin-bottom: 20px;
+  padding-left: 0; }
+
+/* line 21, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd; }
+  /* line 31, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item:first-child {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px; }
+  /* line 34, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item:last-child {
+    margin-bottom: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  /* line 40, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item > .badge {
+    float: right; }
+  /* line 43, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item > .badge + .badge {
+    margin-right: 5px; }
+
+/* line 54, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+a.list-group-item {
+  color: #555; }
+  /* line 57, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  a.list-group-item .list-group-item-heading {
+    color: #333; }
+  /* line 63, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  a.list-group-item:hover, a.list-group-item:focus {
+    text-decoration: none;
+    color: #555;
+    background-color: #f5f5f5; }
+
+/* line 74, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+.list-group-item.disabled, .list-group-item.disabled:hover, .list-group-item.disabled:focus {
+  background-color: #eeeeee;
+  color: #777777;
+  cursor: false; }
+  /* line 80, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item.disabled .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading {
+    color: inherit; }
+  /* line 83, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item.disabled .list-group-item-text, .list-group-item.disabled:hover .list-group-item-text, .list-group-item.disabled:focus .list-group-item-text {
+    color: #777777; }
+/* line 91, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  z-index: 2;
+  color: #fff;
+  background-color: #428bca;
+  border-color: #428bca; }
+  /* line 100, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item.active .list-group-item-heading, .list-group-item.active .list-group-item-heading > small, .list-group-item.active .list-group-item-heading > .small, .list-group-item.active:hover .list-group-item-heading, .list-group-item.active:hover .list-group-item-heading > small, .list-group-item.active:hover .list-group-item-heading > .small, .list-group-item.active:focus .list-group-item-heading, .list-group-item.active:focus .list-group-item-heading > small, .list-group-item.active:focus .list-group-item-heading > .small {
+    color: inherit; }
+  /* line 103, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+  .list-group-item.active .list-group-item-text, .list-group-item.active:hover .list-group-item-text, .list-group-item.active:focus .list-group-item-text {
+    color: #e1edf7; }
+
+/* line 4, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+.list-group-item-success {
+  color: #3c763d;
+  background-color: #dff0d8; }
+
+/* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+a.list-group-item-success {
+  color: #3c763d; }
+  /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-success .list-group-item-heading {
+    color: inherit; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-success:hover, a.list-group-item-success:focus {
+    color: #3c763d;
+    background-color: #d0e9c6; }
+  /* line 25, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-success.active, a.list-group-item-success.active:hover, a.list-group-item-success.active:focus {
+    color: #fff;
+    background-color: #3c763d;
+    border-color: #3c763d; }
+
+/* line 4, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+.list-group-item-info {
+  color: #31708f;
+  background-color: #d9edf7; }
+
+/* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+a.list-group-item-info {
+  color: #31708f; }
+  /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-info .list-group-item-heading {
+    color: inherit; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-info:hover, a.list-group-item-info:focus {
+    color: #31708f;
+    background-color: #c4e3f3; }
+  /* line 25, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-info.active, a.list-group-item-info.active:hover, a.list-group-item-info.active:focus {
+    color: #fff;
+    background-color: #31708f;
+    border-color: #31708f; }
+
+/* line 4, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+.list-group-item-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3; }
+
+/* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+a.list-group-item-warning {
+  color: #8a6d3b; }
+  /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-warning .list-group-item-heading {
+    color: inherit; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-warning:hover, a.list-group-item-warning:focus {
+    color: #8a6d3b;
+    background-color: #faf2cc; }
+  /* line 25, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-warning.active, a.list-group-item-warning.active:hover, a.list-group-item-warning.active:focus {
+    color: #fff;
+    background-color: #8a6d3b;
+    border-color: #8a6d3b; }
+
+/* line 4, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+.list-group-item-danger {
+  color: #a94442;
+  background-color: #f2dede; }
+
+/* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+a.list-group-item-danger {
+  color: #a94442; }
+  /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-danger .list-group-item-heading {
+    color: inherit; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-danger:hover, a.list-group-item-danger:focus {
+    color: #a94442;
+    background-color: #ebcccc; }
+  /* line 25, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_list-group.scss */
+  a.list-group-item-danger.active, a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
+    color: #fff;
+    background-color: #a94442;
+    border-color: #a94442; }
+
+/* line 125, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+.list-group-item-heading {
+  margin-top: 0;
+  margin-bottom: 5px; }
+
+/* line 129, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_list-group.scss */
+.list-group-item-text {
+  margin-bottom: 0;
+  line-height: 1.3; }
+
+/* line 7, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
+
+/* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-body {
+  padding: 15px; }
+  /* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .panel-body:before, .panel-body:after {
+    content: " ";
+    display: table; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .panel-body:after {
+    clear: both; }
+
+/* line 22, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px; }
+  /* line 27, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel-heading > .dropdown .dropdown-toggle {
+    color: inherit; }
+
+/* line 33, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  color: inherit; }
+  /* line 39, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel-title > a {
+    color: inherit; }
+
+/* line 45, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-footer {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px; }
+
+/* line 60, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .list-group, .panel > .panel-collapse > .list-group {
+  margin-bottom: 0; }
+  /* line 63, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item {
+    border-width: 1px 0;
+    border-radius: 0; }
+  /* line 70, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .list-group:first-child .list-group-item:first-child, .panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {
+    border-top: 0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px; }
+  /* line 77, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .list-group:last-child .list-group-item:last-child, .panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {
+    border-bottom: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px; }
+
+/* line 86, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-heading + .list-group .list-group-item:first-child {
+  border-top-width: 0; }
+
+/* line 90, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.list-group + .panel-footer {
+  border-top-width: 0; }
+
+/* line 102, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .table, .panel > .table-responsive > .table, .panel > .panel-collapse > .table {
+  margin-bottom: 0; }
+  /* line 105, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table caption, .panel > .table-responsive > .table caption, .panel > .panel-collapse > .table caption {
+    padding-left: 15px;
+    padding-right: 15px; }
+/* line 112, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .table:first-child, .panel > .table-responsive:first-child > .table:first-child {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px; }
+  /* line 117, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table:first-child > thead:first-child > tr:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
+    /* line 122, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel > .table:first-child > thead:first-child > tr:first-child td:first-child, .panel > .table:first-child > thead:first-child > tr:first-child th:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child td:first-child, .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {
+      border-top-left-radius: 3px; }
+    /* line 126, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel > .table:first-child > thead:first-child > tr:first-child td:last-child, .panel > .table:first-child > thead:first-child > tr:first-child th:last-child, .panel > .table:first-child > tbody:first-child > tr:first-child td:last-child, .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child, .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child, .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {
+      border-top-right-radius: 3px; }
+/* line 134, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .table:last-child, .panel > .table-responsive:last-child > .table:last-child {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px; }
+  /* line 139, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table:last-child > tbody:last-child > tr:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
+    /* line 144, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel > .table:last-child > tbody:last-child > tr:last-child td:first-child, .panel > .table:last-child > tbody:last-child > tr:last-child th:first-child, .panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child, .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {
+      border-bottom-left-radius: 3px; }
+    /* line 148, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel > .table:last-child > tbody:last-child > tr:last-child td:last-child, .panel > .table:last-child > tbody:last-child > tr:last-child th:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child, .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child, .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child, .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {
+      border-bottom-right-radius: 3px; }
+/* line 157, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .panel-body + .table, .panel > .panel-body + .table-responsive, .panel > .table + .panel-body, .panel > .table-responsive + .panel-body {
+  border-top: 1px solid #ddd; }
+/* line 161, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .table > tbody:first-child > tr:first-child th, .panel > .table > tbody:first-child > tr:first-child td {
+  border-top: 0; }
+/* line 165, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .table-bordered, .panel > .table-responsive > .table-bordered {
+  border: 0; }
+  /* line 172, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table-bordered > thead > tr > th:first-child, .panel > .table-bordered > thead > tr > td:first-child, .panel > .table-bordered > tbody > tr > th:first-child, .panel > .table-bordered > tbody > tr > td:first-child, .panel > .table-bordered > tfoot > tr > th:first-child, .panel > .table-bordered > tfoot > tr > td:first-child, .panel > .table-responsive > .table-bordered > thead > tr > th:first-child, .panel > .table-responsive > .table-bordered > thead > tr > td:first-child, .panel > .table-responsive > .table-bordered > tbody > tr > th:first-child, .panel > .table-responsive > .table-bordered > tbody > tr > td:first-child, .panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child, .panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+    border-left: 0; }
+  /* line 176, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table-bordered > thead > tr > th:last-child, .panel > .table-bordered > thead > tr > td:last-child, .panel > .table-bordered > tbody > tr > th:last-child, .panel > .table-bordered > tbody > tr > td:last-child, .panel > .table-bordered > tfoot > tr > th:last-child, .panel > .table-bordered > tfoot > tr > td:last-child, .panel > .table-responsive > .table-bordered > thead > tr > th:last-child, .panel > .table-responsive > .table-bordered > thead > tr > td:last-child, .panel > .table-responsive > .table-bordered > tbody > tr > th:last-child, .panel > .table-responsive > .table-bordered > tbody > tr > td:last-child, .panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child, .panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+    border-right: 0; }
+  /* line 185, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table-bordered > thead > tr:first-child > td, .panel > .table-bordered > thead > tr:first-child > th, .panel > .table-bordered > tbody > tr:first-child > td, .panel > .table-bordered > tbody > tr:first-child > th, .panel > .table-responsive > .table-bordered > thead > tr:first-child > td, .panel > .table-responsive > .table-bordered > thead > tr:first-child > th, .panel > .table-responsive > .table-bordered > tbody > tr:first-child > td, .panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {
+    border-bottom: 0; }
+  /* line 194, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel > .table-bordered > tbody > tr:last-child > td, .panel > .table-bordered > tbody > tr:last-child > th, .panel > .table-bordered > tfoot > tr:last-child > td, .panel > .table-bordered > tfoot > tr:last-child > th, .panel > .table-responsive > .table-bordered > tbody > tr:last-child > td, .panel > .table-responsive > .table-bordered > tbody > tr:last-child > th, .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td, .panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {
+    border-bottom: 0; }
+/* line 200, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel > .table-responsive {
+  border: 0;
+  margin-bottom: 0; }
+
+/* line 212, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-group {
+  margin-bottom: 20px; }
+  /* line 216, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 4px; }
+    /* line 220, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel-group .panel + .panel {
+      margin-top: 5px; }
+  /* line 225, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel-group .panel-heading {
+    border-bottom: 0; }
+    /* line 229, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+      border-top: 1px solid #ddd; }
+  /* line 234, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+  .panel-group .panel-footer {
+    border-top: 0; }
+    /* line 236, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+    .panel-group .panel-footer + .panel-collapse .panel-body {
+      border-bottom: 1px solid #ddd; }
+
+/* line 244, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-default {
+  border-color: #ddd; }
+  /* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-default > .panel-heading {
+    color: #333333;
+    background-color: #f5f5f5;
+    border-color: #ddd; }
+    /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #ddd; }
+    /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-default > .panel-heading .badge {
+      color: #f5f5f5;
+      background-color: #333333; }
+  /* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-default > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #ddd; }
+
+/* line 247, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-primary {
+  border-color: #428bca; }
+  /* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-primary > .panel-heading {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca; }
+    /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-primary > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #428bca; }
+    /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-primary > .panel-heading .badge {
+      color: #428bca;
+      background-color: #fff; }
+  /* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-primary > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #428bca; }
+
+/* line 250, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-success {
+  border-color: #d6e9c6; }
+  /* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-success > .panel-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6; }
+    /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-success > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #d6e9c6; }
+    /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-success > .panel-heading .badge {
+      color: #dff0d8;
+      background-color: #3c763d; }
+  /* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-success > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #d6e9c6; }
+
+/* line 253, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-info {
+  border-color: #bce8f1; }
+  /* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-info > .panel-heading {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1; }
+    /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-info > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #bce8f1; }
+    /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-info > .panel-heading .badge {
+      color: #d9edf7;
+      background-color: #31708f; }
+  /* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-info > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #bce8f1; }
+
+/* line 256, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-warning {
+  border-color: #faebcc; }
+  /* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-warning > .panel-heading {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc; }
+    /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-warning > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #faebcc; }
+    /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-warning > .panel-heading .badge {
+      color: #fcf8e3;
+      background-color: #8a6d3b; }
+  /* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-warning > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #faebcc; }
+
+/* line 259, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_panels.scss */
+.panel-danger {
+  border-color: #ebccd1; }
+  /* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-danger > .panel-heading {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1; }
+    /* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-danger > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: #ebccd1; }
+    /* line 14, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+    .panel-danger > .panel-heading .badge {
+      color: #f2dede;
+      background-color: #a94442; }
+  /* line 20, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_panels.scss */
+  .panel-danger > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #ebccd1; }
+
+/* line 5, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_responsive-embed.scss */
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden; }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_responsive-embed.scss */
+  .embed-responsive .embed-responsive-item, .embed-responsive iframe, .embed-responsive embed, .embed-responsive object, .embed-responsive video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    border: 0; }
+  /* line 27, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_responsive-embed.scss */
+  .embed-responsive.embed-responsive-16by9 {
+    padding-bottom: 56.25%; }
+  /* line 32, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_responsive-embed.scss */
+  .embed-responsive.embed-responsive-4by3 {
+    padding-bottom: 75%; }
+
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/wells";*/
+/* line 6, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_close.scss */
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20); }
+  /* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_close.scss */
+  .close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: alpha(opacity=50); }
+
+/* line 29, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_close.scss */
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none; }
+
+/* line 11, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-open {
+  overflow: hidden; }
+
+/* line 16, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal {
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  -webkit-overflow-scrolling: touch;
+  outline: 0; }
+  /* line 32, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal.fade .modal-dialog {
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out; }
+  /* line 36, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0); }
+
+/* line 38, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+/* line 44, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px; }
+
+/* line 51, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  outline: 0; }
+
+/* line 64, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000; }
+  /* line 72, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-backdrop.fade {
+    opacity: 0;
+    filter: alpha(opacity=0); }
+  /* line 73, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-backdrop.in {
+    opacity: 0.5;
+    filter: alpha(opacity=50); }
+
+/* line 78, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 16.42857px; }
+
+/* line 84, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-header .close {
+  margin-top: -2px; }
+
+/* line 89, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-title {
+  margin: 0;
+  line-height: 1.42857; }
+
+/* line 96, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-body {
+  position: relative;
+  padding: 15px; }
+
+/* line 102, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5; }
+  /* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .modal-footer:before, .modal-footer:after {
+    content: " ";
+    display: table; }
+  /* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+  .modal-footer:after {
+    clear: both; }
+  /* line 109, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-footer .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; }
+  /* line 114, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-footer .btn-group .btn + .btn {
+    margin-left: -1px; }
+  /* line 118, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-footer .btn-block + .btn-block {
+    margin-left: 0; }
+
+/* line 124, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll; }
+
+@media (min-width: 768px) {
+  /* line 135, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto; }
+  /* line 139, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-content {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+  /* line 144, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-sm {
+    width: 300px; } }
+
+@media (min-width: 992px) {
+  /* line 148, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_modals.scss */
+  .modal-lg {
+    width: 900px; } }
+
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/tooltip";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/popovers";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/carousel"; */
+/* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+/* line 19, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
+.clearfix:after {
+  clear: both; }
+
+/* line 12, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/* line 15, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.pull-right {
+  float: right !important; }
+
+/* line 18, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.pull-left {
+  float: left !important; }
+
+/* line 27, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.hide {
+  display: none !important; }
+
+/* line 30, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.show {
+  display: block !important; }
+
+/* line 33, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.invisible {
+  visibility: hidden; }
+
+/* line 36, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0; }
+
+/* line 45, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden !important; }
+
+/* line 54, /Users/frederic/projects/molkkyScore/bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/_utilities.scss */
+.affix {
+  position: fixed; }
+
+/* @import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/responsive-utilities"; */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 5, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 18, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+/* line 22, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+html {
+  line-height: 1; }
+
+/* line 24, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 33, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 26, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 38, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 28, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 44, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* line 30, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 51, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+q, blockquote {
+  quotes: none; }
+
+/* line 103, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 55, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none; }
+
+/* line 32, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 61, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+a img {
+  border: none; }
+
+/* line 116, ../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 66, /Users/frederic/projects/molkkyScore/sass/vendor/_reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block; }
+
+/* line 1, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+.secondaryFontloader {
+  font-family: 'Champion-regular', Arial, Helvetica, sans-serif;
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px; }
+
+/* line 9, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+.loader-container {
+  display: none;
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  background: #2E2E2E;
+  text-align: center;
+  margin: 1em auto;
+  color: #FFFFFF; }
+  /* line 18, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .loading-title {
+    display: block;
+    margin: 0 auto; }
+  /* line 23, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot {
+    height: 10px;
+    width: 10px;
+    background: #1275B3;
+    display: inline-block;
+    margin: 12px 2px;
+    border-radius: 100%;
+    -webkit-animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both;
+    animation: loader 3s cubic-bezier(0.03, 0.615, 0.995, 0.415) infinite both; }
+  /* line 36, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot-1 {
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s; }
+  /* line 37, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot-2 {
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s; }
+  /* line 38, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot-3 {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s; }
+  /* line 39, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot-4 {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s; }
+  /* line 40, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot-5 {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
+  /* line 41, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  .loader-container .dot-6 {
+    -webkit-animation-delay: 0;
+    animation-delay: 0; }
+
+@-webkit-keyframes loader {
+  /* line 45, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  0% {
+    -webkit-transform: translateX(-40px);
+    opacity: 0; }
+
+  /* line 48, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  25% {
+    opacity: 1; }
+
+  /* line 49, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  50% {
+    -webkit-transform: translateX(40px);
+    opacity: 0; }
+
+  /* line 52, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  100% {
+    opacity: 0; } }
+
+@keyframes loader {
+  /* line 67, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  0% {
+    -webkit-transform: translateX(-40px);
+            transform: translateX(-40px);
+    opacity: 0; }
+
+  /* line 68, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  25% {
+    opacity: 1; }
+
+  /* line 69, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  50% {
+    -webkit-transform: translateX(40px);
+            transform: translateX(40px);
+    opacity: 0; }
+
+  /* line 70, /Users/frederic/projects/molkkyScore/sass/partials/general/_loader.scss */
+  100% {
+    opacity: 0; } }
+
+/* line 1, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+.modal {
+  font-family: 'Champion-regular', Arial, Helvetica, sans-serif;
+  overflow-y: auto; }
+  /* line 5, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .modal-content {
+    border-radius: 6px; }
+  /* line 8, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .modal-header {
+    margin-bottom: 15px;
+    color: #FFFFFF;
+    background-color: #2E2E2E;
+    border: 1px solid #FFFFFF;
+    border-bottom: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px; }
+  /* line 16, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .modal-body {
+    line-height: 1.3; }
+  /* line 19, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .modal-footer {
+    border-top: none; }
+  /* line 22, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .list-group {
+    margin: 0px; }
+  /* line 25, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal button.close {
+    opacity: 1;
+    font-size: inherit;
+    color: #E60000; }
+    /* line 29, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+    .modal button.close span:first-child {
+      position: relative;
+      z-index: 999; }
+  /* line 34, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .btn-primary {
+    background-color: #1275B3;
+    border-color: #1275B3; }
+  /* line 38, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .btn-default {
+    font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+    background-color: #FFFFFF;
+    border-color: #2E2E2E; }
+  /* line 43, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .btn-cancel {
+    border: 0px;
+    padding-left: 0px;
+    font-family: 'Champion-regular', Arial, Helvetica, sans-serif;
+    color: #1275B3; }
+  /* line 49, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .btn-icon-only {
+    border: none;
+    outline: thin dotted;
+    outline-offset: -2px; }
+  /* line 54, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal .list-group-item {
+    border-color: #FFFFFF;
+    border-radius: 6px; }
+  /* line 58, /Users/frederic/projects/molkkyScore/sass/partials/general/_modals.scss */
+  .modal strong {
+    font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif; }
+
+/* line 1, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+#mainTable {
+  /* height determined by positioning.js */
+  display: none;
+  width: 98%;
+  margin: 0 auto;
+  font-size: 25px;
+  line-height: 25px;
+  border-collapse: separate;
+  border-spacing: 10px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+      user-select: none; }
+  /* line 11, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable tr {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+        user-select: none; }
+  /* line 14, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable td {
+    position: relative;
+    background-color: #2E2E2E;
+    color: #FFFFFF;
+    width: 15%;
+    text-align: center;
+    border: 1px solid #FFFFFF;
+    border-radius: 6px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+        user-select: none; }
+  /* line 25, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable .td-score-number:hover, #mainTable #td-options:hover, #mainTable #td-player-name.active:hover {
+    cursor: pointer; }
+  /* line 30, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable .td-score-number.active {
+    background-color: #1275B3;
+    border-color: #1275B3; }
+  /* line 36, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable #td-options img {
+    width: 35px; }
+  /* line 40, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable #td-player-name .icon-right-open-outline {
+    opacity: 0;
+    font-family: "fontello";
+    content: '\00a0\e802'; }
+  /* line 45, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable #td-player-name.active {
+    background-color: #E60000;
+    border-color: #E60000; }
+    /* line 48, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+    #mainTable #td-player-name.active .icon-right-open-outline {
+      opacity: 1; }
+  /* line 52, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable #td-player-name p {
+    position: absolute;
+    left: 12%;
+    line-height: 100%;
+    width: 80%;
+    padding: 0px 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+
+/* begin: bosklapper stuff */
+/* line 66, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+#td-0.billyHalf, #td-0.billySuper {
+  background-color: #E60000; }
+
+/* end: bosklapper stuff */
+@media (min-width: 768px) {
+  /* line 73, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+  #mainTable {
+    /* height determined by positioning.js */
+    width: 95%;
+    font-size: 40px;
+    line-height: 40px;
+    border-spacing: 15px; }
+    /* line 79, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_base.scss */
+    #mainTable #td-options img {
+      width: 60px; } }
+
+/* line 1, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+#scoreTable {
+  table-layout: fixed;
+  font-family: 'Champion-regular', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 1px; }
+  /* line 9, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable:hover {
+    cursor: pointer; }
+  /* line 12, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable .score-table-item {
+    border: 2px solid #2E2E2E; }
+    /* line 14, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+    #scoreTable .score-table-item p.score {
+      border-left: 1px solid #FFFFFF; }
+      /* line 16, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+      #scoreTable .score-table-item p.score.first {
+        border-left: 0px; }
+    /* line 20, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+    #scoreTable .score-table-item p.misses {
+      position: absolute;
+      width: 100%;
+      bottom: 3px;
+      font-size: 10px;
+      line-height: 10px;
+      color: #E60000; }
+    /* line 28, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+    #scoreTable .score-table-item p.playerName {
+      display: none;
+      position: absolute;
+      width: 100%;
+      top: 0px;
+      font-size: 10px;
+      line-height: 10px;
+      padding: 3px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
+    /* line 40, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+    #scoreTable .score-table-item.active {
+      border-color: #1275B3; }
+      /* line 42, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+      #scoreTable .score-table-item.active + .score-table-item p.score, .score-table-item p.score + #scoreTable .score-table-item.active, #scoreTable .score-table-item.active p.score {
+        border: 0px; }
+    /* line 46, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+    #scoreTable .score-table-item.disqualified .score {
+      color: #E60000; }
+
+@media (min-width: 768px) {
+  /* line 53, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable {
+    font-size: 40px; }
+    /* line 55, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+    #scoreTable .score-table-item {
+      border: 5px solid #2E2E2E; }
+      /* line 57, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+      #scoreTable .score-table-item p.misses {
+        bottom: 5px;
+        font-size: 14px;
+        line-height: 14px; } }
+
+@media (min-width: 1224px) {
+  /* line 68, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_scoreTable.scss */
+  #scoreTable .score-table-item p.playerName {
+    display: block; } }
+
+/* line 1, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+.arrow__container {
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  margin-top: -25px;
+  padding: 12px 10px;
+  cursor: pointer; }
+  @media (min-width: 768px) {
+    .arrow__container {
+      padding: 5px 15px; } }
+  /* line 11, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  .arrow__container--left {
+    right: 0px;
+    padding-left: 13px; }
+    @media (min-width: 768px) {
+      .arrow__container--left {
+        padding-left: 20px; } }
+  /* line 18, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  .arrow__container--right {
+    left: 0px;
+    padding-right: 13px; }
+    @media (min-width: 768px) {
+      .arrow__container--right {
+        padding-right: 20px; } }
+
+/* line 27, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+.arrow {
+  width: 0;
+  height: 0; }
+  /* line 30, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  .arrow.disabled {
+    opacity: 0.5;
+    cursor: auto; }
+
+/* line 37, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+#td-tutorial {
+  position: relative;
+  padding: 5px 35px;
+  min-height: 50px;
+  background-color: #FFFFFF !important; }
+  /* line 44, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial.firstStep {
+    padding-left: 15px; }
+  /* line 48, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial.lastStep {
+    padding-right: 15px; }
+  @media (min-width: 768px) {
+    #td-tutorial {
+      padding: 5px 50px; }
+      /* line 54, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+      #td-tutorial.firstStep {
+        padding-left: 25px; }
+      /* line 57, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+      #td-tutorial.lastStep {
+        padding-right: 25px; } }
+  /* line 62, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial .tutorial__content p {
+    font-family: 'Champion-regular', Arial, Helvetica, sans-serif;
+    line-height: 1.3;
+    color: #2E2E2E;
+    font-size: 14px; }
+  /* line 69, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial .arrow--left {
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-left: 13px solid #E60000; }
+    @media (min-width: 768px) {
+      #td-tutorial .arrow--left {
+        border-top-width: 20px;
+        border-bottom-width: 20px;
+        border-left-width: 20px; } }
+  /* line 80, /Users/frederic/projects/molkkyScore/sass/partials/gameboard/_tutorial.scss */
+  #td-tutorial .arrow--right {
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-right: 13px solid #E60000; }
+    @media (min-width: 768px) {
+      #td-tutorial .arrow--right {
+        border-top-width: 20px;
+        border-bottom-width: 20px;
+        border-right-width: 20px; } }
+
+/* line 2, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .modal-body {
+  padding-bottom: 20px; }
+/* line 5, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .btn-toolbar {
+  margin: 20px auto;
+  margin-bottom: 30px;
+  width: 120px; }
+/* line 10, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .btn-group {
+  width: 120px; }
+  /* line 12, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+  #modalStart .btn-group .btn {
+    width: 60px; }
+/* line 16, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .share-icons__wrapper {
+  position: relative;
+  padding-top: 20px;
+  font-size: 0;
+  border-top: 1px solid #2E2E2E; }
+/* line 22, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .share-label {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin-left: -50px;
+  width: 100px;
+  background: #FFFFFF;
+  font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+  text-align: center;
+  font-size: 14px; }
+/* line 33, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .share-icon__wrapper {
+  width: 45%;
+  text-align: center; }
+/* line 37, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .share-icon__wrapper--twitter {
+  float: right; }
+/* line 40, /Users/frederic/projects/molkkyScore/sass/partials/modals/_start.scss */
+#modalStart .share-icon {
+  width: 60px;
+  height: 60px;
+  cursor: pointer; }
+
+/* line 2, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .alert {
+  color: #E60000;
+  border: none;
+  background-color: #FFFFFF;
+  padding: 0px 15px;
+  margin: 0px;
+  display: none;
+  line-height: 1.3; }
+  /* line 10, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+  #modalAddPlayers .alert.alert-info {
+    color: #1275B3; }
+/* line 14, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .form-control {
+  color: #2E2E2E;
+  border: 1px solid #2E2E2E;
+  border-right: none;
+  box-shadow: none; }
+/* line 20, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .input-group-addon {
+  color: #FFFFFF;
+  background-color: #1275B3;
+  border-color: #2E2E2E;
+  height: 100%; }
+/* line 26, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .icon-plus {
+  line-height: 1rem; }
+/* line 29, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .icon-plus:hover {
+  cursor: pointer; }
+/* line 32, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers .max-message {
+  text-align: center;
+  color: #E60000;
+  font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+  padding: 10px 0px;
+  border-width: 1px 0px;
+  border-style: solid;
+  border-color: #E60000; }
+/* line 41, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers input {
+  font-size: 18px; }
+/* line 44, /Users/frederic/projects/molkkyScore/sass/partials/modals/_addPlayers.scss */
+#modalAddPlayers button[type="submit"] {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px; }
+
+/* line 3, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__question {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif; }
+/* line 8, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__question__underline {
+  width: 30%;
+  margin: 10px auto;
+  border-bottom: 1px solid #2E2E2E; }
+/* line 13, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings__divider {
+  width: 50%;
+  margin: 30px auto 10px auto;
+  border-bottom: 1px solid #2E2E2E; }
+  /* line 17, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+  #modalSettingsGame .game-settings__divider--first {
+    margin-top: 0; }
+/* line 21, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+#modalSettingsGame .game-settings-form {
+  display: table;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 0; }
+  /* line 27, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+  #modalSettingsGame .game-settings-form .input-list__row {
+    display: table-row; }
+  /* line 31, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+  #modalSettingsGame .game-settings-form .input-list--one-line-labels input[type="radio"] + label:after {
+    top: 25px; }
+  /* line 34, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+  #modalSettingsGame .game-settings-form .input-list--one-line-labels input[type="radio"] + label:before {
+    top: 30px; }
+  /* line 38, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+  #modalSettingsGame .game-settings-form .input-list__item {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 33%; }
+  /* line 44, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+  #modalSettingsGame .game-settings-form input[type="radio"] {
+    display: none; }
+    /* line 46, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+    #modalSettingsGame .game-settings-form input[type="radio"] + label {
+      padding-bottom: 35px;
+      font-size: 12px;
+      cursor: pointer; }
+    /* line 51, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+    #modalSettingsGame .game-settings-form input[type="radio"] + label:after {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      margin-left: -10px;
+      display: inline-block;
+      content: " ";
+      width: 20px;
+      height: 20px;
+      border: 1px solid #1275B3;
+      border-radius: 100%; }
+    /* line 63, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+    #modalSettingsGame .game-settings-form input[type="radio"] + label:before {
+      visibility: hidden;
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      margin-left: -5px;
+      display: inline-block;
+      content: " ";
+      width: 10px;
+      height: 10px;
+      background-color: #1275B3;
+      border-radius: 100%;
+      -webkit-transition: -webkit-transform 0.1s linear;
+              transition: transform 0.1s linear;
+      -webkit-transform: scale(0);
+          -ms-transform: scale(0);
+              transform: scale(0); }
+    /* line 78, /Users/frederic/projects/molkkyScore/sass/partials/modals/_gameSettings.scss */
+    #modalSettingsGame .game-settings-form input[type="radio"]:checked + label:before {
+      visibility: visible;
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1); }
+
+/* line 2, /Users/frederic/projects/molkkyScore/sass/partials/modals/_about.scss */
+#modalAbout .modal-body {
+  max-height: 420px;
+  overflow-y: auto; }
+/* line 6, /Users/frederic/projects/molkkyScore/sass/partials/modals/_about.scss */
+#modalAbout p {
+  line-height: 1.3;
+  padding-bottom: 20px; }
+  /* line 9, /Users/frederic/projects/molkkyScore/sass/partials/modals/_about.scss */
+  #modalAbout p:last-child {
+    padding-bottom: 50px; }
+
+/* line 2, /Users/frederic/projects/molkkyScore/sass/partials/modals/_tutorialIntro.scss */
+#modalTutorialIntro p {
+  line-height: 1.3;
+  padding-bottom: 20px; }
+  /* line 5, /Users/frederic/projects/molkkyScore/sass/partials/modals/_tutorialIntro.scss */
+  #modalTutorialIntro p:last-child {
+    padding-bottom: 0px; }
+
+/* line 2, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard .modal-header {
+  padding: 7px;
+  padding-bottom: 0px; }
+  /* line 5, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard .modal-header .nav-tabs {
+    border-bottom: 0px; }
+    /* line 7, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard .modal-header .nav-tabs li a {
+      padding: 10px;
+      color: #FFFFFF;
+      font-size: 12px; }
+      /* line 11, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+      #modalScoreboard .modal-header .nav-tabs li a:hover {
+        background-color: #2E2E2E; }
+      /* line 14, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+      #modalScoreboard .modal-header .nav-tabs li a:active, #modalScoreboard .modal-header .nav-tabs li a:focus, #modalScoreboard .modal-header .nav-tabs li a:visited {
+        outline: none; }
+    /* line 18, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard .modal-header .nav-tabs li.active a {
+      color: #2E2E2E; }
+      /* line 20, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+      #modalScoreboard .modal-header .nav-tabs li.active a:hover {
+        background-color: #FFFFFF; }
+  /* line 25, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard .modal-header .close {
+    padding: 10px; }
+/* line 29, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard .btn {
+  font-size: 12px;
+  padding: 4px 8px; }
+/* line 34, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #detailedPane table {
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; }
+  /* line 40, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard #detailedPane table tr:nth-child(odd) {
+    background-color: #E6E6E6; }
+  /* line 45, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard #detailedPane table td, #modalScoreboard #detailedPane table th {
+    text-align: center;
+    padding: 5px; }
+  /* line 49, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard #detailedPane table th {
+    font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+    border-bottom: 1px solid #2E2E2E;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border: 1px solid #2E2E2E;
+    border-bottom-width: 2px; }
+    /* line 56, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard #detailedPane table th p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
+    /* line 62, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard #detailedPane table th.winner p:after {
+      font-family: "fontello";
+      content: '\00a0\e800';
+      color: #1275B3; }
+  /* line 69, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard #detailedPane table td {
+    border-left: 1px solid #2E2E2E;
+    border-right: 1px solid #2E2E2E; }
+    /* line 72, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard #detailedPane table td.empty {
+      border: 0px;
+      background-color: #FFFFFF; }
+    /* line 76, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard #detailedPane table td.out {
+      font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+      border-bottom: 1px solid #2E2E2E; }
+    /* line 80, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+    #modalScoreboard #detailedPane table td.disqualified {
+      font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+      color: #E60000;
+      border-bottom: 1px solid #2E2E2E; }
+/* line 91, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 15px; }
+/* line 98, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.winner {
+  font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif; }
+  /* line 100, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard #concisePane li.winner p:after {
+    font-family: "fontello";
+    content: '\00a0\e800';
+    color: #1275B3; }
+/* line 107, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.second p:after, #modalScoreboard #concisePane li.third p:after, #modalScoreboard #concisePane li.fourth p:after, #modalScoreboard #concisePane li.fifth p:after, #modalScoreboard #concisePane li.sixth p:after, #modalScoreboard #concisePane li.seventh p:after, #modalScoreboard #concisePane li.eight p:after {
+  font-size: 10px;
+  color: #1275B3; }
+/* line 112, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.second p:after {
+  content: ' - 2nd'; }
+/* line 115, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.third p:after {
+  content: ' - 3rd'; }
+/* line 118, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.fourth p:after {
+  content: ' - 4th'; }
+/* line 121, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.fifth p:after {
+  content: ' - 5th'; }
+/* line 124, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.sixth p:after {
+  content: ' - 6th'; }
+/* line 127, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.seventh p:after {
+  content: ' - 7th'; }
+/* line 130, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane li.eight p:after {
+  content: ' - 8th'; }
+/* line 134, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+#modalScoreboard #concisePane span.disqualified {
+  font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+  color: #E60000; }
+
+@media (min-width: 360px) {
+  /* line 145, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard .modal-header .nav-tabs li a {
+    padding: 10px 15px;
+    font-size: 14px; }
+  /* line 151, /Users/frederic/projects/molkkyScore/sass/partials/modals/_scoreboard.scss */
+  #modalScoreboard .btn {
+    font-size: 14px;
+    padding: 6px 12px; } }
+
+/* line 1, /Users/frederic/projects/molkkyScore/sass/partials/_animations.scss */
+.animate-spin {
+  -webkit-animation: spin 1.5s cubic-bezier(0, 0, .19, 1.17);
+  animation: spin 1.5s cubic-bezier(0, 0, .19, 1.17);
+  display: inline-block; }
+
+@-webkit-keyframes spin {
+  /* line 22, /Users/frederic/projects/molkkyScore/sass/partials/_animations.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  /* line 27, /Users/frederic/projects/molkkyScore/sass/partials/_animations.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+@keyframes spin {
+  /* line 55, /Users/frederic/projects/molkkyScore/sass/partials/_animations.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+
+  /* line 62, /Users/frederic/projects/molkkyScore/sass/partials/_animations.scss */
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
+
+/* line 18, /Users/frederic/projects/molkkyScore/sass/mainStyle.scss */
+body {
+  font-family: 'Champion-medium', "Arial Black", Gadget, sans-serif;
+  background-color: #2E2E2E;
+  color: #2E2E2E; }
