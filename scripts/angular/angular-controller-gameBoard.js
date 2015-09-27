@@ -382,7 +382,7 @@ app.controller("angular-gameBoard", ['$scope','GameData','$rootScope', function(
 					GameData.setRanking($scope.activePlayer);
 					if($scope.activePlayer.winner){
 						setIsRestoreGame(false);
-						clearLocalStorageGameData();
+						// clearLocalStorageGameData();
 						$rootScope.$broadcast('initializeScoreboard'); //generate 'initializeScoreboard' event
 					}
 				}
