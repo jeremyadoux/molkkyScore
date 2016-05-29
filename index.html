@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Free web app that makes keeping score on the game named 'mölkky' (also known as number kubb) as easy as pie"></meta>
         <meta name="keywords" content="molkky mölkky score scorecard app free"></meta>
-        <meta property="fb:app_id" content="207575136079478" /> 
+        <meta property="fb:app_id" content="207575136079478" />
         <meta property="og:url" content="http://molkkyscore.com/" />
         <meta property="og:title" content="Mölkky score | web app" />
         <meta property="og:description" content="Free web app that makes keeping score on the game named 'mölkky' as easy as pie." />
@@ -16,7 +16,7 @@
         <meta name="twitter:description" content="Free web app that makes keeping score on the game named 'mölkky' as easy as pie." />
         <meta name="twitter:image" content="http://molkkyscore.com/images/share1200x630.png" />
         <meta name="twitter:url" content="http://molkkyscore.com/" />
- 
+
         <title>Mölkky score | web app</title>
         <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-touch-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-touch-icon-60x60.png">
@@ -38,7 +38,7 @@
         <meta name="theme-color" content="#2e2e2e">
 
         <!-- <link rel="stylesheet" type="text/css" href="stylesheets/mainStyle.css"> -->
-        <link rel="stylesheet" type="text/css" href="web/css/mainStyle-v1.min.css"> 
+        <link rel="stylesheet" type="text/css" href="web/css/mainStyle-v1.min.css">
     </head>
     <body ng-app="angular-app">
         <!-- Font only gets loaded when shown on screen, hence this text -->
@@ -55,7 +55,7 @@
                     <button ng-click="startGame()" id="btn-quickGame-start" type="button" class="btn btn-default btn-lg btn-block"><span>Start game</span></button>
                     <button ng-click="settings()" id="btn-settings-start" type="button" class="btn btn-default btn-lg btn-block"><span>Settings</span></button>
                     <button ng-click="tutorial()" id="btn-tutorial-start" type="button" class="btn btn-default btn-lg btn-block"><span>Tutorial</span></button>
-                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block"><span>About</span></button>    
+                    <button ng-click="about()" id="btn-about-start" type="button" class="btn btn-default btn-lg btn-block"><span>About</span></button>
                     <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group" role="group">
                             <button id="btn-en-start" type="button" ng-click="En()" class="btn" ng-class="{'btn-primary':language == 'En','btn-default':language != 'En'}">En</button>
@@ -69,11 +69,11 @@
                         </div>
                         <div class="share-icon__wrapper share-icon__wrapper--twitter">
                             <img ng-click="shareTwitter()" src="images/twitter.svg" class="share-icon"/>
-                        </div> 
+                        </div>
                         <div class="share-icon__wrapper">
                             <img ng-click="shareFacebook()" src="images/facebook.svg" class="share-icon"/>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                 <!-- <div class="modal-footer" >
                     <a href="#" class="pull-left">Create account</a>
@@ -81,7 +81,7 @@
             </div>
           </div>
         </div> <!-- end Modal start -->
-        
+
         <!-- Modal about -->
         <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-md modal-vertical-centered">
@@ -92,10 +92,10 @@
                 </div>
                 <div class="modal-body" >
                     <p>
-                        molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named "mölkky"</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href="http://www.molkky.com" target="_blank">www.molkky.com</a>.  
+                        molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named "mölkky"</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href="http://www.molkky.com" target="_blank">www.molkky.com</a>.
                     </p>
                     <p>
-                        molkkyScore.com is developed by <a href="http://www.fredericaerts.com" target="_blank">Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href="mailto:info@molkkyScore.com" target="_top">info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href="https://github.com/fredericJos/molkkyScore" target="_blank">github</a>.
+                        molkkyScore.com is developed by <a href="http://www.fredericaerts.com" target="_blank">Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href="mailto:info@fredericaerts.com" target="_top">info@fredericaerts.com</a>. Developers are encouraged to contribute by forking on <a href="https://github.com/fredericJos/molkkyScore" target="_blank">github</a>.
                     </p>
                     <p>
                         <strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.
@@ -213,7 +213,7 @@
                             <input type="text" class="form-control typeahead" required placeholder="{{placeholder}}" autocomplete="off">
                             <span id="addPlayerIcon" ng-click="addPlayer()" class="input-group-addon icon-plus"></span>
                         </div>
-                        <button type="submit"></button> 
+                        <button type="submit"></button>
                     </form>
                     <div class="max-message" ng-show="players.length>7">Max. players reached</div>
                 </div>
@@ -246,7 +246,7 @@
                          <ul class="list-group">
                             <li class='list-group-item' ng-repeat="player in players" ng-class="{winner: player.winner,second:player.ranking == 2,third:player.ranking == 3,fourth:player.ranking == 4,fifth:player.ranking == 5,sixth:player.ranking == 6,seventh:player.ranking == 7,eight:player.ranking == 8}">   <span class='pull-right' ng-class="{disqualified: player.disqualified}">{{player.score}}</span>
                                 <p>{{player.name}}</p>
-                                
+
                             </li>
                         </ul>
                       </div>
@@ -266,7 +266,7 @@
                             </table>
                       </div>
                     </div>
-                   
+
                 </div>
                 <div class="modal-footer">
                     <button id="btn-exit-scoreboard" type="button" ng-hide="isTutorial" class="btn btn-default pull-left" ng-click="btnExit()">Exit</button>
@@ -289,7 +289,7 @@
                     <button ng-click="restartGame()" ng-hide="isTutorial" id="btn-restart-options" type="button" class="btn btn-default btn-lg btn-block">Restart game</button>
                     <button ng-click="newGame()" ng-hide="isTutorial" id="btn-new-options" type="button" class="btn btn-default btn-lg btn-block">New game</button>
                     <button ng-click="undoLast()" ng-disabled="!gameStarted || (isTutorial && !isTutorialStepFive)" id="btn-undo-options" type="button" class="btn btn-default btn-lg btn-block">Undo last</button>
-                    <button ng-click="exitGame()" id="btn-exit-options" type="button" class="btn btn-default btn-lg btn-block">Exit game</button>       
+                    <button ng-click="exitGame()" id="btn-exit-options" type="button" class="btn btn-default btn-lg btn-block">Exit game</button>
                 </div>
                 <div class="modal-footer" >
                     <button type="button" class="btn btn-primary btn-lg btn-block" data-dismiss="modal">Continue</button>
@@ -327,7 +327,7 @@
                 </div>
                 <div class="modal-body" >
                     <p>
-                        You are not connected to a network! 
+                        You are not connected to a network!
                     </p>
                     <br>
                     <p>
@@ -349,7 +349,7 @@
                     <h2 class="modal-title" id="myModalLabel"></h2>
                 </div>
                 <div class="modal-body" >
-                   Are you sure?       
+                   Are you sure?
                 </div>
                 <div class="modal-footer" >
                     <button id="btn-no-confirm" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
@@ -367,9 +367,9 @@
                     <h2 class="modal-title" id="myModalLabel">Restore game?</h2>
                 </div>
                 <div class="modal-body" >
-                   Last played game ended without a winner. 
+                   Last played game ended without a winner.
                    <br><br>
-                   Do you want to restore this game?       
+                   Do you want to restore this game?
                 </div>
                 <div class="modal-footer" >
                     <button id="btn-no-confirm" type="button" class="btn btn-default" ng-click="btnNo()">No</button>
@@ -389,7 +389,7 @@
                 </div>
                 <div class="modal-body" >
                     <p>
-                       For the tutorial we've started a game with two players, named Bob & Sara.  
+                       For the tutorial we've started a game with two players, named Bob & Sara.
                     </p>
                     <p>
                         You can <strong>navigate</strong> through the tutorial either by following the instructions or by use of the arrows on the bottom of the screen.
@@ -486,7 +486,7 @@
         <script src="scripts/vendor/bootstrap3-typeahead.min.js"></script>
         <script src="scripts/bootstrap/modal.js"></script>
         <script src="scripts/bootstrap/tab.js"></script>
-        <script src="scripts/bootstrap/transition.js"></script> 
+        <script src="scripts/bootstrap/transition.js"></script>
         <script src="scripts/utilities.js"></script>
         <script src="scripts/positioning.js"></script>
         <script src="scripts/translations.js"></script>
@@ -502,7 +502,7 @@
         <script src="scripts/angular/angular-controller-restoreGame.js"></script>
         <script src="scripts/angular/angular-controller-bosklappers.js"></script>
         -->
-        <script src="web/scripts/script-v1.min.js"></script>  
+        <script src="web/scripts/script-v1.min.js"></script>
        <!-- begin: google analytics -->
         <script>
             if(hasNetwork){
@@ -534,6 +534,6 @@
                }(document, 'script', 'facebook-jssdk'));
               /* end: facebook */
             }
-        </script> 
+        </script>
     </body>
 </html>
