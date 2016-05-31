@@ -127,7 +127,7 @@ var loading = {
 		firstGame:"starting game",
 		startApp:"loading application",
 		newGame:"starting new game",
-		restartGame:"restarting game",	
+		restartGame:"restarting game",
 		restoreGame:"restoring game",
 		tutorial:"loading tutorial"
 	},
@@ -135,7 +135,7 @@ var loading = {
 		firstGame:"démarrage du jeu",
 		startApp:"l'application se charge",
 		newGame:"nouveau jeu",
-		restartGame:"redémarrer le jeu",	
+		restartGame:"redémarrer le jeu",
 		restoreGame:"en cours de restaurage",
 		tutorial:"manuel d'instruction se charge"
 	}
@@ -228,11 +228,11 @@ var tutorial = {
 var about = {
 	En:{
 		title:"About",
-		body: 	"<p>molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named 'mölkky'</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com is developed by <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Developers are encouraged to contribute by forking on <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.</p>"
+		body: 	"<p>molkkyScore.com is not a game in itself. It is a <strong>web app for keeping score on the game named 'mölkky'</strong> (also known as number kubb). For more information on the actual game, you can refer to the excellent website <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com is developed by <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Any questions, suggestions or bug reports can be directed to him via the email address <a href='mailto:info@fredericaerts.com' target='_top'>info@fredericaerts.com</a>. Developers are encouraged to contribute by forking on <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>this web app keeps working, even when you don't have internet connection.</p>"
 	},
 	Fr:{
 		title:"À propos",
-		body: "<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui en utilisant l'adresse e-mail <a href='mailto:info@molkkyScore.com' target='_top'>info@molkkyScore.com</a>. Les développeurs sont encouragés à contribuer par bifurquer sur <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"
+		body: "<p>molkkyScore.com n'est pas un jeu à part entière. C'est une <strong>application web pour garder le score sur le jeu nommé 'Mölkky'</strong> (également connu sous le nom number kubb). Pour plus d'informations sur le jeu réel, vous pouvez consulter l'excellent site <a href='http://www.molkky.com' target='_blank'>www.molkky.com</a>.</p><p>molkkyScore.com est développé par <a href='http://www.fredericaerts.com' target='_blank'>Frederic Aerts</a>. Questions, suggestions ou des rapports de bogues peuvent être adressées à lui en utilisant l'adresse e-mail <a href='mailto:info@fredericaerts.com' target='_top'>info@fredericaerts.com</a>. Les développeurs sont encouragés à contribuer par bifurquer sur <a href='https://github.com/fredericJos/molkkyScore' target='_blank'>github</a>.</p><p><strong>Tip: </strong>cette application web continue de fonctionner, même si vous n'avez pas de connexion internet.</p>"
 	}
 }
 
@@ -293,7 +293,7 @@ function setTextModalConfirm(confirmType, language){
 	//buttons
 	$('#modalConfirm #btn-no-confirm').text(eval("buttons."+language+".no"));
 	$('#modalConfirm #btn-yes-confirm').text(eval("buttons."+language+".yes"));
-}	
+}
 
 function setTextModalOptions(language){
 	$("#modalOptions #btn-restart-options").text(eval("buttons."+language+".restart"));
